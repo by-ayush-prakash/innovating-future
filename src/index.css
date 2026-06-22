@@ -1,0 +1,133 @@
+@import url('https://fonts.cdnfonts.com/css/neue-montreal');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Neue Montreal", "PP Neue Montreal", "Inter", sans-serif;
+  --font-sans: "Neue Montreal", "PP Neue Montreal", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    background-color: #F4F3F1; /* Cotton */
+    color: #2D2D2D; /* Moonless Night */
+    font-family: var(--font-sans);
+    
+    /* 1. Global Smoothness */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* 3. Body Text & Paragraphs defaults */
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  /* 2. Main Hero Headline & Headings styling */
+  h1 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    /* 3. Body Text & Paragraphs format */
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+}
+
+/* Sophisticated typographic utility classes */
+
+/* Premium Hero Headline Display Class */
+.neue-display-hero {
+  font-family: "Neue Montreal", "PP Neue Montreal", "Inter", sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+/* Body Text / Editorial Prose Class */
+.neue-prose-body {
+  font-family: "Neue Montreal", "PP Neue Montreal", "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* 4. Small Meta-Tags & Roles (Italicized roles) */
+.neue-meta-role-italic {
+  font-family: "Neue Montreal", "PP Neue Montreal", "Inter", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* 4. Small Meta-Tags & Roles (Regular world clock/metadata details) */
+.neue-meta-role-regular {
+  font-family: "Neue Montreal", "PP Neue Montreal", "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 5. Navigation & Footer elements */
+.neue-nav-footer-uppercase {
+  font-family: "Neue Montreal", "PP Neue Montreal", "Inter", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Elegant micro-textures and subtle grey/charcoal accents */
+.forest-gradient-line {
+  background: linear-gradient(90deg, transparent, rgba(45, 45, 45, 0.1) 50%, transparent);
+}
+
+.text-forest-metallic {
+  background: linear-gradient(135deg, #2D2D2D 0%, #3171C6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cream-card-glow {
+  box-shadow: 0 4px 20px rgba(45, 45, 45, 0.03), inset 0 1px 0 rgba(244, 243, 241, 0.8);
+}
+
+/* Seamless infinite horizontal scrolling marquee */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 80s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+
+

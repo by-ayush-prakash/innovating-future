@@ -1,0 +1,79 @@
+{
+  "entities": {
+    "partnershipApplication": {
+      "title": "Partnership Application",
+      "description": "Application submitted for CIF Partnership",
+      "type": "object",
+      "properties": {
+        "founderName": {
+          "type": "string",
+          "description": "Name of the principal applicant"
+        },
+        "orgName": {
+          "type": "string",
+          "description": "Legal name of the organization"
+        },
+        "domain": {
+          "type": "string",
+          "description": "Focus area domain of the organization"
+        },
+        "description": {
+          "type": "string",
+          "description": "Enterprise details and description"
+        },
+        "documentDropped": {
+          "type": "boolean",
+          "description": "Whether a document was attached"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of submission"
+        }
+      },
+      "required": ["founderName", "orgName", "domain", "description", "documentDropped", "createdAt"]
+    },
+    "credoConfig": {
+      "title": "Credo Configuration",
+      "description": "Stores the dynamic site credo text",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the Credo"
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Subtitle explaining the purpose"
+        },
+        "paragraphs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of manifesto paragraphs"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of update"
+        }
+      },
+      "required": ["title", "subtitle", "paragraphs"]
+    }
+  },
+  "firestore": {
+    "/partnerships/{applicationId}": {
+      "schema": {
+        "$ref": "#/entities/partnershipApplication"
+      },
+      "description": "Stores partnership applications submitted through the website."
+    },
+    "/site_config/{configId}": {
+      "schema": {
+        "$ref": "#/entities/credoConfig"
+      },
+      "description": "Stores dynamic site configuration details, including the official Credo."
+    }
+  }
+}
