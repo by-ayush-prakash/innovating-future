@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidPartnershipApplication(data) {
+      return data.keys().hasAll(['founderName', 'orgName', 'domain', 'description', 'documentDropped', 'createdAt']) &&
+             data.keys().size() == 6 &&
+             data.founderName is string && data.founderName.size() > 0 && data.founderName.size() <= 100 &&
+             data.orgName is string && data.orgName.size() > 0 && data.orgName.size() <= 100 &&
+             data.domain is string && data.domain.size() > 0 && data.domain.size() <= 50 &&
+             data.description is string && data.description.size() > 0 && data.description.size() <= 6000 &&
+             data.documentDropped is bool &&
+             data.createdAt == request.time;
+    }
+
+    match /partnerships/{applicationId} {
+      // No read or list access for public users, only creation.
+      allow read, update, delete, list: if false;
+
+      // Allow public creation of applications (public form) if schema is perfect
+      allow create: if isValidId(applicationId) &&
+                       isValidPartnershipApplication(incoming());
+    }
+
+    match /site_config/{configId} {
+      // Allow public reading of site settings (credo)
+      allow read: if true;
+      
+      // Allow configuration updates representing the site's manifesto
+      allow create, update: if isValidId(configId) &&
+                               incoming().keys().hasAll(['title', 'subtitle', 'paragraphs']) &&
+                               incoming().title is string &&
+                               incoming().subtitle is string &&
+                               incoming().paragraphs is list;
+    }
+  }
+}

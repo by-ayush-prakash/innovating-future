@@ -1,0 +1,6 @@
+{
+  "name": "Centre for Innovating the Future",
+  "description": "Redesigned technology consulting, neuro-engineering, and advanced hardware/software prototyping hub (formerly LeafLabs).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

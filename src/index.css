@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #ffffff;
+  --color-paper-raised: #ffffff;
+  --color-ink: #14130f;
+  --color-ink-70: #46443d;
+  --color-ink-45: #84817a;
+  --color-ink-15: #d8d5cd;
+  --color-ink-08: #e8e5de;
+
+  --font-display: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --text-xs: 13px;
+  --text-sm: 15px;
+  --text-base: 18px;
+  --text-lg: 22px;
+  --text-xl: 30px;
+  --text-2xl: 42px;
+  --text-3xl: 60px;
+  --text-4xl: 84px;
+  --text-5xl: 110px;
+
+  --spacing-s1: 8px;
+  --spacing-s2: 16px;
+  --spacing-s3: 24px;
+  --spacing-s4: 40px;
+  --spacing-s5: 64px;
+  --spacing-s6: 96px;
+  --spacing-s7: 144px;
+  --spacing-s8: 220px;
+
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-2xl: 2px;
+  --radius-3xl: 2px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink-70);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  p {
+    font-family: var(--font-sans);
+    color: var(--color-ink-70);
+    line-height: 1.55;
+  }
+}
+
+/* Seamless infinite horizontal scrolling marquee */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 80s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+
+@layer base {
+  @media (max-width: 768px) {
+    :root {
+      --spacing-s8: 96px;
+      --spacing-s7: 64px;
+    }
+  }
+
+  *:focus-visible {
+    outline: 1px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .link-hover {
+    position: relative;
+    display: inline-block;
+  }
+  .link-hover::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 200ms ease-out;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .link-hover:hover::after {
+      transform: scaleX(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .link-hover:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .nav-item-top {
+    font-family: "Inter", "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: #2d2d2d;
+    transition: opacity 0.2s ease;
+  }
+  .nav-item-top:hover {
+    opacity: 0.65;
+  }
+
+  /* Dropdown Panel Overrides */
+  .group > .absolute.top-\[100\%\] {
+    background-color: #ffffff !important;
+    padding: 24px 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    border: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important; /* minimal shadow */
+    min-width: 260px !important; /* fix Mantic Publishing on one line */
+    left: -24px !important; /* subtle left alignment */
+  }
+
+  .group > .absolute.top-\[100\%\] > a {
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #4a4a4a !important; /* dark grey */
+  }
+
+  .group > .absolute.top-\[100\%\] > a:hover {
+    color: #84817a !important;
+    background-color: transparent !important;
+  }
+
+  .dropdown-section-header {
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 400; /* no bold */
+    text-transform: uppercase;
+    letter-spacing: 0.1em; /* wide letter-spacing */
+    color: #4a4a4a !important; /* dark grey */
+    text-decoration: none !important;
+    margin-bottom: 12px; /* additional bottom margin */
+  }
+}
