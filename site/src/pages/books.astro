@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+
+const genZDesc = [
+  "AI for Gen Z is a revealing investigation into how artificial intelligence and digital technologies are quietly rewriting the script of modern life, reshaping how we think, connect, work, and even define who we are.",
+  "For Generation Z, AI isn't the future. It's the backdrop of their entire lives. From TikTok's algorithmic influence to romantic relationships with virtual companions, from deepfakes and misinformation to job automation and weaponized drones, this generation is growing up in a world radically altered by machines that learn.",
+  "What began as tools of convenience have become tools of control. Platforms designed to connect us now fracture our attention, feed us curated realities, and cultivate emotional dependence. The result is a generation navigating identity, intimacy, and purpose under the shadow of technologies that were never made with their well-being in mind.",
+  "Blending history, philosophy, and cultural analysis, Ayush Prakash traces how surveillance capitalism, social media psychology, and the unchecked arms race in AI are reshaping Gen Z's inner worlds, and offers a call to rethink the systems we've built before they rewrite us entirely.",
+];
+---
+<Base title="Books" description="Books from Mantic Publishing, CIF's independent press.">
+  <div class="wrap phead">
+    <h1>Books.</h1>
+    <p class="sub">
+      Published by Mantic Publishing, CIF's independent press. Arguments too long for an
+      essay and too witty for a textbook.
+    </p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="book">
+        <div class="cover">
+            <img src="/images/ai-for-gen-z.webp" width="880" height="1404"
+                 alt="Cover of AI for Gen Z. A robotic hand holds a red rose against a blue field of fractal shapes." />
+          </div>
+        <div>
+          <h2>AI for Gen Z</h2>
+          <p class="bsub">What Digital Technology Is Doing to Our Brains, Our Future, and the Generation Coming of Age Inside It</p>
+          <span class="by">Ayush Prakash</span>
+          <div class="desc">
+            {genZDesc.map((p) => <p>{p}</p>)}
+          </div>
+          <div class="meta">
+            <div><b>Publisher</b><span>Mantic Publishing</span></div>
+            <div><b>Format</b><span>Paperback &amp; eBook</span></div>
+            <div><b>ISBN</b><span>9780981182131</span></div>
+            <div><b>Release</b><span>2024</span></div>
+          </div>
+          <a class="buy" href="https://www.amazon.com/dp/0981182135" target="_blank" rel="noopener noreferrer">Buy on Amazon &rsaquo;</a>
+        </div>
+      </div>
+
+      <div class="book">
+        <div class="cover cover--soon"><span>Cover<br />to come</span></div>
+        <div>
+          <h2>The Transcendence of Money</h2>
+          <p class="bsub">Forthcoming, November 2026.</p>
+          <span class="by">Ayush Prakash</span>
+          <div class="meta">
+            <div><b>Publisher</b><span>Mantic Publishing</span></div>
+            <div><b>Release</b><span>November 2026</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

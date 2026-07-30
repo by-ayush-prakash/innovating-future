@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import { ORG } from "../config";
+
+const paragraphs = [
+  "The Center for Innovating the Future (CIF) respects your privacy and is committed to protecting the personal information you share with us when visiting innovatingfuture.com.",
+  "This Privacy Policy explains how we collect, use, and safeguard your information. By using our website, you consent to the data practices described in this statement.",
+  "We may collect non-personally identifiable information, such as browser type, operating system, and website usage statistics, to help us understand how visitors use our site and to improve the overall user experience. This information is collected through the use of cookies and similar tracking technologies.",
+  "If you choose to contact us or subscribe to our communications, we may collect personal information such as your name and email address. We use this information solely to respond to your inquiries and provide the requested services.",
+  "CIF does not sell, rent, or lease its customer lists or personal information to third parties. We may share data with trusted partners to help perform statistical analysis, send you email or postal mail, provide customer support, or arrange for deliveries. All such third parties are prohibited from using your personal information except to provide these services to CIF, and they are required to maintain the confidentiality of your information.",
+  "Our website may contain links to other sites. Please be aware that we are not responsible for the content or privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of any other site that collects personally identifiable information.",
+];
+---
+<Base title="Privacy Policy" description="Privacy Policy for innovatingfuture.com.">
+  <div class="wrap phead">
+    <h1>Privacy Policy</h1>
+  </div>
+  <div class="wrap">
+    <div class="legal">
+      {paragraphs.map((p) => <p>{p}</p>)}
+      <p>
+        If you have any questions or concerns about our Privacy Policy or data practices,
+        please contact us at <a href={"mailto:" + ORG.email} style="border-bottom:2px solid var(--accent)">{ORG.email}</a>.
+      </p>
+    </div>
+  </div>
+</Base>

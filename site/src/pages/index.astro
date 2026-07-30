@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+import Marks from "../components/Marks.astro";
+import Diagram from "../components/Diagram.astro";
+import { PRINCIPLES, IHF, MANTIC, PODCAST, COPY } from "../config";
+
+const cards = [
+  { ...IHF, art: "ihf", go: "Read more", href: IHF.page },
+  { ...MANTIC, art: "mantic", go: "Read more", href: MANTIC.page },
+  { ...PODCAST, art: "podcast", go: "All episodes", href: PODCAST.page },
+];
+---
+<Base>
+  <header class="hero">
+    <Marks set={[{ name: "dots", pos: "tl" }, { name: "target", pos: "tr" }, { name: "zig", pos: "bl" }, { name: "grid", pos: "br" }]} />
+    <div class="wrap">
+      <h1>Independent research on the forces reshaping human life.</h1>
+      <p class="sub">
+        The Center for Innovating the Future is an independent research institution based in
+        Toronto. It builds the arguments, tools, and institutions that allow people to contest
+        the technologies reshaping public life.
+      </p>
+      <div class="cta">
+        <a class="pill pill--solid" href="/credo">Read the Credo</a>
+        <a class="pill pill--ghost" href="/work">See our work</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="credo">
+    <div class="wrap">
+      <blockquote style="margin-top:0">No institution can demand respect. It must be earned.</blockquote>
+      <p class="attr">
+        CIF documents in public so that the moment it starts to drift, the people watching
+        see it before it does. The day CIF stops earning your skepticism is the day it has
+        become what it warned you about, and you will have the receipts, because we wrote
+        them ourselves.
+      </p>
+      <a class="pill" href="/credo">Read the full Credo &rsaquo;</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <h2>The Center builds institutions and holds them. <em>Each answers to the question, not the funder.</em></h2>
+        <a class="pill pill--ghost" href="/work">All work &rsaquo;</a>
+      </div>
+      <div class="props">
+        {cards.map((c) => (
+          <a class="prop" href={c.href}>
+            <div class="art"><Diagram name={c.art} /></div>
+            <h3>{c.name}</h3>
+            <p>{c.blurb}</p>
+            <span class="go">{c.go} <i>&rsaquo;</i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><h2>How the Center works.</h2></div>
+      <div class="prin">
+        {PRINCIPLES.map((p) => (
+          <div class="pr">
+            <h3>{p.h}</h3>
+            <p>{p.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <section class="close">
+    <svg width="420" height="300" viewBox="0 0 420 300" fill="none" aria-hidden="true"><g stroke="#fff" stroke-opacity=".55"><path d="M20 300V120M44 300V160M68 300V80M92 300V190M116 300V140M140 300V60M164 300V210M188 300V110M212 300V170M236 300V40M260 300V150M284 300V200M308 300V90M332 300V180M356 300V130M380 300V220M404 300V100"/></g></svg>
+    <div class="wrap">
+      <h2>Innovate the future. With us.</h2>
+      <p><strong>{COPY.fundingStance}</strong> {COPY.fundingAsk}</p>
+      <a class="pill" href="/contact">Start a conversation &rsaquo;</a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,34 @@
+---
+import Base from "../layouts/Base.astro";
+import { ORG, COPY } from "../config";
+---
+<Base title="Contact" description="How to reach the Center for Innovating the Future.">
+  <div class="wrap phead">
+    <h1>Contact.</h1>
+    <p class="sub">
+      <strong>{COPY.fundingStance}</strong> Host institutions, researchers, funders, and press
+      reach the Center at one address.
+    </p>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="prin">
+        <div class="pr">
+          <h3>Funding</h3>
+          <p>CIF accepts no funding that carries editorial conditions. Funders comfortable with that constraint can write directly.</p>
+        </div>
+        <div class="pr">
+          <h3>Host institutions</h3>
+          <p>AI Skepticism opens with Canada as Edition One. Host institutions shape the agenda alongside the Center.</p>
+        </div>
+        <div class="pr">
+          <h3>Press</h3>
+          <p>The Center answers questions about its work, its funding, and its conflicts on the record.</p>
+        </div>
+      </div>
+      <p style="margin-top:52px;font-size:22px;font-family:var(--display);letter-spacing:-.03em">
+        <a href={"mailto:" + ORG.email} style="border-bottom:2px solid var(--accent)">{ORG.email}</a>
+      </p>
+    </div>
+  </section>
+</Base>

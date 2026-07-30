@@ -1,0 +1,106 @@
+---
+import Base from "../layouts/Base.astro";
+import { ORG } from "../config";
+
+// Update the date whenever anything on this page changes. The date is the point.
+const updated = "July 2026";
+
+const policy = [
+  {
+    h: "No funding with editorial conditions.",
+    p: "CIF does not accept money that comes with any say over what gets published, when, or how it is framed. A funder who wants review rights is not a funder CIF can take.",
+  },
+  {
+    h: "No research on the organizations that fund us.",
+    p: "If CIF takes money from an institution, CIF does not publish research assessing that institution. The two are kept apart structurally, not by good intentions.",
+  },
+  {
+    h: "Disclosure before publication, not after.",
+    p: "Any funder of a piece of work is named on that work when it publishes. Not in a report at year end.",
+  },
+];
+
+const willPublish = [
+  "The name of every funder, and the amount.",
+  "Which programme or publication the money supported.",
+  "Any relationship between a funder and a subject CIF has written about.",
+  "Anything CIF declined, and why, where the declining party consents to being named.",
+];
+---
+<Base
+  title="Funding"
+  description="Who funds the Center for Innovating the Future, on what terms, and what CIF refuses."
+>
+  <div class="wrap phead">
+    <h1>Funding.</h1>
+    <p class="sub">
+      CIF has taken no money from anyone. Current as of {updated}.
+    </p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="shead"><h2>Current funding.</h2></div>
+      <div class="disclose">
+        <div class="dl">
+          <span class="dt">External funding received</span>
+          <b>None</b>
+          <p>CIF has taken no grants, no donations, and no institutional funding to date.</p>
+        </div>
+        <div class="dl">
+          <span class="dt">Corporate sponsors</span>
+          <b>None</b>
+          <p>No company sponsors CIF, any of the institutions it holds, or any programme.</p>
+        </div>
+        <div class="dl">
+          <span class="dt">Consulting clients</span>
+          <b>None</b>
+          <p>CIF does not sell research, advisory, or strategy services to anyone.</p>
+        </div>
+        <div class="dl">
+          <span class="dt">How the work is paid for</span>
+          <b>Self-funded</b>
+          <p>
+            Costs are carried by CIF's director. Book sales through Mantic Publishing return
+            to the press.
+          </p>
+        </div>
+      </div>
+      <p class="dnote">
+        The director is employed by New Sapience, an AI company, and that salary is what
+        makes the self-funding possible. New Sapience does not fund CIF, has no relationship
+        with it, and has no say in what CIF publishes.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><h2>Terms of any future funding.</h2></div>
+      <div class="prin">
+        {policy.map((x) => (
+          <div class="pr"><h3>{x.h}</h3><p>{x.p}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><h2>What the Center will disclose.</h2></div>
+      <ul class="willpub">
+        {willPublish.map((x) => <li>{x}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <h2>Corrections.</h2>
+      <p>
+        If anything on this page is inaccurate or incomplete, write and say so.
+      </p>
+      <a class="pill" href={"mailto:" + ORG.email}>{ORG.email} &rsaquo;</a>
+    </div>
+  </section>
+</Base>

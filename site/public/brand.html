@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>CIF brand export sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111110;--paper:#fff;--paper2:#F4F4F2;--accent:#DE3A11;--ink45:#8A877F}
+*{box-sizing:border-box;margin:0}
+body{background:#6b6b6b;font-family:Inter,system-ui,sans-serif;padding:44px 40px 140px;color:#fff}
+
+/* Preview uses zoom, not transform. zoom scales layout, so artboards keep
+   correct flow and DevTools captures the exact node with no stray space. */
+.art{zoom:.4}
+body.full .art{zoom:1}
+body.full{overflow-x:auto}
+
+.hd{max-width:1080px;margin-bottom:40px}
+.hd h1{font:600 29px/1.15 Inter;letter-spacing:-.028em}
+.hd p{font:400 15px/1.65 Inter;color:#e6e6e6;margin-top:12px;max-width:78ch}
+.hd code{font:400 13px/1 'IBM Plex Mono',monospace;background:rgba(0,0,0,.3);padding:2px 6px;border-radius:3px}
+h4{font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;margin:46px 0 12px;color:#fff}
+h4 span{color:#c9c9c9;text-transform:none;letter-spacing:0}
+.strip{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.cap{font:400 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#d6d6d6;margin-top:10px;display:block}
+
+/* ---------- artboards ---------- */
+.cover{width:2256px;height:382px;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--paper)}
+.sq{width:1200px;height:1200px;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--paper)}
+.wide{width:2400px;height:800px;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--paper)}
+.li{width:600px;height:600px;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--paper)}
+.ink{background:var(--ink)}
+.p2{background:var(--paper2)}
+.acc{background:var(--accent)}
+.pad{padding:0 96px;position:relative;z-index:2}
+
+/* covers */
+.cover h1{font:500 76px/1.14 Inter;letter-spacing:-.021em;color:var(--ink);max-width:24ch}
+.cover.ink h1{color:#fff}
+.cover.acc h1{color:#fff;max-width:27ch;font-size:82px}
+.cover p{font:400 29px/1.5 Inter;color:rgba(255,255,255,.6);margin-top:20px;letter-spacing:-.01em}
+.cover .mk{position:absolute;right:96px;top:50%;transform:translateY(-50%);z-index:1}
+.cover .lg{position:absolute;right:96px;top:50%;transform:translateY(-50%);z-index:1;
+           width:268px;height:268px;border:6px solid var(--ink);display:grid;place-items:center}
+.cover .lg b{font:600 116px/1 Inter;letter-spacing:-.055em;color:var(--ink)}
+.cover .lg i{position:absolute;right:-6px;top:-6px;width:46px;height:46px;background:var(--accent)}
+.cover.ink .lg{border-color:#fff}.cover.ink .lg b{color:#fff}
+.cover .bg{position:absolute;right:-70px;bottom:-50px;opacity:.3;z-index:1}
+
+/* bracket lockup */
+.brk{display:inline-flex;align-items:stretch;gap:40px}
+.brk .bar{width:8px;background:var(--ink);flex:none;position:relative}
+.brk .bar::before,.brk .bar::after{content:"";position:absolute;left:0;width:58px;height:8px;background:var(--ink)}
+.brk .bar::before{top:0}.brk .bar::after{bottom:0}
+.brk .bar.on{background:var(--accent)}
+.brk .bar.on::before,.brk .bar.on::after{background:var(--accent)}
+.brk .wm{font:500 118px/1.2 Inter;letter-spacing:-.028em;color:var(--ink);padding:10px 0}
+.ink .brk .bar{background:#fff}.ink .brk .bar::before,.ink .brk .bar::after{background:#fff}
+.ink .brk .bar.on{background:var(--accent)}
+.ink .brk .bar.on::before,.ink .brk .bar.on::after{background:var(--accent)}
+.ink .brk .wm{color:#fff}
+
+/* monogram */
+.mono{display:grid;place-items:center;width:520px;height:520px;border:8px solid var(--ink);position:relative}
+.mono b{font:600 226px/1 Inter;letter-spacing:-.055em;color:var(--ink)}
+.mono i{position:absolute;right:-8px;top:-8px;width:86px;height:86px;background:var(--accent)}
+.ink .mono{border-color:#fff}.ink .mono b{color:#fff}
+.acc .mono{border-color:#fff}.acc .mono b{color:#fff}.acc .mono i{background:#fff}
+
+/* horizontal lockup */
+.hz{display:flex;align-items:center;gap:52px}
+.hz .m{width:200px;height:200px;border:8px solid var(--ink);display:grid;place-items:center;position:relative;flex:none}
+.hz .m b{font:600 90px/1 Inter;letter-spacing:-.055em;color:var(--ink)}
+.hz .m i{position:absolute;right:-8px;top:-8px;width:38px;height:38px;background:var(--accent)}
+.hz .t{font:500 82px/1.22 Inter;letter-spacing:-.03em;color:var(--ink)}
+
+
+
+/* ---- accent treatments for the LinkedIn-safe covers ---- */
+.dot{color:var(--accent)}                                   /* accent full stop */
+.rule-u{height:8px;background:var(--accent);margin-top:34px;margin-left:auto;width:420px}
+.edge{position:absolute;right:0;top:0;bottom:0;width:26px;background:var(--accent);z-index:3}
+.brkR{display:inline-flex;align-items:stretch;gap:44px;flex-direction:row-reverse}
+.brkR .bar{width:7px;background:var(--accent);flex:none;position:relative}
+.brkR .bar::before,.brkR .bar::after{content:"";position:absolute;right:0;width:52px;height:7px;background:var(--accent)}
+.brkR .bar::before{top:0}.brkR .bar::after{bottom:0}
+.brkR h1{padding:14px 0;margin:0}
+.stripe{position:absolute;right:0;top:0;bottom:0;width:900px;z-index:0;opacity:.32}
+
+/* ---- LinkedIn safe zone. The company logo is overlaid bottom-left by LinkedIn,
+   so nothing can live in roughly the left 27% or the lower half. ---- */
+.cover.safe{justify-content:flex-end}
+.cover.safe .pad{padding:0 96px 0 0;max-width:1500px;text-align:right}
+.cover.safe h1{max-width:none;margin-left:auto}
+.cover.safe p{margin-left:auto;max-width:60ch}
+.guide{position:absolute;left:0;bottom:0;width:620px;height:290px;
+       background:rgba(222,58,17,.13);border-right:2px dashed rgba(222,58,17,.6);
+       border-top:2px dashed rgba(222,58,17,.6);z-index:5;display:none}
+.guide::after{content:"LINKEDIN LOGO SITS HERE";position:absolute;left:26px;top:22px;
+       font:400 26px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(222,58,17,.85)}
+body.guides .guide{display:block}
+#gd{position:fixed;right:22px;bottom:84px;z-index:999;background:#111110;color:#fff;border:0;
+    font:500 15px/1 Inter,sans-serif;padding:16px 24px;border-radius:100px;cursor:pointer;
+    box-shadow:0 6px 24px rgba(0,0,0,.4)}
+
+#fs{position:fixed;right:22px;bottom:22px;z-index:999;background:var(--accent);color:#fff;border:0;
+    font:500 15px/1 Inter,sans-serif;padding:16px 24px;border-radius:100px;cursor:pointer;
+    box-shadow:0 6px 24px rgba(0,0,0,.4)}
+#fs:hover{background:#B02D0B}
+
+@media print{@page{size:auto;margin:0}body{background:#fff;padding:0}.hd,h4,.cap,#fs{display:none}.art{zoom:1}}
+</style></head><body>
+
+<button id="gd" onclick="document.body.classList.toggle('guides');
+ this.textContent=document.body.classList.contains('guides')?'Hide safe-zone guide':'Show safe-zone guide'">Show safe-zone guide</button>
+<button id="fs" onclick="document.body.classList.toggle('full');
+ this.textContent=document.body.classList.contains('full')?'Back to preview':'Full size for export'">Full size for export</button>
+
+<div class="hd">
+  <h1>CIF brand export sheet</h1>
+  <p>Artboards are drawn at final pixel size and previewed at 40%. Click <b>Full size for export</b>, then right-click an artboard, <b>Inspect Element</b>, right-click the highlighted node, <b>Capture Screenshot</b>. Each artboard is a single self-contained node, so the capture is exactly the file with nothing around it.</p>
+  <p>Covers are 2256 &times; 382, the 2&times; version of LinkedIn's 1128 &times; 191. LinkedIn covers must be PNG or JPG. For PDF masters use Cmd+P, Save as PDF, background graphics on.</p>
+</div>
+
+
+
+<h4>LinkedIn safe 1a <span>&nbsp;accent full stop. Quietest option.</span></h4>
+<div class="art cover safe"><span class="guide"></span><div class="pad"><h1>Independent research on the forces reshaping human life<span class="dot">.</span></h1></div></div>
+
+<h4>LinkedIn safe 1b <span>&nbsp;accent rule under the headline</span></h4>
+<div class="art cover safe"><span class="guide"></span><div class="pad"><h1>Independent research on the forces reshaping human life<span class="dot">.</span></h1><div class="rule-u"></div></div></div>
+
+<h4>LinkedIn safe 1c <span>&nbsp;the bracket, mirrored. Ties the cover to the logo. Recommended.</span></h4>
+<div class="art cover safe"><span class="guide"></span><div class="pad"><div class="brkR"><span class="bar"></span><h1>Independent research on the forces reshaping human life.</h1></div></div></div>
+
+<h4>LinkedIn safe 1d <span>&nbsp;accent edge</span></h4>
+<div class="art cover safe"><span class="guide"></span><span class="edge"></span><div class="pad" style="padding-right:150px"><h1>Independent research on the forces reshaping human life<span class="dot">.</span></h1></div></div>
+
+<h4>LinkedIn safe 1e <span>&nbsp;schematic field on the right</span></h4>
+<div class="art cover safe"><span class="guide"></span>
+<svg class="stripe" viewBox="0 0 420 300" preserveAspectRatio="none" fill="none"><g stroke="#DE3A11" stroke-opacity=".55"><path d="M20 300V120M44 300V160M68 300V80M92 300V190M116 300V140M140 300V60M164 300V210M188 300V110M212 300V170M236 300V40M260 300V150M284 300V200M308 300V90M332 300V180M356 300V130M380 300V220M404 300V100"/></g></svg>
+<div class="pad"><h1>Independent research on the forces reshaping human life<span class="dot">.</span></h1></div></div>
+
+<h4>LinkedIn safe 1 <span>&nbsp;plain, no accent</span></h4>
+<div class="art cover safe"><span class="guide"></span><div class="pad"><h1>Independent research on the forces reshaping human life.</h1></div></div>
+
+<h4>LinkedIn safe 2 <span>&nbsp;name and position, right</span></h4>
+<div class="art cover safe ink"><span class="guide"></span><div class="pad"><h1 style="font-size:82px">Center for Innovating the Future</h1><p>An independent research institution based in Toronto.</p></div></div>
+
+<h4>LinkedIn safe 3 <span>&nbsp;the commitment, right</span></h4>
+<div class="art cover safe acc"><span class="guide"></span><div class="pad"><h1>CIF accepts funding. It does not accept editorial direction.</h1></div></div>
+
+<h4>Cover D <span>&nbsp;headline plus monogram. Use for the site OG image, not LinkedIn.</span></h4>
+<div class="art cover"><div class="pad"><h1>Independent research on the forces reshaping human life.</h1></div><span class="lg"><b>CIF</b><i></i></span></div>
+
+<h4>Cover D reversed</h4>
+<div class="art cover ink"><div class="pad"><h1>Independent research on the forces reshaping human life.</h1></div><span class="lg"><b>CIF</b><i></i></span></div>
+
+<h4>Cover A <span>&nbsp;with the target mark</span></h4>
+<div class="art cover"><div class="pad"><h1>Independent research on the forces reshaping human life.</h1></div>
+<svg class="mk" width="250" height="250" viewBox="0 0 112 112" fill="none"><circle cx="56" cy="56" r="55" stroke="#111110" stroke-opacity=".13"/><circle cx="56" cy="56" r="38" stroke="#111110" stroke-opacity=".13"/><circle cx="56" cy="56" r="21" stroke="#DE3A11" stroke-opacity=".5"/><path d="M56 1v110M1 56h110" stroke="#111110" stroke-opacity=".1"/><circle cx="56" cy="35" r="3.5" fill="#DE3A11"/></svg></div>
+
+<h4>Cover B <span>&nbsp;name and position</span></h4>
+<div class="art cover ink"><div class="pad"><h1>Center for Innovating the Future</h1><p>An independent research institution based in Toronto.</p></div></div>
+
+<h4>Cover C <span>&nbsp;the commitment</span></h4>
+<div class="art cover acc"><div class="pad"><h1>CIF accepts funding. It does not accept editorial direction.</h1></div>
+<svg class="bg" width="760" height="540" viewBox="0 0 420 300" fill="none"><g stroke="#fff" stroke-opacity=".5"><path d="M20 300V120M44 300V160M68 300V80M92 300V190M116 300V140M140 300V60M164 300V210M188 300V110M212 300V170M236 300V40M260 300V150M284 300V200M308 300V90M332 300V180M356 300V130M380 300V220M404 300V100"/></g></svg></div>
+
+<h4>Logo, bracket <span>&nbsp;1200 &times; 1200</span></h4>
+<div class="strip">
+  <div><div class="art sq"><div class="brk"><span class="bar on"></span><span class="wm">Center for<br>Innovating<br>the Future</span></div></div><span class="cap">Paper, accent bracket</span></div>
+  <div><div class="art sq ink"><div class="brk"><span class="bar on"></span><span class="wm">Center for<br>Innovating<br>the Future</span></div></div><span class="cap">Ink, accent bracket</span></div>
+  <div><div class="art sq p2"><div class="brk"><span class="bar"></span><span class="wm">Center for<br>Innovating<br>the Future</span></div></div><span class="cap">All ink</span></div>
+</div>
+
+<h4>Logo, bracket wide <span>&nbsp;2400 &times; 800, letterhead and decks</span></h4>
+<div class="strip">
+  <div><div class="art wide"><div class="brk"><span class="bar on"></span><span class="wm">Center for<br>Innovating<br>the Future</span></div></div><span class="cap">Paper</span></div>
+  <div><div class="art wide ink"><div class="brk"><span class="bar on"></span><span class="wm">Center for<br>Innovating<br>the Future</span></div></div><span class="cap">Ink</span></div>
+</div>
+
+<h4>Monogram <span>&nbsp;1200 &times; 1200, avatar and favicon</span></h4>
+<div class="strip">
+  <div><div class="art sq"><div class="mono"><b>CIF</b><i></i></div></div><span class="cap">Paper</span></div>
+  <div><div class="art sq ink"><div class="mono"><b>CIF</b><i></i></div></div><span class="cap">Ink</span></div>
+  <div><div class="art sq acc"><div class="mono"><b>CIF</b><i></i></div></div><span class="cap">Accent</span></div>
+</div>
+
+<h4>Horizontal lockup <span>&nbsp;2400 &times; 800</span></h4>
+<div class="art wide p2"><div class="hz"><span class="m"><b>C</b><i></i></span><span class="t">Center for Innovating<br>the Future</span></div></div>
+
+<h4>LinkedIn company logo <span>&nbsp;600 &times; 600</span></h4>
+<div class="strip">
+  <div><div class="art li"><div class="mono" style="width:400px;height:400px;border-width:6px"><b style="font-size:172px">CIF</b><i style="width:66px;height:66px;right:-6px;top:-6px"></i></div></div><span class="cap">Paper</span></div>
+  <div><div class="art li ink"><div class="mono" style="width:400px;height:400px;border-width:6px"><b style="font-size:172px">CIF</b><i style="width:66px;height:66px;right:-6px;top:-6px"></i></div></div><span class="cap">Ink</span></div>
+</div>
+
+</body></html>

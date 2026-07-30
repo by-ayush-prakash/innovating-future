@@ -1,0 +1,112 @@
+---
+import Base from "../layouts/Base.astro";
+import { PODCAST } from "../config";
+import { getFeed } from "../lib/feed";
+
+const { episodes, fetchFailed } = await getFeed();
+
+const trending = episodes.slice(0, 3);
+
+function fmtDate(pubDate: string) {
+  const d = new Date(pubDate);
+  if (isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+---
+<Base title="Podcast" description="The Ayush Prakash Podcast: long-form conversations on the technologies reshaping how we think.">
+  <div class="wrap phead">
+    <h1>Conversations on the technologies reshaping how we think.</h1>
+    <p class="sub">
+      {PODCAST.blurb} Hosted by CIF Director Ayush Prakash, the show features builders,
+      researchers, and theorists working at the boundary of what's possible.
+    </p>
+    <div class="subrow">
+      <span class="mono">Follow the show on</span>
+      <a class="pill pill--ghost" href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
+      <a class="pill pill--ghost" href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">Spotify</a>
+      <a class="pill pill--ghost" href={PODCAST.url} target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </div>
+
+  {fetchFailed ? (
+    <section>
+      <div class="wrap">
+        <p style="color:var(--ink-70)">
+          Episodes couldn't be loaded from the feed at build time. Listen on
+          <a href={PODCAST.url} target="_blank" rel="noopener noreferrer" style="border-bottom:2px solid var(--accent)"> YouTube</a>
+          or <a href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer" style="border-bottom:2px solid var(--accent)">Spotify</a> in the meantime.
+        </p>
+      </div>
+    </section>
+  ) : (
+    <>
+      <section>
+        <div class="wrap">
+          <div class="shead"><h2>Now trending.</h2></div>
+          <div class="epgrid">
+            {trending.map((ep) => (
+              <div class="epcard">
+                {ep.image && <div class="cov"><img src={ep.image} alt={`Episode art: ${ep.title}`} loading="lazy" /></div>}
+                <div class="body">
+                  <span class="mono">{fmtDate(ep.pubDate)}</span>
+                  <h3>{ep.title}</h3>
+                  {ep.audio && <audio controls preload="none" src={ep.audio}></audio>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-top:0">
+        <div class="wrap">
+          <div class="shead">
+            <h2>All episodes. <em>{episodes.length} and counting.</em></h2>
+            <input class="epsearch" id="ep-search" type="text" placeholder="Search episodes…" aria-label="Search episodes" />
+          </div>
+          <div class="eplist" id="ep-list">
+            {episodes.map((ep) => (
+              <div class="eprow" data-title={ep.title.toLowerCase()} data-desc={ep.description.toLowerCase()}>
+                {ep.image && <div class="cov"><img src={ep.image} alt={`Episode art: ${ep.title}`} loading="lazy" /></div>}
+                <div class="meta">
+                  <span class="mono">{fmtDate(ep.pubDate)}</span>
+                  <h3>{ep.title}</h3>
+                  {ep.description && <p>{ep.description}</p>}
+                  {ep.audio && <audio controls preload="none" src={ep.audio}></audio>}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p id="ep-empty" style="display:none;padding:40px 0;color:var(--ink-45)">No episodes match that search.</p>
+        </div>
+      </section>
+    </>
+  )}
+
+  <section class="close">
+    <div class="wrap">
+      <h2>Never miss a conversation.</h2>
+      <p>Subscribe on YouTube, Spotify, or Apple Podcasts to catch each one as it publishes.</p>
+      <a class="pill" href={PODCAST.url} target="_blank" rel="noopener noreferrer">Subscribe on YouTube &rsaquo;</a>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const input = document.getElementById("ep-search") as HTMLInputElement | null;
+  const list = document.getElementById("ep-list");
+  const empty = document.getElementById("ep-empty");
+  if (input && list) {
+    const rows = Array.from(list.querySelectorAll<HTMLElement>(".eprow"));
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+      for (const row of rows) {
+        const matches = !q || row.dataset.title?.includes(q) || row.dataset.desc?.includes(q);
+        row.style.display = matches ? "" : "none";
+        if (matches) visible++;
+      }
+      if (empty) empty.style.display = visible === 0 ? "block" : "none";
+    });
+  }
+</script>

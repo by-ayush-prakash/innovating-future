@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+
+const bio = [
+  "Ayush Prakash directs CIF. He is also Chief of Staff at New Sapience, an AI company, where he leads strategy and operations and previously architected two equity crowdfunding rounds.",
+  "CIF runs a convening program called AI Skepticism. Its director works for an AI company and writes books about AI. That is a conflict.",
+  "He is the author of AI for Gen Z, has co-authored work in Psychology Today with Dr. Ran D. Anbar on AI and the developing brain and in The Montréal Review with Karl Friston, and holds a BA in Philosophy from Toronto Metropolitan University. On the podcast he has hosted Avi Loeb, Karl Friston, and Yaron Brook, among others.",
+];
+
+const contactLinks = [
+  { label: "Website", urlText: "ayushprakash.com", url: "https://ayushprakash.com" },
+  { label: "LinkedIn", urlText: "in/prakash-ayush", url: "https://linkedin.com/in/prakash-ayush" },
+];
+---
+<Base title="Leadership" description="Leadership at the Center for Innovating the Future.">
+  <div class="wrap phead">
+    <h1>Leadership.</h1>
+    <p class="sub">
+      The people who direct the Center's work and answer for it.
+    </p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="person">
+        <div class="photo">
+          <img src="/images/ayush-prakash.jpg" alt="Ayush Prakash" />
+        </div>
+        <div>
+          <h2>Ayush Prakash</h2>
+          <span class="role">Director, Center for Innovating the Future</span>
+          {bio.map((para) => <p>{para}</p>)}
+          <div class="clinks">
+            {contactLinks.map((l) => (
+              <div class="cl">
+                <span class="lbl">{l.label}</span>
+                <a href={l.url} target="_blank" rel="noopener noreferrer">{l.urlText}</a>
+              </div>
+            ))}
+            <div class="cl">
+              <span class="lbl">Based in</span>
+              <span>Toronto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

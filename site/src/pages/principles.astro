@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+
+const principles = [
+  {
+    h: "The work has no sponsor.",
+    p: "CIF does not accept funding that carries editorial conditions, and does not produce research on behalf of the organizations it studies.",
+  },
+  {
+    h: "Research is built to be used.",
+    p: "Every research programme, publication, and convening is designed to produce something a specific person or institution can act on.",
+  },
+  {
+    h: "CIF publishes what it finds.",
+    p: "Where evidence contradicts a position, the position changes. Where a question cannot be answered, the Center says so.",
+  },
+  {
+    h: "The questions are not seasonal.",
+    p: "The Center is built for sustained attention over decades, not for cycles of announcement and retreat.",
+  },
+];
+---
+<Base title="Principles" description="The commitments that determine what the Center publishes, who it convenes, and what it declines.">
+  <div class="wrap phead">
+    <h1>Principles.</h1>
+    <p class="sub">
+      CIF is built on a small number of commitments. They determine what the Center
+      publishes, who it convenes, and what it declines.
+    </p>
+  </div>
+
+  <section style="padding-bottom:0">
+    <div class="wrap">
+      <div class="plist">
+        {principles.map((p) => (
+          <div class="pl">
+            <h2>{p.h}</h2>
+            <p>{p.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <h2>See the work these commitments produce.</h2>
+      <p>Research and advocacy, publishing, and media, each held by the Center and accountable to the same standard.</p>
+      <a class="pill" href="/work">View our work &rsaquo;</a>
+    </div>
+  </section>
+</Base>

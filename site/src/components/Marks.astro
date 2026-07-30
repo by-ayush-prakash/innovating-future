@@ -1,0 +1,48 @@
+---
+// Schematic marks. Blueprint register: hairline ink, accent used once per mark.
+// Never decorative fill, never 3D. Pass names + positions, 2 or 3 per page.
+// Positions: tl, tr, bl, br, ml, mr
+const { set = [] } = Astro.props;
+const A = "#DE3A11";
+const I = "#111110";
+---
+{set.map(({ name, pos }) => (
+  <span class={`mk mk--${pos}`} aria-hidden="true">
+    {name === "dots" && (
+      <svg width="128" height="96" viewBox="0 0 128 96" fill="none"><g fill={A}><rect x="0" y="46" width="3" height="3"/><rect x="9" y="46" width="3" height="3"/><rect x="9" y="37" width="3" height="3"/><rect x="18" y="46" width="3" height="3"/><rect x="18" y="55" width="3" height="3"/><rect x="27" y="28" width="3" height="3"/><rect x="27" y="46" width="3" height="3"/><rect x="36" y="46" width="3" height="3"/><rect x="36" y="64" width="3" height="3"/><rect x="45" y="19" width="3" height="3"/><rect x="45" y="46" width="3" height="3"/></g><g fill={I} opacity=".26"><rect x="54" y="46" width="3" height="3"/><rect x="63" y="55" width="3" height="3"/><rect x="63" y="37" width="3" height="3"/><rect x="72" y="46" width="3" height="3"/><rect x="81" y="46" width="3" height="3"/><rect x="90" y="64" width="3" height="3"/><rect x="90" y="28" width="3" height="3"/></g></svg>
+    )}
+    {name === "target" && (
+      <svg width="112" height="112" viewBox="0 0 112 112" fill="none"><circle cx="56" cy="56" r="55" stroke={I} stroke-opacity=".13"/><circle cx="56" cy="56" r="38" stroke={I} stroke-opacity=".13"/><circle cx="56" cy="56" r="21" stroke={A} stroke-opacity=".5"/><path d="M56 1v110M1 56h110" stroke={I} stroke-opacity=".1"/><circle cx="56" cy="35" r="3.5" fill={A}/></svg>
+    )}
+    {name === "zig" && (
+      <svg width="76" height="60" viewBox="0 0 76 60" fill="none"><path d="M1 59 L14 30 L27 44 L40 12 L53 26 L75 1" stroke={A} stroke-opacity=".45" stroke-width="1.5"/><path d="M1 44 L20 44 M1 30 L20 30" stroke={I} stroke-opacity=".11"/></svg>
+    )}
+    {name === "grid" && (
+      <svg width="88" height="72" viewBox="0 0 88 72" fill="none"><g stroke={I} stroke-opacity=".15"><rect x=".5" y=".5" width="87" height="71"/><path d="M0 24h88M0 48h88M29 0v72M59 0v72"/></g><rect x="29" y="24" width="30" height="24" fill={A} fill-opacity=".12"/><circle cx="44" cy="36" r="4" fill={A}/></svg>
+    )}
+    {name === "bars" && (
+      <svg width="96" height="72" viewBox="0 0 96 72" fill="none"><path d="M0 71h96" stroke={I} stroke-opacity=".15"/><g stroke={I} stroke-opacity=".22"><path d="M8 71V50M22 71V38M36 71V56M64 71V44M78 71V60M92 71V33"/></g><path d="M50 71V22" stroke={A}/><circle cx="50" cy="19" r="3.5" fill={A}/></svg>
+    )}
+    {name === "nest" && (
+      <svg width="84" height="84" viewBox="0 0 84 84" fill="none"><g stroke={I} stroke-opacity=".14"><rect x=".5" y=".5" width="83" height="83"/><rect x="13.5" y="13.5" width="57" height="57"/></g><rect x="27.5" y="27.5" width="29" height="29" stroke={A} stroke-opacity=".55"/><rect x="38" y="38" width="8" height="8" fill={A}/></svg>
+    )}
+    {name === "cross" && (
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 0v80M0 40h80" stroke={I} stroke-opacity=".13"/><g stroke={I} stroke-opacity=".26"><path d="M36 14h8M36 26h8M36 54h8M36 66h8M14 36v8M26 36v8M54 36v8M66 36v8"/></g><circle cx="40" cy="40" r="9" stroke={A}/><circle cx="40" cy="40" r="2.5" fill={A}/></svg>
+    )}
+    {name === "orbit" && (
+      <svg width="120" height="76" viewBox="0 0 120 76" fill="none"><ellipse cx="60" cy="38" rx="59" ry="27" stroke={I} stroke-opacity=".14"/><ellipse cx="60" cy="38" rx="34" ry="15" stroke={I} stroke-opacity=".14"/><circle cx="60" cy="38" r="6" fill={A} fill-opacity=".16" stroke={A}/><circle cx="119" cy="38" r="3.5" fill={A}/><circle cx="26" cy="38" r="2.5" fill={I} fill-opacity=".3"/></svg>
+    )}
+    {name === "steps" && (
+      <svg width="92" height="68" viewBox="0 0 92 68" fill="none"><path d="M0 67h92" stroke={I} stroke-opacity=".15"/><path d="M2 67V52h20V38h20V24h20V10h28" stroke={A} stroke-opacity=".5"/><g fill={I} fill-opacity=".25"><rect x="20" y="50" width="4" height="4"/><rect x="40" y="36" width="4" height="4"/><rect x="60" y="22" width="4" height="4"/></g><circle cx="88" cy="10" r="3.5" fill={A}/></svg>
+    )}
+    {name === "nodes" && (
+      <svg width="108" height="84" viewBox="0 0 108 84" fill="none"><g stroke={I} stroke-opacity=".18"><path d="M18 20 L54 62 L90 20M18 20h72"/></g><circle cx="18" cy="20" r="5" stroke={I} stroke-opacity=".3" fill="none"/><circle cx="90" cy="20" r="5" stroke={I} stroke-opacity=".3" fill="none"/><circle cx="54" cy="62" r="7" fill={A} fill-opacity=".14" stroke={A}/><circle cx="54" cy="62" r="2.5" fill={A}/></svg>
+    )}
+    {name === "wave" && (
+      <svg width="116" height="56" viewBox="0 0 116 56" fill="none"><path d="M0 28h116" stroke={I} stroke-opacity=".1"/><path d="M0 28q14-26 29 0 15 26 29 0 14-26 29 0 15 26 29 0" stroke={A} stroke-opacity=".5"/><g stroke={I} stroke-opacity=".2"><path d="M29 8v40M58 8v40M87 8v40"/></g></svg>
+    )}
+    {name === "rule" && (
+      <svg width="104" height="44" viewBox="0 0 104 44" fill="none"><path d="M0 30h104" stroke={I} stroke-opacity=".2"/><g stroke={I} stroke-opacity=".24"><path d="M8 30V20M20 30v-6M32 30v-6M44 30v-6M56 30V20M68 30v-6M80 30v-6M92 30v-6"/></g><path d="M8 30V8M56 30V8" stroke={A} stroke-opacity=".6"/><circle cx="8" cy="6" r="3" fill={A}/><circle cx="56" cy="6" r="3" fill={A}/></svg>
+    )}
+  </span>
+))}

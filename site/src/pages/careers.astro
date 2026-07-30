@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+
+const checkmark = `<svg viewBox="0 0 10 8" fill="none"><path d="M1 4.5L3.5 7L9 1" stroke="#111110" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+const checks = [
+  { h: "Conviction over credentials", p: "People who have taken positions in public and defended them, rather than held titles." },
+  { h: "Builders", p: "A preference for people who produce work over people who administer it." },
+  { h: "Comfort with ambiguity", p: "The Center's programmes are being defined as they are built. That is the work, not a stage of it." },
+];
+---
+<Base title="Careers" description="The Center is not currently hiring for defined roles. Proposals for roles that do not yet exist are welcome.">
+  <div class="wrap phead">
+    <h1>Careers.</h1>
+    <p class="sub">
+      The Center is not currently hiring for defined roles. Proposals for roles that do not
+      yet exist are welcome, and should make their own case.
+    </p>
+  </div>
+
+  <section>
+    <div class="wrap split">
+      <div class="body">
+        <h2>What the Center looks for.</h2>
+        <p>CIF holds three institutions and expects to hold more. Each will need people running it as it matures.</p>
+        <p>That makes a position here less a matter of an opening that exists today than of which institution someone wants to help build. Early positions carry wide scope and direct ownership of outcomes.</p>
+      </div>
+      <div class="checks">
+        {checks.map((c) => (
+          <div class="check">
+            <div class="lbl">
+              <span class="dot" set:html={checkmark} />
+              <h3>{c.h}</h3>
+            </div>
+            <p>{c.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <h2>Start with the Credo.</h2>
+      <p>It sets the standard anyone joining the Center would be asked to help hold.</p>
+      <a class="pill" href="/credo">Read the Credo &rsaquo;</a>
+    </div>
+  </section>
+</Base>

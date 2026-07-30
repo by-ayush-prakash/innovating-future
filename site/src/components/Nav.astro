@@ -1,0 +1,25 @@
+---
+const { path = "/" } = Astro.props;
+const links = [
+  { href: "/work", label: "Work" },
+  { href: "/credo", label: "Credo" },
+  { href: "/funding", label: "Funding" },
+  { href: "/writing", label: "Writing" },
+  { href: "/leadership", label: "Leadership" },
+  { href: "/careers", label: "Careers" },
+];
+---
+<nav class="site">
+  <div class="wrap navin">
+    <a class="lock" href="/" aria-label="Center for Innovating the Future, home">
+      <b>CIF</b>
+      <span>Center for<br />Innovating the Future</span>
+    </a>
+    <div class="nlinks">
+      {links.map((l) => (
+        <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>
+      ))}
+    </div>
+    <a class="pill pill--ghost" href="/contact">Contact</a>
+  </div>
+</nav>

@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import Diagram from "../components/Diagram.astro";
+import { PROPERTIES } from "../config";
+const arts = ["ihf", "mantic", "podcast"];
+---
+<Base title="Work" description="What the Center for Innovating the Future builds and holds: research and advocacy, publishing, and media.">
+  <div class="wrap phead">
+    <h1>The Center builds institutions and holds them.</h1>
+    <p class="sub">
+      Research and advocacy, publishing, and media. Each is built to outlast the attention
+      cycle it was formed in, and each answers to the question rather than to a funder.
+    </p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="props">
+        {PROPERTIES.map((p, i) => (
+          <a class="prop" href={p.page ?? p.url}>
+            <div class="art"><Diagram name={arts[i]} /></div>
+            <h3>{p.name}</h3>
+            <p>{p.blurb}</p>
+            <span class="go">Read more <i>&rsaquo;</i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

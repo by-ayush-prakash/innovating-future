@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>CIF LinkedIn banner options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111110;--paper:#fff;--paper2:#F4F4F2;--accent:#DE3A11;--hair:rgba(17,17,16,.14);--ink45:#8A877F}
+*{box-sizing:border-box;margin:0}
+body{background:#5a5a5a;font-family:Inter,sans-serif;padding:40px;color:#fff}
+h4{font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;margin:34px 0 10px;color:#ddd}
+.b{width:2256px;height:382px;transform:scale(.5);transform-origin:top left;margin-bottom:-191px;position:relative;overflow:hidden;display:flex;align-items:center}
+.pad{padding:0 96px;position:relative;z-index:2}
+/* A */
+.a{background:var(--paper)}
+.a h1{font:500 76px/1.14 Inter;letter-spacing:-.021em;color:var(--ink);max-width:24ch}
+.a svg{position:absolute;right:70px;top:50%;transform:translateY(-50%);opacity:.9;z-index:1}
+/* B */
+.bb{background:var(--ink)}
+.bb h1{font:500 92px/1.1 Inter;letter-spacing:-.025em;color:#fff}
+.bb p{font:400 30px/1.5 Inter;color:rgba(255,255,255,.62);margin-top:22px;letter-spacing:-.01em}
+/* C */
+.c{background:var(--accent)}
+.c h1{font:500 84px/1.12 Inter;letter-spacing:-.025em;color:#fff;max-width:26ch}
+.c svg{position:absolute;right:-60px;bottom:-40px;opacity:.3;z-index:1}
+.note{font:400 13px/1.6 Inter;color:#ddd;max-width:900px;margin-top:6px}
+</style></head><body>
+
+<h4>Option A — paper, the site's headline</h4>
+<div class="b a"><div class="pad"><h1>Independent research on the forces reshaping human life.</h1></div>
+<svg width="240" height="240" viewBox="0 0 112 112" fill="none"><circle cx="56" cy="56" r="55" stroke="#111110" stroke-opacity=".13"/><circle cx="56" cy="56" r="38" stroke="#111110" stroke-opacity=".13"/><circle cx="56" cy="56" r="21" stroke="#DE3A11" stroke-opacity=".5"/><path d="M56 1v110M1 56h110" stroke="#111110" stroke-opacity=".1"/><circle cx="56" cy="35" r="3.5" fill="#DE3A11"/></svg></div>
+
+<h4>Option B — ink, name and position</h4>
+<div class="b bb"><div class="pad"><h1>Center for Innovating the Future</h1>
+<p>An independent research institution based in Toronto.</p></div></div>
+
+<h4>Option C — accent, the commitment</h4>
+<div class="b c"><div class="pad"><h1>CIF accepts funding. It does not accept editorial direction.</h1></div>
+<svg width="700" height="500" viewBox="0 0 420 300" fill="none"><g stroke="#fff" stroke-opacity=".5"><path d="M20 300V120M44 300V160M68 300V80M92 300V190M116 300V140M140 300V60M164 300V210M188 300V110M212 300V170M236 300V40M260 300V150M284 300V200M308 300V90M332 300V180M356 300V130M380 300V220M404 300V100"/></g></svg></div>
+
+<p class="note" style="margin-top:30px">Each block is 2256 &times; 382, shown at 50%. Screenshot one at full size (zoom the page to 200% or remove the transform), or right-click and use your browser's element screenshot. LinkedIn company banners display at 1128 &times; 191, so a 2256-wide capture is the retina version.</p>
+</body></html>
