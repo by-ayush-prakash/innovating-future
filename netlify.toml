@@ -18,18 +18,24 @@
 
 [[redirects]]
   from = "/news"
-  to = "/writing"
+  to = "/media"
   status = 301
   force = true
 
 [[redirects]]
   from = "/press"
-  to = "/writing"
+  to = "/media"
   status = 301
   force = true
 
 [[redirects]]
   from = "/members"
   to = "/leadership"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/writing"
+  to = "/media"
   status = 301
   force = true

@@ -7,6 +7,7 @@ import { ORG } from "../config";
 const {
   title,
   description = "The Center for Innovating the Future builds the arguments, tools, and institutions that let people contest the forces reshaping human life.",
+  noindex = false,
 } = Astro.props;
 
 const full = `${ORG.short} | ${title ?? "Home"}`;          // browser tab
@@ -28,10 +29,14 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="canonical" href={new URL(path, Astro.site)} />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#111110" />
+    <meta property="og:url" content={new URL(path, Astro.site)} />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta name="twitter:image" content={new URL("/og.png", Astro.site)} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="icon" href="/favicon.ico?v=4" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32.png?v=4" sizes="32x32" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
+    <meta name="theme-color" content="#DE3A11" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

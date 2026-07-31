@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Working files, not content.
+Disallow: /brand.html
+Disallow: /linkedin-banner.html
+
+Sitemap: https://innovatingfuture.com/sitemap.xml
