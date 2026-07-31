@@ -1,13 +1,40 @@
 ---
+import { IHF, MANTIC } from "../config";
+
 const { path = "/" } = Astro.props;
-const links = [
-  { href: "/work", label: "Work" },
-  { href: "/credo", label: "Credo" },
-  { href: "/funding", label: "Funding" },
-  { href: "/media", label: "Media" },
-  { href: "/leadership", label: "Leadership" },
-  { href: "/careers", label: "Careers" },
+
+// Mirrors the footer. Contact stays a button, Credo and Leadership stand alone.
+const nav = [
+  { label: "Credo", href: "/credo" },
+  {
+    label: "Work",
+    items: [
+      { label: "All work", href: "/work" },
+      { label: "Funding", href: "/funding" },
+      { label: IHF.name, href: IHF.page },
+      { label: MANTIC.name, href: MANTIC.page },
+    ],
+  },
+  {
+    label: "Media",
+    items: [
+      { label: "Writing", href: "/writing" },
+      { label: "Books", href: "/books" },
+      { label: "Podcast", href: "/podcast" },
+    ],
+  },
+  { label: "Leadership", href: "/leadership" },
+  {
+    label: "About",
+    items: [
+      { label: "Principles", href: "/principles" },
+      { label: "Careers", href: "/careers" },
+    ],
+  },
 ];
+
+const active = (h) => path === h;
+const groupActive = (g) => g.items?.some((i) => path === i.href);
 ---
 <nav class="site">
   <div class="wrap navin">
@@ -16,9 +43,23 @@ const links = [
     </a>
 
     <div class="nlinks">
-      {links.map((l) => (
-        <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>
-      ))}
+      {nav.map((n) =>
+        n.items ? (
+          <div class="ndrop">
+            <span class="ntrig" aria-current={groupActive(n) ? "true" : undefined}>
+              {n.label}
+              <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" stroke-width="1.2"/></svg>
+            </span>
+            <div class="npanel">
+              {n.items.map((i) => (
+                <a href={i.href} aria-current={active(i.href) ? "page" : undefined}>{i.label}</a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={n.href} aria-current={active(n.href) ? "page" : undefined}>{n.label}</a>
+        )
+      )}
     </div>
 
     <a class="pill pill--ghost navcta" href="/contact">Contact</a>
@@ -30,9 +71,18 @@ const links = [
 
   <div id="mobilemenu" class="mnav" hidden>
     <div class="wrap">
-      {links.map((l) => (
-        <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>
-      ))}
+      {nav.map((n) =>
+        n.items ? (
+          <div class="mgroup">
+            <h4>{n.label}</h4>
+            {n.items.map((i) => (
+              <a href={i.href} aria-current={active(i.href) ? "page" : undefined}>{i.label}</a>
+            ))}
+          </div>
+        ) : (
+          <a class="msolo" href={n.href} aria-current={active(n.href) ? "page" : undefined}>{n.label}</a>
+        )
+      )}
       <a href="/contact" class="mcta">Contact</a>
     </div>
   </div>
@@ -49,7 +99,6 @@ const links = [
       menu.hidden = open;
       document.body.classList.toggle("menu-open", !open);
     });
-    // Esc closes it
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") btn.click();
     });

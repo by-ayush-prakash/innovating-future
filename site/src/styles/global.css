@@ -46,8 +46,29 @@ nav.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backd
 .lock--stack span{font-size:21px;line-height:1.24;letter-spacing:-.026em;
   padding:8px 0 8px 22px;border-left:3px solid var(--accent);white-space:normal}
 .lock--stack span::before,.lock--stack span::after{width:16px;height:3px}
-.nlinks{display:flex;gap:30px;font-size:14.5px;color:var(--ink-70);letter-spacing:-.01em}
-.nlinks a:hover,.nlinks a[aria-current=page]{color:var(--ink)}
+.nlinks{display:flex;align-items:center;gap:28px;font-size:14.5px;color:var(--ink-70);letter-spacing:-.01em}
+.nlinks > a:hover,.nlinks > a[aria-current=page]{color:var(--ink)}
+
+/* dropdowns, mirroring the footer groups */
+.ndrop{position:relative}
+.ntrig{display:inline-flex;align-items:center;gap:6px;cursor:default;padding:22px 0;color:var(--ink-70)}
+.ntrig svg{opacity:.55;transition:.15s}
+.ndrop:hover .ntrig,.ndrop:focus-within .ntrig,.ntrig[aria-current]{color:var(--ink)}
+.ndrop:hover .ntrig svg{opacity:1;transform:translateY(1px)}
+.npanel{position:absolute;top:100%;left:-20px;min-width:246px;background:var(--paper);
+  border:1px solid var(--hair);padding:8px 0;opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .14s,transform .14s,visibility .14s;z-index:60}
+.ndrop:hover .npanel,.ndrop:focus-within .npanel{opacity:1;visibility:visible;transform:none}
+.npanel a{display:block;padding:11px 20px;font-size:14.5px;color:var(--ink-70);white-space:nowrap}
+.npanel a:hover{background:var(--paper-2);color:var(--ink)}
+.npanel a[aria-current=page]{color:var(--accent)}
+
+/* mobile menu groups */
+.mgroup{padding:18px 0 6px;border-bottom:1px solid var(--hair)}
+.mgroup h4{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-45);font-weight:400;margin-bottom:6px}
+.mgroup a{padding:11px 0;border-bottom:0;font-size:18px}
+.mnav .msolo{font-size:20px}
 .burger{display:none;background:none;border:0;padding:10px;margin-right:-10px;cursor:pointer;flex-direction:column;gap:6px}
 .burger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:.2s}
 .burger[aria-expanded=true] span:first-child{transform:translateY(3.75px) rotate(45deg)}
