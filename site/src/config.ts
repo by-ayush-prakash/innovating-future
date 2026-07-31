@@ -12,7 +12,7 @@ export const COPY = {
   fundingStance: "CIF accepts funding. It does not accept editorial direction.",
   fundingAsk:
     "Host institutions, researchers, and funders working on the same questions can reach the Center directly.",
-  tagline: "An independent research institution based in Toronto.",
+  tagline: "Builds and holds independent institutions. Toronto.",
 };
 
 export const IHF = {
