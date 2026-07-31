@@ -35,10 +35,17 @@ nav.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backd
 .navin{display:flex;align-items:center;justify-content:space-between;height:66px}
 .lock{display:flex;align-items:center;gap:11px}
 .lock b{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.03em}
-.lock span{font-family:var(--mono);font-size:9.5px;line-height:1.35;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-45);border-left:1px solid var(--hair);padding-left:11px}
+/* the bracket from the logo, doing the job the hairline divider was doing */
+.lock span{position:relative;font-family:var(--mono);font-size:9.5px;line-height:1.35;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-45);padding:3px 0 3px 13px;border-left:2px solid var(--accent)}
+.lock span::before,.lock span::after{content:"";position:absolute;left:0;width:7px;height:2px;background:var(--accent)}
+.lock span::before{top:0}
+.lock span::after{bottom:0}
 .lock--stack{display:block}
 .lock--stack b{display:block;font-size:27px;line-height:1;margin-bottom:12px;letter-spacing:-.03em}
-.lock--stack span{display:block;border-left:0;padding-left:0;font-size:10px;letter-spacing:.13em;line-height:1.5;white-space:nowrap}
+.lock--stack span{display:block;font-size:10px;letter-spacing:.13em;line-height:1.5;white-space:nowrap;
+  padding:5px 0 5px 14px;border-left:2px solid var(--accent)}
+.lock--stack span::before,.lock--stack span::after{width:9px}
 .nlinks{display:flex;gap:30px;font-size:14.5px;color:var(--ink-70);letter-spacing:-.01em}
 .nlinks a:hover,.nlinks a[aria-current=page]{color:var(--ink)}
 .burger{display:none;background:none;border:0;padding:10px;margin-right:-10px;cursor:pointer;flex-direction:column;gap:6px}
@@ -62,10 +69,6 @@ body.menu-open{overflow:hidden}
 .pill--solid{background:var(--accent);color:#fff;border-color:var(--accent)}
 .pill--solid:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
 .pill--ghost:hover{background:var(--paper-2)}
-@media(max-width:900px){.lock--stack{display:block}
-.lock--stack b{display:block;font-size:27px;line-height:1;margin-bottom:12px;letter-spacing:-.03em}
-.lock--stack span{display:block;border-left:0;padding-left:0;font-size:10px;letter-spacing:.13em;line-height:1.5;white-space:nowrap}
-.nlinks{display:none}}
 
 /* hero */
 .hero{position:relative;overflow:hidden;text-align:center;padding:clamp(96px,15vw,184px) 0 clamp(80px,11vw,128px)}
