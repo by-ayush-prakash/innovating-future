@@ -15,11 +15,44 @@ const links = [
       <b>CIF</b>
       <span>Center for<br />Innovating the Future</span>
     </a>
+
     <div class="nlinks">
       {links.map((l) => (
         <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>
       ))}
     </div>
-    <a class="pill pill--ghost" href="/contact">Contact</a>
+
+    <a class="pill pill--ghost navcta" href="/contact">Contact</a>
+
+    <button id="menubtn" class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilemenu">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div id="mobilemenu" class="mnav" hidden>
+    <div class="wrap">
+      {links.map((l) => (
+        <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>
+      ))}
+      <a href="/contact" class="mcta">Contact</a>
+    </div>
   </div>
 </nav>
+
+<script>
+  const btn = document.getElementById("menubtn");
+  const menu = document.getElementById("mobilemenu");
+  if (btn && menu) {
+    btn.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+      btn.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+      menu.hidden = open;
+      document.body.classList.toggle("menu-open", !open);
+    });
+    // Esc closes it
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") btn.click();
+    });
+  }
+</script>
