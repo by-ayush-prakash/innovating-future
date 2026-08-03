@@ -1,0 +1,79 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { SKEPTICISM, ORG } from "../../../config";
+---
+<Base
+  title={SKEPTICISM.name}
+  description="The Center's convening program on artificial intelligence and public life. Canada is Edition One."
+>
+  <div class="wrap phead">
+    <h1>{SKEPTICISM.name}.</h1>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="shead"><h2>Coexistence is not acceptance.</h2></div>
+      <p class="dnote" style="margin-top:0;max-width:70ch;font-size:17px">
+        Living alongside a technology means asking it to show its work before granting it
+        trust, which is the ordinary standard applied to every institution and one that
+        artificial intelligence has mostly been exempted from. The Center holds itself to
+        the same test.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><h2>What the program produces.</h2></div>
+      <div class="prin">
+        <div class="pr">
+          <h3>Convenings.</h3>
+          <p>Editions that put researchers, policy staff, and builders in the same room on the same question. Canada opens the series.</p>
+        </div>
+        <div class="pr">
+          <h3>Scorecards and playbooks.</h3>
+          <p>Assessments that let someone outside an institution measure it against a standard it did not set, and step-by-step material for people who have to act.</p>
+        </div>
+        <div class="pr">
+          <h3>Policy research.</h3>
+          <p>Work aimed at the specific person who can change a rule, written so they can act on it without a translator.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><h2>Events.</h2></div>
+      <div class="rows">
+        <div class="row row--flat">
+          <span class="mono">In development</span>
+          <div>
+            <h3>Edition One: Canada</h3>
+            <span class="attrib">The opening edition of the program. Host institutions are being confirmed.</span>
+          </div>
+          <span class="src">Details to come</span>
+        </div>
+        <a class="row" href="/work/coexisting-with-ai/microsoft-reactor">
+          <span class="mono">Feb 2025</span>
+          <div>
+            <h3>Coexisting with AI: Succeeding In the New Era</h3>
+            <span class="attrib">Microsoft Reactor Toronto. Created and hosted by Aseem Prakash.</span>
+          </div>
+          <span class="src">The event &rsaquo;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" style="padding:0">
+    <div class="wrap">
+      <h2 style="color:#fff;font-size:clamp(27px,3.4vw,40px);max-width:20ch">Edition One: Canada</h2>
+      <p class="attr" style="margin-top:22px;max-width:58ch">
+        Host institutions shape the agenda alongside the Center rather than joining a
+        finished one. Partners and hosts working on the same questions can write to <a href={`mailto:${ORG.email}`} style="border-bottom:1px solid rgba(255,255,255,.5)">{ORG.email}</a>.
+      </p>
+      <a class="pill" href="/contact">Host or partner on Edition One &rsaquo;</a>
+    </div>
+  </section>
+</Base>

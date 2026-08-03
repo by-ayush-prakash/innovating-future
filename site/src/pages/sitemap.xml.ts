@@ -6,14 +6,15 @@ const files = Object.keys(import.meta.glob("./**/*.astro"));
 
 const routes = files
   .map((f) => f.replace(/^\.\//, "").replace(/\.astro$/, ""))
-  .filter((r) => r !== "404")
+  .filter((r) => r !== "404" && r !== "contact/thanks")
+  .map((r) => r.replace(/\/index$/, ""))
   .map((r) => (r === "index" ? "" : r))
   .sort();
 
-// Pages a funder or journalist lands on first get a higher priority.
+// Pages a journalist or partner lands on first get a higher priority.
 const priority = (r: string) =>
   r === "" ? "1.0"
-  : ["work", "leadership"].includes(r) ? "0.9"
+  : ["work", "work/coexisting-with-ai", "leadership", "media"].includes(r) ? "0.9"
   : ["terms", "privacy"].includes(r) ? "0.3"
   : "0.7";
 

@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import { MEDIA, ORG } from "../config";
+---
+<Base
+  title="In the press"
+  description="Every published appearance by the Center for Innovating the Future and its principals since 2016, each with its source."
+>
+  <div class="wrap phead">
+    <h1>In the press.</h1>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="rows">
+        {MEDIA.map((m) => (
+          <a class="row" href={m.u} target="_blank" rel="noopener noreferrer">
+            <span class="mono">{m.date}</span>
+            <div>
+              <h3>{m.n}</h3>
+              <span class="attrib">{m.note}</span>
+            </div>
+            <span class="src">Read &rsaquo;</span>
+          </a>
+        ))}
+      </div>
+      <p class="dnote">
+        Press inquiries go to <a href={"mailto:" + ORG.email}>{ORG.email}</a>.
+      </p>
+    </div>
+  </section>
+</Base>

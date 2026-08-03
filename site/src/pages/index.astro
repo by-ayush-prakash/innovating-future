@@ -1,8 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
 import Marks from "../components/Marks.astro";
-import { PRINCIPLES, SKEPTICISM, MANTIC, PODCAST } from "../config";
+import { SKEPTICISM, MANTIC, PODCAST, ORG, MEDIA } from "../config";
 import { getFeed } from "../lib/feed";
+
+// Drop a file at src/assets/media/<slug>.png and it appears on the wall.
+// Exported at 3x, so display size is the intrinsic size divided by three.
+const logoFiles: any = import.meta.glob("../assets/media/*.{png,svg,webp,jpg}", { eager: true });
+const logoFor = (slug: string) =>
+  (Object.entries(logoFiles).find(([path]) => path.includes(`/${slug}.`))?.[1] as any)?.default;
+
+const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) })).filter((m) => m.logo);
 
 const { episodes } = await getFeed();
 const latest = episodes[0] ?? null;
@@ -11,28 +19,6 @@ const latestDate = latest
   : "";
 
 
-const media = [
-  { n: "Scientific American", u: "https://www.scientificamerican.com/author/abishur-prakash/" },
-  { n: "Nikkei Asia", u: "https://asia.nikkei.com/Opinion/World-out-of-balance-is-not-yet-China-s-to-set-right" },
-  { n: "CNBC", u: "https://www.cnbc.com/2020/10/20/us-china-tensions-could-split-the-internet-and-data-will-play-a-key-role.html" },
-  { n: "Fortune", u: "https://fortune.com/2022/10/24/china-xi-jinping-third-term-tech-sector-chips-semiconductors/" },
-  { n: "Asia Times", u: "https://asiatimes.com/author/abishur-prakash/" },
-  { n: "South China Morning Post", u: "https://www.scmp.com/comment/opinion/article/3222234/more-nations-oppose-china-how-seriously-does-world-take-beijing" },
-  { n: "Senate of Canada", u: "https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" },
-  { n: "Brookings Institution", u: "https://www.brookings.edu/wp-content/uploads/2020/11/fp_20201130_uncomfortable_ground_truths.pdf" },
-  { n: "Foreign Policy Research Institute", u: "https://www.fpri.org/article/2019/09/think-global-fund-local/" },
-  { n: "Psychology Today", u: "https://www.psychologytoday.com/sg/blog/understanding-hypnosis/202511/the-risks-of-ai-and-social-media-for-the-developing-brain" },
-  { n: "The Montréal Review", u: "https://www.themontrealreview.com/Articles/the_infinity_of_the_brain_and_the_void_of_the_machine.php" },
-  { n: "DigiTimes Asia", u: "https://www.digitimes.com/news/a20220902VL202/geopolitics-semiconductor-us-china-trade-war.html" },
-  { n: "Microsoft Reactor", u: "https://reactor.microsoft.com/en-us/reactor/events/24836/" },
-  { n: "Robotics Business Review", u: "https://www.roboticsbusinessreview.com/ai/global-futurist-robobusiness-speaker-aseem-prakash-shares-thoughts-coexisting-with-robots/" },
-  { n: "Russian International Affairs Council", u: "https://russiancouncil.ru/en/analytics-and-comments/interview/the-vertical-world-an-interview-with-abishur-prakash/" },
-  { n: "Robohub", u: "https://robohub.org/recap-from-international-robotics-week/" },
-  { n: "Fibre2Fashion", u: "https://www.fibre2fashion.com/industry-article/author/aseem-prakash/4052" },
-  { n: "InnovationQuarter", u: "https://www.innovationquarter.nl/en/international-robotics-week-connecting-robots-people-worldwide/" },
-  { n: "Risk Group", u: "https://riskgroupllc.com/author/aseem-prakash/" },
-  { n: "RoboBusiness", u: "https://www.roboticsbusinessreview.com/ai/global-futurist-robobusiness-speaker-aseem-prakash-shares-thoughts-coexisting-with-robots/" },
-];
 ---
 <Base description="The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010, working to ensure that the forces remaking human life, such as artificial intelligence and geopolitics, are built on purpose rather than inherited.">
   <header class="hero">
@@ -100,13 +86,14 @@ const media = [
   <section>
     <div class="wrap">
       <div class="shead">
-        <h2>The Center builds institutions and holds them. <em>Each answers to the question, not the funder.</em></h2>
+        <h2>The Center builds institutions and holds them. <em>Each is built to outlast the attention cycle it was formed in.</em></h2>
         <a class="pill pill--ghost" href="/work">All work &rsaquo;</a>
       </div>
 
       <div class="duo">
         <div class="dp dp--dark">
           <h3>{SKEPTICISM.name}</h3>
+          <p>{SKEPTICISM.blurb}</p>
           <div class="dart" aria-hidden="true">
             <svg viewBox="0 0 320 168" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g stroke="#FFFFFF" stroke-opacity=".26">
@@ -127,7 +114,6 @@ const media = [
               <circle cx="160" cy="20" r="5" fill="#DE3A11" /><circle cx="160" cy="148" r="5" fill="#DE3A11" />
             </svg>
           </div>
-          <p>{SKEPTICISM.blurb}</p>
           <a class="pill pill--invert" href={SKEPTICISM.page}>Learn more about the program &rsaquo;</a>
         </div>
 
@@ -157,35 +143,24 @@ const media = [
     </div>
   </section>
 
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="shead"><h2>How the Center works.</h2></div>
-      <div class="prin">
-        {PRINCIPLES.slice(0, 3).map((p) => (
-          <div class="pr">
-            <h3>{p.h}</h3>
-            <p>{p.p}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
   <section class="band" id="media">
     <div class="wrap">
-      <div class="shead" style="justify-content:center;text-align:center;margin-bottom:44px">
-        <h2 style="max-width:none">The Center in the media.</h2>
-      </div>
+      <h2 class="wallh">The Center in the media</h2>
       <div class="wall">
-        {media.map((m) => (
-          <a class="wl" href={m.u} target="_blank" rel="noopener noreferrer">{m.n}</a>
+        {wall.map((m) => (
+          <span class="wl">
+            <img
+              src={m.logo.src}
+              alt={m.n}
+              width={Math.round(m.logo.width / 3)}
+              height={Math.round(m.logo.height / 3)}
+              loading="lazy"
+            />
+          </span>
         ))}
       </div>
-      <p class="wnote">
-        Coverage of the Center and its principals since 2016. Press inquiries go to
-        <a href="/contact">the Center directly</a>.
-      </p>
+      <p class="wnote"><a href="/media">View all media appearances</a></p>
+      <p class="wnote">Press inquiries: <a href={"mailto:" + ORG.email}>{ORG.email}</a></p>
     </div>
   </section>
 

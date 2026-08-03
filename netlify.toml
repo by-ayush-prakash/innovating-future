@@ -3,6 +3,9 @@
   command = "npm run build"
   publish = "dist"
 
+[functions]
+  directory = "netlify/functions"
+
 # Routes that changed in the rebuild. 301 so search engines move the ranking.
 [[redirects]]
   from = "/ventures/portfolio"
@@ -35,12 +38,6 @@
   force = true
 
 [[redirects]]
-  from = "/media"
-  to = "/writing"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/funding"
   to = "/work"
   status = 301
@@ -55,6 +52,12 @@
 
 [[redirects]]
   from = "/work/institute"
-  to = "/work/ai-skepticism"
+  to = "/work/coexisting-with-ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/work/ai-skepticism"
+  to = "/work/coexisting-with-ai"
   status = 301
   force = true
