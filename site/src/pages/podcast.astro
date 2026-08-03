@@ -17,8 +17,7 @@ function fmtDate(pubDate: string) {
   <div class="wrap phead">
     <h1>Conversations on the technologies reshaping how we think.</h1>
     <p class="sub">
-      {PODCAST.blurb} Hosted by CIF Director Ayush Prakash, the show features builders,
-      researchers, and theorists working at the boundary of what's possible.
+      {PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.
     </p>
     <div class="subrow">
       <span class="mono">Follow the show on</span>
@@ -42,7 +41,7 @@ function fmtDate(pubDate: string) {
     <>
       <section>
         <div class="wrap">
-          <div class="shead"><h2>Now trending.</h2></div>
+          <div class="shead"><h2>Latest.</h2></div>
           <div class="epgrid">
             {trending.map((ep) => (
               <div class="epcard">
@@ -61,7 +60,7 @@ function fmtDate(pubDate: string) {
       <section style="padding-top:0">
         <div class="wrap">
           <div class="shead">
-            <h2>All episodes. <em>{episodes.length} and counting.</em></h2>
+            <h2>All episodes.</h2>
             <input class="epsearch" id="ep-search" type="text" placeholder="Search episodes…" aria-label="Search episodes" />
           </div>
           <div class="eplist" id="ep-list">
@@ -85,8 +84,8 @@ function fmtDate(pubDate: string) {
 
   <section class="close">
     <div class="wrap">
-      <h2>Never miss a conversation.</h2>
-      <p>Subscribe on YouTube, Spotify, or Apple Podcasts to catch each one as it publishes.</p>
+      <h2>Follow the show.</h2>
+      <p>New conversations publish on YouTube, Spotify, and Apple Podcasts.</p>
       <a class="pill" href={PODCAST.url} target="_blank" rel="noopener noreferrer">Subscribe on YouTube &rsaquo;</a>
     </div>
   </section>

@@ -1,22 +1,30 @@
 ---
 import Base from "../layouts/Base.astro";
+import { ORG } from "../config";
 
 const paragraphs = [
-  "Welcome to the Center for Innovating the Future (CIF). These Terms of Use govern your access to and use of innovatingfuture.com and any related services provided by CIF.",
-  "By accessing or using our website, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the website.",
-  "The content on this website, including but not limited to text, graphics, images, logos, and digital downloads, is the property of the Center for Innovating the Future or its content suppliers and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works from this content without express written permission from CIF.",
-  'Your use of this website is at your sole risk. The website is provided on an "AS IS" and "AS AVAILABLE" basis. CIF makes no warranties, expressed or implied, regarding the accuracy, reliability, or availability of the website or its content.',
-  "In no event shall the Center for Innovating the Future, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the website.",
-  "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our website after those revisions become effective, you agree to be bound by the revised terms.",
+  "These terms govern your use of innovatingfuture.com, operated by Center for Innovating the Future Inc.",
+  "Using the site means accepting these terms. If you do not accept them, do not use the site.",
+  "Text, images, diagrams, logos, and publications on this site belong to the Center or to the people who licensed them to it, and are protected by copyright and trademark law. You may quote and link to this material with attribution. Reproducing, redistributing, or building derivative work from it requires written permission from the Center.",
+  "The site is provided as is. The Center works to keep it accurate and available but makes no warranty that it will be either, and research positions published here may change as evidence changes.",
+  "Links to other websites are not endorsements. The Center does not control them and is not responsible for what they contain.",
+  "To the extent the law allows, the Center and its directors, employees, and contractors are not liable for indirect, incidental, or consequential loss arising from use of this site or reliance on anything published on it.",
+  "These terms may be revised. The version in effect is the one published here, with the date shown above. Continuing to use the site after a revision means accepting it.",
+  "These terms are governed by the laws of the Province of Ontario and the federal laws of Canada that apply in it. The courts of Ontario have jurisdiction over any dispute.",
 ];
 ---
-<Base title="Terms of Use" description="Terms of Use for innovatingfuture.com.">
+<Base title="Terms of Use" description="Terms governing use of innovatingfuture.com, operated by Center for Innovating the Future Inc.">
   <div class="wrap phead">
     <h1>Terms of Use</h1>
+    <p class="sub">In effect August 2026.</p>
   </div>
   <div class="wrap">
     <div class="legal">
       {paragraphs.map((p) => <p>{p}</p>)}
+      <p>
+        Permission requests and questions go to
+        <a href={"mailto:" + ORG.email} style="border-bottom:2px solid var(--accent)">{ORG.email}</a>.
+      </p>
     </div>
   </div>
 </Base>

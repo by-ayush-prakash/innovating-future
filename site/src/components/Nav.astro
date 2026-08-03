@@ -3,14 +3,12 @@ import { IHF, MANTIC } from "../config";
 
 const { path = "/" } = Astro.props;
 
-// Mirrors the footer. Contact stays a button, Credo and Leadership stand alone.
+// Mirrors the footer. Contact stays a button, Leadership stands alone.
 const nav = [
-  { label: "Credo", href: "/credo" },
   {
     label: "Work",
     items: [
       { label: "All work", href: "/work" },
-      { label: "Funding", href: "/funding" },
       { label: IHF.name, href: IHF.page },
       { label: MANTIC.name, href: MANTIC.page },
     ],
@@ -24,13 +22,7 @@ const nav = [
     ],
   },
   { label: "Leadership", href: "/leadership" },
-  {
-    label: "About",
-    items: [
-      { label: "Principles", href: "/principles" },
-      { label: "Careers", href: "/careers" },
-    ],
-  },
+  { label: "Careers", href: "/careers" },
 ];
 
 const active = (h) => path === h;

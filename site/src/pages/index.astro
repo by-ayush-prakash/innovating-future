@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Marks from "../components/Marks.astro";
 import Diagram from "../components/Diagram.astro";
-import { PRINCIPLES, IHF, MANTIC, PODCAST, COPY } from "../config";
+import { PRINCIPLES, IHF, MANTIC, PODCAST } from "../config";
 
 const cards = [
   { ...IHF, art: "ihf", go: "Read more", href: IHF.page },
@@ -10,35 +10,24 @@ const cards = [
   { ...PODCAST, art: "podcast", go: "All episodes", href: PODCAST.page },
 ];
 ---
-<Base description="The Center for Innovating the Future builds independent institutions and holds them. Its research arm, its press, and its podcast work on the technologies reshaping public life.">
+<Base description="The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010. It works on artificial intelligence, geopolitics, and the technologies remaking daily life, and builds the institutions that examine them.">
   <header class="hero">
     <Marks set={[{ name: "dots", pos: "tl" }, { name: "target", pos: "tr" }, { name: "zig", pos: "bl" }, { name: "grid", pos: "br" }]} />
     <div class="wrap">
-      <h1>Independent institutions for the forces reshaping human life.</h1>
+      <h1>The forces that change what it means to be human, examined in public.</h1>
       <p class="sub">
-        The Center for Innovating the Future builds them and holds them. A research and
-        advocacy arm, an independent press, and a podcast, each working on what these
-        technologies are doing to us. Based in Toronto.
+        The Center for Innovating the Future is a Toronto strategy innovation lab,
+        established in 2010. Artificial intelligence, geopolitics, and the technologies
+        remaking daily life are changing what a person is and what a country can do. We
+        build the institutions that examine those changes, and publish what they find in a
+        form the people who have to decide can use.
       </p>
       <div class="cta">
-        <a class="pill pill--solid" href="/credo">Read the Credo</a>
-        <a class="pill pill--ghost" href="/work">See our work</a>
+        <a class="pill pill--solid" href="/work">See our work</a>
+        <a class="pill pill--ghost" href="/leadership">Who runs it</a>
       </div>
     </div>
   </header>
-
-  <section class="credo">
-    <div class="wrap">
-      <blockquote style="margin-top:0">No institution can demand respect. It must be earned.</blockquote>
-      <p class="attr">
-        CIF documents in public so that the moment it starts to drift, the people watching
-        see it before it does. The day CIF stops earning your skepticism is the day it has
-        become what it warned you about, and you will have the receipts, because we wrote
-        them ourselves.
-      </p>
-      <a class="pill" href="/credo">Read the full Credo &rsaquo;</a>
-    </div>
-  </section>
 
   <section>
     <div class="wrap">
@@ -63,7 +52,7 @@ const cards = [
     <div class="wrap">
       <div class="shead"><h2>How the Center works.</h2></div>
       <div class="prin">
-        {PRINCIPLES.map((p) => (
+        {PRINCIPLES.slice(0, 3).map((p) => (
           <div class="pr">
             <h3>{p.h}</h3>
             <p>{p.p}</p>
@@ -77,8 +66,9 @@ const cards = [
   <section class="close">
     <svg width="420" height="300" viewBox="0 0 420 300" fill="none" aria-hidden="true"><g stroke="#fff" stroke-opacity=".55"><path d="M20 300V120M44 300V160M68 300V80M92 300V190M116 300V140M140 300V60M164 300V210M188 300V110M212 300V170M236 300V40M260 300V150M284 300V200M308 300V90M332 300V180M356 300V130M380 300V220M404 300V100"/></g></svg>
     <div class="wrap">
-      <h2>Innovate the future. With us.</h2>
-      <p><strong>{COPY.fundingStance}</strong> {COPY.fundingAsk}</p>
+      <h2>Work with the Center.</h2>
+      <p>Host institutions, researchers, and collaborators working on the same questions
+      can reach the Center directly.</p>
       <a class="pill" href="/contact">Start a conversation &rsaquo;</a>
     </div>
   </section>

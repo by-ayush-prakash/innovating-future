@@ -1,34 +1,102 @@
 ---
 import Base from "../layouts/Base.astro";
-import { ORG, COPY } from "../config";
+import { ORG, PODCAST } from "../config";
+
+const topics = [
+  { v: "General", d: "Anything that does not fit below." },
+  { v: "Host institutions", d: "AI Skepticism opens with Canada as Edition One. Hosts shape the agenda alongside the Center." },
+  { v: "Publishing", d: "Mantic Publishing is commissioning its first titles." },
+  { v: "Press", d: "The Center answers questions about its work and its ownership on the record." },
+];
 ---
-<Base title="Contact" description="How to reach the Center for Innovating the Future.">
+<Base title="Contact" description="Reach the Center for Innovating the Future.">
   <div class="wrap phead">
     <h1>Contact.</h1>
     <p class="sub">
-      <strong>{COPY.fundingStance}</strong> Host institutions, researchers, funders, and press
-      reach the Center at one address.
+      Host institutions, researchers, writers, and press reach the Center at one address.
+      Every message is read.
     </p>
   </div>
+
   <section>
-    <div class="wrap">
-      <div class="prin">
-        <div class="pr">
-          <h3>Funding</h3>
-          <p>CIF accepts no funding that carries editorial conditions. Funders comfortable with that constraint can write directly.</p>
-        </div>
-        <div class="pr">
-          <h3>Host institutions</h3>
-          <p>AI Skepticism opens with Canada as Edition One. Host institutions shape the agenda alongside the Center.</p>
-        </div>
-        <div class="pr">
-          <h3>Press</h3>
-          <p>The Center answers questions about its work, its funding, and its conflicts on the record.</p>
-        </div>
+    <div class="wrap cgrid">
+      <div>
+        <h2 class="cformh">Get in touch.</h2>
+        <form
+          class="cform"
+          name="contact"
+          method="POST"
+          action="/contact/thanks"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hp"><label>Leave this empty <input name="bot-field" /></label></p>
+
+          <fieldset class="topics">
+            <legend class="lbl">What is this about</legend>
+            {topics.map((t, i) => (
+              <label class="radio">
+                <input type="radio" name="topic" value={t.v} checked={i === 0} />
+                <span>
+                  <b>{t.v}</b>
+                  <em>{t.d}</em>
+                </span>
+              </label>
+            ))}
+          </fieldset>
+
+          <div class="frow">
+            <label>
+              <span class="lbl">First name</span>
+              <input type="text" name="first-name" autocomplete="given-name" required />
+            </label>
+            <label>
+              <span class="lbl">Last name</span>
+              <input type="text" name="last-name" autocomplete="family-name" required />
+            </label>
+          </div>
+
+          <label class="fblock">
+            <span class="lbl">Email</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+
+          <label class="fblock">
+            <span class="lbl">Organization</span>
+            <input type="text" name="organization" autocomplete="organization" />
+          </label>
+
+          <label class="fblock">
+            <span class="lbl">Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+
+          <button class="pill pill--solid" type="submit">Send message</button>
+          <p class="fnotice">
+            What you send is used to answer you and nothing else. See the
+            <a href="/privacy">privacy policy</a>.
+          </p>
+        </form>
       </div>
-      <p style="margin-top:52px;font-size:22px;font-family:var(--display);letter-spacing:-.03em">
-        <a href={"mailto:" + ORG.email} style="border-bottom:2px solid var(--accent)">{ORG.email}</a>
-      </p>
+
+      <aside class="cinfo">
+        <h3>{ORG.name}</h3>
+        <p class="caddr">Toronto, Ontario<br />Canada</p>
+        <p class="cmail">
+          <a href={"mailto:" + ORG.email}>{ORG.email}</a>
+        </p>
+        <div class="clist">
+          <a href={ORG.linkedin} target="_blank" rel="noopener noreferrer">
+            <span class="lbl">LinkedIn</span>
+            <span>Center for Innovating the Future</span>
+          </a>
+          <a href={PODCAST.url} target="_blank" rel="noopener noreferrer">
+            <span class="lbl">YouTube</span>
+            <span>@ayushprakashofficial</span>
+          </a>
+        </div>
+      </aside>
     </div>
   </section>
 </Base>

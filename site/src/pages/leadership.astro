@@ -1,16 +1,36 @@
 ---
 import Base from "../layouts/Base.astro";
 
-const bio = [
-  "Ayush Prakash directs CIF. He is also Chief of Staff at New Sapience, an AI company, where he leads strategy and operations and previously ran its equity crowdfunding.",
-  "CIF runs a convening program called AI Skepticism. Its director works for an AI company and writes books about AI. That is a conflict.",
-  "He is the author of AI for Gen Z, has co-authored work in Psychology Today with Dr. Ran D. Anbar on AI and the developing brain and in The Montréal Review with Karl Friston, and holds a BA in Philosophy from Toronto Metropolitan University. On the podcast he has hosted Avi Loeb, Karl Friston, and Yaron Brook, among others.",
+const people = [
+  {
+    name: "Aseem Prakash",
+    role: "Founder and Chair",
+    photo: "/images/aseem-prakash.jpg",
+    bio: [
+      "Aseem Prakash founded the Center for Innovating the Future and established it in Toronto in December 2010. He is a global futurist whose work centers on how people and organizations coexist with automation and artificial intelligence.",
+      "He has spoken on that subject at RoboBusiness, where Robotics Business Review interviewed him, and created and hosted an event on it at Microsoft Reactor Toronto.",
+    ],
+    links: [
+      { label: "LinkedIn", urlText: "in/aseemprakash", url: "https://www.linkedin.com/in/aseemprakash" },
+    ],
+    based: "Toronto",
+  },
+  {
+    name: "Ayush Prakash",
+    role: "Director",
+    photo: "/images/ayush-prakash.jpg",
+    bio: [
+      "Ayush Prakash directs CIF. He is also Director of Strategic Initiatives at New Sapience, an AI company, where he leads strategy and operations and previously ran its equity crowdfunding.",
+      "He is the author of AI for Gen Z, has co-authored work in Psychology Today with Dr. Ran D. Anbar on AI and the developing brain and in The Montr\u00e9al Review with Karl Friston, and holds a BA in Philosophy from Toronto Metropolitan University. On the podcast he has hosted Avi Loeb, Karl Friston, and Yaron Brook, among others.",
+    ],
+    links: [
+      { label: "Website", urlText: "ayushprakash.com", url: "https://ayushprakash.com" },
+      { label: "LinkedIn", urlText: "in/prakash-ayush", url: "https://linkedin.com/in/prakash-ayush" },
+    ],
+    based: "Montreal",
+  },
 ];
 
-const contactLinks = [
-  { label: "Website", urlText: "ayushprakash.com", url: "https://ayushprakash.com" },
-  { label: "LinkedIn", urlText: "in/prakash-ayush", url: "https://linkedin.com/in/prakash-ayush" },
-];
 ---
 <Base title="Leadership" description="Leadership at the Center for Innovating the Future.">
   <div class="wrap phead">
@@ -22,28 +42,27 @@ const contactLinks = [
 
   <section>
     <div class="wrap">
-      <div class="person">
-        <div class="photo">
-          <img src="/images/ayush-prakash.jpg" alt="Ayush Prakash" />
-        </div>
-        <div>
-          <h2>Ayush Prakash</h2>
-          <span class="role">Director, Center for Innovating the Future</span>
-          {bio.map((para) => <p>{para}</p>)}
-          <div class="clinks">
-            {contactLinks.map((l) => (
-              <div class="cl">
-                <span class="lbl">{l.label}</span>
-                <a href={l.url} target="_blank" rel="noopener noreferrer">{l.urlText}</a>
-              </div>
-            ))}
-            <div class="cl">
-              <span class="lbl">Based in</span>
-              <span>Toronto</span>
+      {people.map((p) => (
+        <div class="person">
+          <div class="photo">
+            {p.photo ? <img src={p.photo} alt={p.name} /> : <span class="noph">{p.name.split(" ").map((w) => w[0]).join("")}</span>}
+          </div>
+          <div>
+            <h2>{p.name}</h2>
+            <span class="role">{p.role}</span>
+            {p.bio.map((para) => <p>{para}</p>)}
+            <div class="clinks">
+              {p.links.map((l) => (
+                <div class="cl">
+                  <span class="lbl">{l.label}</span>
+                  <a href={l.url} target="_blank" rel="noopener noreferrer">{l.urlText}</a>
+                </div>
+              ))}
+              <div class="cl"><span class="lbl">Based in</span><span>{p.based}</span></div>
             </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   </section>
 </Base>

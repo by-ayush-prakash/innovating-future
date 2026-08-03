@@ -12,7 +12,7 @@
 
 [[redirects]]
   from = "/ventures"
-  to = "/principles"
+  to = "/work"
   status = 301
   force = true
 
@@ -37,5 +37,18 @@
 [[redirects]]
   from = "/media"
   to = "/writing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/funding"
+  to = "/work"
+  status = 301
+  force = true
+
+# Credo is offline while it is rewritten. Restore this route when it returns.
+[[redirects]]
+  from = "/credo"
+  to = "/work"
   status = 301
   force = true

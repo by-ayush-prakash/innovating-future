@@ -3,16 +3,14 @@ export const ORG = {
   name: "Center for Innovating the Future",
   short: "CIF",
   city: "Toronto",
-  email: "ayush@innovatingfuture.com",
+  founded: 2010,
+  email: "hello@innovatingfuture.com",
   linkedin: "https://www.linkedin.com/company/centre-for-innovating-the-future/",
 };
 
 // Sentences that appear on more than one page. Change here, changes everywhere.
 export const COPY = {
-  fundingStance: "CIF accepts funding. It does not accept editorial direction.",
-  fundingAsk:
-    "Host institutions, researchers, and funders working on the same questions can reach the Center directly.",
-  tagline: "Builds and holds independent institutions. Toronto.",
+  tagline: "A Toronto strategy innovation lab, established December 2010.",
 };
 
 export const IHF = {
@@ -28,7 +26,7 @@ export const MANTIC = {
   url: "https://manticpublishing.com",
   page: "/work/mantic",
   blurb:
-    "The Center's independent press. It publishes long-form arguments on the technologies and ideas changing what it means to be human.",
+    "The Center's press. A new imprint for long-form arguments on the technologies and ideas changing what it means to be human.",
 };
 
 export const PODCAST = {
@@ -43,15 +41,19 @@ export const PROPERTIES = [IHF, MANTIC, PODCAST];
 
 export const PRINCIPLES = [
   {
-    h: "Independent research, not commissioned opinion.",
-    p: "CIF's positions come from its own inquiry. It accepts no corporate sponsorship and takes no consulting clients, and its research answers to the question rather than to a funder.",
+    h: "Research answers to the question, not the funder.",
+    p: "The Center does not accept research funding that carries editorial conditions, and does not publish research assessing an organization that funds it.",
   },
   {
-    h: "Public tools, not private access.",
-    p: "The Center publishes scorecards, playbooks, and frameworks built for direct use. Work that civil society cannot apply is not published.",
+    h: "Research is built to be used.",
+    p: "Every research program, publication, and convening is designed to produce something a specific person or institution can act on.",
   },
   {
-    h: "Conviction over consensus.",
-    p: "The Center states clear positions on contested questions, and revises them in public when the evidence changes.",
+    h: "The Center publishes what it finds.",
+    p: "Where evidence contradicts a position, the position changes. Where a question cannot be answered, the Center says so.",
+  },
+  {
+    h: "The questions are not seasonal.",
+    p: "The Center is built for sustained attention over decades, not for cycles of announcement and retreat.",
   },
 ];

@@ -3,24 +3,27 @@ import Base from "../layouts/Base.astro";
 import { ORG } from "../config";
 
 const paragraphs = [
-  "The Center for Innovating the Future (CIF) respects your privacy and is committed to protecting the personal information you share with us when visiting innovatingfuture.com.",
-  "This Privacy Policy explains how we collect, use, and safeguard your information. By using our website, you consent to the data practices described in this statement.",
-  "We may collect non-personally identifiable information, such as browser type, operating system, and website usage statistics, to help us understand how visitors use our site and to improve the overall user experience. This information is collected through the use of cookies and similar tracking technologies.",
-  "If you choose to contact us or subscribe to our communications, we may collect personal information such as your name and email address. We use this information solely to respond to your inquiries and provide the requested services.",
-  "CIF does not sell, rent, or lease its customer lists or personal information to third parties. We may share data with trusted partners to help perform statistical analysis, send you email or postal mail, provide customer support, or arrange for deliveries. All such third parties are prohibited from using your personal information except to provide these services to CIF, and they are required to maintain the confidentiality of your information.",
-  "Our website may contain links to other sites. Please be aware that we are not responsible for the content or privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of any other site that collects personally identifiable information.",
+  "This policy describes what innovatingfuture.com collects, what it does not, and what happens to anything you send the Center for Innovating the Future Inc.",
+  "This is a static website. It sets no cookies, runs no analytics, and carries no advertising or tracking scripts. The Center does not build profiles of visitors and has no way to identify you from a visit.",
+  "Netlify hosts the site and keeps standard server logs, which include IP addresses and requested pages. The Center does not read these logs to identify individual visitors.",
+  "Two parts of the site load files from other companies. Typefaces come from Google Fonts, and podcast artwork and audio come from the show's feed host. Loading a page therefore sends your IP address to those providers, as it would on most websites. Their own policies govern what they do with it.",
+  "If you write to the Center, or send the form on the contact page, your name, email address, organization if you give one, and the contents of your message are kept for as long as needed to answer you and to maintain a record of the correspondence. That is the only personal information the Center holds. Form submissions are processed by Netlify Forms on the Center's behalf and are not shared further.",
+  "The Center does not sell, rent, or trade personal information, and does not share it with third parties for marketing.",
+  "Under Canada's Personal Information Protection and Electronic Documents Act, you can ask what personal information the Center holds about you, ask for it to be corrected, and ask for it to be deleted. Write to the address below and the Center will answer.",
+  "Pages on this site link to other websites. The Center is not responsible for their content or their privacy practices.",
 ];
 ---
-<Base title="Privacy Policy" description="Privacy Policy for innovatingfuture.com.">
+<Base title="Privacy Policy" description="What innovatingfuture.com collects, what it does not, and how to reach the Center about it.">
   <div class="wrap phead">
     <h1>Privacy Policy</h1>
+    <p class="sub">In effect August 2026.</p>
   </div>
   <div class="wrap">
     <div class="legal">
       {paragraphs.map((p) => <p>{p}</p>)}
       <p>
-        If you have any questions or concerns about our Privacy Policy or data practices,
-        please contact us at <a href={"mailto:" + ORG.email} style="border-bottom:2px solid var(--accent)">{ORG.email}</a>.
+        Questions about this policy, or a request under it, go to
+        <a href={"mailto:" + ORG.email} style="border-bottom:2px solid var(--accent)">{ORG.email}</a>.
       </p>
     </div>
   </div>

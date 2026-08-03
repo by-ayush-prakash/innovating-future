@@ -13,7 +13,7 @@ const routes = files
 // Pages a funder or journalist lands on first get a higher priority.
 const priority = (r: string) =>
   r === "" ? "1.0"
-  : ["work", "credo", "funding"].includes(r) ? "0.9"
+  : ["work", "leadership"].includes(r) ? "0.9"
   : ["terms", "privacy"].includes(r) ? "0.3"
   : "0.7";
 

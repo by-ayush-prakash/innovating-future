@@ -1,16 +1,16 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { MANTIC } from "../../config";
+import { MANTIC, ORG } from "../../config";
 ---
 <Base
   title={MANTIC.name}
-  description="CIF's independent press. Books about the ideas changing what it means to be human."
+  description="A new imprint from the Center for Innovating the Future. Books about the ideas changing what it means to be human."
 >
   <div class="wrap phead">
     <h1>{MANTIC.name}.</h1>
     <p class="sub">
-      CIF's independent press. An outlet for arguments too long for an essay and too witty
-      for a textbook.
+      A new imprint from the Center, for arguments too long for an essay
+      and too witty for a textbook.
     </p>
   </div>
 
@@ -36,31 +36,13 @@ import { MANTIC } from "../../config";
 
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="shead">
-        <h2>The list.</h2>
-        <a class="pill pill--ghost" href="/books">All books &rsaquo;</a>
-      </div>
-      <div class="rows">
-        <a class="row" href="/books">
-          <span class="mono">2024</span>
-          <div>
-            <h3>AI for Gen Z</h3>
-            <span class="attrib">Ayush Prakash</span>
-          </div>
-          <span class="src">Published &rsaquo;</span>
-        </a>
-        <a class="row" href="/books">
-          <span class="mono">Nov 2026</span>
-          <div>
-            <h3>The Transcendence of Money</h3>
-            <span class="attrib">Ayush Prakash</span>
-          </div>
-          <span class="src">Forthcoming &rsaquo;</span>
-        </a>
-      </div>
+      <div class="shead"><h2>Where it stands.</h2></div>
       <p class="dnote">
-        Mantic is building its own home at
+        Mantic has no list yet. The imprint was set up to publish the Center's long-form work
+        and is commissioning its first titles now. It is building its own home at
         <a href={MANTIC.url} target="_blank" rel="noopener noreferrer">manticpublishing.com</a>.
+        Writers with a manuscript that meets the three tests above can write to
+        <a href={`mailto:${ORG.email}`}>{ORG.email}</a>.
       </p>
     </div>
   </section>
