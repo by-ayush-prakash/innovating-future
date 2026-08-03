@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Marks from "../components/Marks.astro";
-import { SKEPTICISM, MANTIC, PODCAST, ORG, MEDIA } from "../config";
+import { SKEPTICISM, PODCAST, ORG, MEDIA } from "../config";
 import { getFeed } from "../lib/feed";
 
 // Drop a file at src/assets/media/<slug>.png and it appears on the wall.
@@ -85,6 +85,27 @@ const latestDate = latest
     </div>
   </header>
 
+  <section class="band" id="media">
+    <div class="wrap">
+      <h2 class="wallh">The Center in the media</h2>
+      <div class="wall">
+        {wall.map((m) => (
+          <span class="wl">
+            <img
+              src={m.logo.src}
+              alt={m.n}
+              width={Math.round(m.logo.width / 3)}
+              height={Math.round(m.logo.height / 3)}
+              loading="lazy"
+            />
+          </span>
+        ))}
+      </div>
+      <p class="wnote"><a href="/media">View all media appearances</a></p>
+      <p class="wnote">Press inquiries: <a href={"mailto:" + ORG.email}>{ORG.email}</a></p>
+    </div>
+  </section>
+
   <section class="stmt">
     <div class="wrap">
       <h2>Our organization turns long-term questions into institutions that can carry them.</h2>
@@ -100,13 +121,7 @@ const latestDate = latest
   </section>
 
   <section>
-    <div class="wrap">
-      <div class="shead">
-        <h2>What we do</h2>
-        <a class="pill pill--ghost" href="/work">All work &rsaquo;</a>
-      </div>
-
-      <div class="duo">
+    <div class="duo">
         <div class="dp dp--dark">
           <h3>{SKEPTICISM.name}</h3>
           <p>{SKEPTICISM.blurb}</p>
@@ -147,36 +162,10 @@ const latestDate = latest
           )}
           <a class="pill pill--solid" href={PODCAST.page}>Explore episodes &rsaquo;</a>
         </div>
-      </div>
-
-      <div class="mstrip">
-        <div>
-          <h3>{MANTIC.name}</h3>
-          <p>{MANTIC.blurb}</p>
-        </div>
-        <a class="pill pill--ghost" href={MANTIC.page}>Read more &rsaquo;</a>
-      </div>
     </div>
-  </section>
 
-  <section class="band" id="media">
-    <div class="wrap">
-      <h2 class="wallh">The Center in the media</h2>
-      <div class="wall">
-        {wall.map((m) => (
-          <span class="wl">
-            <img
-              src={m.logo.src}
-              alt={m.n}
-              width={Math.round(m.logo.width / 3)}
-              height={Math.round(m.logo.height / 3)}
-              loading="lazy"
-            />
-          </span>
-        ))}
-      </div>
-      <p class="wnote"><a href="/media">View all media appearances</a></p>
-      <p class="wnote">Press inquiries: <a href={"mailto:" + ORG.email}>{ORG.email}</a></p>
+    <div class="wrap wcta">
+      <a class="pill pill--solid" href="/work">All work &rsaquo;</a>
     </div>
   </section>
 
