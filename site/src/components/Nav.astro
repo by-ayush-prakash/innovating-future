@@ -1,5 +1,5 @@
 ---
-import { IHF, MANTIC } from "../config";
+import { SKEPTICISM, MANTIC } from "../config";
 
 const { path = "/" } = Astro.props;
 
@@ -9,7 +9,7 @@ const nav = [
     label: "Work",
     items: [
       { label: "All work", href: "/work" },
-      { label: IHF.name, href: IHF.page },
+      { label: SKEPTICISM.name, href: SKEPTICISM.page },
       { label: MANTIC.name, href: MANTIC.page },
     ],
   },

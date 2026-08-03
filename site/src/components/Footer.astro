@@ -1,42 +1,83 @@
 ---
-import { ORG, IHF, MANTIC, PODCAST, COPY } from "../config";
+import { ORG, SKEPTICISM, MANTIC, PODCAST, COPY } from "../config";
 const year = 2026;
+
+const cols = [
+  {
+    h: "Work",
+    links: [
+      { l: SKEPTICISM.name, u: SKEPTICISM.page },
+      { l: MANTIC.name, u: MANTIC.page },
+      { l: PODCAST.name, u: PODCAST.page },
+      { l: "All work", u: "/work" },
+    ],
+  },
+  {
+    h: "Read and listen",
+    links: [
+      { l: "Writing", u: "/writing" },
+      { l: "Books", u: "/books" },
+      { l: "Episodes", u: "/podcast" },
+      { l: "In the press", u: "/#media" },
+    ],
+  },
+  {
+    h: "About",
+    links: [
+      { l: "Leadership", u: "/leadership" },
+      { l: "Careers", u: "/careers" },
+      { l: "Contact", u: "/contact" },
+    ],
+  },
+];
 ---
 <footer class="site">
   <div class="wrap">
-    <div class="fcols">
-      <div>
-        <a class="lock lock--stack" href="/">
-          <span>Center for<br />Innovating<br />the Future</span>
+    <div class="ftop">
+      <a class="lock lock--stack" href="/">
+        <span>Center for<br />Innovating<br />the Future</span>
+      </a>
+      <div class="fsoc">
+        <a href={ORG.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="11.25" stroke="currentColor" stroke-opacity=".28" />
+            <path d="M8.1 9.9v7.1M8.1 7.4v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            <path d="M11.7 17V12.3a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </a>
-        <p class="fnote">{COPY.tagline}</p>
-        <p class="fest">Established December 2010</p>
-      </div>
-      <div>
-        <h4>Work</h4>
-        <a href={IHF.page}>{IHF.name}</a>
-        <a href={MANTIC.page}>{MANTIC.name}</a>
-      </div>
-      <div>
-        <h4>About</h4>
-        <a href="/leadership">Leadership</a>
-        <a href="/careers">Careers</a>
-        <a href="/contact">Contact</a>
-      </div>
-      <div>
-        <h4>Media</h4>
-        <a href="/writing">Writing</a>
-        <a href="/books">Books</a>
-        <a href={PODCAST.page}>Podcast</a>
+        <a href={PODCAST.url} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="11.25" stroke="currentColor" stroke-opacity=".28" />
+            <path d="M10.3 9.2l5 2.8-5 2.8V9.2z" fill="currentColor" />
+          </svg>
+        </a>
       </div>
     </div>
+
+    <div class="fmid">
+      <div class="freach">
+        <h4>Get in touch</h4>
+        <a class="fmail" href={"mailto:" + ORG.email}>{ORG.email}</a>
+        <p class="fnote">{COPY.tagline}</p>
+      </div>
+
+      <div class="fcols">
+        {cols.map((c) => (
+          <div>
+            <h4>{c.h}</h4>
+            {c.links.map((l) => <a href={l.u}>{l.l}</a>)}
+          </div>
+        ))}
+      </div>
+    </div>
+
     <div class="fbot">
-      <span>&copy; {year} Center for Innovating the Future Inc. Established December 2010.</span>
       <span>
-        <a href="/terms">Terms of Use</a> &nbsp;&middot;&nbsp;
         <a href="/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
-        <a href={ORG.linkedin}>LinkedIn</a>
+        <a href="/terms">Terms of Use</a> &nbsp;&middot;&nbsp;
+        &copy; {year} Center for Innovating the Future Inc. Established December 2010.
       </span>
+      <span>Toronto, Ontario</span>
     </div>
   </div>
 </footer>

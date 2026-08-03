@@ -1,30 +1,98 @@
 ---
 import Base from "../layouts/Base.astro";
 import Marks from "../components/Marks.astro";
-import Diagram from "../components/Diagram.astro";
-import { PRINCIPLES, IHF, MANTIC, PODCAST } from "../config";
+import { PRINCIPLES, SKEPTICISM, MANTIC, PODCAST } from "../config";
+import { getFeed } from "../lib/feed";
 
-const cards = [
-  { ...IHF, art: "ihf", go: "Read more", href: IHF.page },
-  { ...MANTIC, art: "mantic", go: "Read more", href: MANTIC.page },
-  { ...PODCAST, art: "podcast", go: "All episodes", href: PODCAST.page },
+const { episodes } = await getFeed();
+const latest = episodes[0] ?? null;
+const latestDate = latest
+  ? new Date(latest.pubDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+  : "";
+
+
+const media = [
+  { n: "Scientific American", u: "https://www.scientificamerican.com/author/abishur-prakash/" },
+  { n: "Nikkei Asia", u: "https://asia.nikkei.com/Opinion/World-out-of-balance-is-not-yet-China-s-to-set-right" },
+  { n: "CNBC", u: "https://www.cnbc.com/2020/10/20/us-china-tensions-could-split-the-internet-and-data-will-play-a-key-role.html" },
+  { n: "Fortune", u: "https://fortune.com/2022/10/24/china-xi-jinping-third-term-tech-sector-chips-semiconductors/" },
+  { n: "Asia Times", u: "https://asiatimes.com/author/abishur-prakash/" },
+  { n: "South China Morning Post", u: "https://www.scmp.com/comment/opinion/article/3222234/more-nations-oppose-china-how-seriously-does-world-take-beijing" },
+  { n: "Senate of Canada", u: "https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" },
+  { n: "Brookings Institution", u: "https://www.brookings.edu/wp-content/uploads/2020/11/fp_20201130_uncomfortable_ground_truths.pdf" },
+  { n: "Foreign Policy Research Institute", u: "https://www.fpri.org/article/2019/09/think-global-fund-local/" },
+  { n: "Psychology Today", u: "https://www.psychologytoday.com/sg/blog/understanding-hypnosis/202511/the-risks-of-ai-and-social-media-for-the-developing-brain" },
+  { n: "The Montréal Review", u: "https://www.themontrealreview.com/Articles/the_infinity_of_the_brain_and_the_void_of_the_machine.php" },
+  { n: "DigiTimes Asia", u: "https://www.digitimes.com/news/a20220902VL202/geopolitics-semiconductor-us-china-trade-war.html" },
+  { n: "Microsoft Reactor", u: "https://reactor.microsoft.com/en-us/reactor/events/24836/" },
+  { n: "Robotics Business Review", u: "https://www.roboticsbusinessreview.com/ai/global-futurist-robobusiness-speaker-aseem-prakash-shares-thoughts-coexisting-with-robots/" },
+  { n: "Russian International Affairs Council", u: "https://russiancouncil.ru/en/analytics-and-comments/interview/the-vertical-world-an-interview-with-abishur-prakash/" },
+  { n: "Robohub", u: "https://robohub.org/recap-from-international-robotics-week/" },
+  { n: "Fibre2Fashion", u: "https://www.fibre2fashion.com/industry-article/author/aseem-prakash/4052" },
+  { n: "InnovationQuarter", u: "https://www.innovationquarter.nl/en/international-robotics-week-connecting-robots-people-worldwide/" },
+  { n: "Risk Group", u: "https://riskgroupllc.com/author/aseem-prakash/" },
+  { n: "RoboBusiness", u: "https://www.roboticsbusinessreview.com/ai/global-futurist-robobusiness-speaker-aseem-prakash-shares-thoughts-coexisting-with-robots/" },
 ];
 ---
-<Base description="The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010. It works on artificial intelligence, geopolitics, and the technologies remaking daily life, and builds the institutions that examine them.">
+<Base description="The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010, working to ensure that the forces remaking human life, such as artificial intelligence and geopolitics, are built on purpose rather than inherited.">
   <header class="hero">
-    <Marks set={[{ name: "dots", pos: "tl" }, { name: "target", pos: "tr" }, { name: "zig", pos: "bl" }, { name: "grid", pos: "br" }]} />
-    <div class="wrap">
-      <h1>The forces that change what it means to be human, examined in public.</h1>
-      <p class="sub">
-        The Center for Innovating the Future is a Toronto strategy innovation lab,
-        established in 2010. Artificial intelligence, geopolitics, and the technologies
-        remaking daily life are changing what a person is and what a country can do. We
-        build the institutions that examine those changes, and publish what they find in a
-        form the people who have to decide can use.
-      </p>
-      <div class="cta">
-        <a class="pill pill--solid" href="/work">See our work</a>
-        <a class="pill pill--ghost" href="/leadership">Who runs it</a>
+    <Marks set={[{ name: "dots", pos: "tl" }, { name: "zig", pos: "bl" }]} />
+    <div class="wrap hgrid">
+      <div class="hcopy">
+        <h1>The future is innovated, not predicted.</h1>
+        <p class="sub">
+          The Center for Innovating the Future is a Toronto strategy innovation lab,
+          established in 2010, working to ensure that the forces remaking human life, such
+          as artificial intelligence and geopolitics, are built on purpose rather than
+          inherited. We build the institutions that examine those forces in order to widen
+          who gets a say in what they become.
+        </p>
+        <div class="cta">
+          <a class="pill pill--solid" href="/work">Learn more about our work</a>
+        </div>
+      </div>
+
+      <div class="hfig" aria-hidden="true">
+        <svg viewBox="0 0 460 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#111110" stroke-opacity=".08">
+            <ellipse cx="250" cy="210" rx="205" ry="205" />
+            <ellipse cx="250" cy="210" rx="205" ry="120" />
+            <ellipse cx="250" cy="210" rx="120" ry="205" />
+          </g>
+
+          <g>
+            <rect x="18" y="86" width="150" height="196" fill="#FFFFFF" stroke="#111110" stroke-opacity=".16" />
+            <g stroke="#111110" stroke-opacity=".14">
+              <path d="M18 135h150M18 184h150M18 233h150M67 86v196M117 86v196" />
+            </g>
+            <rect x="67" y="135" width="50" height="49" fill="#DE3A11" fill-opacity=".1" />
+            <circle cx="92" cy="159" r="5" fill="#DE3A11" />
+          </g>
+
+          <g>
+            <rect x="152" y="176" width="152" height="212" fill="#FFFFFF" stroke="#111110" stroke-opacity=".16" />
+            <path d="M172 358h112" stroke="#111110" stroke-opacity=".16" />
+            <g stroke="#111110" stroke-opacity=".24">
+              <path d="M184 358v-44M204 358v-72M224 358v-30M264 358v-58M284 358v-88" />
+            </g>
+            <path d="M244 358V244" stroke="#DE3A11" stroke-width="1.4" />
+            <circle cx="244" cy="240" r="5" fill="#DE3A11" />
+            <path d="M172 214h72" stroke="#111110" stroke-opacity=".22" />
+            <path d="M172 226h44" stroke="#111110" stroke-opacity=".12" />
+          </g>
+
+          <g>
+            <rect x="288" y="34" width="154" height="196" fill="#FFFFFF" stroke="#111110" stroke-opacity=".16" />
+            <g stroke="#111110" stroke-opacity=".18">
+              <path d="M330 92 L365 148 L400 92M330 92h70" />
+            </g>
+            <circle cx="330" cy="92" r="6" stroke="#111110" stroke-opacity=".3" />
+            <circle cx="400" cy="92" r="6" stroke="#111110" stroke-opacity=".3" />
+            <circle cx="365" cy="148" r="9" fill="#DE3A11" fill-opacity=".12" stroke="#DE3A11" />
+            <circle cx="365" cy="148" r="3" fill="#DE3A11" />
+            <path d="M310 186h124M310 200h84" stroke="#111110" stroke-opacity=".13" />
+          </g>
+        </svg>
       </div>
     </div>
   </header>
@@ -35,15 +103,56 @@ const cards = [
         <h2>The Center builds institutions and holds them. <em>Each answers to the question, not the funder.</em></h2>
         <a class="pill pill--ghost" href="/work">All work &rsaquo;</a>
       </div>
-      <div class="props">
-        {cards.map((c) => (
-          <a class="prop" href={c.href}>
-            <div class="art"><Diagram name={c.art} /></div>
-            <h3>{c.name}</h3>
-            <p>{c.blurb}</p>
-            <span class="go">{c.go} <i>&rsaquo;</i></span>
-          </a>
-        ))}
+
+      <div class="duo">
+        <div class="dp dp--dark">
+          <h3>{SKEPTICISM.name}</h3>
+          <div class="dart" aria-hidden="true">
+            <svg viewBox="0 0 320 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#FFFFFF" stroke-opacity=".26">
+                <rect x="12.5" y="24.5" width="86" height="118" />
+                <rect x="221.5" y="24.5" width="86" height="118" />
+                <path d="M99 84h32M189 84h32" />
+              </g>
+              <g fill="#FFFFFF" fill-opacity=".2">
+                <rect x="26" y="44" width="58" height="4" /><rect x="26" y="57" width="42" height="4" />
+                <rect x="26" y="70" width="52" height="4" /><rect x="26" y="83" width="34" height="4" />
+                <rect x="235" y="44" width="58" height="4" /><rect x="235" y="57" width="38" height="4" />
+                <rect x="235" y="70" width="50" height="4" /><rect x="235" y="83" width="44" height="4" />
+              </g>
+              <g stroke="#DE3A11"><rect x="131.5" y="52.5" width="57" height="63" /><path d="M160 52V22M160 116v30" /></g>
+              <rect x="142" y="66" width="36" height="4" fill="#DE3A11" />
+              <rect x="142" y="78" width="24" height="4" fill="#DE3A11" fill-opacity=".55" />
+              <rect x="142" y="90" width="30" height="4" fill="#DE3A11" fill-opacity=".55" />
+              <circle cx="160" cy="20" r="5" fill="#DE3A11" /><circle cx="160" cy="148" r="5" fill="#DE3A11" />
+            </svg>
+          </div>
+          <p>{SKEPTICISM.blurb}</p>
+          <a class="pill pill--invert" href={SKEPTICISM.page}>Learn more about the program &rsaquo;</a>
+        </div>
+
+        <div class="dp dp--tint">
+          <h3>{PODCAST.name}</h3>
+          <p>{PODCAST.blurb}</p>
+          {latest && (
+            <a class="epmini" href={PODCAST.page}>
+              {latest.image && <img src={latest.image} alt={`Episode art: ${latest.title}`} width="112" height="112" loading="lazy" />}
+              <div>
+                <span class="mono">{latestDate}</span>
+                <h4>{latest.title}</h4>
+              </div>
+            </a>
+          )}
+          <a class="pill pill--solid" href={PODCAST.page}>Explore episodes &rsaquo;</a>
+        </div>
+      </div>
+
+      <div class="mstrip">
+        <div>
+          <h3>{MANTIC.name}</h3>
+          <p>{MANTIC.blurb}</p>
+        </div>
+        <a class="pill pill--ghost" href={MANTIC.page}>Read more &rsaquo;</a>
       </div>
     </div>
   </section>
@@ -62,6 +171,23 @@ const cards = [
     </div>
   </section>
 
+
+  <section class="band" id="media">
+    <div class="wrap">
+      <div class="shead" style="justify-content:center;text-align:center;margin-bottom:44px">
+        <h2 style="max-width:none">The Center in the media.</h2>
+      </div>
+      <div class="wall">
+        {media.map((m) => (
+          <a class="wl" href={m.u} target="_blank" rel="noopener noreferrer">{m.n}</a>
+        ))}
+      </div>
+      <p class="wnote">
+        Coverage of the Center and its principals since 2016. Press inquiries go to
+        <a href="/contact">the Center directly</a>.
+      </p>
+    </div>
+  </section>
 
   <section class="close">
     <svg width="420" height="300" viewBox="0 0 420 300" fill="none" aria-hidden="true"><g stroke="#fff" stroke-opacity=".55"><path d="M20 300V120M44 300V160M68 300V80M92 300V190M116 300V140M140 300V60M164 300V210M188 300V110M212 300V170M236 300V40M260 300V150M284 300V200M308 300V90M332 300V180M356 300V130M380 300V220M404 300V100"/></g></svg>

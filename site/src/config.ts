@@ -1,4 +1,4 @@
-// Single source of truth for org facts. Rename IHF here and nowhere else.
+// Single source of truth for org facts. Change a property name here and nowhere else.
 export const ORG = {
   name: "Center for Innovating the Future",
   short: "CIF",
@@ -13,12 +13,11 @@ export const COPY = {
   tagline: "A Toronto strategy innovation lab, established December 2010.",
 };
 
-export const IHF = {
-  name: "Institute for Human Futures", // TODO: rename. Change here only.
-  url: "https://forhumanfutures.org",
-  page: "/work/institute",
+export const SKEPTICISM = {
+  name: "AI Skepticism",
+  page: "/work/ai-skepticism",
   blurb:
-    "The Center's research and advocacy arm. It produces scorecards, playbooks, and policy research for civil society, and convenes AI Skepticism, which opens with Canada as Edition One.",
+    "The Center's convening program, and its research and advocacy work. It brings together the people and institutions rethinking artificial intelligence and public life, and publishes scorecards, playbooks, and policy research. Canada is Edition One.",
 };
 
 export const MANTIC = {
@@ -37,7 +36,7 @@ export const PODCAST = {
     "Long-form conversations with researchers, critics, and builders working at the edge of what is understood. The Center's public channel, and the origin of much of its other work.",
 };
 
-export const PROPERTIES = [IHF, MANTIC, PODCAST];
+export const PROPERTIES = [SKEPTICISM, MANTIC, PODCAST];
 
 export const PRINCIPLES = [
   {

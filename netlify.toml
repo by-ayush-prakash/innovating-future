@@ -52,3 +52,9 @@
   to = "/work"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/work/institute"
+  to = "/work/ai-skepticism"
+  status = 301
+  force = true
