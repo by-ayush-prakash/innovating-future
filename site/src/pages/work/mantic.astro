@@ -1,4 +1,5 @@
 ---
+import PageHead from "../../components/PageHead.astro";
 import Base from "../../layouts/Base.astro";
 import { MANTIC, ORG } from "../../config";
 ---
@@ -6,9 +7,7 @@ import { MANTIC, ORG } from "../../config";
   title={MANTIC.name}
   description="A new imprint from the Center for Innovating the Future. Books about the ideas changing what it means to be human."
 >
-  <div class="wrap phead">
-    <h1>{MANTIC.name}.</h1>
-  </div>
+  <PageHead art="grid">{MANTIC.name}.</PageHead>
 
   <section>
     <div class="wrap">

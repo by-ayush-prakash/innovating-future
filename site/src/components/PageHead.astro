@@ -1,0 +1,14 @@
+---
+import Marks from "./Marks.astro";
+const { art = null } = Astro.props;
+---
+<header class="phead">
+  <div class="wrap pheadin">
+    <h1><slot /></h1>
+    {art && (
+      <div class="pha" aria-hidden="true">
+        <Marks set={[{ name: art, pos: "hd" }]} />
+      </div>
+    )}
+  </div>
+</header>

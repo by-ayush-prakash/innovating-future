@@ -1,4 +1,5 @@
 ---
+import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 import { ORG, PODCAST } from "../config";
 
@@ -10,9 +11,7 @@ const topics = [
 ];
 ---
 <Base title="Contact" description="Reach the Center for Innovating the Future.">
-  <div class="wrap phead">
-    <h1>Contact.</h1>
-  </div>
+  <PageHead art="dots">Contact.</PageHead>
 
   <section>
     <div class="wrap cgrid">

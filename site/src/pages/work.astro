@@ -1,13 +1,12 @@
 ---
+import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 import Diagram from "../components/Diagram.astro";
 import { PROPERTIES } from "../config";
 const arts = ["skepticism", "mantic", "podcast"];
 ---
-<Base title="Work" description="What the Center for Innovating the Future builds and holds: research and advocacy, publishing, and media. A Toronto strategy innovation lab, established December 2010.">
-  <div class="wrap phead">
-    <h1>The Center builds institutions and holds them.</h1>
-  </div>
+<Base title="Work" description="The Center for Innovating the Future owns and operates its institutions. A Toronto strategy innovation lab, established December 2010.">
+  <PageHead art="nest">The Center owns and operates its institutions.</PageHead>
 
   <section>
     <div class="wrap">

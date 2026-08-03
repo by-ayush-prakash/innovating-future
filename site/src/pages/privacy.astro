@@ -1,4 +1,5 @@
 ---
+import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 import { ORG } from "../config";
 
@@ -14,9 +15,7 @@ const paragraphs = [
 ];
 ---
 <Base title="Privacy Policy" description="What innovatingfuture.com collects, what it does not, and how to reach the Center about it.">
-  <div class="wrap phead">
-    <h1>Privacy Policy</h1>
-  </div>
+  <PageHead>Privacy Policy</PageHead>
   <div class="wrap">
     <div class="legal">
       {paragraphs.map((p) => <p>{p}</p>)}

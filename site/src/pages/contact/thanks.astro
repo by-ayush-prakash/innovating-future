@@ -1,15 +1,20 @@
 ---
+import PageHead from "../../components/PageHead.astro";
 import Base from "../../layouts/Base.astro";
 import { ORG } from "../../config";
 ---
 <Base title="Message sent" noindex={true} description="Your message reached the Center for Innovating the Future.">
-  <div class="wrap phead">
-    <h1>Message sent.</h1>
-    <p class="sub">
-      It has reached the Center and will be read. If it is urgent, write directly to
-      <a href={"mailto:" + ORG.email} style="border-bottom:1px solid var(--accent)">{ORG.email}</a>.
-    </p>
-  </div>
+  <PageHead art="target">Message sent.</PageHead>
+  <section>
+    <div class="wrap">
+      <div class="body">
+        <p>
+          It has reached the Center and will be read. If it is urgent, write directly to
+          <a href={"mailto:" + ORG.email} style="border-bottom:1px solid var(--accent)">{ORG.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
   <section>
     <div class="wrap">
       <a class="pill pill--ghost" href="/">Back to the homepage &rsaquo;</a>

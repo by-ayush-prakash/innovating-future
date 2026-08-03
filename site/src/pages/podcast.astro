@@ -6,6 +6,7 @@ import { getFeed } from "../lib/feed";
 const { episodes, fetchFailed } = await getFeed();
 
 const trending = episodes.slice(0, 3);
+const cover = PODCAST.cover;
 
 function fmtDate(pubDate: string) {
   const d = new Date(pubDate);
@@ -14,15 +15,25 @@ function fmtDate(pubDate: string) {
 }
 ---
 <Base title="Podcast" description="The Ayush Prakash Podcast: long-form conversations on the technologies reshaping how we think.">
-  <div class="wrap phead">
-    <h1>Conversations on the technologies reshaping how we think.</h1>
-    <div class="subrow">
-      <span class="mono">Follow the show on</span>
-      <a class="pill pill--ghost" href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
-      <a class="pill pill--ghost" href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">Spotify</a>
-      <a class="pill pill--ghost" href={PODCAST.url} target="_blank" rel="noopener noreferrer">YouTube</a>
+  <header class="phero">
+    <div class="wrap pherin">
+      <div>
+        <h1>Conversations on the technologies reshaping how we think.</h1>
+        <p>{PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.</p>
+        <div class="subrow">
+          <span class="mono">Follow the show on</span>
+          <a class="pill pill--ghost" href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
+          <a class="pill pill--ghost" href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">Spotify</a>
+          <a class="pill pill--ghost" href={PODCAST.url} target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </div>
+      {cover && (
+        <div class="pcov">
+          <img src={cover} alt={`Cover art for ${PODCAST.name}`} width="420" height="420" />
+        </div>
+      )}
     </div>
-  </div>
+  </header>
 
   {fetchFailed ? (
     <section>
@@ -42,7 +53,7 @@ function fmtDate(pubDate: string) {
           <div class="epgrid">
             {trending.map((ep) => (
               <div class="epcard">
-                {ep.image && <div class="cov"><img src={ep.image} alt={`Episode art: ${ep.title}`} loading="lazy" /></div>}
+                <div class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} loading="lazy" /></div>
                 <div class="body">
                   <span class="mono">{fmtDate(ep.pubDate)}</span>
                   <h3>{ep.title}</h3>
@@ -63,7 +74,7 @@ function fmtDate(pubDate: string) {
           <div class="eplist" id="ep-list">
             {episodes.map((ep) => (
               <div class="eprow" data-title={ep.title.toLowerCase()} data-desc={ep.description.toLowerCase()}>
-                {ep.image && <div class="cov"><img src={ep.image} alt={`Episode art: ${ep.title}`} loading="lazy" /></div>}
+                <div class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} loading="lazy" /></div>
                 <div class="meta">
                   <span class="mono">{fmtDate(ep.pubDate)}</span>
                   <h3>{ep.title}</h3>

@@ -10,7 +10,9 @@ const logoFiles: any = import.meta.glob("../assets/media/*.{png,svg,webp,jpg}", 
 const logoFor = (slug: string) =>
   (Object.entries(logoFiles).find(([path]) => path.includes(`/${slug}.`))?.[1] as any)?.default;
 
-const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) })).filter((m) => m.logo);
+const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
+  .filter((m) => m.logo)
+  .sort((a, b) => a.r - b.r);
 
 const { episodes } = await getFeed();
 const latest = episodes[0] ?? null;
@@ -83,10 +85,24 @@ const latestDate = latest
     </div>
   </header>
 
+  <section class="stmt">
+    <div class="wrap">
+      <h2>Our organization turns long-term questions into institutions that can carry them.</h2>
+      <p>
+        At CIF, we believe the forces remaking human life deserve more than commentary.
+        Artificial intelligence and geopolitics move faster than the institutions meant to
+        examine them, and most of the analysis that does exist is written for the people
+        building the technology rather than the people living with it. The Center builds and
+        owns institutions that close that gap, and keeps them independent enough to say what
+        they find.
+      </p>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="shead">
-        <h2>The Center builds institutions and holds them. <em>Each is built to outlast the attention cycle it was formed in.</em></h2>
+        <h2>What we do</h2>
         <a class="pill pill--ghost" href="/work">All work &rsaquo;</a>
       </div>
 
@@ -122,7 +138,7 @@ const latestDate = latest
           <p>{PODCAST.blurb}</p>
           {latest && (
             <a class="epmini" href={PODCAST.page}>
-              {latest.image && <img src={latest.image} alt={`Episode art: ${latest.title}`} width="112" height="112" loading="lazy" />}
+              <img src={PODCAST.cover} alt={`${PODCAST.name} cover art`} width="112" height="112" loading="lazy" />
               <div>
                 <span class="mono">{latestDate}</span>
                 <h4>{latest.title}</h4>

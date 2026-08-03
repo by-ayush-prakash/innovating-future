@@ -1,4 +1,5 @@
 ---
+import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 
 const checkmark = `<svg viewBox="0 0 10 8" fill="none"><path d="M1 4.5L3.5 7L9 1" stroke="#111110" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -10,9 +11,7 @@ const checks = [
 ];
 ---
 <Base title="Careers" description="The Center is not currently hiring for defined roles. Proposals for roles that do not yet exist are welcome.">
-  <div class="wrap phead">
-    <h1>Careers.</h1>
-  </div>
+  <PageHead art="orbit">Careers.</PageHead>
 
   <section>
     <div class="wrap split">

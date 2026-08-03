@@ -1,9 +1,14 @@
 ---
+import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 ---
 <Base title="Page not found" noindex={true}>
-  <div class="wrap phead">
-    <h1>That page does not exist.</h1>
-    <p class="sub">The address may have changed. Start from the <a href="/" style="border-bottom:1px solid var(--accent)">homepage</a>, or write to the Center.</p>
-  </div>
+  <PageHead art="rule">That page does not exist.</PageHead>
+  <section>
+    <div class="wrap">
+      <div class="body">
+        <p>The address may have changed. Start from the <a href="/" style="border-bottom:1px solid var(--accent)">homepage</a>, or write to the Center.</p>
+      </div>
+    </div>
+  </section>
 </Base>

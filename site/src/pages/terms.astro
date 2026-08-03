@@ -1,4 +1,5 @@
 ---
+import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 import { ORG } from "../config";
 
@@ -14,9 +15,7 @@ const paragraphs = [
 ];
 ---
 <Base title="Terms of Use" description="Terms governing use of innovatingfuture.com, operated by Center for Innovating the Future Inc.">
-  <div class="wrap phead">
-    <h1>Terms of Use</h1>
-  </div>
+  <PageHead>Terms of Use</PageHead>
   <div class="wrap">
     <div class="legal">
       {paragraphs.map((p) => <p>{p}</p>)}

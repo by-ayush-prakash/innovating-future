@@ -1,4 +1,5 @@
 ---
+import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 
 const items = [
@@ -19,9 +20,7 @@ const items = [
 ];
 ---
 <Base title="Writing" description="Essays by CIF's director, published in outlets CIF does not control.">
-  <div class="wrap phead">
-    <h1>Writing.</h1>
-  </div>
+  <PageHead art="zig">Writing.</PageHead>
 
   <section>
     <div class="wrap">
