@@ -1,10 +1,14 @@
 ---
-import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
 import { PROPERTIES } from "../config";
 ---
 <Base title="Work" description="The Center for Innovating the Future owns and operates its institutions. A Toronto strategy innovation lab, established December 2010.">
-  <PageHead art="nest">The Center owns and operates its institutions.</PageHead>
+  <header class="hband hband--work">
+    <div class="hbtext">
+      <h1>The Center owns and operates its institutions.</h1>
+      <p>Each one carries its own remit, its own audience, and its own standard.</p>
+    </div>
+  </header>
 
   <section style="padding-bottom:clamp(40px,4vw,56px)">
     <div class="wrap">
@@ -20,7 +24,9 @@ import { PROPERTIES } from "../config";
       <div class="pcards">
         {PROPERTIES.map((p, i) => (
           <a class="pc" href={p.page ?? p.url}>
-            <span class="pcart"><img src={p.tile} alt="" width="1200" height="760" loading="lazy" /></span>
+            <span class="pcart" style={`background:color-mix(in srgb, ${p.hue} 8%, transparent)`}>
+              <img src={p.tile} alt="" loading="lazy" />
+            </span>
             <span class="pcnum" style={`color:${p.hue}`}>{String(i + 1).padStart(2, "0")}</span>
             <h3>{p.name}</h3>
             <p>{p.blurb}</p>
@@ -33,7 +39,7 @@ import { PROPERTIES } from "../config";
 
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="shead"><h2>Appearances and events.</h2></div>
+      <div class="shead"><h2>Appearances and events</h2></div>
       <div class="rows">
         <div class="row row--flat">
           <span class="mono">Feb 2025</span>

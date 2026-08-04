@@ -16,7 +16,7 @@ export const COPY = {
 export const SKEPTICISM = {
   name: "Co-Existing with AI",
   page: "/work/coexisting-with-ai",
-  tile: "/images/tile-coexist.jpg",
+  tile: "/images/art-coexist.svg",
   hue: "#DE3A11",
   blurb:
     "The Center's program on what changes for people and organizations when the work starts being done alongside a machine. Convenings, published assessments, and private briefings for the people who have to act."
@@ -26,7 +26,7 @@ export const MANTIC = {
   name: "Mantic Publishing",
   url: "https://manticpublishing.com",
   page: "/work/mantic",
-  tile: "/images/tile-mantic.jpg",
+  tile: "/images/art-mantic.svg",
   hue: "#C67E16",
   blurb:
     "The Center's press. A new imprint for long-form arguments on the technologies and ideas changing what it means to be human.",
@@ -37,7 +37,7 @@ export const PODCAST = {
   url: "https://www.youtube.com/@ayushprakashofficial", // where to subscribe
   cover: "/images/podcast-cover.png", // show art. Used everywhere, not the RSS image.
   page: "/podcast", // the property's page on this site. Cards link here, not off-site.
-  tile: "/images/tile-podcast.jpg",
+  tile: "/images/art-podcast.svg",
   hue: "#1C6E63",
   blurb:
     "Long-form conversations with researchers, critics, and builders working at the edge of what is understood. The Center's public channel, and the origin of much of its other work.",
