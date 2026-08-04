@@ -15,23 +15,16 @@ function fmtDate(pubDate: string) {
 }
 ---
 <Base title="Podcast" description="The Ayush Prakash Podcast: long-form conversations on the technologies reshaping how we think.">
-  <header class="phero">
-    <div class="wrap pherin">
-      <div>
-        <h1>Conversations on the technologies reshaping how we think.</h1>
-        <p>{PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.</p>
-        <div class="subrow">
-          <span class="mono">Follow the show on</span>
-          <a class="pill pill--ghost" href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
-          <a class="pill pill--ghost" href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">Spotify</a>
-          <a class="pill pill--ghost" href={PODCAST.url} target="_blank" rel="noopener noreferrer">YouTube</a>
-        </div>
+  <header class="hband hband--teal">
+    <div class="hbtext">
+      <h1>Conversations on the technologies reshaping how we think.</h1>
+      <p>{PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.</p>
+      <div class="subrow">
+        <span class="mono">Follow the show on</span>
+        <a class="pill pill--ghost" href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
+        <a class="pill pill--ghost" href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">Spotify</a>
+        <a class="pill pill--ghost" href={PODCAST.url} target="_blank" rel="noopener noreferrer">YouTube</a>
       </div>
-      {cover && (
-        <div class="pcov">
-          <img src={cover} alt={`Cover art for ${PODCAST.name}`} width="420" height="420" />
-        </div>
-      )}
     </div>
   </header>
 

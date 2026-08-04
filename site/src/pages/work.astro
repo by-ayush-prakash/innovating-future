@@ -1,19 +1,27 @@
 ---
 import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
-import Diagram from "../components/Diagram.astro";
 import { PROPERTIES } from "../config";
-const arts = ["skepticism", "mantic", "podcast"];
 ---
 <Base title="Work" description="The Center for Innovating the Future owns and operates its institutions. A Toronto strategy innovation lab, established December 2010.">
   <PageHead art="nest">The Center owns and operates its institutions.</PageHead>
 
-  <section>
+  <section style="padding-bottom:clamp(40px,4vw,56px)">
     <div class="wrap">
-      <div class="props">
+      <p class="lede">
+        Three institutions, one owner. Each carries its own remit, its own audience, and its own
+        standard, and each is built to outlast the attention cycle it was formed in.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="pcards">
         {PROPERTIES.map((p, i) => (
-          <a class="prop" href={p.page ?? p.url}>
-            <div class="art"><Diagram name={arts[i]} /></div>
+          <a class="pc" href={p.page ?? p.url}>
+            <span class="pcart"><img src={p.tile} alt="" width="1200" height="760" loading="lazy" /></span>
+            <span class="pcnum" style={`color:${p.hue}`}>{String(i + 1).padStart(2, "0")}</span>
             <h3>{p.name}</h3>
             <p>{p.blurb}</p>
             <span class="go">Read more <i>&rsaquo;</i></span>
