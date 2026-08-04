@@ -14,10 +14,10 @@ export const COPY = {
 };
 
 export const SKEPTICISM = {
-  name: "Co-existing with AI",
+  name: "Co-Existing with AI",
   page: "/work/coexisting-with-ai",
   blurb:
-    "The Center's convening program, and its research and advocacy work. It brings together the people and institutions rethinking artificial intelligence and public life, and publishes scorecards, playbooks, and policy research. Canada is Edition One.",
+    "The Center's programme on what changes for people and organizations when the work starts being done alongside a machine. Convenings, published assessments, and private briefings for the people who have to act."
 };
 
 export const MANTIC = {
