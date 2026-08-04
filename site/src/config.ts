@@ -17,7 +17,7 @@ export const SKEPTICISM = {
   name: "Co-Existing with AI",
   page: "/work/coexisting-with-ai",
   blurb:
-    "The Center's programme on what changes for people and organizations when the work starts being done alongside a machine. Convenings, published assessments, and private briefings for the people who have to act."
+    "The Center's program on what changes for people and organizations when the work starts being done alongside a machine. Convenings, published assessments, and private briefings for the people who have to act."
 };
 
 export const MANTIC = {

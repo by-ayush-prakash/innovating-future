@@ -422,11 +422,14 @@ footer.site .fmid{display:grid;grid-template-columns:minmax(230px,1fr) 2.4fr;gap
 .dp h3{font-size:clamp(25px,2.9vw,36px);letter-spacing:-.024em;line-height:1.16}
 .dp p{font-size:clamp(15.5px,1.35vw,17.5px);line-height:1.62;margin-top:20px;color:var(--ink-70);max-width:46ch}
 .dp .pill{align-self:flex-start;margin-top:auto}
-.dp--art{background:linear-gradient(115deg,#7C1B03 0%,#A82B0A 46%,#C5330D 100%);color:#fff}
+/* the art IS the panel; a scrim keeps the type legible over it */
+.dp--art{position:relative;isolation:isolate;color:#fff;background:#8E2408}
+.dp--art::before{content:"";position:absolute;inset:0;z-index:-2;
+  background:url("/images/hero-coexisting.jpg") center/cover no-repeat}
+.dp--art::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(165deg,rgba(74,15,2,.90) 0%,rgba(88,20,4,.62) 46%,rgba(60,12,2,.92) 100%)}
 .dp--art h3{color:#fff}
-.dp--art p{color:rgba(255,255,255,.86)}
-.dart{margin:clamp(28px,3.4vw,44px) 0 clamp(28px,3.4vw,40px)}
-.dart img{display:block;width:100%;height:clamp(180px,17vw,240px);object-fit:cover}
+.dp--art p{color:rgba(255,255,255,.9)}
 .dp--tint{background:var(--paper-2)}
 .pill--invert{background:#fff;color:var(--ink);border-color:#fff}
 .pill--invert:hover{background:rgba(255,255,255,.86)}
@@ -502,7 +505,7 @@ footer.site .fmid{display:grid;grid-template-columns:minmax(230px,1fr) 2.4fr;gap
   .navcta{display:none}
 }
 
-/* ---------- programme page hero: colour ground + full-bleed art ---------- */
+/* ---------- program page hero: colour ground + full-bleed art ---------- */
 .hband{background:linear-gradient(115deg,#7C1B03 0%,#A82B0A 46%,#C5330D 100%);color:#fff;overflow:hidden}
 .hbwrap{display:grid;grid-template-columns:1.02fr .98fr;align-items:stretch;
   min-height:clamp(420px,42vw,580px)}
