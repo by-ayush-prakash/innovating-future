@@ -601,3 +601,4 @@ footer.site .fmid{display:grid;grid-template-columns:minmax(230px,1fr) 2.4fr;gap
 .pc .go{margin-top:auto;padding-top:22px;font-size:14.5px;color:var(--ink);display:inline-flex;gap:7px}
 .pc .go i{font-style:normal;color:var(--accent);transition:.15s}
 .pc:hover .go i{transform:translateX(3px)}
+
