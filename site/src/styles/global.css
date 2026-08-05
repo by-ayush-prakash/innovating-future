@@ -108,6 +108,8 @@ body.menu-open{overflow:hidden}
 .phead h1{font-size:clamp(33px,4.6vw,55px);max-width:19ch;margin:0}
 .phead .sub{font-size:clamp(16px,1.5vw,18.5px);color:var(--ink-70);max-width:58ch;margin-top:20px;letter-spacing:-.01em}
 .phead .sub strong{color:var(--ink);font-weight:500}
+.phead--press{background:#FBF7F3;border-bottom:3px solid transparent;
+  border-image:linear-gradient(90deg,var(--accent) 0 33.33%,var(--amber) 33.33% 66.66%,var(--teal) 66.66% 100%) 1}
 .pha{flex:none;width:clamp(104px,15vw,184px);color:var(--phead-hue,var(--accent))}
 .pha .mk--hd{position:static;display:block;opacity:1}
 .pha svg{display:block;width:100%;height:auto}
@@ -474,14 +476,20 @@ footer.site .fmid{display:grid;grid-template-columns:minmax(230px,1fr) 2.4fr;gap
 /* ---------- featured coverage cards ---------- */
 .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:860px){.feat{grid-template-columns:1fr}}
-.ft{display:flex;flex-direction:column;border:1px solid var(--hair);padding:26px;background:var(--paper);transition:.15s}
+.ft{display:flex;flex-direction:column;border:1px solid var(--hair);background:var(--paper);transition:.15s;
+  --ft-hue:var(--accent);--ft-ink:var(--accent-ink)}
+.ft--amber{--ft-hue:var(--amber);--ft-ink:var(--amber-ink)}
+.ft--teal{--ft-hue:var(--teal);--ft-ink:var(--teal-ink)}
 .ft:hover{border-color:var(--ink-45)}
-.ft .ftlogo{display:flex;align-items:center;height:38px;margin-bottom:22px}
-.ft .ftlogo img{max-height:32px;width:auto;opacity:.8}
+.ft .ftlogo{display:flex;align-items:center;height:clamp(84px,7vw,98px);padding:0 26px;
+  background:color-mix(in srgb, var(--ft-hue) 9%, transparent)}
+.ft .ftlogo img{max-height:32px;width:auto;opacity:.85}
+.ft .ftbody{display:flex;flex-direction:column;flex:1;padding:24px 26px 26px}
 .ft h3{font-size:17px;font-weight:500;letter-spacing:-.016em;line-height:1.4;text-wrap:pretty}
 .ft p{margin-top:10px;font-size:14.5px;color:var(--ink-70);line-height:1.6}
-.ft .go{margin-top:auto;padding-top:22px;font-size:13.5px;color:var(--ink-45)}
-.ft:hover .go{color:var(--accent-ink)}
+.ft .go{margin-top:auto;padding-top:26px;font-family:var(--mono);font-size:12.5px;
+  letter-spacing:.06em;color:var(--ft-ink)}
+.ft:hover .go{opacity:.72}
 
 /* ---------- statement block ---------- */
 .stmt{padding-bottom:0}

@@ -1,8 +1,8 @@
 ---
 import Marks from "./Marks.astro";
-const { art = null, hue = null } = Astro.props;
+const { art = null, hue = null, tone = null } = Astro.props;
 ---
-<header class="phead" style={hue ? `--phead-hue:${hue}` : undefined}>
+<header class={tone ? `phead phead--${tone}` : "phead"} style={hue ? `--phead-hue:${hue}` : undefined}>
   <div class="wrap pheadin">
     <h1><slot /></h1>
     {art && (

@@ -29,7 +29,7 @@ export const MANTIC = {
   tile: "/images/art-mantic.svg",
   hue: "#C67E16",
   blurb:
-    "The Center's press. A new imprint for long-form arguments on the technologies and ideas changing what it means to be human.",
+    "The Center's press. An imprint for long-form arguments on the technologies and ideas changing what it means to be human.",
 };
 
 export const PODCAST = {
