@@ -209,7 +209,7 @@ section{padding:clamp(84px,10.5vw,150px) 0}
 @media(max-width:600px){.epgrid{grid-template-columns:1fr}}
 
 .eplist{border-top:1px solid var(--hair)}
-.eprow{display:flex;gap:22px;padding:26px 0;border-bottom:1px solid var(--hair);align-items:flex-start}
+.eprow{display:block;padding:22px 0;border-bottom:1px solid var(--hair)}
 .eprow .cov{width:84px;height:84px;flex:none;border:1px solid var(--hair);overflow:hidden;background:var(--paper-2)}
 .eprow .cov img{width:100%;height:100%;object-fit:cover}
 .eprow .meta{flex:1;min-width:0}
@@ -519,8 +519,8 @@ footer.site .fmid{display:grid;grid-template-columns:minmax(230px,1fr) 2.4fr;gap
 /* the parent page runs light: the prism sits on paper with ink type */
 .hband--work{--hb-art:url("/images/hero-work.jpg");background:var(--paper);color:var(--ink);
   border-bottom:1px solid var(--hair)}
-.hband--work h1{color:var(--ink)}
-.hband--work .hbtext p{color:var(--ink-70)}
+.hband--work.hband--work h1{color:var(--ink)}
+.hband--work.hband--work .hbtext p{color:var(--ink-70)}
 .hband--work::after{background:linear-gradient(90deg,
   var(--paper) 0%,rgba(255,255,255,.97) 26%,rgba(255,255,255,.80) 40%,
   rgba(255,255,255,.20) 54%,transparent 66%)}
@@ -602,3 +602,21 @@ footer.site .fmid{display:grid;grid-template-columns:minmax(230px,1fr) 2.4fr;gap
 .pc .go i{font-style:normal;color:var(--accent);transition:.15s}
 .pc:hover .go i{transform:translateX(3px)}
 
+
+.eplisten{display:inline-block;margin-top:12px;font-size:14px;color:var(--ink);
+  border-bottom:1px solid var(--accent)}
+.eplisten:hover{color:var(--accent-ink)}
+
+/* podcast hero keeps the teal band, just shorter */
+.hband--teal .hbtext{min-height:clamp(320px,30vw,430px)}
+.hband--teal h1{font-size:clamp(30px,3.7vw,48px);max-width:17ch;line-height:1.1}
+.hband--teal .hbtext p{max-width:50ch;font-size:clamp(15.5px,1.5vw,17.5px)}
+
+/* subscribe links: glyph plus label, no pill */
+.sublinks{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(22px,3vw,42px);margin-top:32px}
+.sublinks a{display:inline-flex;align-items:center;gap:12px;color:#fff;font-size:15px;
+  font-weight:500;letter-spacing:-.012em;line-height:1.15;transition:opacity .15s}
+.sublinks a:hover{opacity:.75}
+.sublinks svg{width:34px;height:34px;flex:none;color:#fff}
+.sublinks span{white-space:nowrap}
+@media(max-width:520px){.sublinks{gap:20px}.sublinks a{font-size:14px}.sublinks svg{width:30px;height:30px}}

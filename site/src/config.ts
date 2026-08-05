@@ -10,7 +10,7 @@ export const ORG = {
 
 // Sentences that appear on more than one page. Change here, changes everywhere.
 export const COPY = {
-  tagline: "A Toronto strategy innovation lab, established December 2010.",
+  tagline: "A Toronto strategy innovation lab.",
 };
 
 export const SKEPTICISM = {

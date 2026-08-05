@@ -19,11 +19,19 @@ function fmtDate(pubDate: string) {
     <div class="hbtext">
       <h1>Conversations on the technologies reshaping how we think.</h1>
       <p>{PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.</p>
-      <div class="subrow">
-        <span class="mono">Follow the show on</span>
-        <a class="pill pill--ghost" href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
-        <a class="pill pill--ghost" href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">Spotify</a>
-        <a class="pill pill--ghost" href={PODCAST.url} target="_blank" rel="noopener noreferrer">YouTube</a>
+      <div class="sublinks">
+        <a href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5.4" fill="currentColor"/><g fill="#062E29"><circle cx="12" cy="9.1" r="2.15"/><path d="M12 12.4c-1.55 0-2.6.8-2.6 1.85 0 .5.28 2.2.5 3.16.2.88.62 1.34 1.05 1.55.4.2 1.7.2 2.1 0 .43-.21.85-.67 1.05-1.55.22-.96.5-2.66.5-3.16 0-1.05-1.05-1.85-2.6-1.85Z"/><path d="M12 3.9a5.6 5.6 0 0 0-3.5 9.97.72.72 0 0 0 .9-1.12A4.16 4.16 0 1 1 16.16 9.5c0 1.28-.58 2.44-1.5 3.2a.72.72 0 1 0 .9 1.13A5.6 5.6 0 0 0 12 3.9Z"/></g></svg>
+          <span>Apple<br />Podcasts</span>
+        </a>
+        <a href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><g stroke="#062E29" stroke-linecap="round" fill="none"><path d="M6.6 9.3c3.4-1 7.2-.7 10.3 1" stroke-width="2.1"/><path d="M7.4 12.6c2.8-.8 5.9-.5 8.4.9" stroke-width="1.8"/><path d="M8.2 15.7c2.2-.6 4.6-.4 6.6.7" stroke-width="1.5"/></g></svg>
+          <span>Spotify</span>
+        </a>
+        <a href={PODCAST.url} target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect y="4.4" width="24" height="15.2" rx="4.2" fill="currentColor"/><path d="M10 8.6l5.6 3.4L10 15.4V8.6Z" fill="#062E29"/></svg>
+          <span>YouTube</span>
+        </a>
       </div>
     </div>
   </header>
@@ -67,12 +75,11 @@ function fmtDate(pubDate: string) {
           <div class="eplist" id="ep-list">
             {episodes.map((ep) => (
               <div class="eprow" data-title={ep.title.toLowerCase()} data-desc={ep.description.toLowerCase()}>
-                <div class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} loading="lazy" /></div>
                 <div class="meta">
                   <span class="mono">{fmtDate(ep.pubDate)}</span>
                   <h3>{ep.title}</h3>
                   {ep.description && <p>{ep.description}</p>}
-                  {ep.audio && <audio controls preload="none" src={ep.audio}></audio>}
+                  {ep.audio && <a class="eplisten" href={ep.audio} target="_blank" rel="noopener noreferrer">Listen &rsaquo;</a>}
                 </div>
               </div>
             ))}

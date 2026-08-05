@@ -7,15 +7,17 @@ const logoFiles: any = import.meta.glob("../assets/media/*.{png,svg,webp,jpg}", 
 const logoFor = (slug: string) =>
   (Object.entries(logoFiles).find(([path]) => path.includes(`/${slug}.`))?.[1] as any)?.default;
 
-const featured = MEDIA.filter((m) => ["scientific-american", "cnbc", "senate-of-canada"].includes(m.slug))
-  .map((m) => ({ ...m, logo: logoFor(m.slug) }))
-  .sort((a, b) => a.r - b.r);
+const featuredOrder = ["montreal-review", "cnbc", "senate-of-canada"];
+const featured = featuredOrder
+  .map((slug) => MEDIA.find((m) => m.slug === slug))
+  .filter((m): m is (typeof MEDIA)[number] => Boolean(m))
+  .map((m) => ({ ...m, logo: logoFor(m.slug) }));
 ---
 <Base
   title="In the press"
   description="Every published appearance by the Center for Innovating the Future and its principals since 2016, each with its source."
 >
-  <PageHead art="bars">In the press.</PageHead>
+  <PageHead>In the press.</PageHead>
 
   <section>
     <div class="wrap">
