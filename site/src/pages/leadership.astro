@@ -20,6 +20,21 @@ const people = [
   },
 ];
 
+const past = [
+  {
+    name: "Aseem Prakash",
+    role: "Founder and Director",
+    years: "2010 to 2025",
+    bio: "Established the Center in Toronto in December 2010 and led its work on how organizations and the people inside them adapt to automation. He presented at RoboBusiness and at International Robotics Week in Delft, was interviewed by Robotics Business Review on coexistence with robots, and in 2025 created and hosted Coexisting with AI: Succeeding In the New Era at Microsoft Reactor Toronto.",
+  },
+  {
+    name: "Abishur Prakash",
+    role: "Director",
+    years: "2012 to 2022",
+    bio: "Led the Center's work on the geopolitics of technology. He appeared as a witness before the Standing Senate Committee on Social Affairs, Science and Technology in February 2017, and his writing from that period appeared in Scientific American, CNBC, Fortune, Nikkei Asia and the South China Morning Post. His work was cited by the Brookings Institution and the Foreign Policy Research Institute.",
+  },
+];
+
 ---
 <Base title="Leadership" description="Leadership at the Center for Innovating the Future.">
   <PageHead>Leadership.</PageHead>
@@ -47,6 +62,23 @@ const people = [
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><h2>Past principals.</h2></div>
+      <div class="past">
+        {past.map((p) => (
+          <div class="pp">
+            <div>
+              <h3>{p.name}</h3>
+              <span class="role">{p.role} &middot; {p.years}</span>
+            </div>
+            <p>{p.bio}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 </Base>
