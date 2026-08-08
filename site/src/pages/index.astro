@@ -1,6 +1,5 @@
 ---
 import Base from "../layouts/Base.astro";
-import Marks from "../components/Marks.astro";
 import { SKEPTICISM, PODCAST, ORG, MEDIA } from "../config";
 import { getFeed } from "../lib/feed";
 
@@ -24,7 +23,6 @@ const latestDate = latest
 ---
 <Base description="The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010, working to ensure that the forces remaking human life, such as artificial intelligence and geopolitics, are built on purpose rather than inherited.">
   <header class="hero">
-    <Marks set={[{ name: "dots", pos: "tl" }, { name: "zig", pos: "bl" }]} />
     <div class="wrap hgrid">
       <div class="hcopy">
         <h1>The future is innovated, not predicted.</h1>
