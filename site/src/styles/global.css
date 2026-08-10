@@ -131,19 +131,6 @@ body.menu-open{overflow:hidden}
 /* double rule under the nav */
 .dblrule{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);height:4px}
 
-/* ---------- ledger: ruled figures, no colour ---------- */
-.ledger{background:var(--paper);border-bottom:1px solid var(--hair)}
-.ledgerin{display:grid;grid-template-columns:repeat(3,1fr)}
-.ledgerin--4{grid-template-columns:repeat(4,1fr)}
-.lcell{padding:32px 28px 32px 0;border-right:1px solid var(--hair)}
-.lcell:last-child{border-right:0;padding-right:0}
-.lcell b{display:block;font-size:clamp(30px,3.6vw,40px);font-weight:600;letter-spacing:-.032em;
-  line-height:1;margin-bottom:9px}
-.lcell span{font-size:13.5px;color:var(--ink-70)}
-@media(max-width:760px){.ledgerin,.ledgerin--4{grid-template-columns:1fr 1fr}
-  .lcell{border-right:0;border-bottom:1px solid var(--hair);padding:22px 0}
-  .lcell:nth-child(odd){padding-right:24px;border-right:1px solid var(--hair)}}
-
 /* ---------- alternating work rows ---------- */
 .wrows{display:flex;flex-direction:column;gap:clamp(48px,6vw,76px)}
 .wrow{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,60px);align-items:center}
