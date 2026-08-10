@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SKEPTICISM, PODCAST, ORG, MEDIA } from "../config";
+import { SKEPTICISM, MANTIC, PODCAST, ORG, MEDIA } from "../config";
 import { getFeed } from "../lib/feed";
 
 // Drop a file at src/assets/media/<slug>.png and it appears on the wall.
@@ -22,67 +22,70 @@ const latestDate = latest
 
 ---
 <Base description="The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010, working to ensure that the forces remaking human life, such as artificial intelligence and geopolitics, are built on purpose rather than inherited.">
-  <header class="hero">
-    <div class="wrap hgrid">
+  <header class="hero field field--warm">
+    <span class="orb orb--a" aria-hidden="true"></span>
+    <span class="orb orb--b" aria-hidden="true"></span>
+    <span class="orb orb--c" aria-hidden="true"></span>
+    <div class="wrap">
       <div class="hcopy">
+        <p class="kick">Toronto &middot; Established {ORG.founded}</p>
         <h1>The future is innovated, not predicted.</h1>
         <p class="sub">
-          The Center for Innovating the Future is a Toronto strategy innovation lab,
-          established in 2010, working to ensure that the forces remaking human life, such
-          as artificial intelligence and geopolitics, are built on purpose rather than
-          inherited. We build the institutions that examine those forces in order to widen
-          who gets a say in what they become.
+          A strategy innovation lab working to ensure the forces remaking human life are
+          built on purpose rather than inherited.
         </p>
         <div class="cta">
           <a class="pill pill--solid" href="/work">See our work</a>
           <a class="pill pill--ghost" href="/leadership">Who runs it</a>
         </div>
       </div>
-
-      <div class="hfig" aria-hidden="true">
-        <svg viewBox="0 0 460 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#111110" stroke-opacity=".08">
-            <ellipse cx="250" cy="210" rx="205" ry="205" />
-            <ellipse cx="250" cy="210" rx="205" ry="120" />
-            <ellipse cx="250" cy="210" rx="120" ry="205" />
-          </g>
-
-          <g>
-            <rect x="18" y="86" width="150" height="196" fill="#FFFFFF" stroke="#111110" stroke-opacity=".16" />
-            <g stroke="#111110" stroke-opacity=".14">
-              <path d="M18 135h150M18 184h150M18 233h150M67 86v196M117 86v196" />
-            </g>
-            <rect x="67" y="135" width="50" height="49" fill="#DE3A11" fill-opacity=".1" />
-            <circle cx="92" cy="159" r="5" fill="#DE3A11" />
-          </g>
-
-          <g>
-            <rect x="152" y="176" width="152" height="212" fill="#FFFFFF" stroke="#111110" stroke-opacity=".16" />
-            <path d="M172 358h112" stroke="#111110" stroke-opacity=".16" />
-            <g stroke="#111110" stroke-opacity=".24">
-              <path d="M184 358v-44M204 358v-72M224 358v-30M264 358v-58M284 358v-88" />
-            </g>
-            <path d="M244 358V244" stroke="#C67E16" stroke-width="1.4" />
-            <circle cx="244" cy="240" r="5" fill="#C67E16" />
-            <path d="M172 214h72" stroke="#111110" stroke-opacity=".22" />
-            <path d="M172 226h44" stroke="#111110" stroke-opacity=".12" />
-          </g>
-
-          <g>
-            <rect x="288" y="34" width="154" height="196" fill="#FFFFFF" stroke="#111110" stroke-opacity=".16" />
-            <g stroke="#111110" stroke-opacity=".18">
-              <path d="M330 92 L365 148 L400 92M330 92h70" />
-            </g>
-            <circle cx="330" cy="92" r="6" stroke="#111110" stroke-opacity=".3" />
-            <circle cx="400" cy="92" r="6" stroke="#111110" stroke-opacity=".3" />
-            <circle cx="365" cy="148" r="9" fill="#1C6E63" fill-opacity=".12" stroke="#1C6E63" />
-            <circle cx="365" cy="148" r="3" fill="#1C6E63" />
-            <path d="M310 186h124M310 200h84" stroke="#111110" stroke-opacity=".13" />
-          </g>
-        </svg>
-      </div>
     </div>
   </header>
+
+  <div class="ledger">
+    <div class="wrap ledgerin">
+      <div class="lcell"><b>{new Date().getFullYear() - ORG.founded}</b><span>Years operating</span></div>
+      <div class="lcell"><b>{MEDIA.length}</b><span>Publications featured in</span></div>
+      <div class="lcell"><b>{episodes.length ? `${Math.floor(episodes.length / 10) * 10}+` : "150+"}</b><span>Recorded interviews</span></div>
+    </div>
+  </div>
+
+  <section class="feature field field--cool">
+    <span class="orb orb--a orb--cool-a" aria-hidden="true"></span>
+    <span class="orb orb--b orb--cool-b" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="feat-head">
+        <p class="kick kick--cool">The Center's current research</p>
+        <h2>The First AI-Native Generation</h2>
+      </div>
+      <p class="feat-q">
+        A generation is coming of age inside a technology nobody has finished
+        understanding. The Center is asking what sustained interaction with conversational
+        AI does to cognition, identity, and agency, and publishing what it finds.
+      </p>
+      <div class="feat-grid">
+        <div class="fcard">
+          <div class="n">Output 01</div>
+          <h4>The report</h4>
+          <p>Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are.</p>
+        </div>
+        <div class="fcard">
+          <div class="n">Output 02</div>
+          <h4>The policy brief</h4>
+          <p>Six to ten pages for the people who write rules, written so they can act on it.</p>
+        </div>
+        <div class="fcard">
+          <div class="n">Output 03</div>
+          <h4>The framework</h4>
+          <p>A developmentally responsible AI framework organizations can apply without a research team.</p>
+        </div>
+      </div>
+      <div class="feat-foot">
+        <a class="pill pill--slate" href="/work/coexisting-with-ai">Read the research &rsaquo;</a>
+        <span class="note">Evidence gathered through the Co-Existing with AI interview series. First outputs November 2026.</span>
+      </div>
+    </div>
+  </section>
 
   <section class="band" id="media">
     <div class="wrap">
@@ -119,31 +122,80 @@ const latestDate = latest
   </section>
 
   <section>
-    <div class="duo">
-        <div class="dp dp--art">
-          <h3>{SKEPTICISM.name}</h3>
-          <p>{SKEPTICISM.blurb}</p>
-          <a class="pill pill--invert" href={SKEPTICISM.page}>Learn more about the program &rsaquo;</a>
+    <div class="wrap">
+      <div class="wrows">
+
+        <div class="wrow">
+          <div class="wfig" style="background:var(--accent-t)">
+            <span class="wtag" style="background:var(--accent)">Programme</span>
+            <svg viewBox="0 0 500 350" fill="none" aria-hidden="true">
+              <g stroke="#DE3A11" stroke-opacity=".26">
+                <circle cx="250" cy="175" r="140" /><circle cx="250" cy="175" r="106" />
+                <circle cx="250" cy="175" r="72" /><circle cx="250" cy="175" r="38" />
+              </g>
+              <g stroke="#DE3A11" stroke-opacity=".5">
+                <path d="M110 175h280M250 35v280" />
+              </g>
+              <circle cx="250" cy="175" r="8" fill="#DE3A11" />
+              <circle cx="356" cy="175" r="5.5" fill="#DE3A11" fill-opacity=".7" />
+              <circle cx="250" cy="103" r="5.5" fill="#DE3A11" fill-opacity=".7" />
+              <circle cx="178" cy="175" r="5.5" fill="#DE3A11" fill-opacity=".7" />
+            </svg>
+          </div>
+          <div>
+            <h3>{SKEPTICISM.name}</h3>
+            <p>{SKEPTICISM.blurb}</p>
+            <a class="go" style="color:var(--accent-ink)" href={SKEPTICISM.page}>Learn more about the programme &rsaquo;</a>
+          </div>
         </div>
 
-        <div class="dp dp--tint">
-          <h3>{PODCAST.name}</h3>
-          <p>{PODCAST.blurb}</p>
-          {latest && (
-            <a class="epmini" href={PODCAST.page}>
-              <img src={PODCAST.cover} alt={`${PODCAST.name} cover art`} width="112" height="112" loading="lazy" />
-              <div>
-                <span class="mono">{latestDate}</span>
-                <h4>{latest.title}</h4>
-              </div>
-            </a>
-          )}
-          <a class="pill pill--solid" href={PODCAST.page}>Explore episodes &rsaquo;</a>
+        <div class="wrow wrow--rev">
+          <div class="wfig" style="background:var(--amber-t)">
+            <span class="wtag" style="background:var(--amber)">Press</span>
+            <svg viewBox="0 0 500 350" fill="none" aria-hidden="true">
+              <g stroke="#C67E16" stroke-opacity=".34">
+                <rect x="150" y="70" width="200" height="210" />
+                <rect x="168" y="88" width="164" height="174" />
+              </g>
+              <g stroke="#C67E16" stroke-opacity=".55">
+                <path d="M192 128h116M192 156h116M192 184h84M192 212h116M192 240h60" />
+              </g>
+              <path d="M250 70v210" stroke="#C67E16" stroke-opacity=".7" />
+              <circle cx="250" cy="70" r="7" fill="#C67E16" />
+            </svg>
+          </div>
+          <div>
+            <h3>{MANTIC.name}</h3>
+            <p>{MANTIC.blurb}</p>
+            <a class="go" style="color:var(--amber-ink)" href={MANTIC.page}>Visit Mantic &rsaquo;</a>
+          </div>
         </div>
-    </div>
 
-    <div class="wrap wcta">
-      <a class="pill pill--solid" href="/work">All work &rsaquo;</a>
+        <div class="wrow">
+          <div class="wfig" style="background:var(--teal-t)">
+            <span class="wtag" style="background:var(--teal)">Public channel</span>
+            <svg viewBox="0 0 500 350" fill="none" aria-hidden="true">
+              <g stroke="#1C6E63" stroke-opacity=".45" stroke-linecap="round">
+                <path d="M120 175v-34M150 175v-62M180 175v-90M210 175v-48M240 175v-104M270 175v-70M300 175v-92M330 175v-40M360 175v-66M390 175v-28"
+                  transform="translate(0,86)" />
+                <path d="M120 175v34M150 175v62M180 175v90M210 175v48M240 175v104M270 175v70M300 175v92M330 175v40M360 175v66M390 175v28"
+                  transform="translate(0,-86)" />
+              </g>
+              <path d="M96 175h318" stroke="#1C6E63" stroke-opacity=".7" />
+              <circle cx="240" cy="175" r="8" fill="#1C6E63" />
+            </svg>
+          </div>
+          <div>
+            <h3>{PODCAST.name}</h3>
+            <p>{PODCAST.blurb}</p>
+            {latest && (
+              <p class="mono" style="margin-bottom:18px">Latest &middot; {latestDate} &middot; {latest.title}</p>
+            )}
+            <a class="go" style="color:var(--teal-ink)" href={PODCAST.page}>Explore episodes &rsaquo;</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 

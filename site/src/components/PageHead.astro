@@ -1,14 +1,22 @@
 ---
-import Marks from "./Marks.astro";
-const { art = null, hue = null, tone = null } = Astro.props;
+// field: warm | cool | fresh | sand. kick: the hue class on the kicker rule.
+const {
+  hue = null,
+  tone = null,
+  field = "warm",
+  kick = null,
+  kicker = null,
+} = Astro.props;
+const kickClass = kick ? `kick kick--${kick}` : "kick";
 ---
-<header class={tone ? `phead phead--${tone}` : "phead"} style={hue ? `--phead-hue:${hue}` : undefined}>
-  <div class="wrap pheadin">
-    <h1><slot /></h1>
-    {art && (
-      <div class="pha" aria-hidden="true">
-        <Marks set={[{ name: art, pos: "hd" }]} />
-      </div>
-    )}
+<header class={`phero field field--${field}${tone ? ` phead--${tone}` : ""}`} style={hue ? `--phead-hue:${hue}` : undefined}>
+  <span class="orb orb--a" aria-hidden="true"></span>
+  <span class="orb orb--c" aria-hidden="true"></span>
+  <div class="wrap">
+    <div>
+      {kicker && <p class={kickClass}>{kicker}</p>}
+      <h1><slot /></h1>
+      <slot name="lede" />
+    </div>
   </div>
 </header>
