@@ -7,8 +7,8 @@ const logoFiles: any = import.meta.glob("../assets/media/*.{png,svg,webp,jpg}", 
 const logoFor = (slug: string) =>
   (Object.entries(logoFiles).find(([path]) => path.includes(`/${slug}.`))?.[1] as any)?.default;
 
-const featuredOrder = ["montreal-review", "cnbc", "senate-of-canada"];
-const featuredTone: Record<string, string> = { "montreal-review": "red", cnbc: "amber", "senate-of-canada": "teal" };
+const featuredOrder = ["montreal-review", "cnbc", "psychology-today"];
+const featuredTone: Record<string, string> = { "montreal-review": "red", cnbc: "amber", "psychology-today": "teal" };
 const featured = featuredOrder
   .map((slug) => MEDIA.find((m) => m.slug === slug))
   .filter((m): m is (typeof MEDIA)[number] => Boolean(m))
@@ -18,7 +18,7 @@ const featured = featuredOrder
   title="In the press"
   description="Every published appearance by the Center for Innovating the Future and its principals since 2016, each with its source."
 >
-  <PageHead tone="press" kicker="Since 2016" field="warm">In the press.</PageHead>
+  <PageHead kicker="Since 2016" field="warm">In the press.</PageHead>
 
   <section>
     <div class="wrap">

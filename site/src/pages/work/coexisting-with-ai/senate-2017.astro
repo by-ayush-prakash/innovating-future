@@ -1,0 +1,218 @@
+---
+import PageHead from "../../../components/PageHead.astro";
+import Base from "../../../layouts/Base.astro";
+import { ORG } from "../../../config";
+
+const facts = [
+  { k: "Date", v: "2 February 2017" },
+  { k: "Body", v: "Standing Senate Committee on Social Affairs, Science and Technology" },
+  { k: "Study", v: "Robotics, 3D printing and artificial intelligence in the healthcare system" },
+  { k: "Witness", v: "Abishur Prakash, Director, 2012 to 2022" },
+  { k: "Appearing with", v: "Dr Bertalan Meskó, by video from Hungary" },
+  { k: "Record", v: "Committee evidence, 42nd Parliament" },
+];
+
+// Verdicts are graded against public evidence gathered in 2026. Sources on each row.
+const scorecard = [
+  {
+    v: "held",
+    claim: "Canada needs an official robotics strategy.",
+    then: "Japan had a New Robot Strategy. China had Made in China 2025. Canada, the Center told the committee, had grants.",
+    now: "Canada still has no federal robotics strategy, and no provincial one. The 2026 national AI strategy names robotics once, as a sector. Canada installs 241 robots per 10,000 manufacturing workers, against Korea's 1,220.",
+    src: "https://www.cigionline.org/articles/its-time-to-invest-in-canadian-robotics/",
+    srcName: "CIGI, 2024",
+  },
+  {
+    v: "held",
+    claim: "Hospitals will rent robots rather than buy them.",
+    then: "A subscription model, argued against six-figure capital outlays that lock a hospital into the year it purchased.",
+    now: "Robotics-as-a-Service is now a named category worth roughly $2 to $3 billion. Diligent Robotics' Moxi runs in about 100 US hospitals and is not sold outright to any of them.",
+    src: "https://www.fortunebusinessinsights.com/robots-as-a-service-market-111525",
+    srcName: "Fortune Business Insights",
+  },
+  {
+    v: "held",
+    claim: "Phones will talk to biosensors and monitor people continuously.",
+    then: "Described as remote monitoring through a device the patient already owns.",
+    now: "Apple Watch sleep apnea notifications cleared by the FDA in 2024, hypertension notifications in 2025, and Dexcom Stelo cleared as the first over-the-counter glucose biosensor in 2024.",
+    src: "https://www.cnbc.com/2024/09/16/fda-clears-apples-sleep-apnea-detection-feature-for-here-how-it-works.html",
+    srcName: "FDA clearances, 2024 to 2025",
+  },
+  {
+    v: "partly",
+    claim: "An algorithm will diagnose skin cancer.",
+    then: "Cited as an early example of machine diagnosis reaching clinical standard.",
+    now: "The most vindicated call. DermaSensor cleared in 2024, and NICE conditionally recommended Skin Analytics' DERM for the NHS in 2025 after more than 165,000 patients. But published models lost most of their accuracy on darker skin, and NICE now requires clinician review for Black and brown patients.",
+    src: "https://www.nice.org.uk/news/articles/ai-skin-cancer-detection-system-gets-green-light-for-conditional-nhs-use",
+    srcName: "NICE, 2025",
+  },
+  {
+    v: "failed",
+    claim: "IBM Watson prescribed the same treatment as doctors 99 per cent of the time.",
+    then: "Offered to the committee as evidence that clinical AI was ready.",
+    now: "The number was real and the inference was wrong. Agreement with doctors measures imitation, not correctness. Seventeen days after this testimony, an audit found MD Anderson had spent more than $62 million on Watson without using it on a patient. IBM sold Watson Health in 2022 for a reported $1 billion, against roughly $4.6 billion spent assembling it.",
+    src: "https://www.statnews.com/2018/07/25/ibm-watson-recommended-unsafe-incorrect-treatments/",
+    srcName: "STAT, 2018",
+  },
+  {
+    v: "failed",
+    claim: "42 per cent of Canadian jobs, 7.5 million, are at risk of automation.",
+    then: "Taken from the Brookfield Institute's 2016 study and used to argue urgency.",
+    now: "Canada added about 2.6 million jobs between 2017 and 2026. Retrospectives now call that generation of automation forecasts wildly inaccurate. The C.D. Howe Institute published a rebuttal six weeks after this hearing. The Center cited the alarming study when the counter-evidence was already available.",
+    src: "https://hdsr.mitpress.mit.edu/pub/ppjz2dg9/download/pdf",
+    srcName: "Harvard Data Science Review, 2025",
+  },
+  {
+    v: "failed",
+    claim: "AI on phones will spot an epidemic from patterns of coughing and sneezing.",
+    then: "Offered as a public health application of ambient sensing.",
+    now: "This got the largest possible test. A UK study of audio from 67,842 people during COVID found models that looked 98.5 per cent accurate had simply learned to detect symptoms. Against a symptom questionnaire, the audio added nothing.",
+    src: "https://www.turing.ac.uk/blog/can-sound-someones-cough-be-used-detect-covid-19",
+    srcName: "Alan Turing Institute",
+  },
+  {
+    v: "open",
+    claim: "Pathology and radiology will be automated within 15 to 20 years.",
+    then: "A window running to 2032 at the earliest.",
+    now: "Nine years in, running the other way. Radiologist pay reached a record in 2025, roughly 4,300 US posts sit open, and fewer than 15 per cent of US health systems have even chosen a digital pathology vendor. Geoffrey Hinton's harder version of this call, made in 2016, has been withdrawn.",
+    src: "https://car.ca/wp-content/uploads/2026/04/CAR-Wait-Times-Policy-Statement-EN_2026-03.pdf",
+    srcName: "Canadian Association of Radiologists, 2026",
+  },
+];
+
+const label = { held: "Held up", partly: "Partly", failed: "Did not hold", open: "Still open" };
+---
+<Base
+  title="The Center before the Senate"
+  description="In February 2017 the Center gave evidence to the Standing Senate Committee on Social Affairs, Science and Technology on robotics, 3D printing and AI in healthcare. This is what it said, and what nine years did to it."
+>
+  <PageHead kicker="Senate of Canada &middot; 2 February 2017" field="sand">
+    The Center before the Senate.
+  </PageHead>
+
+  <section>
+    <div class="wrap">
+      <p class="lede" style="max-width:56ch">
+        The Center was called as a witness on what robotics, 3D printing and artificial intelligence
+        would do to Canadian healthcare. Nine years have passed. Every claim it made that day is on
+        the public record, so here is the scorecard, including the parts it got wrong.
+      </p>
+      <div class="reg" style="margin-top:44px">
+        {facts.map((f) => (
+          <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
+        ))}
+      </div>
+      <p class="dnote">
+        The full transcript is published by the
+        <a href="https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" target="_blank" rel="noopener noreferrer">Senate of Canada</a>.
+        The committee's report, <em>Challenge Ahead</em>, followed in October 2017.
+      </p>
+    </div>
+  </section>
+
+  <section class="field field--sand">
+    <div class="wrap">
+      <div class="shead"><h2>What the Center said</h2></div>
+      <div class="stag">
+        <div class="stag-row">
+          <div class="stag-fig">
+            <img src="/images/senate-01.jpg" alt="The Senate of Canada committee page for the Standing Committee on Social Affairs, Science and Technology, Issue No. 14, Evidence, 2 February 2017." width="1600" height="773">
+          </div>
+          <div class="stag-txt">
+            <p>The evidence was a survey of what other countries were already doing and Canada was
+            not. Robots delivering medicine and changing sheets in American hospitals. A smart
+            contact lens in South Korea monitoring diabetes through the eye. Printed blood vessels
+            implanted in a monkey in China. A robot pharmacist in the UAE dispensing twelve
+            medications in under a minute. Eleven robots in Saskatchewan, one of them reaching a
+            First Nations reserve.</p>
+          </div>
+        </div>
+        <div class="stag-row stag-row--flip">
+          <div class="stag-fig"><img src="/images/senate-02.jpg" alt="" width="1600" height="1200"></div>
+          <div class="stag-txt">
+            <p>Underneath the examples sat one recommendation, repeated to several senators.
+            Japan had published a New Robot Strategy. China had Made in China 2025 and a single
+            province with $150 billion earmarked. Canada had neither a federal robotics strategy
+            nor a provincial one. The Center told the committee that grants are not a strategy.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="shead"><h2>The scorecard</h2></div>
+      <p class="lede" style="max-width:50ch;margin-bottom:clamp(34px,4vw,52px)">
+        Graded in 2026 against public evidence. Sources on each row.
+      </p>
+      <div class="scard">
+        {scorecard.map((s) => (
+          <div class={`sc sc--${s.v}`}>
+            <div class="sc-v"><span class="sc-tag">{label[s.v]}</span></div>
+            <div class="sc-b">
+              <h3>{s.claim}</h3>
+              <p class="sc-then"><span class="mono">2017</span> {s.then}</p>
+              <p class="sc-now"><span class="mono">2026</span> {s.now}</p>
+              <a class="sc-src" href={s.src} target="_blank" rel="noopener noreferrer">{s.srcName} &rsaquo;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="field field--fresh">
+    <div class="wrap">
+      <div class="shead"><h2>What still stands</h2></div>
+      <div class="stag" style="margin-bottom:clamp(38px,4.4vw,64px)">
+        <div class="stag-row">
+          <div class="stag-fig"><img src="/images/robot-density.svg" alt="Industrial robot density by country in 2024. Canada 241 robots per 10,000 manufacturing employees, world average 132, Republic of Korea 1,220."></div>
+          <div class="stag-txt">
+            <p><strong>Canada does not have too many robots. It has too few.</strong> At 241 per
+            10,000 manufacturing workers it sits behind Korea, Singapore, Germany, Japan and the
+            United States, and it imports nearly all of them.</p>
+          </div>
+        </div>
+      </div>
+      <div class="body" style="max-width:44rem">
+        <p>
+          The recommendation survived the reasoning that produced it. In 2017 the Center argued
+          Canada needed a robotics strategy partly because automation was about to take 42 per cent
+          of Canadian jobs. It did not. Canada added roughly 2.6 million jobs instead.
+        </p>
+        <p>
+          The Canadian Robotics Council, formed five years after this hearing, is still asking for
+          the same document the Center asked for in 2017.
+        </p>
+        <p>
+          That is the useful thing about being on the record. A position taken in public can be
+          checked, and the parts that break tell you more than the parts that hold.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closeband field field--cool">
+    <span class="orb orb--a orb--cool-a" aria-hidden="true"></span>
+    <span class="orb orb--b orb--cool-b" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="kick kick--cool">Committees, hearings and briefings</p>
+      <h2>The Center gives evidence.</h2>
+      <p>
+        It has appeared before a Senate committee and been cited by the Brookings Institution and
+        the Foreign Policy Research Institute. Committees, agencies and standards bodies working on
+        robotics, automation or AI policy can write to
+        <a href={"mailto:" + ORG.email} style="border-bottom:1px solid rgba(46,67,114,.4)">{ORG.email}</a>.
+      </p>
+      <a class="pill pill--slate" href="/contact">Start a conversation &rsaquo;</a>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <a class="pill pill--ghost" href="/work/coexisting-with-ai">All of Co-Existing with AI &rsaquo;</a>
+    </div>
+  </section>
+</Base>
