@@ -4,7 +4,7 @@ import { MANTIC, ORG } from "../../config";
 ---
 <Base
   title={MANTIC.name}
-  description="The imprint of the Center for Innovating the Future. Books about the ideas changing what it means to be human."
+  description="The Center's press. A wholly owned imprint publishing books that break the mainstream narrative."
 >
   <header class="phero field field--sand">
     <span class="orb orb--a" aria-hidden="true"></span>
@@ -12,9 +12,9 @@ import { MANTIC, ORG } from "../../config";
     <div class="wrap">
       <div>
         <p class="kick kick--amber">The Center's press</p>
-        <h1>{MANTIC.name}.</h1>
-        <p class="lede">The Center's imprint, for arguments too long for an essay and too
-        witty for a textbook.</p>
+        <h1>Mantic Publishing.</h1>
+        <p class="lede">Books that break the mainstream narrative. Mantic breaks and builds the
+        idea with the author until the argument holds.</p>
         <div class="cta">
           <a class="pill pill--solid" href={MANTIC.url} target="_blank" rel="noopener">Visit Mantic &rsaquo;</a>
         </div>
@@ -24,34 +24,30 @@ import { MANTIC, ORG } from "../../config";
 
   <section>
     <div class="wrap">
-      <div class="shead"><h2>What Mantic looks for.</h2></div>
-      <div class="prin">
-        <div class="pr">
-          <h3>Ideas that demand permanence.</h3>
-          <p>An argument that will still be worth reading in ten years, not a thesis timed to a news cycle.</p>
-        </div>
-        <div class="pr">
-          <h3>Authors willing to be held to them.</h3>
-          <p>A book is a position with a name on it. Mantic publishes people who intend to defend theirs.</p>
-        </div>
-        <div class="pr">
-          <h3>Subjects that change what being human means.</h3>
-          <p>Technology, cognition, money, attention. The forces that alter people before anyone votes on them.</p>
-        </div>
-      </div>
+      <p class="lede">
+        A strategy lab produces briefings, assessments and sessions. All of it is built to be useful
+        inside a particular year. Some arguments are not that shape. They need the length of a book
+        and the patience of an editor, and they need to survive long after the cycle that produced
+        them. Mantic exists for those. It is a separate company, wholly owned by the Center, with
+        its own editorial line and its own front door at
+        <a href={MANTIC.url} target="_blank" rel="noopener noreferrer">manticpublishing.com</a>.
+      </p>
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section class="closeband field field--cool">
+    <span class="orb orb--a orb--cool-a" aria-hidden="true"></span>
+    <span class="orb orb--b orb--cool-b" aria-hidden="true"></span>
     <div class="wrap">
-      <div class="shead"><h2>Where it stands.</h2></div>
-      <p class="dnote">
-        The imprint was set up to publish the Center's long-form work. It is commissioning its
-        first titles, and building its own home at
-        <a href={MANTIC.url} target="_blank" rel="noopener noreferrer">manticpublishing.com</a>.
-        Writers with a manuscript that meets the tests above can write to
-        <a href={`mailto:${ORG.email}`}>{ORG.email}</a>.
+      <p class="kick kick--cool">For writers</p>
+      <h2>Send Mantic something it can argue with.</h2>
+      <p>
+        Submissions, standards and the current list live at
+        <a href={MANTIC.url} target="_blank" rel="noopener noreferrer" style="border-bottom:1px solid rgba(46,67,114,.4)">manticpublishing.com</a>.
+        Anything for the Center itself goes to
+        <a href={"mailto:" + ORG.email} style="border-bottom:1px solid rgba(46,67,114,.4)">{ORG.email}</a>.
       </p>
+      <a class="pill pill--slate" href={MANTIC.url} target="_blank" rel="noopener">Visit Mantic &rsaquo;</a>
     </div>
   </section>
 </Base>
