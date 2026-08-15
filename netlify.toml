@@ -61,3 +61,15 @@
   to = "/work/coexisting-with-ai"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/work/coexisting-with-ai/senate-2017"
+  to = "/senate-2017"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/work/senate-2017"
+  to = "/senate-2017"
+  status = 301
+  force = true
