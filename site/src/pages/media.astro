@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
 import Field from "../components/Field.astro";
 import Arrow from "../components/Arrow.astro";
-import { MEDIA, MEDIA_BY_DATE, ORG } from "../config";
+import { MEDIA, MEDIA_BY_DATE } from "../config";
 
 const logoFiles: any = import.meta.glob("../assets/media/*.{png,svg,webp,jpg}", { eager: true });
 const logoFor = (slug: string) =>
@@ -29,7 +29,6 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
   description="Every published appearance by the Center for Innovating the Future and its principals since 2016, each with its source."
   ctaHeading="Press inquiries."
   ctaBody="The Center answers questions about its work and its ownership on the record."
-  ctaLabel="Get in touch"
 >
   <PageHead id="md">
     In the press.
@@ -86,7 +85,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
         ))}
       </div>
       <p class="dnote">
-        Press inquiries go to <a href={"mailto:" + ORG.email}>{ORG.email}</a>.
+        Press inquiries go through the <a href="/contact">contact form</a>.
       </p>
     </div>
   </section>

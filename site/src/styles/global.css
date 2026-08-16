@@ -256,7 +256,8 @@ section[id],header[id],.band[id],.sec[id]{scroll-margin-top:var(--chrome)}
 /* ---------- portfolio list: name, what it is, arrow ---------- */
 .plist{border-top:0}
 .prow{display:grid;grid-template-columns:minmax(220px,1fr) 1.7fr 44px;gap:clamp(20px,4vw,64px);
-  align-items:baseline;padding:clamp(26px,3vw,38px) 0;border-bottom:1px solid var(--hair);transition:.18s}
+  align-items:baseline;padding:clamp(26px,3vw,38px) 18px;border-bottom:1px solid var(--hair);
+  transition:.18s;border-radius:10px}
 .prow .t{font-size:clamp(22px,2.2vw,30px);line-height:1.22;letter-spacing:-.01em}
 .prow p{color:var(--mut);max-width:62ch}
 .prow .ar{justify-self:end;opacity:0;transform:translateX(-6px);transition:.18s;align-self:center}
@@ -278,13 +279,14 @@ a.lrow:hover{padding-left:10px}
    title comes out of the feed and takes over from the affiliation on hover. */
 .fconvs{border-top:0}
 .fconv{display:grid;grid-template-columns:44px 1fr 44px;gap:clamp(14px,2vw,26px);align-items:center;
-  padding:clamp(20px,2.4vw,28px) 0;border-bottom:1px solid var(--hair);transition:.18s;position:relative}
+  padding:clamp(20px,2.4vw,28px) 18px;border-bottom:1px solid var(--hair);transition:.18s;position:relative;
+  border-radius:10px}
 .fconv:last-child{border-bottom:0}
 .fconv .n{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--mut)}
 .fconv .who{display:block;min-width:0}
 .fconv .t{display:block;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spacing:-.01em}
 .fconv .r{display:block;margin-top:5px;font-size:14px;line-height:21px;color:var(--mut);transition:.18s}
-.fconv .ep{position:absolute;left:calc(44px + clamp(14px,2vw,26px));right:52px;bottom:clamp(20px,2.4vw,28px);
+.fconv .ep{position:absolute;left:calc(18px + 44px + clamp(14px,2vw,26px));right:70px;bottom:clamp(20px,2.4vw,28px);
   font-size:14px;line-height:21px;color:var(--ink-2);opacity:0;transition:.18s;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fconv .ar{justify-self:end;opacity:0;transform:translateX(-6px);transition:.18s}
@@ -368,6 +370,13 @@ a.rrow:hover{background:var(--off)}
   flex-direction:column;transition:.2s}
 a.ncard:hover{transform:translateY(-4px)}
 .ncard .im{aspect-ratio:16/9;border-radius:0}
+/* An outlet's own mark, centred on a tinted ground. The masthead is the
+   strongest thing a coverage card can show; a texture says nothing. */
+.im--logo{background:var(--sand);display:flex;align-items:center;justify-content:center;
+  padding:clamp(28px,4vw,52px)}
+.im--logo img{max-height:clamp(34px,4.4vw,58px);width:auto;max-width:72%;object-fit:contain}
+.im--logo.is-cool{background:var(--grey)}
+
 /* Square or fixed-ratio art in a 16:9 card: framed, never cropped. */
 .im--art{background:var(--sand);display:flex;align-items:center;justify-content:center;
   padding:clamp(14px,2vw,24px)}
@@ -425,10 +434,9 @@ a.wl:hover img{opacity:1;filter:none}
 .cl .lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
 .cl a{border-bottom:1px solid var(--hair)}
 .cl a:hover{border-bottom-color:var(--ink)}
-.pp{display:grid;grid-template-columns:300px 1fr;gap:clamp(20px,4vw,64px);
-  padding:32px 0;border-bottom:1px solid var(--hair)}
-.pp:first-child{border-top:1px solid var(--hair)}
-.pp p{color:var(--mut);max-width:70ch}
+.pp{background:var(--gray);border-radius:var(--r);padding:clamp(28px,3.4vw,44px);
+  display:flex;flex-direction:column;gap:14px}
+.pp p{color:var(--ink-2);margin:0}
 
 /* ---------- forms ---------- */
 .cgrid{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(36px,6vw,88px);align-items:start}

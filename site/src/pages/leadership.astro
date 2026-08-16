@@ -72,13 +72,11 @@ const past = [
   <section class="sec sec--t">
     <div class="wrap">
       <div class="shead"><h3>Past principals</h3></div>
-      <div>
+      <div class="g2">
         {past.map((p) => (
           <div class="pp">
-            <div>
-              <h4>{p.name}</h4>
-              <span class="role" style="margin-bottom:0;margin-top:8px">{p.role} &middot; {p.years}</span>
-            </div>
+            <h4>{p.name}</h4>
+            <span class="role" style="margin:0">{p.role} &middot; {p.years}</span>
             <p>{p.bio}</p>
           </div>
         ))}
