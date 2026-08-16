@@ -108,6 +108,12 @@ p{text-wrap:pretty}
   margin-bottom:clamp(36px,5vw,60px);flex-wrap:wrap}
 .shead h2,.shead h3{max-width:22ch}
 .rule{height:2px;background:var(--grad);border-radius:2px;width:100%}
+/* Closing line of a section: the note on the left, where it goes next on
+   the right, sitting on a hairline. Mirrors .shead at the other end. */
+.sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:clamp(20px,3vw,40px);
+  flex-wrap:wrap;margin-top:clamp(32px,4vw,52px);padding-top:22px;border-top:1px solid var(--hair)}
+.sfoot p{margin:0;max-width:58ch;font-size:14px;line-height:23px;color:var(--mut)}
+.sfoot .go{font-size:14px;white-space:nowrap}
 
 /* ---------- imagery ----------
    .rnw wraps a generated field; .im wraps a photograph. Both get the
@@ -314,6 +320,19 @@ a.rrow:hover{background:var(--off);padding-inline:14px;margin-inline:-14px}
 .band .mono{color:rgba(255,255,255,.5)}
 .bandgrid{display:grid;grid-template-columns:1fr 1.02fr;gap:clamp(36px,6vw,80px);align-items:end;
   margin-top:clamp(48px,6vw,96px)}
+/* A band carrying a lot of copy needs a scrim, or the type sits on whatever
+   the field happens to be doing underneath it. */
+.band--dim>.rnw::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(8,8,12,.78),rgba(8,8,12,.5) 55%,rgba(8,8,12,.34))}
+
+/* Numbered points across a band. Three abreast on desktop. */
+.pts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.4vw,52px);
+  margin-top:clamp(40px,5vw,68px);border-top:1px solid rgba(255,255,255,.22);padding-top:clamp(28px,3vw,40px)}
+.pt .n{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+  color:rgba(255,255,255,.45);margin-bottom:16px}
+.pt h4{color:#fff;font-size:clamp(19px,1.7vw,22px);line-height:1.28;margin-bottom:12px}
+.pt p{color:rgba(255,255,255,.72);font-size:15px;line-height:24px;max-width:38ch;margin:0}
+@media(max-width:1080px){ .pts{grid-template-columns:1fr;gap:32px} }
 
 /* stats */
 .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,4.4vw,64px)}

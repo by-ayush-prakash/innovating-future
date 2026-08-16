@@ -93,28 +93,30 @@ const sections = [
     </div>
   </section>
 
-  <section class="band" id="open">
+  <section class="band band--dim" id="open">
     <div class="rnw"><Field v="dark-slate" id="ao" w={2400} h={900} /></div>
     <div class="wrap">
-      <h3>Three gaps, and they are the reason this study exists.</h3>
-      <div class="bandgrid" style="grid-template-columns:1fr;gap:0;margin-top:clamp(36px,4.4vw,64px)">
-        <div class="lrows" style="border-top:1px solid rgba(255,255,255,.16);max-width:900px">
-          <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
-            <span class="t" style="color:#fff">Nobody is doing qualitative depth.</span>
-            <p style="color:rgba(255,255,255,.6);margin-top:8px">Everything published is quantitative sentiment. There is very little work on how AI-native people actually reason, how they decide what to delegate, and how they structure work when a machine is always available.</p>
-          </div>
-          <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
-            <span class="t" style="color:#fff">The datasets are US-centered.</span>
-            <p style="color:rgba(255,255,255,.6);margin-top:8px">A Canadian qualitative cut does not exist.</p>
-          </div>
-          <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
-            <span class="t" style="color:#fff">Nobody has asked the researchers.</span>
-            <p style="color:rgba(255,255,255,.6);margin-top:8px">The people building and studying these systems have views about the generation growing up inside them, and those views have not been collected in one place.</p>
-          </div>
+      <h3 style="max-width:22ch">Three gaps, and they are the reason this study exists.</h3>
+      <div class="pts">
+        <div class="pt">
+          <span class="n">Gap 01</span>
+          <h4>Nobody is doing qualitative depth.</h4>
+          <p>Everything published is quantitative sentiment. There is very little work on how AI-native people actually reason, how they decide what to delegate, and how they structure work when a machine is always available.</p>
+        </div>
+        <div class="pt">
+          <span class="n">Gap 02</span>
+          <h4>The datasets are US-centered.</h4>
+          <p>A Canadian qualitative cut does not exist.</p>
+        </div>
+        <div class="pt">
+          <span class="n">Gap 03</span>
+          <h4>Nobody has asked the researchers.</h4>
+          <p>The people building and studying these systems have views about the generation growing up inside them, and those views have not been collected in one place.</p>
         </div>
       </div>
     </div>
   </section>
+
 
   <section class="sec sec--g" id="method">
     <div class="wrap">
@@ -180,8 +182,10 @@ const sections = [
           </div>
         ))}
       </div>
-      <p class="dnote">Published free, as every comparable flagship is. First outputs November 2026.</p>
-      <a class="go" href="/work/coexisting-with-ai" style="margin-top:26px">The program this sits under <Arrow /></a>
+      <div class="sfoot">
+        <p>Published free, as every comparable flagship is. First outputs November 2026.</p>
+        <a class="go" href="/work/coexisting-with-ai">Co-Existing with AI <Arrow /></a>
+      </div>
     </div>
   </section>
 </Base>
