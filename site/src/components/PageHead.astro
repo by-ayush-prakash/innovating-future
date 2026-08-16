@@ -17,19 +17,30 @@ import Field from "./Field.astro";
     fit     "cover" (default) or "contain" for a document or screenshot
     alt     alt text for photo
   Slots
+    aside     art that sits beside the copy, e.g. cover art
+    media     anything to sit in the hero frame, instead of field/photo
     default   the H1 text
     lede      the paragraph under it
     cta       buttons under the lede
 */
 const { field = null, photo = null, alt = "", id = "ph", fit = "cover" } = Astro.props;
+const hasMedia = Astro.slots.has("media");
+const hasAside = Astro.slots.has("aside");
 ---
 <header class="ph-sec">
   <div class="wrap">
-    <h1 class="ph"><slot /></h1>
-    <slot name="lede" />
-    <slot name="cta" />
+    <div class={hasAside ? "ph-split" : undefined}>
+      <div>
+        <h1 class="ph"><slot /></h1>
+        <slot name="lede" />
+        <slot name="cta" />
+      </div>
+      {hasAside && <div class="ph-aside"><slot name="aside" /></div>}
+    </div>
 
-    {(photo || field) && (
+    {hasMedia ? (
+      <div class="bleed"><slot name="media" /></div>
+    ) : (photo || field) && (
       <div class={fit === "contain" ? "bleed bleed--doc" : "bleed"}>
         {photo
           ? <img class="rn" src={photo} alt={alt} loading="eager" />

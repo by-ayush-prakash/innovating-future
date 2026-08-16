@@ -32,7 +32,6 @@ const outputs = [
 const sections = [
   { label: "Already known", href: "#known" },
   { label: "What is open", href: "#open" },
-  { label: "Two layers", href: "#layers" },
   { label: "Method", href: "#method" },
   { label: "What gets published", href: "#outputs" },
 ];
@@ -114,30 +113,30 @@ const sections = [
     </div>
   </section>
 
-  <section class="sec" id="layers">
-    <div class="wrap">
-      <div class="arow">
-        <div class="afig"><Field v="stone" id="al" w={1000} h={750} /></div>
-        <div>
-          <h3>Kept separate, on purpose.</h3>
-          <div class="body" style="max-width:none;margin-top:22px">
-            <p><strong>Layer one, what experts believe.</strong> The Center has conducted long-form
-            interviews with AI and machine learning researchers through the Co-Existing with AI
-            interview series, weighted toward the Amii, Mila and CIFAR network. Those interviews are
-            being coded against a fixed frame and published as an elite-informant qualitative study.</p>
-            <p><strong>Layer two, what AI-natives actually do.</strong> This requires new fieldwork,
-            because researchers are not AI-natives and the corpus cannot answer for them. That
-            fieldwork is open now.</p>
-            <p>A study that blurs expert belief into lived behavior is describing neither.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="sec sec--g" id="method">
     <div class="wrap">
-      <div class="shead"><h3>Method, stated before the findings</h3></div>
+      <div class="shead">
+        <h3>Method, stated before the findings</h3>
+        <p class="sm mut" style="max-width:36ch">Two layers of evidence, gathered differently and never merged.</p>
+      </div>
+      <div class="rule"></div>
+      <div class="nums" style="margin-bottom:clamp(40px,5vw,64px)">
+        <div class="nrow">
+          <span class="n">Layer 01</span>
+          <h4>What experts believe</h4>
+          <p>Long-form interviews with AI and machine learning researchers through the Co-Existing with AI series, weighted toward the Amii, Mila and CIFAR network. Coded against a fixed frame and published as an elite-informant qualitative study.</p>
+        </div>
+        <div class="nrow">
+          <span class="n">Layer 02</span>
+          <h4>What AI-natives actually do</h4>
+          <p>New fieldwork, because researchers are not AI-natives and the corpus cannot answer for them. Open now.</p>
+        </div>
+        <div class="nrow">
+          <span class="n">Why</span>
+          <h4>The layers never merge</h4>
+          <p>A study that blurs expert belief into lived behavior is describing neither. Keeping them apart is what makes either one readable.</p>
+        </div>
+      </div>
       <div class="body">
         <p>
           Long-form interviews rather than survey instruments, coded against a fixed frame:

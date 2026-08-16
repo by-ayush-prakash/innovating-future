@@ -13,13 +13,15 @@ const standards = [
     k: "The idea",
     h: "Contrarian, not trendy.",
     p: "No subject list. Geopolitics, technology, society, spirituality, and the places they cross. What matters is that the argument runs against the mainstream and holds under pressure. It should hold the same in five minutes as in five hundred years.",
-    field: "sand-amber",
+    photo: "/images/contrarian.jpg",
+    alt: "An orange painted blue, cut open to show the fruit inside",
   },
   {
     k: "The author",
     h: "Someone who will defend it.",
-    p: "Mantic breaks and builds the idea with the author before a word of the manuscript is fixed. That process only works with a writer who intends to stand behind the finished position in public. In special cases the imprint works with an author who is already published.",
-    field: "sand",
+    p: "Mantic breaks and builds the idea with the author before a word of the manuscript is fixed. That process only works with a writer who intends to stand behind the finished position in public. In special cases Mantic works with an author who is already published.",
+    photo: "/images/defend.jpg",
+    alt: "A wooden chess board mid-game, the white pieces in the light",
   },
 ];
 
@@ -64,8 +66,8 @@ const sections = [
       <h3>Mantic is a separate company, wholly owned by the Center, and it publishes only books.</h3>
       <p class="lede" style="margin-top:34px;max-width:64ch">
         Not essays. Not briefs. Not white papers. A book is a position with a name on it, defended
-        at length, and Mantic exists for arguments that cannot survive being shorter. The imprint
-        has its own house, its own submissions, and its own standard.
+        at length, and Mantic exists for arguments that cannot survive being shorter. It has its
+        own house, its own submissions, and its own standard.
       </p>
     </div>
   </section>
@@ -76,7 +78,9 @@ const sections = [
       <div class="alt">
         {standards.map((s, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
-            <div class="afig"><Field v={s.field} id={`ms${i}`} w={1000} h={750} /></div>
+            <div class="afig">{s.photo
+              ? <img class="rn" src={s.photo} alt={s.alt} loading="lazy" />
+              : <Field v={s.field} id={`ms${i}`} w={1000} h={750} />}</div>
             <div>
               <h3>{s.h}</h3>
               <p>{s.p}</p>
@@ -139,7 +143,7 @@ const sections = [
         <div class="ncard ncard--d">
           <div class="bd bd--lg" style="justify-content:center">
             <h4 style="font-size:clamp(24px,2.6vw,32px)">It should hold the same in five minutes as in five hundred years.</h4>
-            <p class="sm mut">That is the whole test. Everything else about the imprint follows from it.</p>
+            <p class="sm mut">That is the whole test. Everything else about Mantic follows from it.</p>
           </div>
         </div>
       </div>

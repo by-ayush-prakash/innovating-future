@@ -15,6 +15,13 @@ const cover = PODCAST.cover;
 const APPLE = "https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631";
 const SPOTIFY = "https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG";
 
+// Feed descriptions carry a tail of promo links. Keep the human part.
+function blurb(text: string) {
+  if (!text) return "";
+  const cut = text.split(/Connect with|Podcast Info:|https?:\/\//)[0].trim();
+  return cut.length > 260 ? cut.slice(0, 257).trimEnd() + "\u2026" : cut;
+}
+
 function fmtDate(pubDate: string) {
   const d = new Date(pubDate);
   if (isNaN(d.getTime())) return "";
@@ -36,8 +43,9 @@ const sections = [
   ctaLabel="Subscribe on YouTube"
   ctaHref={PODCAST.url}
 >
-  <PageHead field="dark-teal" id="pd">
+  <PageHead id="pd">
     Conversations on the technologies reshaping how we think.
+    <div slot="aside" class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} width="1400" height="1400" /></div>
     <p slot="lede" class="lede">
       {PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.
     </p>
@@ -73,16 +81,20 @@ const sections = [
     <>
       <section class="sec" id="latest">
         <div class="wrap">
-          <div class="arow" style="grid-template-columns:380px 1fr;align-items:center">
-            <div class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} /></div>
-            {latest && (
-              <div>
-                <h3 style="max-width:22ch">{latest.title}</h3>
-                {latest.description && <p class="lede" style="margin-top:22px">{latest.description}</p>}
-                {latest.audio && <audio controls preload="none" src={latest.audio} style="margin-top:28px;width:100%;max-width:520px"></audio>}
+          <div class="shead"><h3>Latest episode</h3></div>
+          {latest && (
+            <div>
+              <div class="rule"></div>
+              <div class="arow" style="align-items:start;padding-top:clamp(28px,3.4vw,44px)">
+                <div>
+                  <h4 style="font-size:clamp(24px,2.8vw,34px);line-height:1.22">{latest.title}</h4>
+                  <p class="mono" style="margin-top:12px">{fmtDate(latest.pubDate)}</p>
+                  {latest.audio && <audio controls preload="none" src={latest.audio} style="margin-top:26px;width:100%;max-width:520px"></audio>}
+                </div>
+                {latest.description && <p class="mut">{blurb(latest.description)}</p>}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -94,21 +106,24 @@ const sections = [
           </div>
           <div class="eplist" id="ep-list" style="background:#fff;border-radius:var(--r);padding:0 clamp(20px,3vw,32px);border-top:0">
             {rest.map((ep, i) => (
-              <div class="eprow" data-title={ep.title.toLowerCase()} data-desc={ep.description.toLowerCase()}>
+              <a class="eprow" href={ep.audio || PODCAST.url} target="_blank" rel="noopener noreferrer"
+                 data-title={ep.title.toLowerCase()} data-desc={ep.description.toLowerCase()}>
+                <span class="epcov"><img src={cover} alt="" loading="lazy" /></span>
                 <span class="epn">{String(rest.length - i).padStart(3, "0")}</span>
-                <div>
+                <span>
                   <span class="ept">{ep.title}</span>
-                  {ep.description && <p>{ep.description}</p>}
-                </div>
-                <span class="epa">
-                  {ep.audio
-                    ? <a class="go sm" href={ep.audio} target="_blank" rel="noopener noreferrer">Listen <Arrow /></a>
-                    : <span class="mono">{fmtDate(ep.pubDate)}</span>}
+                  <span class="epd">{fmtDate(ep.pubDate)}</span>
                 </span>
-              </div>
+                <span class="epa go sm">Listen <Arrow /></span>
+              </a>
             ))}
           </div>
           <p id="ep-empty" style="display:none;padding:40px 0;color:var(--mut)">No episodes match that search.</p>
+          <div id="ep-more-wrap" style="display:flex;justify-content:center;margin-top:clamp(28px,3.4vw,44px)">
+            <button id="ep-more" class="btn btn--gh" style="background:#fff" type="button">
+              Load more <span id="ep-left" class="mut"></span>
+            </button>
+          </div>
         </div>
       </section>
     </>
@@ -141,7 +156,7 @@ const sections = [
               Not a promotional slot. A long-form defense of the book in front of an audience that
               will push on it. The book is where the argument starts. This is where it gets tested.
             </p>
-            <span class="go">About the imprint <Arrow /></span>
+            <span class="go">About Mantic <Arrow /></span>
           </div>
         </a>
         <div class="ncard ncard--o">
@@ -163,17 +178,35 @@ const sections = [
   const input = document.getElementById("ep-search");
   const list = document.getElementById("ep-list");
   const empty = document.getElementById("ep-empty");
-  if (input && list) {
+  const moreBtn = document.getElementById("ep-more");
+  const moreWrap = document.getElementById("ep-more-wrap");
+  const left = document.getElementById("ep-left");
+
+  if (list) {
     const rows = Array.from(list.querySelectorAll(".eprow"));
-    input.addEventListener("input", () => {
-      const q = input.value.trim().toLowerCase();
-      let visible = 0;
+    const FIRST = 5;
+    const STEP = 10;
+    let shown = FIRST;
+
+    function draw() {
+      const q = input ? input.value.trim().toLowerCase() : "";
+      let matches = 0;
+
       for (const row of rows) {
-        const matches = !q || row.dataset.title?.includes(q) || row.dataset.desc?.includes(q);
-        row.style.display = matches ? "" : "none";
-        if (matches) visible++;
+        const hit = !q || row.dataset.title.includes(q) || row.dataset.desc.includes(q);
+        if (hit) matches++;
+        // searching reaches the whole back catalogue; browsing is paged
+        row.style.display = q ? (hit ? "" : "none") : (matches <= shown && hit ? "" : "none");
       }
-      if (empty) empty.style.display = visible === 0 ? "block" : "none";
-    });
+
+      if (empty) empty.style.display = matches === 0 ? "block" : "none";
+      const remaining = rows.length - shown;
+      if (moreWrap) moreWrap.style.display = !q && remaining > 0 ? "flex" : "none";
+      if (left) left.textContent = remaining > 0 ? ` (${remaining})` : "";
+    }
+
+    if (moreBtn) moreBtn.addEventListener("click", () => { shown += STEP; draw(); });
+    if (input) input.addEventListener("input", draw);
+    draw();
   }
 </script>

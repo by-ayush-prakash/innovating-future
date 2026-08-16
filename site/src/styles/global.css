@@ -194,6 +194,15 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .ph-sec h1.ph{max-width:17ch;margin-bottom:26px}
 .ph-sec .lede{max-width:56ch}
 .ph-sec .cta{margin-top:clamp(26px,3vw,36px)}
+/* Art beside the copy. Safe as a split because the aside is a fixed ratio,
+   not a variable-height column. */
+.ph-split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);
+  gap:clamp(36px,6vw,88px);align-items:center}
+.ph-aside{width:100%;max-width:400px;justify-self:end}
+@media(max-width:1080px){
+  .ph-split{grid-template-columns:1fr;gap:clamp(32px,5vw,48px)}
+  .ph-aside{justify-self:start;max-width:280px}
+}
 .bleed{margin-top:clamp(34px,4.4vw,60px);aspect-ratio:21/8;min-height:260px}
 .bleed .lab{position:absolute;left:clamp(22px,3vw,40px);bottom:clamp(22px,2.6vw,36px);color:#fff;z-index:2}
 /* A document in the hero: shown whole, never cropped. */
@@ -203,9 +212,27 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .bleed .lab--d{color:var(--ink)}
 .bleed .lab--d .mono{color:var(--mut)}
 
-/* Anchor targets clear the sticky nav (78) + the sticky section bar (60),
-   plus breathing room. Without this a jump parks the heading under both. */
-section[id],header[id],.band[id],.sec[id]{scroll-margin-top:calc(var(--navh) + 104px)}
+/* Anchor targets land flush under whatever chrome is sticky, and let the
+   section's own top padding supply the air. --chrome is the nav alone, or
+   the nav plus the section bar on pages that have one. */
+:root{--chrome:var(--navh)}
+body:has(.sub){--chrome:calc(var(--navh) + 60px)}
+section[id],header[id],.band[id],.sec[id]{scroll-margin-top:calc(var(--chrome) + 20px)}
+/* these have no top padding of their own, so the margin supplies all of it */
+.sec--t[id]{scroll-margin-top:calc(var(--chrome) + 60px)}
+
+/* A lineup: the names are the proof. Used where a photograph would be
+   filler and the roster is the strongest thing the page has. */
+.lineup{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:clamp(10px,1.5vw,22px);
+  padding:clamp(28px,4vw,60px) clamp(20px,4vw,64px);text-align:center}
+.lineup .nm{display:block;color:#fff;font-size:clamp(19px,2.9vw,44px);line-height:1.06;
+  letter-spacing:-.02em}
+.lineup .rl{display:block;margin-top:6px;font-family:var(--mono);font-size:clamp(10px,.85vw,12px);
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.lineup .more{margin-top:clamp(10px,1.4vw,20px);font-family:var(--mono);font-size:12px;
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+@media(max-width:760px){ .lineup .rl{display:none} .lineup{gap:8px} }
 
 /* ---------- sticky section bar ---------- */
 .sub{position:sticky;top:var(--navh);z-index:50;background:rgba(255,255,255,.9);
@@ -403,13 +430,17 @@ a.wl:hover img{opacity:1;filter:none}
 .plat a:hover{background:var(--gray)}
 .plat svg{width:22px;height:22px;flex:none}
 .eplist{border-top:1px solid var(--hair)}
-.eprow{display:grid;grid-template-columns:80px 1fr 150px;gap:clamp(18px,3vw,40px);
-  padding:26px 0;border-bottom:1px solid var(--hair);align-items:center}
+.eprow{display:grid;grid-template-columns:64px 52px 1fr auto;gap:clamp(16px,2.4vw,32px);
+  padding:18px 0;border-bottom:1px solid var(--hair);align-items:center;transition:.15s}
+a.eprow:hover{background:var(--off);padding-inline:16px;margin-inline:-16px}
+.epcov{width:64px;height:64px;border-radius:10px;overflow:hidden;background:var(--grey);flex:none}
+.epcov img{width:100%;height:100%;object-fit:cover}
 .eprow .epn{font-family:var(--mono);font-size:13px;color:var(--mut)}
-.eprow .ept{font-size:19px;line-height:27px;letter-spacing:-.01em}
-.eprow p{margin-top:6px;color:var(--mut);font-size:14px;line-height:22px;max-width:70ch}
-.eprow .epa{text-align:right}
-.eprow audio{width:100%;max-width:340px;height:38px;margin-top:12px}
+.eprow .ept{font-size:18px;line-height:26px;letter-spacing:-.01em;display:block}
+.eprow .epd{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--mut);margin-top:5px;display:block}
+.eprow .epa{white-space:nowrap;color:var(--mut)}
+a.eprow:hover .epa{color:var(--ink)}
 .cov{border-radius:var(--r);overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.2)}
 
 /* ---------- closing CTA + footer ---------- */
@@ -449,8 +480,10 @@ footer.site .fcol a:hover{color:#fff}
   .wall{grid-template-columns:repeat(3,1fr)}
   .rrow{grid-template-columns:100px 1fr}
   .rrow .src{grid-column:2;text-align:left;margin-top:8px}
-  .eprow{grid-template-columns:48px 1fr}
-  .eprow .epa{grid-column:2;text-align:left;margin-top:10px}
+  .eprow{grid-template-columns:52px 1fr;gap:14px}
+  .eprow .epcov{width:52px;height:52px}
+  .eprow .epn{display:none}
+  .eprow .epa{grid-column:2;margin-top:8px}
   .rg{grid-template-columns:1fr;gap:4px}
   .sc{grid-template-columns:1fr;gap:16px}
   .person .photo{max-width:320px}
