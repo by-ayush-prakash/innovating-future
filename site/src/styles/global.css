@@ -214,7 +214,7 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 /* A document in the hero: shown whole, never cropped. */
 .bleed--doc{background:var(--grey);padding:clamp(18px,3vw,44px);display:flex;align-items:center;justify-content:center}
 .bleed--doc img{width:auto;max-width:100%;max-height:100%;height:auto;object-fit:contain;
-  border-radius:8px;box-shadow:0 4px 22px rgba(0,0,0,.13)}
+  border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.07)}
 .bleed .lab--d{color:var(--ink)}
 .bleed .lab--d .mono{color:var(--mut)}
 
@@ -352,6 +352,11 @@ a.rrow:hover{background:var(--off);padding-inline:14px;margin-inline:-14px}
   flex-direction:column;transition:.2s}
 a.ncard:hover{transform:translateY(-4px)}
 .ncard .im{aspect-ratio:16/9;border-radius:0}
+/* Square or fixed-ratio art in a 16:9 card: framed, never cropped. */
+.im--art{background:var(--sand);display:flex;align-items:center;justify-content:center;
+  padding:clamp(14px,2vw,24px)}
+.im--art img{width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:10px;
+  box-shadow:0 6px 22px rgba(0,0,0,.16)}
 .ncard .bd{padding:30px 30px 34px;display:flex;flex-direction:column;gap:13px;flex:1}
 .ncard .bd--lg{padding:clamp(32px,4vw,56px);gap:20px}
 .ncard .go{margin-top:auto;padding-top:18px;font-size:14px}
