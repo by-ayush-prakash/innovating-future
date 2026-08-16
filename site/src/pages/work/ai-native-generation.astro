@@ -24,9 +24,12 @@ const known = [
 ];
 
 const outputs = [
-  { h: "The report", p: "Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are. Full quote appendix with sources.", field: "dark-violet" },
-  { h: "The policy brief", p: "Six to ten pages for the people who write rules, written so they can act on it.", field: "gray-teal" },
-  { h: "The framework", p: "A developmentally responsible AI framework organizations can apply without a research team.", field: "sand" },
+  { h: "The report", p: "Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are. Full quote appendix with sources.",
+    photo: "/images/output-report.jpg", alt: "Stacks of paper documents and file folders", field: "dark-violet" },
+  { h: "The policy brief", p: "Six to ten pages for the people who write rules, written so they can act on it.",
+    photo: "/images/output-brief.jpg", alt: "The interior of a parliament chamber", field: "gray-teal" },
+  { h: "The framework", p: "A developmentally responsible AI framework organizations can apply without a research team.",
+    photo: "/images/output-framework.jpg", alt: "Architectural blueprints spread out on a surface", field: "sand" },
 ];
 
 const sections = [
@@ -67,7 +70,7 @@ const sections = [
     </div>
   </section>
 
-  <section class="sec sec--t" id="known">
+  <section class="sec" id="known">
     <div class="wrap">
       <div class="shead">
         <h3>What is already known</h3>
@@ -167,7 +170,9 @@ const sections = [
       <div class="g3">
         {outputs.map((o, i) => (
           <div class="ncard">
-            <div class="im"><Field v={o.field} id={`ap${i}`} w={1200} h={675} /></div>
+            <div class="im">{o.photo
+              ? <img class="rn" src={o.photo} alt={o.alt} loading="lazy" />
+              : <Field v={o.field} id={`ap${i}`} w={1200} h={675} />}</div>
             <div class="bd">
               <h4>{o.h}</h4>
               <p class="sm mut">{o.p}</p>

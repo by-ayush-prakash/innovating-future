@@ -196,9 +196,9 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .ph-sec .cta{margin-top:clamp(26px,3vw,36px)}
 /* Art beside the copy. Safe as a split because the aside is a fixed ratio,
    not a variable-height column. */
-.ph-split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);
+.ph-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);
   gap:clamp(36px,6vw,88px);align-items:center}
-.ph-aside{width:100%;max-width:400px;justify-self:end}
+.ph-aside{width:100%;max-width:380px;justify-self:end;min-width:0}
 @media(max-width:1080px){
   .ph-split{grid-template-columns:1fr;gap:clamp(32px,5vw,48px)}
   .ph-aside{justify-self:start;max-width:280px}
@@ -212,14 +212,14 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .bleed .lab--d{color:var(--ink)}
 .bleed .lab--d .mono{color:var(--mut)}
 
-/* Anchor targets land flush under whatever chrome is sticky, and let the
-   section's own top padding supply the air. --chrome is the nav alone, or
-   the nav plus the section bar on pages that have one. */
+/* Anchor targets land exactly at the top of their block. --chrome is the
+   nav alone, or the nav plus the section bar on pages that have one, so the
+   block starts flush under whatever is sticky and its own top padding is
+   the breathing room. Every anchored section carries that padding: never
+   put sec--t on a section with an id. */
 :root{--chrome:var(--navh)}
 body:has(.sub){--chrome:calc(var(--navh) + 60px)}
-section[id],header[id],.band[id],.sec[id]{scroll-margin-top:calc(var(--chrome) + 20px)}
-/* these have no top padding of their own, so the margin supplies all of it */
-.sec--t[id]{scroll-margin-top:calc(var(--chrome) + 60px)}
+section[id],header[id],.band[id],.sec[id]{scroll-margin-top:var(--chrome)}
 
 /* A lineup: the names are the proof. Used where a photograph would be
    filler and the roster is the strongest thing the page has. */
@@ -441,7 +441,9 @@ a.eprow:hover{background:var(--off);padding-inline:16px;margin-inline:-16px}
   color:var(--mut);margin-top:5px;display:block}
 .eprow .epa{white-space:nowrap;color:var(--mut)}
 a.eprow:hover .epa{color:var(--ink)}
-.cov{border-radius:var(--r);overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.2)}
+.cov{display:block;width:100%;aspect-ratio:1;border-radius:var(--r);overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.18)}
+.cov img{display:block;width:100%;height:100%;object-fit:cover}
 
 /* ---------- closing CTA + footer ---------- */
 .ctab{background:var(--gray);border-radius:var(--r);padding:clamp(40px,6vw,96px);
