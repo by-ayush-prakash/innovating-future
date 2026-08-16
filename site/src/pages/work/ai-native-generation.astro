@@ -6,11 +6,24 @@ import Field from "../../components/Field.astro";
 import Arrow from "../../components/Arrow.astro";
 
 const facts = [
-  { k: "Status", v: "Fieldwork open" },
-  { k: "First outputs", v: "November 2026" },
-  { k: "Method", v: "Elite-informant qualitative interviews, plus new fieldwork" },
-  { k: "Geography", v: "Canada, against US-centered comparators" },
+  { k: "Status", v: "Open call. Fieldwork in progress" },
+  { k: "Conversations", v: "30 in the first round. Eleven recorded, nineteen scheduled" },
+  { k: "Informants", v: "Researchers, founders and executives, policymakers, skeptics" },
+  { k: "Format", v: "Recorded, about an hour, remote or in person in Montreal and Toronto" },
+  { k: "First report", v: "November 2026" },
   { k: "Program", v: "Co-Existing with AI" },
+];
+
+// The two strands of the open call.
+const calls = [
+  {
+    who: "Researchers",
+    p: "Working in AI, cognition or machine learning. A recorded conversation, about an hour, remote or in person in Montreal and Toronto.",
+  },
+  {
+    who: "Founders, executives, and people in AI governance",
+    p: "A parallel strand on what happens when this technology meets an actual organization. Different questions, same format.",
+  },
 ];
 
 // What is already published, so the reader can see what this study is not duplicating.
@@ -36,6 +49,7 @@ const sections = [
   { label: "Already known", href: "#known" },
   { label: "What is open", href: "#open" },
   { label: "Method", href: "#method" },
+  { label: "Take part", href: "#calls" },
   { label: "What gets published", href: "#outputs" },
 ];
 ---
@@ -70,13 +84,32 @@ const sections = [
     </div>
   </section>
 
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="rule"></div>
+      <div class="bignum" style="padding-top:clamp(36px,4.4vw,56px)">
+        <span class="fig">30</span>
+        <div>
+          <p class="say">Thirty long-form conversations with people who have spent years on this.</p>
+          <p class="sub">
+            Eleven researchers in AI, cognition and machine learning have already sat down on
+            The Ayush Prakash Podcast. Nineteen more are scheduled: further researchers, plus
+            founders and executives, policymakers, and skeptics. Every one is transcribed, coded,
+            and built into the series.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="known">
     <div class="wrap">
       <div class="shead">
-        <h3>What is already known</h3>
-        <p class="sm mut" style="max-width:36ch">
-          The survey layer is crowded and it is worth saying so. This study is not another
-          sentiment poll.
+        <h3>The surveys already agree.</h3>
+        <p class="sm mut" style="max-width:38ch">
+          A thousand respondents, five-point scales, sentiment scores. Useful, and it cannot tell
+          you how anyone actually thinks. Sixty minutes with someone who has spent years on the
+          problem can.
         </p>
       </div>
       <div class="rule"></div>
@@ -85,18 +118,13 @@ const sections = [
           <div class="nrow"><span class="n">{k.n}</span><h4>{k.src}</h4><p>{k.f}</p></div>
         ))}
       </div>
-      <p class="dnote">
-        Deloitte runs an annual Gen Z survey. KPMG runs an intern pulse. Between them the question
-        of how this generation <em>feels</em> about AI is well covered, and the answers are
-        converging.
-      </p>
     </div>
   </section>
 
   <section class="band band--dim" id="open">
     <div class="rnw"><Field v="dark-slate" id="ao" w={2400} h={900} /></div>
     <div class="wrap">
-      <h3 style="max-width:22ch">Three gaps, and they are the reason this study exists.</h3>
+      <h3 style="max-width:20ch">Everyone measured how they feel. Nobody watched what they do.</h3>
       <div class="pts">
         <div class="pt">
           <span class="n">Gap 01</span>
@@ -121,7 +149,7 @@ const sections = [
   <section class="sec sec--g" id="method">
     <div class="wrap">
       <div class="shead">
-        <h3>Method, stated before the findings</h3>
+        <h3>The method is public before the findings are.</h3>
         <p class="sm mut" style="max-width:36ch">Two layers of evidence, gathered differently and never merged.</p>
       </div>
       <div class="rule"></div>
@@ -166,9 +194,34 @@ const sections = [
     </div>
   </section>
 
+  <section class="sec" id="calls">
+    <div class="wrap">
+      <div class="shead">
+        <h3>You keep a veto over your own words.</h3>
+        <p class="sm mut" style="max-width:36ch">
+          You see every quote attributed to you before publication, and you can strike anything.
+        </p>
+      </div>
+      <div class="rule"></div>
+      <div class="nums">
+        {calls.map((c, i) => (
+          <div class="nrow">
+            <span class="n">{String(i + 1).padStart(2, "0")}</span>
+            <h4>{c.who}</h4>
+            <p>{c.p}</p>
+          </div>
+        ))}
+      </div>
+      <div class="sfoot">
+        <p>Two open calls for the next round. Every message is read.</p>
+        <a class="go" href="/contact">Take part <Arrow /></a>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="outputs">
     <div class="wrap">
-      <div class="shead"><h3>What gets published</h3></div>
+      <div class="shead"><h3>Written to be used, not cited.</h3></div>
       <div class="g3">
         {outputs.map((o, i) => (
           <div class="ncard">

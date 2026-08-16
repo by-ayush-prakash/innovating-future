@@ -188,7 +188,10 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .hcards{display:grid;grid-template-columns:1.62fr 1fr;gap:16px;margin-top:clamp(40px,5vw,64px)}
 .hcards .card:first-child{aspect-ratio:16/10}
 .hcards .card:last-child{aspect-ratio:1/1.02}
-.cardlab{position:absolute;left:28px;bottom:26px;color:#fff;max-width:26ch;z-index:2}
+.cardlab{position:absolute;left:clamp(24px,2.4vw,34px);right:clamp(24px,2.4vw,34px);
+  bottom:clamp(22px,2.2vw,30px);color:#fff;z-index:2}
+.cardlab .lg{display:block;font-size:clamp(22px,2.3vw,32px);line-height:1.12;
+  letter-spacing:-.015em;text-wrap:balance}
 .cardlab .mono{color:rgba(255,255,255,.72)}
 .cardlab--d{color:var(--ink)}
 .cardlab--d .mono{color:var(--mut)}
@@ -333,6 +336,13 @@ a.rrow:hover{background:var(--off);padding-inline:14px;margin-inline:-14px}
 .pt h4{color:#fff;font-size:clamp(19px,1.7vw,22px);line-height:1.28;margin-bottom:12px}
 .pt p{color:rgba(255,255,255,.72);font-size:15px;line-height:24px;max-width:38ch;margin:0}
 @media(max-width:1080px){ .pts{grid-template-columns:1fr!important;gap:30px} }
+
+/* One number, carrying a section. */
+.bignum{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.bignum .fig{font-size:clamp(96px,15vw,220px);line-height:.86;letter-spacing:-.045em}
+.bignum .say{font-size:clamp(20px,2.2vw,30px);line-height:1.26;letter-spacing:-.01em;max-width:24ch}
+.bignum .sub{margin-top:18px;color:var(--mut);font-size:15px;line-height:24px;max-width:46ch}
+@media(max-width:900px){ .bignum{grid-template-columns:1fr;gap:18px} }
 
 /* stats */
 .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,4.4vw,64px)}
