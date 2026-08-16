@@ -28,6 +28,15 @@ function fmtDate(pubDate: string) {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
+// Sourced from the Center's own published bio and the feed. Extend as the
+// roster grows; the band reads straight from this list.
+const guests = [
+  { n: "Avi Loeb", r: "Astrophysicist, Harvard" },
+  { n: "Karl Friston", r: "Neuroscientist, University College London" },
+  { n: "Sheldon Solomon", r: "Psychologist, Skidmore College" },
+  { n: "Nidhi Hegde", r: "Computing science, University of Alberta" },
+];
+
 const sections = [
   { label: "Latest", href: "#latest" },
   { label: "All episodes", href: "#all" },
@@ -119,32 +128,38 @@ const sections = [
             ))}
           </div>
           <p id="ep-empty" style="display:none;padding:40px 0;color:var(--mut)">No episodes match that search.</p>
-          <div id="ep-more-wrap" style="display:flex;justify-content:center;margin-top:clamp(28px,3.4vw,44px)">
-            <button id="ep-more" class="btn btn--gh" style="background:#fff" type="button">
-              Load more <span id="ep-left" class="mut"></span>
-            </button>
+          <div id="ep-more-wrap" class="epmore">
+            <button id="ep-more" class="btn btn--gh" style="background:#fff" type="button">Load more</button>
+            <span id="ep-left" class="cnt"></span>
           </div>
         </div>
       </section>
     </>
   )}
 
-  <section class="band" id="guests">
+  <section class="band band--dim" id="guests">
     <div class="rnw"><Field v="dark-slate" id="pg" w={2400} h={900} /></div>
     <div class="wrap">
-      <h3>Researchers, critics, and builders. Nobody selling anything.</h3>
+      <h3 style="max-width:20ch">Researchers, critics, and builders. Nobody selling anything.</h3>
       <p>
         The show books people who have spent years on a question and are willing to be pushed on
         the answer for an hour. Conversations run long because the interesting part is rarely in
         the first twenty minutes.
       </p>
-      <div class="strip" style="margin-top:clamp(44px,5.4vw,76px)">
-        <div><div class="n">{episodes.length > 0 ? `${episodes.length}` : "150+"}</div><p>Conversations published to date.</p></div>
-        <div><div class="n">3</div><p>Platforms, same cut. Apple, Spotify, YouTube.</p></div>
-        <div><div class="n">{ORG.founded}</div><p>The Center behind the show. Sixteen years of published record.</p></div>
+      <div class="pts" style="grid-template-columns:repeat(4,1fr)">
+        {guests.map((g) => (
+          <div class="pt">
+            <h4>{g.n}</h4>
+            <p>{g.r}</p>
+          </div>
+        ))}
       </div>
+      <p class="mono" style="margin-top:clamp(28px,3vw,40px);color:rgba(255,255,255,.5)">
+        {episodes.length > 0 ? episodes.length : "160+"} conversations since 2021, published in full
+      </p>
     </div>
   </section>
+
 
   <section class="sec" id="authors">
     <div class="wrap">
@@ -202,7 +217,7 @@ const sections = [
       if (empty) empty.style.display = matches === 0 ? "block" : "none";
       const remaining = rows.length - shown;
       if (moreWrap) moreWrap.style.display = !q && remaining > 0 ? "flex" : "none";
-      if (left) left.textContent = remaining > 0 ? ` (${remaining})` : "";
+      if (left) left.textContent = remaining > 0 ? `${remaining} more` : "";
     }
 
     if (moreBtn) moreBtn.addEventListener("click", () => { shown += STEP; draw(); });

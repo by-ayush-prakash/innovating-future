@@ -47,7 +47,7 @@ const sections = [
   ctaLabel="Visit manticpublishing.com"
   ctaHref={MANTIC.url}
 >
-  <PageHead field="sand" id="mt">
+  <PageHead photo="/images/mantic-site.jpg" alt="The Mantic Publishing homepage: one sentence, with we and us set as marks" id="mt">
     Mantic Publishing.
     <p slot="lede" class="lede">
       Books that break the mainstream narrative. We break and build the idea with the author
@@ -91,25 +91,29 @@ const sections = [
     </div>
   </section>
 
-  <section class="band" id="list">
+  <section class="band band--dim" id="list">
     <div class="rnw"><Field v="dark-amber" id="ml" w={2400} h={900} /></div>
     <div class="wrap">
-      <div class="bandgrid" style="align-items:center;grid-template-columns:1fr 340px;margin-top:0">
+      <div class="bandgrid" style="align-items:start;margin-top:0">
         <div>
-          <h3>The Transcendence of Technology: A Spiritual Return for Humanity</h3>
-          <p>
-            The first book under contract. An argument that the question technology forces on us
-            is not economic or political but spiritual, and that the answer is a return rather
-            than an advance.
-          </p>
-          <a class="btn btn--w" style="margin-top:34px" href={MANTIC.url} target="_blank" rel="noopener noreferrer">Follow the list</a>
+          <p class="mono" style="color:rgba(255,255,255,.5)">First title, under contract</p>
+          <h3 style="margin-top:20px;max-width:16ch">The Transcendence of Technology: A Spiritual Return for Humanity</h3>
         </div>
-        <div class="card" style="border-radius:14px;aspect-ratio:3/4;box-shadow:0 40px 90px rgba(0,0,0,.45)">
-          <Field v="dark-violet" id="mbk" w={900} h={1200} />
+        <div>
+          <p style="margin-top:0">
+            An argument that the question technology forces on us is not economic or political but
+            spiritual, and that the answer is a return rather than an advance.
+          </p>
+          <p style="margin-top:18px">
+            Mantic publishes few books and works on each one for a long time. This is the first,
+            and the list will stay short.
+          </p>
+          <a class="btn btn--w" style="margin-top:32px" href={MANTIC.url} target="_blank" rel="noopener noreferrer">Follow the list</a>
         </div>
       </div>
     </div>
   </section>
+
 
   <section class="sec" id="authors">
     <div class="wrap">
