@@ -119,8 +119,8 @@ p{text-wrap:pretty}
    .rnw wraps a generated field; .im wraps a photograph. Both get the
    grain overlay, which is what stops a blurred gradient reading as cheap. */
 .rn{width:100%;height:100%;object-fit:cover}
-.card,.rnw,.im,.bleed,.afig,.qcard{position:relative;overflow:hidden}
-.card::after,.rnw::after,.im::after,.bleed::after,.afig::after,.qcard::after{
+.card,.rnw,.im,.bleed,.afig{position:relative;overflow:hidden}
+.card::after,.rnw::after,.im::after,.bleed::after,.afig::after{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
   background-size:140px 140px;opacity:.55;mix-blend-mode:overlay}
@@ -213,13 +213,10 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
   .ph-aside{justify-self:start;max-width:280px}
 }
 .bleed{margin-top:clamp(34px,4.4vw,60px);aspect-ratio:21/8;min-height:260px}
-.bleed .lab{position:absolute;left:clamp(22px,3vw,40px);bottom:clamp(22px,2.6vw,36px);color:#fff;z-index:2}
 /* A document in the hero: shown whole, never cropped. */
 .bleed--doc{background:var(--grey);padding:clamp(18px,3vw,44px);display:flex;align-items:center;justify-content:center}
 .bleed--doc img{width:auto;max-width:100%;max-height:100%;height:auto;object-fit:contain;
   border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.07)}
-.bleed .lab--d{color:var(--ink)}
-.bleed .lab--d .mono{color:var(--mut)}
 
 /* Anchor targets land exactly at the top of their block. --chrome is the
    nav alone, or the nav plus the section bar on pages that have one, so the
@@ -230,19 +227,6 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 body:has(.sub){--chrome:calc(var(--navh) + 60px)}
 section[id],header[id],.band[id],.sec[id]{scroll-margin-top:var(--chrome)}
 
-/* A lineup: the names are the proof. Used where a photograph would be
-   filler and the roster is the strongest thing the page has. */
-.lineup{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:clamp(10px,1.5vw,22px);
-  padding:clamp(28px,4vw,60px) clamp(20px,4vw,64px);text-align:center}
-.lineup .nm{display:block;color:#fff;font-size:clamp(19px,2.9vw,44px);line-height:1.06;
-  letter-spacing:-.02em}
-.lineup .rl{display:block;margin-top:6px;font-family:var(--mono);font-size:clamp(10px,.85vw,12px);
-  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.lineup .more{margin-top:clamp(10px,1.4vw,20px);font-family:var(--mono);font-size:12px;
-  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-@media(max-width:760px){ .lineup .rl{display:none} .lineup{gap:8px} }
-
 /* ---------- sticky section bar ---------- */
 .sub{position:sticky;top:var(--navh);z-index:50;background:rgba(255,255,255,.9);
   backdrop-filter:blur(14px);border-bottom:1px solid var(--hair);margin-top:clamp(40px,5vw,64px)}
@@ -251,13 +235,6 @@ section[id],header[id],.band[id],.sec[id]{scroll-margin-top:var(--chrome)}
 .sub .wrap::-webkit-scrollbar{display:none}
 .sub a{white-space:nowrap}
 .sub a:hover,.sub a.now{color:var(--ink)}
-
-/* A screenshot is a document, not a photograph: contain it, never crop it. */
-.shot{background:var(--grey);border-radius:var(--r);padding:clamp(14px,2vw,30px);
-  display:flex;align-items:center;justify-content:center}
-.shot img{width:100%;height:auto;object-fit:contain;border-radius:8px;
-  box-shadow:0 2px 14px rgba(0,0,0,.10)}
-.shotcap{margin-top:16px;font-size:13px;line-height:21px;color:var(--mut)}
 
 /* ---------- alternating image rows ---------- */
 .alt{display:flex;flex-direction:column;gap:clamp(56px,8vw,112px)}
@@ -283,7 +260,7 @@ section[id],header[id],.band[id],.sec[id]{scroll-margin-top:var(--chrome)}
 .prow .t{font-size:clamp(22px,2.2vw,30px);line-height:1.22;letter-spacing:-.01em}
 .prow p{color:var(--mut);max-width:62ch}
 .prow .ar{justify-self:end;opacity:0;transform:translateX(-6px);transition:.18s;align-self:center}
-a.prow:hover{background:var(--off);padding-inline:18px;margin-inline:-18px}
+a.prow:hover{background:var(--off)}
 a.prow:hover .ar{opacity:.55;transform:none}
 @media(max-width:900px){
   .prow{grid-template-columns:1fr;gap:10px}
@@ -296,7 +273,6 @@ a.prow:hover .ar{opacity:.55;transform:none}
 a.lrow:hover{padding-left:10px}
 .lrow .t{font-size:clamp(20px,1.9vw,24px);line-height:1.3;letter-spacing:-.01em}
 .lrow p{color:var(--mut);font-size:14px;line-height:22px;margin-top:8px;max-width:66ch}
-.lrow .meta{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
 
 /* Featured conversations: numbered, so it reads as a shortlist. The episode
    title comes out of the feed and takes over from the affiliation on hover. */
@@ -312,7 +288,7 @@ a.lrow:hover{padding-left:10px}
   font-size:14px;line-height:21px;color:var(--ink-2);opacity:0;transition:.18s;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fconv .ar{justify-self:end;opacity:0;transform:translateX(-6px);transition:.18s}
-.fconv:hover{background:#fff;padding-inline:18px;margin-inline:-18px}
+.fconv:hover{background:#fff}
 .fconv:hover .r{opacity:0}
 .fconv:hover .ep{opacity:1}
 .fconv:hover .ar{opacity:.55;transform:none}
@@ -325,7 +301,7 @@ a.lrow:hover{padding-left:10px}
 .rows{border-top:1px solid var(--hair)}
 .rrow{display:grid;grid-template-columns:120px 1fr 200px;gap:clamp(18px,3vw,44px);
   padding:26px 0;border-bottom:1px solid var(--hair);align-items:baseline;transition:.15s}
-a.rrow:hover{background:var(--off);padding-inline:14px;margin-inline:-14px}
+a.rrow:hover{background:var(--off)}
 .rrow h3{font-size:20px;line-height:28px;letter-spacing:-.01em}
 .rrow .attrib{display:block;color:var(--mut);font-size:14px;line-height:22px;margin-top:6px;max-width:70ch}
 .rrow .src{font-size:13px;color:var(--mut);text-align:right}
@@ -499,7 +475,7 @@ a.wl:hover img{opacity:1;filter:none}
 .eplist{border-top:1px solid var(--hair)}
 .eprow{display:grid;grid-template-columns:64px 52px 1fr auto;gap:clamp(16px,2.4vw,32px);
   padding:18px 0;border-bottom:1px solid var(--hair);align-items:center;transition:.15s}
-a.eprow:hover{background:var(--off);padding-inline:16px;margin-inline:-16px}
+a.eprow:hover{background:var(--off)}
 .epcov{width:64px;height:64px;border-radius:10px;overflow:hidden;background:var(--grey);flex:none}
 .epcov img{width:100%;height:100%;object-fit:cover}
 .eprow .epn{font-family:var(--mono);font-size:13px;color:var(--mut)}
