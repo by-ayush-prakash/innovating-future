@@ -181,7 +181,7 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 }
 
 /* ---------- homepage hero ---------- */
-.hero{padding:clamp(52px,7vw,96px) 0 0}
+.hero{padding:clamp(52px,7vw,96px) 0 clamp(64px,9vw,120px)}
 .hero h1{max-width:none;margin-bottom:30px;font-size:clamp(38px,7.6vw,112px)}
 .hero .lede{max-width:52ch}
 .hero .cta{margin-top:36px}
@@ -297,6 +297,29 @@ a.lrow:hover{padding-left:10px}
 .lrow .t{font-size:clamp(20px,1.9vw,24px);line-height:1.3;letter-spacing:-.01em}
 .lrow p{color:var(--mut);font-size:14px;line-height:22px;margin-top:8px;max-width:66ch}
 .lrow .meta{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+
+/* Featured conversations: numbered, so it reads as a shortlist. The episode
+   title comes out of the feed and takes over from the affiliation on hover. */
+.fconvs{border-top:0}
+.fconv{display:grid;grid-template-columns:44px 1fr 44px;gap:clamp(14px,2vw,26px);align-items:center;
+  padding:clamp(20px,2.4vw,28px) 0;border-bottom:1px solid var(--hair);transition:.18s;position:relative}
+.fconv:last-child{border-bottom:0}
+.fconv .n{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--mut)}
+.fconv .who{display:block;min-width:0}
+.fconv .t{display:block;font-size:clamp(20px,1.9vw,26px);line-height:1.2;letter-spacing:-.01em}
+.fconv .r{display:block;margin-top:5px;font-size:14px;line-height:21px;color:var(--mut);transition:.18s}
+.fconv .ep{position:absolute;left:calc(44px + clamp(14px,2vw,26px));right:52px;bottom:clamp(20px,2.4vw,28px);
+  font-size:14px;line-height:21px;color:var(--ink-2);opacity:0;transition:.18s;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fconv .ar{justify-self:end;opacity:0;transform:translateX(-6px);transition:.18s}
+.fconv:hover{background:#fff;padding-inline:18px;margin-inline:-18px}
+.fconv:hover .r{opacity:0}
+.fconv:hover .ep{opacity:1}
+.fconv:hover .ar{opacity:.55;transform:none}
+@media(hover:none){
+  .fconv .ep{position:static;opacity:1;margin-top:5px;white-space:normal}
+  .fconv .r{display:none}
+}
 
 /* record rows: date, body, source. used by /media and /work */
 .rows{border-top:1px solid var(--hair)}
