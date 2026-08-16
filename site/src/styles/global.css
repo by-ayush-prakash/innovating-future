@@ -124,10 +124,20 @@ p{text-wrap:pretty}
 /* ---------- nav ---------- */
 nav.site{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:blur(14px)}
 .navin{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px);height:var(--navh)}
-.lock{display:flex;align-items:center;gap:10px;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
-.lock:hover{color:var(--mut)}
-.dots{display:grid;grid-template-columns:9px 9px;gap:3px;flex:none}
-.dots i{width:9px;height:9px;border-radius:9999px;display:block}
+.lock{display:flex;align-items:center;flex:none}
+/* The lockup IS the logo: an accent bracket around the name. */
+.brand{position:relative;display:block;font-weight:500;font-size:13.5px;line-height:1.32;
+  letter-spacing:-.018em;color:var(--ink);padding:5px 0 5px 16px;border-left:2px solid var(--red);
+  white-space:nowrap;transition:.2s}
+.brand::before,.brand::after{content:"";position:absolute;left:0;width:10px;height:2px;background:var(--red)}
+.brand::before{top:0}
+.brand::after{bottom:0}
+.lock:hover .brand{color:var(--mut)}
+.brand--stack{font-size:21px;line-height:1.24;letter-spacing:-.026em;
+  padding:8px 0 8px 22px;border-left-width:3px}
+.brand--stack::before,.brand--stack::after{width:16px;height:3px}
+.brand--light{color:#fff}
+a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .lock__short{display:none}
 .nlinks{display:flex;align-items:center;gap:clamp(14px,1.8vw,26px);font-size:16px}
 .ndrop{position:relative}
@@ -166,7 +176,7 @@ nav.site{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backd
 
 /* ---------- homepage hero ---------- */
 .hero{padding:clamp(52px,7vw,96px) 0 0}
-.hero h1{max-width:16ch;margin-bottom:28px}
+.hero h1{max-width:none;margin-bottom:30px;font-size:clamp(38px,7.6vw,112px)}
 .hero .lede{max-width:52ch}
 .hero .cta{margin-top:36px}
 .hcards{display:grid;grid-template-columns:1.62fr 1fr;gap:16px;margin-top:clamp(40px,5vw,64px)}
@@ -255,6 +265,10 @@ a.rrow:hover{background:var(--off);padding-inline:14px;margin-inline:-14px}
 /* ---------- cards ---------- */
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.g3--c{gap:clamp(32px,4vw,64px)}
+.g3--c>*{display:flex;flex-direction:column;align-items:center;text-align:center}
+.g3--c svg.ico{margin-inline:auto}
+.g3--c p{max-width:34ch}
 .ncard{border-radius:var(--r);overflow:hidden;background:var(--grey);display:flex;
   flex-direction:column;transition:.2s}
 a.ncard:hover{transform:translateY(-4px)}
@@ -378,7 +392,7 @@ footer.site h4{margin:0 0 20px;font-family:var(--mono);font-size:12px;text-trans
   letter-spacing:.06em;font-weight:400;color:rgba(250,250,250,.44)}
 footer.site .fcol a{display:block;margin-bottom:12px;font-size:14px;color:rgba(250,250,250,.8)}
 footer.site .fcol a:hover{color:#fff}
-.fmark{display:flex;align-items:center;gap:10px;font-size:20px;letter-spacing:-.02em;margin-bottom:20px}
+.fmark{display:inline-flex;align-items:center;margin-bottom:22px}
 .fnote{font-size:14px;line-height:22px;color:rgba(250,250,250,.6);max-width:34ch}
 .fmail{display:inline-block;margin-top:20px;font-size:15px;border-bottom:1px solid rgba(255,255,255,.3)}
 .fmail:hover{border-bottom-color:#fff}
@@ -395,6 +409,8 @@ footer.site .fcol a:hover{color:#fff}
 /* ---------- responsive ---------- */
 @media(max-width:1080px){
   .hcards,.ph-grid,.arow,.bandgrid,.g3,.g2,.ctab,.fgrid,.cgrid,.person,.pp,.strip{grid-template-columns:1fr}
+  .lock__full{display:none}
+  .lock__short{display:block}
   .nrow{grid-template-columns:56px 1fr}
   .nrow p{grid-column:2}
   .wall{grid-template-columns:repeat(3,1fr)}

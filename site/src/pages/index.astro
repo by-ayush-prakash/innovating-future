@@ -1,10 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import Field from "../components/Field.astro";
-import Mark from "../components/Mark.astro";
 import Arrow from "../components/Arrow.astro";
 import { SKEPTICISM, MANTIC, PODCAST, ORG, MEDIA } from "../config";
-import { getFeed } from "../lib/feed";
 
 // Drop a file at src/assets/media/<slug>.png and it appears on the wall.
 // Exported at 3x, so display size is the intrinsic size divided by three.
@@ -15,12 +13,6 @@ const logoFor = (slug: string) =>
 const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
   .filter((m) => m.logo)
   .sort((a, b) => a.r - b.r);
-
-const { episodes } = await getFeed();
-const latest = episodes[0] ?? null;
-const latestDate = latest
-  ? new Date(latest.pubDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
-  : "";
 
 // The three principles. Line art, drawn not illustrated.
 const pillars = [
@@ -61,8 +53,7 @@ const properties = [
 
   <header class="hero">
     <div class="wrap">
-      <p class="mono" style="margin-bottom:26px">{ORG.city} &middot; Established {ORG.founded}</p>
-      <h1>The future is innovated, not predicted.</h1>
+      <h1>The future is innovated,<br />not predicted.</h1>
       <p class="lede">
         A strategy innovation lab working to ensure the forces remaking human life are
         built on purpose rather than inherited.
@@ -93,10 +84,10 @@ const properties = [
 
   <section class="sec">
     <div class="wrap">
-      <div class="g3">
+      <div class="g3 g3--c">
         {pillars.map((p, i) => (
           <div>
-            <svg width="126" height="126" viewBox="0 0 120 120" fill="none" stroke="#000" stroke-width="1" style="margin-bottom:44px" aria-hidden="true">
+            <svg width="126" height="126" viewBox="0 0 120 120" class="ico" fill="none" stroke="#000" stroke-width="1" style="margin-bottom:44px" aria-hidden="true">
               {i === 0 && (
                 <g><path d="M60 6 114 60 60 114 6 60Z"/><path d="M60 26 94 60 60 94 26 60Z"/><path d="M60 44 76 60 60 76 44 60Z"/><circle cx="60" cy="60" r="5"/></g>
               )}
@@ -108,7 +99,7 @@ const properties = [
               )}
             </svg>
             <h2 style="margin-bottom:16px">{p.h}</h2>
-            <p style="color:var(--ink-2);max-width:36ch">{p.p}</p>
+            <p style="color:var(--ink-2)">{p.p}</p>
             <a class="go" href={p.href} style="margin-top:34px">Learn more <Arrow /></a>
           </div>
         ))}
@@ -119,7 +110,7 @@ const properties = [
   <section class="band">
     <div class="rnw"><Field v="dark-teal" id="hs" w={2400} h={900} /></div>
     <div class="wrap">
-      <span class="fmark" style="color:#fff"><Mark last="#fff" /> senate&nbsp;2017</span>
+      <p class="mono">Senate of Canada &middot; 2 February 2017</p>
       <div class="bandgrid">
         <div>
           <h3>We graded our own testimony.</h3>
@@ -145,7 +136,7 @@ const properties = [
   <section class="sec" id="media">
     <div class="wrap">
       <div class="shead">
-        <h2>Cited where the decisions get made</h2>
+        <h2>In the press</h2>
         <a class="go sm" href="/media">All media appearances <Arrow /></a>
       </div>
       <div class="wall">
@@ -176,9 +167,6 @@ const properties = [
               <p>Fieldwork on what sustained interaction with conversational AI does to cognition, identity, and agency.</p>
             </a>
           </div>
-          {latest && (
-            <p class="mono" style="margin-top:26px">Latest episode &middot; {latestDate} &middot; {latest.title}</p>
-          )}
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
 ---
-// The four-dot mark. Three property hues plus the ground.
-const { last = "#17171C" } = Astro.props;
+/*
+  The lockup IS the logo: an accent bracket around the name, nothing else.
+  This is CIF's existing mark. Do not replace it with a symbol.
+
+  stack  larger, for the footer
+  light  white text, for dark grounds. The bracket stays accent.
+*/
+const { stack = false, light = false } = Astro.props;
+const cls = ["brand", stack && "brand--stack", light && "brand--light"].filter(Boolean).join(" ");
 ---
-<span class="dots" aria-hidden="true">
-  <i style="background:#DE3A11"></i>
-  <i style="background:#C67E16"></i>
-  <i style="background:#1C6E63"></i>
-  <i style={`background:${last}`}></i>
-</span>
+<span class={cls}><slot /></span>
