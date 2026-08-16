@@ -43,6 +43,13 @@ const grades = [
   { v: "failed", l: "Failed", c: "42% of Canadian jobs at risk" },
 ];
 
+// Three the show is known for. Ordered by how well the name travels.
+const featured = [
+  { n: "Karl Friston", r: "Neuroscientist, University College London" },
+  { n: "Avi Loeb", r: "Astrophysicist, Harvard" },
+  { n: "Sheldon Solomon", r: "Psychologist, Skidmore College" },
+];
+
 const properties = [
   { ...SKEPTICISM, note: SKEPTICISM.blurb },
   { ...MANTIC, note: MANTIC.blurb },
@@ -75,6 +82,32 @@ const properties = [
       </div>
     </div>
   </header>
+
+  <section class="sec sec--g">
+    <div class="wrap">
+      <div class="shead">
+        <h2>Long conversations with people who have spent years on it.</h2>
+        <a class="go sm" href="/podcast">All episodes <Arrow /></a>
+      </div>
+      <div class="arow" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center">
+        <a class="cov" href="/podcast" style="display:block">
+          <img src={PODCAST.cover} alt={`${PODCAST.name} cover art`} />
+        </a>
+        <div>
+          <div class="rule"></div>
+          <div class="plist">
+            {featured.map((g) => (
+              <a class="prow" href="/podcast" style="grid-template-columns:1fr auto 44px">
+                <span class="t">{g.n}</span>
+                <p style="text-align:right">{g.r}</p>
+                <span class="ar"><Arrow /></span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="sec">
     <div class="wrap">
