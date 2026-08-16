@@ -2,8 +2,12 @@
 import Field from "./Field.astro";
 
 /*
-  Inner-page hero. Split grid: H1 left, lede and buttons right, then an
-  optional 21:8 bleed image.
+  Inner-page hero. Stacked, same as the homepage: H1, lede, buttons, image.
+
+  It used to be a two-column split with the H1 bottom-aligned against the
+  lede. That only holds when both columns are the same height, which they
+  never are, so the headline sank to the bottom of a tall empty box. One
+  stacked layout works at every copy length.
 
   No eyebrow. The heading carries the page.
 
@@ -13,23 +17,16 @@ import Field from "./Field.astro";
     alt     alt text for photo
   Slots
     default   the H1 text
-    lede      the paragraph on the right
+    lede      the paragraph under it
     cta       buttons under the lede
 */
 const { field = null, photo = null, alt = "", id = "ph" } = Astro.props;
-const hasSide = Astro.slots.has("lede") || Astro.slots.has("cta");
 ---
 <header class="ph-sec">
   <div class="wrap">
-    <div class="ph-grid" style={hasSide ? undefined : "grid-template-columns:1fr"}>
-      <h1 class="ph"><slot /></h1>
-      {hasSide && (
-        <div>
-          <slot name="lede" />
-          <slot name="cta" />
-        </div>
-      )}
-    </div>
+    <h1 class="ph"><slot /></h1>
+    <slot name="lede" />
+    <slot name="cta" />
 
     {(photo || field) && (
       <div class="bleed">
