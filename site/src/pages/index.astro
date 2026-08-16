@@ -144,23 +144,24 @@ const properties = [
 
   <section class="sec sec--t">
     <div class="wrap">
-      <div class="arow">
-        <div class="afig" style="aspect-ratio:1/1"><Field v="stone" id="hp" w={900} h={900} /></div>
-        <div>
-          <div class="rule"></div>
-          <div class="lrows" style="border-top:0">
-            {properties.map((p) => (
-              <a class="lrow" href={p.page}>
-                <span class="t">{p.name}</span>
-                <p>{p.note}</p>
-              </a>
-            ))}
-            <a class="lrow" href="/work/ai-native-generation">
-              <span class="t">The First AI-Native Generation</span>
-              <p>Fieldwork on what sustained interaction with conversational AI does to cognition, identity, and agency.</p>
-            </a>
-          </div>
-        </div>
+      <div class="shead">
+        <h2>What the Center owns</h2>
+        <a class="go sm" href="/work">All work <Arrow /></a>
+      </div>
+      <div class="rule"></div>
+      <div class="plist">
+        {properties.map((p) => (
+          <a class="prow" href={p.page}>
+            <span class="t">{p.name}</span>
+            <p>{p.note}</p>
+            <span class="ar"><Arrow /></span>
+          </a>
+        ))}
+        <a class="prow" href="/work/ai-native-generation">
+          <span class="t">The First AI-Native Generation</span>
+          <p>Fieldwork on what sustained interaction with conversational AI does to cognition, identity, and agency.</p>
+          <span class="ar"><Arrow /></span>
+        </a>
       </div>
     </div>
   </section>

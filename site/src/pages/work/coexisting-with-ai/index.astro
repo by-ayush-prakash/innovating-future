@@ -11,19 +11,19 @@ const holds = [
     n: "01",
     h: "Coexistence is not acceptance.",
     p: "Living alongside a technology means asking it to show its work before granting it trust. Every institution is held to that standard. Artificial intelligence has mostly been exempted from it. The Center holds itself to the same test.",
-    field: "sand",
+    photo: "/images/prog-01.jpg",
   },
   {
     n: "02",
     h: "The question is older than the technology.",
     p: "The Center has worked on this since 2010. Through robotics. Through the last automation cycle. Now through this one. The through line is not the tool. It is what happens to the people standing next to it.",
-    field: "stone",
+    photo: "/images/prog-02.jpg",
   },
   {
     n: "03",
     h: "Written for the person who has to act.",
     p: "Not for the reader who wants to be persuaded. Every session, assessment and paper ends in something a specific person can do. In an organization that already exists. With the constraints it already has.",
-    field: "dark-red",
+    photo: "/images/prog-03.jpg",
   },
 ];
 
@@ -95,7 +95,7 @@ const sections = [
       <div class="alt">
         {holds.map((k, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
-            <div class="afig"><Field v={k.field} id={`cp${i}`} w={1000} h={750} /></div>
+            <div class="afig"><img class="rn" src={k.photo} alt="" width="1600" height="1200" loading="lazy" /></div>
             <div>
               <h3>{k.h}</h3>
               <p>{k.p}</p>

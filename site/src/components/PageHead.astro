@@ -14,13 +14,14 @@ import Field from "./Field.astro";
   Props
     field   Field variant for the bleed image
     photo   path to a real photograph, used instead of field
+    fit     "cover" (default) or "contain" for a document or screenshot
     alt     alt text for photo
   Slots
     default   the H1 text
     lede      the paragraph under it
     cta       buttons under the lede
 */
-const { field = null, photo = null, alt = "", id = "ph" } = Astro.props;
+const { field = null, photo = null, alt = "", id = "ph", fit = "cover" } = Astro.props;
 ---
 <header class="ph-sec">
   <div class="wrap">
@@ -29,7 +30,7 @@ const { field = null, photo = null, alt = "", id = "ph" } = Astro.props;
     <slot name="cta" />
 
     {(photo || field) && (
-      <div class="bleed">
+      <div class={fit === "contain" ? "bleed bleed--doc" : "bleed"}>
         {photo
           ? <img class="rn" src={photo} alt={alt} loading="eager" />
           : <Field v={field} id={id} w={2400} h={914} />}
