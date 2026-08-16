@@ -1,5 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
+import Field from "../components/Field.astro";
+import Mark from "../components/Mark.astro";
+import Arrow from "../components/Arrow.astro";
 import { SKEPTICISM, MANTIC, PODCAST, ORG, MEDIA } from "../config";
 import { getFeed } from "../lib/feed";
 
@@ -19,185 +22,223 @@ const latestDate = latest
   ? new Date(latest.pubDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
   : "";
 
+// The three principles. Line art, drawn not illustrated.
+const pillars = [
+  {
+    h: "Independence",
+    p: "The Center owns the institutions it builds and funds them so they can publish findings that no sponsor commissioned.",
+    href: "/work",
+  },
+  {
+    h: "Convening",
+    p: "Closed rooms and public forums that put researchers, operators, and regulators on the same question at the same time.",
+    href: SKEPTICISM.page,
+  },
+  {
+    h: "Publication",
+    p: "Reports, briefs, and books. Every claim sourced, every method stated before the finding, every error graded in public.",
+    href: "/senate-2017",
+  },
+];
 
+// Graded in 2026 against public evidence. Full working at /senate-2017.
+const grades = [
+  { v: "held", l: "Held", c: "A national robotics strategy would matter" },
+  { v: "held", l: "Held", c: "Hospitals will rent robots, not buy them" },
+  { v: "held", l: "Held", c: "Phones become clinical biosensors" },
+  { v: "partly", l: "Partly", c: "Algorithms beat dermatologists" },
+  { v: "failed", l: "Failed", c: "Watson reaches 99% diagnostic accuracy" },
+  { v: "failed", l: "Failed", c: "42% of Canadian jobs at risk" },
+];
+
+const properties = [
+  { ...SKEPTICISM, note: SKEPTICISM.blurb },
+  { ...MANTIC, note: MANTIC.blurb },
+  { ...PODCAST, note: PODCAST.blurb },
+];
 ---
 <Base description="The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010, working to ensure that the forces remaking human life, such as artificial intelligence and geopolitics, are built on purpose rather than inherited.">
-  <header class="hero field field--warm">
-    <span class="orb orb--a" aria-hidden="true"></span>
-    <span class="orb orb--b" aria-hidden="true"></span>
-    <span class="orb orb--c" aria-hidden="true"></span>
+
+  <header class="hero">
     <div class="wrap">
-      <div class="hcopy">
-        <p class="kick">Toronto &middot; Established {ORG.founded}</p>
-        <h1>The future is innovated, not predicted.</h1>
-        <p class="sub">
-          A strategy innovation lab working to ensure the forces remaking human life are
-          built on purpose rather than inherited.
-        </p>
-        <div class="cta">
-          <a class="pill pill--solid" href="/work">See our work</a>
-          <a class="pill pill--ghost" href="/leadership">Who runs it</a>
-        </div>
+      <p class="mono" style="margin-bottom:26px">{ORG.city} &middot; Established {ORG.founded}</p>
+      <h1>The future is innovated, not predicted.</h1>
+      <p class="lede">
+        A strategy innovation lab working to ensure the forces remaking human life are
+        built on purpose rather than inherited.
+      </p>
+      <div class="cta">
+        <a class="btn" href="/work">See our work</a>
+        <a class="btn btn--gh" href="/leadership">Who runs it</a>
+      </div>
+
+      <div class="hcards">
+        <a class="card" href="/work/ai-native-generation">
+          <Field v="dark-violet" id="ha" w={1600} h={1000} />
+          <span class="cardlab">
+            <span class="mono">Current research</span>
+            <span class="lg" style="display:block;margin-top:8px">The First <span style="white-space:nowrap">AI-Native</span> Generation</span>
+          </span>
+        </a>
+        <a class="card" href={SKEPTICISM.page}>
+          <Field v="sand" id="hb" w={900} h={920} />
+          <span class="cardlab cardlab--d">
+            <span class="mono">Program</span>
+            <span class="lg" style="display:block;margin-top:8px">Co&#8209;Existing with AI</span>
+          </span>
+        </a>
       </div>
     </div>
   </header>
 
-  <section class="feature field field--cool">
-    <span class="orb orb--a orb--cool-a" aria-hidden="true"></span>
-    <span class="orb orb--b orb--cool-b" aria-hidden="true"></span>
+  <section class="sec">
     <div class="wrap">
-      <div class="feat-head">
-        <p class="kick kick--cool">The Center's current research</p>
-        <h2>The First <span style="white-space:nowrap">AI-Native</span> Generation</h2>
-      </div>
-      <p class="feat-q">
-        A generation is coming of age inside a technology nobody has finished
-        understanding. The Center is asking what sustained interaction with conversational
-        AI does to cognition, identity, and agency, and publishing what it finds.
-      </p>
-      <div class="feat-grid">
-        <div class="fcard">
-          <div class="n">Output 01</div>
-          <h4>The report</h4>
-          <p>Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are.</p>
-        </div>
-        <div class="fcard">
-          <div class="n">Output 02</div>
-          <h4>The policy brief</h4>
-          <p>Six to ten pages for the people who write rules, written so they can act on it.</p>
-        </div>
-        <div class="fcard">
-          <div class="n">Output 03</div>
-          <h4>The framework</h4>
-          <p>A developmentally responsible AI framework organizations can apply without a research team.</p>
-        </div>
-      </div>
-      <div class="feat-foot">
-        <a class="pill pill--slate" href="/work/coexisting-with-ai">Read the research &rsaquo;</a>
-        <span class="note">Evidence gathered through the Co-Existing with AI interview series. First outputs November 2026.</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="media">
-    <div class="wrap">
-      <h2 class="wallh">The Center in the media</h2>
-      <div class="wall">
-        {wall.map((m) => (
-          <span class="wl">
-            <img
-              src={m.logo.src}
-              alt={m.n}
-              width={Math.round(m.logo.width / 3)}
-              height={Math.round(m.logo.height / 3)}
-              loading="lazy"
-            />
-          </span>
+      <div class="g3">
+        {pillars.map((p, i) => (
+          <div>
+            <svg width="126" height="126" viewBox="0 0 120 120" fill="none" stroke="#000" stroke-width="1" style="margin-bottom:44px" aria-hidden="true">
+              {i === 0 && (
+                <g><path d="M60 6 114 60 60 114 6 60Z"/><path d="M60 26 94 60 60 94 26 60Z"/><path d="M60 44 76 60 60 76 44 60Z"/><circle cx="60" cy="60" r="5"/></g>
+              )}
+              {i === 1 && (
+                <g><circle cx="60" cy="60" r="53"/><ellipse cx="60" cy="60" rx="18" ry="53"/><ellipse cx="60" cy="60" rx="36" ry="53"/><path d="M7 60h106M15 34h90M15 86h90"/><circle cx="60" cy="42" r="4.5"/><circle cx="60" cy="78" r="4.5"/></g>
+              )}
+              {i === 2 && (
+                <g><rect x="14" y="10" width="92" height="100"/><path d="M14 26h92M14 42h92M14 58h92M14 74h92M14 90h92M30 10v100M46 10v100M62 10v100M78 10v100M94 10v100"/></g>
+              )}
+            </svg>
+            <h2 style="margin-bottom:16px">{p.h}</h2>
+            <p style="color:var(--ink-2);max-width:36ch">{p.p}</p>
+            <a class="go" href={p.href} style="margin-top:34px">Learn more <Arrow /></a>
+          </div>
         ))}
       </div>
-      <p class="wnote"><a href="/media">View all media appearances</a></p>
-      <p class="wnote">Press inquiries: <a href={"mailto:" + ORG.email}>{ORG.email}</a></p>
     </div>
   </section>
 
-  <section class="stmt">
+  <section class="band">
+    <div class="rnw"><Field v="dark-teal" id="hs" w={2400} h={900} /></div>
     <div class="wrap">
-      <h2>Our organization turns long-term questions into institutions that can carry them.</h2>
-      <p>
-        At CIF, we believe the forces remaking human life deserve more than commentary.
-        Artificial intelligence and geopolitics move faster than the institutions meant to
-        examine them. Most of the analysis that does exist is written for the people building
-        the technology, not the people living with it. The Center builds and owns institutions
-        that close that gap. It keeps them independent enough to say what they find.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="wrows">
-
-        <div class="wrow">
-          <div class="wfig" style="background:var(--accent-t)">
-            <span class="wtag" style="background:var(--accent)">Program</span>
-            <svg viewBox="0 0 500 350" fill="none" aria-hidden="true">
-              <g stroke="#DE3A11" stroke-opacity=".26">
-                <circle cx="250" cy="175" r="140" /><circle cx="250" cy="175" r="106" />
-                <circle cx="250" cy="175" r="72" /><circle cx="250" cy="175" r="38" />
-              </g>
-              <g stroke="#DE3A11" stroke-opacity=".5">
-                <path d="M110 175h280M250 35v280" />
-              </g>
-              <circle cx="250" cy="175" r="8" fill="#DE3A11" />
-              <circle cx="356" cy="175" r="5.5" fill="#DE3A11" fill-opacity=".7" />
-              <circle cx="250" cy="103" r="5.5" fill="#DE3A11" fill-opacity=".7" />
-              <circle cx="178" cy="175" r="5.5" fill="#DE3A11" fill-opacity=".7" />
-            </svg>
-          </div>
-          <div>
-            <h3>{SKEPTICISM.name}</h3>
-            <p>{SKEPTICISM.blurb}</p>
-            <a class="go" style="color:var(--accent-ink)" href={SKEPTICISM.page}>Learn more about the program &rsaquo;</a>
-          </div>
+      <span class="fmark" style="color:#fff"><Mark last="#fff" /> senate&nbsp;2017</span>
+      <div class="bandgrid">
+        <div>
+          <h3>We graded our own testimony.</h3>
+          <p>
+            The Center appeared before the Standing Senate Committee on Social Affairs, Science and
+            Technology on 2 February 2017. Nine years on, the record is old enough to check. Three
+            claims held. Three failed. We published all of them.
+          </p>
+          <a class="btn btn--w" style="margin-top:34px" href="/senate-2017">Read the scorecard</a>
         </div>
-
-        <div class="wrow wrow--rev">
-          <div class="wfig" style="background:var(--amber-t)">
-            <span class="wtag" style="background:var(--amber)">Press</span>
-            <svg viewBox="0 0 500 350" fill="none" aria-hidden="true">
-              <g stroke="#C67E16" stroke-opacity=".34">
-                <rect x="150" y="70" width="200" height="210" />
-                <rect x="168" y="88" width="164" height="174" />
-              </g>
-              <g stroke="#C67E16" stroke-opacity=".55">
-                <path d="M192 128h116M192 156h116M192 184h84M192 212h116M192 240h60" />
-              </g>
-              <path d="M250 70v210" stroke="#C67E16" stroke-opacity=".7" />
-              <circle cx="250" cy="70" r="7" fill="#C67E16" />
-            </svg>
-          </div>
-          <div>
-            <h3>{MANTIC.name}</h3>
-            <p>{MANTIC.blurb}</p>
-            <a class="go" style="color:var(--amber-ink)" href={MANTIC.page}>Visit Mantic &rsaquo;</a>
-          </div>
+        <div class="ui">
+          {grades.map((g) => (
+            <div class="row">
+              <span class="v">{g.c}</span>
+              <span class={`tag t-${g.v}`}>{g.l}</span>
+            </div>
+          ))}
         </div>
-
-        <div class="wrow">
-          <div class="wfig" style="background:var(--teal-t)">
-            <span class="wtag" style="background:var(--teal)">Public channel</span>
-            <svg viewBox="0 0 500 350" fill="none" aria-hidden="true">
-              <g stroke="#1C6E63" stroke-opacity=".45" stroke-linecap="round">
-                <path d="M120 175v-34M150 175v-62M180 175v-90M210 175v-48M240 175v-104M270 175v-70M300 175v-92M330 175v-40M360 175v-66M390 175v-28"
-                  transform="translate(0,86)" />
-                <path d="M120 175v34M150 175v62M180 175v90M210 175v48M240 175v104M270 175v70M300 175v92M330 175v40M360 175v66M390 175v28"
-                  transform="translate(0,-86)" />
-              </g>
-              <path d="M96 175h318" stroke="#1C6E63" stroke-opacity=".7" />
-              <circle cx="240" cy="175" r="8" fill="#1C6E63" />
-            </svg>
-          </div>
-          <div>
-            <h3>{PODCAST.name}</h3>
-            <p>{PODCAST.blurb}</p>
-            {latest && (
-              <p class="mono" style="margin-bottom:18px">Latest &middot; {latestDate} &middot; {latest.title}</p>
-            )}
-            <a class="go" style="color:var(--teal-ink)" href={PODCAST.page}>Explore episodes &rsaquo;</a>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <section class="close">
-    <svg width="420" height="300" viewBox="0 0 420 300" fill="none" aria-hidden="true"><g stroke="#fff" stroke-opacity=".55"><path d="M20 300V120M44 300V160M68 300V80M92 300V190M116 300V140M140 300V60M164 300V210M188 300V110M212 300V170M236 300V40M260 300V150M284 300V200M308 300V90M332 300V180M356 300V130M380 300V220M404 300V100"/></g></svg>
+  <section class="sec" id="media">
     <div class="wrap">
-      <h2>Work with the Center.</h2>
-      <p>Host institutions, researchers, and collaborators working on the same questions
-      can reach the Center directly.</p>
-      <a class="pill" href="/contact">Start a conversation &rsaquo;</a>
+      <div class="shead">
+        <h2>Cited where the decisions get made</h2>
+        <a class="go sm" href="/media">All media appearances <Arrow /></a>
+      </div>
+      <div class="wall">
+        {wall.map((m) => (
+          <a class="wl" href={m.u} target="_blank" rel="noopener noreferrer" aria-label={m.n}>
+            <img src={m.logo.src} alt={m.n} width={Math.round(m.logo.width / 3)} height={Math.round(m.logo.height / 3)} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--t">
+    <div class="wrap">
+      <div class="arow">
+        <div class="afig" style="aspect-ratio:1/1"><Field v="stone" id="hp" w={900} h={900} /></div>
+        <div>
+          <div class="rule"></div>
+          <div class="lrows" style="border-top:0">
+            {properties.map((p) => (
+              <a class="lrow" href={p.page}>
+                <span class="t">{p.name}</span>
+                <p>{p.note}</p>
+              </a>
+            ))}
+            <a class="lrow" href="/work/ai-native-generation">
+              <span class="t">The First AI-Native Generation</span>
+              <p>Fieldwork on what sustained interaction with conversational AI does to cognition, identity, and agency.</p>
+            </a>
+          </div>
+          {latest && (
+            <p class="mono" style="margin-top:26px">Latest episode &middot; {latestDate} &middot; {latest.title}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--t">
+    <div class="wrap">
+      <div class="qcard" style="border-radius:var(--r);min-height:520px;display:flex;align-items:center">
+        <div class="rnw" style="position:absolute;inset:0"><Field v="dark-slate" id="hq" w={1400} h={700} /></div>
+        <div style="position:relative;z-index:2;padding:clamp(40px,6vw,86px) clamp(40px,6.6vw,96px);color:#FAFAFA;width:100%">
+          <p class="mono" style="color:rgba(250,250,250,.5)">Why the work is different</p>
+          <h3 style="margin-top:26px;color:#fff;max-width:22ch;font-size:clamp(28px,3.9vw,56px)">
+            Most of the material written about AI is produced by the companies selling it.
+            The Center works the other side.
+          </h3>
+          <div class="strip" style="margin-top:clamp(40px,5vw,76px);max-width:1000px">
+            <div><div class="n" style="color:#fff">{ORG.founded}</div><p style="color:rgba(250,250,250,.6)">Established in {ORG.city}. Sixteen years of published record.</p></div>
+            <div><div class="n" style="color:#fff">241</div><p style="color:rgba(250,250,250,.6)">Industrial robots per 10,000 Canadian manufacturing workers. Korea is at 1,220.</p></div>
+            <div><div class="n" style="color:#fff">150+</div><p style="color:rgba(250,250,250,.6)">Long-form interviews on the record, published in full.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--t">
+    <div class="wrap">
+      <div class="shead">
+        <h3>The latest</h3>
+        <a class="go sm" href="/media">See everything <Arrow /></a>
+      </div>
+      <div class="g3">
+        <a class="ncard" href="https://www.themontrealreview.com/Articles/the_infinity_of_the_brain_and_the_void_of_the_machine.php" target="_blank" rel="noopener noreferrer">
+          <div class="im"><Field v="sand" id="n1" w={1200} h={675} /></div>
+          <div class="bd">
+            <p class="mono">The Montr&eacute;al Review &middot; Jul 2026</p>
+            <h4>The Infinity of the Brain and the Void of the Machine</h4>
+            <p class="sm mut">Written with Karl Friston. Why prediction in a brain and prediction in a model are not the same operation.</p>
+            <span class="go">Read <Arrow /></span>
+          </div>
+        </a>
+        <a class="ncard" href="https://www.psychologytoday.com/sg/blog/understanding-hypnosis/202511/the-risks-of-ai-and-social-media-for-the-developing-brain" target="_blank" rel="noopener noreferrer">
+          <div class="im"><Field v="grey-teal" id="n2" w={1200} h={675} /></div>
+          <div class="bd">
+            <p class="mono">Psychology Today &middot; Nov 2025</p>
+            <h4>The Risks of AI and Social Media for the Developing Brain</h4>
+            <p class="sm mut">Written with Ran D. Anbar, MD. What the evidence supports about adolescent use, and what it does not.</p>
+            <span class="go">Read <Arrow /></span>
+          </div>
+        </a>
+        <a class="ncard" href="/work/ai-native-generation">
+          <div class="im"><Field v="dark-violet" id="n3" w={1200} h={675} /></div>
+          <div class="bd">
+            <p class="mono">Fieldwork &middot; Open</p>
+            <h4>The First AI-Native Generation</h4>
+            <p class="sm mut">Two evidence layers, kept separate: what experts believe is happening, and what AI-native people actually do.</p>
+            <span class="go">Take part <Arrow /></span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 </Base>

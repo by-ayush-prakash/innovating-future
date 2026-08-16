@@ -1,0 +1,14 @@
+---
+// Sticky section bar. Docks under the nav and tracks the section in view.
+// items: [{ label, href }]  href is an in-page anchor.
+const { items = [] } = Astro.props;
+---
+{items.length > 0 && (
+  <div class="sub">
+    <div class="wrap">
+      {items.map((i: any, n: number) => (
+        <a class={n === 0 ? "now" : undefined} href={i.href}>{i.label}</a>
+      ))}
+    </div>
+  </div>
+)}

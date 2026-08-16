@@ -1,22 +1,47 @@
 ---
-// field: warm | cool | fresh | sand. kick: the hue class on the kicker rule.
-const {
-  hue = null,
-  tone = null,
-  field = "warm",
-  kick = null,
-  kicker = null,
-} = Astro.props;
-const kickClass = kick ? `kick kick--${kick}` : "kick";
+import Field from "./Field.astro";
+
+/*
+  Inner-page hero. Split grid: kicker and H1 left, lede and buttons right,
+  then an optional 21:8 bleed image.
+
+  Props
+    kicker    small mono line above the H1
+    field     Field variant for the bleed image; omit for no image
+    caption   mono line sitting on the bleed image
+    light     true when the bleed image is light, so the caption goes dark
+  Slots
+    default   the H1 text
+    lede      the paragraph on the right
+    cta       buttons under the lede
+*/
+const { kicker = null, field = null, caption = null, light = false, id = "ph" } = Astro.props;
+const hasSide = Astro.slots.has("lede") || Astro.slots.has("cta");
 ---
-<header class={`phero field field--${field}${tone ? ` phead--${tone}` : ""}`} style={hue ? `--phead-hue:${hue}` : undefined}>
-  <span class="orb orb--a" aria-hidden="true"></span>
-  <span class="orb orb--c" aria-hidden="true"></span>
+<header class="ph-sec">
   <div class="wrap">
-    <div>
-      {kicker && <p class={kickClass}>{kicker}</p>}
-      <h1><slot /></h1>
-      <slot name="lede" />
+    <div class="ph-grid" style={hasSide ? undefined : "grid-template-columns:1fr"}>
+      <div>
+        {kicker && <p class="mono" style="margin-bottom:24px" set:html={kicker} />}
+        <h1 class="ph"><slot /></h1>
+      </div>
+      {hasSide && (
+        <div>
+          <slot name="lede" />
+          <slot name="cta" />
+        </div>
+      )}
     </div>
+
+    {field && (
+      <div class="bleed">
+        <Field v={field} id={id} w={2400} h={914} />
+        {caption && (
+          <div class={light ? "lab lab--d" : "lab"}>
+            <p class="mono" style={light ? undefined : "color:rgba(255,255,255,.72)"} set:html={caption} />
+          </div>
+        )}
+      </div>
+    )}
   </div>
 </header>

@@ -1,0 +1,187 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHead from "../../components/PageHead.astro";
+import SubNav from "../../components/SubNav.astro";
+import Field from "../../components/Field.astro";
+import Arrow from "../../components/Arrow.astro";
+
+const facts = [
+  { k: "Status", v: "Fieldwork open" },
+  { k: "First outputs", v: "November 2026" },
+  { k: "Method", v: "Elite-informant qualitative interviews, plus new fieldwork" },
+  { k: "Geography", v: "Canada, against US-centred comparators" },
+  { k: "Program", v: "Co-Existing with AI" },
+];
+
+// What is already published, so the reader can see what this study is not duplicating.
+const known = [
+  { n: "01", src: "Gallup, with the Walton Family Foundation and GSV Ventures, April 2026",
+    f: "n = 1,572, ages 14 to 29. Excitement about AI down 14 points. Anger at 31 per cent." },
+  { n: "02", src: "Wharton, with Gallup",
+    f: "79 per cent of Gen Z say AI causes laziness." },
+  { n: "03", src: "TalentLMS",
+    f: "47 per cent of Gen Z employees say they get better guidance from AI than from their managers." },
+];
+
+const outputs = [
+  { n: "Output 01", h: "The report", p: "Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are. Full quote appendix with sources.", field: "dark-violet" },
+  { n: "Output 02", h: "The policy brief", p: "Six to ten pages for the people who write rules, written so they can act on it.", field: "grey-teal" },
+  { n: "Output 03", h: "The framework", p: "A developmentally responsible AI framework organizations can apply without a research team.", field: "sand" },
+];
+
+const sections = [
+  { label: "Already known", href: "#known" },
+  { label: "What is open", href: "#open" },
+  { label: "Two layers", href: "#layers" },
+  { label: "Method", href: "#method" },
+  { label: "What gets published", href: "#outputs" },
+];
+---
+<Base
+  title="The First AI-Native Generation"
+  description="A Center for Innovating the Future study on what sustained interaction with conversational AI does to cognition, identity and agency. Fieldwork open, first outputs November 2026."
+  ctaHeading="Take part in the study."
+  ctaBody="The Center is speaking with people who came of age using conversational AI, and with researchers working on cognition, learning and human-machine interaction. Organizations that want the findings applied to their own operation can also write."
+>
+  <PageHead kicker="The Center's current research" field="dark-violet"
+            caption="Fieldwork open &middot; First outputs November 2026" id="an">
+    The First <span style="white-space:nowrap">AI-Native</span> Generation.
+    <p slot="lede" class="lede">
+      A generation is coming of age inside a technology nobody has finished understanding.
+      The Center is asking what sustained interaction with conversational AI does to cognition,
+      identity and agency, and publishing what it finds.
+    </p>
+    <div slot="cta" class="cta" style="margin-top:34px">
+      <a class="btn" href="/contact">Take part</a>
+      <a class="btn btn--gh" href="#method">The method</a>
+    </div>
+  </PageHead>
+
+  <SubNav items={sections} />
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="reg">
+        {facts.map((f) => (
+          <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--t" id="known">
+    <div class="wrap">
+      <div class="shead">
+        <h3>What is already known</h3>
+        <p class="sm mut" style="max-width:36ch">
+          The survey layer is crowded and it is worth saying so. This study is not another
+          sentiment poll.
+        </p>
+      </div>
+      <div class="rule"></div>
+      <div class="nums">
+        {known.map((k) => (
+          <div class="nrow"><span class="n">{k.n}</span><h4>{k.src}</h4><p>{k.f}</p></div>
+        ))}
+      </div>
+      <p class="dnote">
+        Deloitte runs an annual Gen Z survey. KPMG runs an intern pulse. Between them the question
+        of how this generation <em>feels</em> about AI is well covered, and the answers are
+        converging.
+      </p>
+    </div>
+  </section>
+
+  <section class="band" id="open">
+    <div class="rnw"><Field v="dark-slate" id="ao" w={2400} h={900} /></div>
+    <div class="wrap">
+      <p class="mono">What is open</p>
+      <h3 style="margin-top:26px">Three gaps, and they are the reason this study exists.</h3>
+      <div class="bandgrid" style="grid-template-columns:1fr;gap:0;margin-top:clamp(36px,4.4vw,64px)">
+        <div class="lrows" style="border-top:1px solid rgba(255,255,255,.16);max-width:900px">
+          <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
+            <span class="t" style="color:#fff">Nobody is doing qualitative depth.</span>
+            <p style="color:rgba(255,255,255,.6);margin-top:8px">Everything published is quantitative sentiment. There is very little work on how AI-native people actually reason, how they decide what to delegate, and how they structure work when a machine is always available.</p>
+          </div>
+          <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
+            <span class="t" style="color:#fff">The datasets are US-centred.</span>
+            <p style="color:rgba(255,255,255,.6);margin-top:8px">A Canadian qualitative cut does not exist.</p>
+          </div>
+          <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
+            <span class="t" style="color:#fff">Nobody has asked the researchers.</span>
+            <p style="color:rgba(255,255,255,.6);margin-top:8px">The people building and studying these systems have views about the generation growing up inside them, and those views have not been collected in one place.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="layers">
+    <div class="wrap">
+      <div class="arow">
+        <div class="afig"><Field v="stone" id="al" w={1000} h={750} /></div>
+        <div>
+          <p class="mono" style="margin-bottom:20px">Two evidence layers</p>
+          <h3>Kept separate, on purpose.</h3>
+          <div class="body" style="max-width:none;margin-top:22px">
+            <p><strong>Layer one, what experts believe.</strong> The Center has conducted long-form
+            interviews with AI and machine learning researchers through the Co-Existing with AI
+            interview series, weighted toward the Amii, Mila and CIFAR network. Those interviews are
+            being coded against a fixed frame and published as an elite-informant qualitative study.</p>
+            <p><strong>Layer two, what AI-natives actually do.</strong> This requires new fieldwork,
+            because researchers are not AI-natives and the corpus cannot answer for them. That
+            fieldwork is open now.</p>
+            <p>A study that blurs expert belief into lived behaviour is describing neither.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--g" id="method">
+    <div class="wrap">
+      <div class="shead"><h3>Method, stated before the findings</h3></div>
+      <div class="body">
+        <p>
+          Long-form interviews rather than survey instruments, coded against a fixed frame:
+          what current systems cannot do, where the field is overconfident, what changes about
+          human work and judgment, what the public misunderstands, and where informants disagree
+          with each other. The disagreements are the finding.
+        </p>
+        <p>
+          Podcast and long-form interview material is treated as data under an established
+          protocol, following Kulkov, Kulkova, Rohrbeck and Menvielle in the
+          <em>International Journal of Qualitative Methods</em> (2024). Sample adequacy follows
+          Guest, Bunce and Johnson in <em>Field Methods</em> (2006), which found thematic
+          saturation within the first twelve interviews.
+        </p>
+        <p>
+          <strong>Two limitations, named here rather than buried.</strong> Informants were invited
+          rather than sampled, so selection is not random. And these were conversations rather than
+          protocol-driven interviews, so interviewer effect is present. Both will be stated in the
+          published methods section.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="outputs">
+    <div class="wrap">
+      <div class="shead"><h3>What gets published</h3></div>
+      <div class="g3">
+        {outputs.map((o, i) => (
+          <div class="ncard">
+            <div class="im"><Field v={o.field} id={`ap${i}`} w={1200} h={675} /></div>
+            <div class="bd">
+              <p class="mono">{o.n}</p>
+              <h4>{o.h}</h4>
+              <p class="sm mut">{o.p}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="dnote">Published free, as every comparable flagship is. First outputs November 2026.</p>
+      <a class="go" href="/work/coexisting-with-ai" style="margin-top:26px">The program this sits under <Arrow /></a>
+    </div>
+  </section>
+</Base>

@@ -1,23 +1,24 @@
 ---
-import PageHead from "../../components/PageHead.astro";
 import Base from "../../layouts/Base.astro";
+import PageHead from "../../components/PageHead.astro";
+import Arrow from "../../components/Arrow.astro";
 import { ORG } from "../../config";
 ---
-<Base title="Message sent" noindex={true} description="Your message reached the Center for Innovating the Future.">
-  <PageHead>Message sent.</PageHead>
-  <section>
+<Base title="Message sent" noindex={true} description="Your message reached the Center for Innovating the Future." cta={false}>
+  <PageHead kicker="Received" id="tk">
+    Message sent.
+    <p slot="lede" class="lede">
+      It has reached the Center and will be read. If it is urgent, write directly to {ORG.email}.
+    </p>
+  </PageHead>
+
+  <section class="sec">
     <div class="wrap">
-      <div class="body">
-        <p>
-          It has reached the Center and will be read. If it is urgent, write directly to
-          <a href={"mailto:" + ORG.email} style="border-bottom:1px solid var(--accent)">{ORG.email}</a>.
-        </p>
+      <div class="cta">
+        <a class="btn" href="/">Back to the homepage</a>
+        <a class="btn btn--gh" href="/work">See our work</a>
       </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <a class="pill pill--ghost" href="/">Back to the homepage &rsaquo;</a>
+      <a class="go" href="/podcast" style="margin-top:40px">While you wait, the podcast <Arrow /></a>
     </div>
   </section>
 </Base>

@@ -1,0 +1,10 @@
+---
+// The four-dot mark. Three property hues plus the ground.
+const { last = "#17171C" } = Astro.props;
+---
+<span class="dots" aria-hidden="true">
+  <i style="background:#DE3A11"></i>
+  <i style="background:#C67E16"></i>
+  <i style="background:#1C6E63"></i>
+  <i style={`background:${last}`}></i>
+</span>

@@ -1,6 +1,7 @@
 ---
-import PageHead from "../../../components/PageHead.astro";
 import Base from "../../../layouts/Base.astro";
+import PageHead from "../../../components/PageHead.astro";
+import Arrow from "../../../components/Arrow.astro";
 import { ORG } from "../../../config";
 
 const facts = [
@@ -15,49 +16,50 @@ const facts = [
 <Base
   title="Coexisting with AI: Succeeding In the New Era"
   description="A Center for Innovating the Future event at Microsoft Reactor Toronto, February 2025."
+  ctaHeading="Bring the session in."
+  ctaBody="The Center runs it as a private briefing or a full-day workshop for leadership teams working out what changes in their own operation."
+  ctaLabel="Enquire"
 >
-  <PageHead>Coexisting with AI: Succeeding In the New Era.</PageHead>
-
-  <section>
-    <div class="wrap">
-      <div class="reg">
-        {facts.map((f) => (
-          <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
-        ))}
-      </div>
+  <PageHead kicker="Co-Existing with AI &middot; 20 February 2025" field="sand-amber"
+            caption="Microsoft Reactor Toronto &middot; CIBC Square" light={true} id="mr">
+    Coexisting with AI: Succeeding In the New Era.
+    <p slot="lede" class="lede">
+      Whether you are a student, an entrepreneur, or the leader of a business or a nation, you
+      will need new strategies to become, and remain, successful.
+    </p>
+    <div slot="cta" class="cta" style="margin-top:34px">
+      <a class="btn" href="/contact">Bring it to your organization</a>
+      <a class="btn btn--gh" href="/work/coexisting-with-ai">The program</a>
     </div>
-  </section>
+  </PageHead>
 
-  <section style="padding-top:0">
+  <section class="sec">
     <div class="wrap">
-      <div class="shead"><h2>The session</h2></div>
-      <p class="lede" style="max-width:52ch">
-        Whether you are a student, an entrepreneur, or the leader of a business or a nation, you
-        will need new strategies to become, and remain, successful.
-      </p>
-      {/* TODO Ayush: add the real write-up. What was argued, what the room asked, what changed. */}
-      <div class="body" style="margin-top:36px">
-        <p>
-          The Center brought the question it has worked on since 2010 to a room of people building
-          with artificial intelligence: what changes for an organization, and for the people inside
-          it, when the work starts being done alongside a machine rather than by a person alone.
-        </p>
-        <p>
-          Created and hosted by the Center at CIBC Square as part of the opening series at
-          Microsoft Reactor Toronto.
-        </p>
+      <div class="arow" style="align-items:start">
+        <div class="body" style="max-width:none">
+          <p>
+            The Center brought the question it has worked on since 2010 to a room of people building
+            with artificial intelligence: what changes for an organization, and for the people inside
+            it, when the work starts being done alongside a machine rather than by a person alone.
+          </p>
+          <p>
+            Created and hosted by the Center at CIBC Square as part of the opening series at
+            Microsoft Reactor Toronto.
+          </p>
+          {/* TODO Ayush: add the real write-up. What was argued, what the room asked, what changed. */}
+          <p class="dnote" style="margin-top:32px">
+            The event listing is on
+            <a href="https://reactor.microsoft.com/en-us/reactor/events/24836/" target="_blank" rel="noopener noreferrer">Microsoft Reactor</a>.
+            Requests for the material go to <a href={"mailto:" + ORG.email}>{ORG.email}</a>.
+          </p>
+        </div>
+        <div class="reg">
+          {facts.map((f) => (
+            <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
+          ))}
+        </div>
       </div>
-      <p class="dnote">
-        The event listing is on
-        <a href="https://reactor.microsoft.com/en-us/reactor/events/24836/" target="_blank" rel="noopener noreferrer">Microsoft Reactor</a>.
-        Requests for the material go to <a href={"mailto:" + ORG.email}>{ORG.email}</a>.
-      </p>
-    </div>
-  </section>
-
-  <section style="padding-top:0">
-    <div class="wrap">
-      <a class="pill pill--ghost" href="/work/coexisting-with-ai">All of Co-Existing with AI &rsaquo;</a>
+      <a class="go" href="/work/coexisting-with-ai" style="margin-top:clamp(40px,5vw,64px)">All of Co-Existing with AI <Arrow /></a>
     </div>
   </section>
 </Base>

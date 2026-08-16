@@ -1,51 +1,81 @@
 ---
-import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Field from "../components/Field.astro";
+import Arrow from "../components/Arrow.astro";
 import { MEDIA, MEDIA_BY_DATE, ORG } from "../config";
 
 const logoFiles: any = import.meta.glob("../assets/media/*.{png,svg,webp,jpg}", { eager: true });
 const logoFor = (slug: string) =>
   (Object.entries(logoFiles).find(([path]) => path.includes(`/${slug}.`))?.[1] as any)?.default;
 
-const featuredOrder = ["montreal-review", "cnbc", "psychology-today"];
-const featuredTone: Record<string, string> = { "montreal-review": "red", cnbc: "amber", "psychology-today": "teal" };
+const featuredOrder = ["montreal-review", "psychology-today", "cnbc"];
+const featuredField: Record<string, string> = {
+  "montreal-review": "sand",
+  "psychology-today": "grey-teal",
+  cnbc: "dark-violet",
+};
 const featured = featuredOrder
   .map((slug) => MEDIA.find((m) => m.slug === slug))
   .filter((m): m is (typeof MEDIA)[number] => Boolean(m))
   .map((m) => ({ ...m, logo: logoFor(m.slug) }));
+
+const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
+  .filter((m) => m.logo)
+  .sort((a, b) => a.r - b.r);
 ---
 <Base
   title="In the press"
   description="Every published appearance by the Center for Innovating the Future and its principals since 2016, each with its source."
+  ctaHeading="Press inquiries."
+  ctaBody="The Center answers questions about its work and its ownership on the record."
+  ctaLabel="Get in touch"
 >
-  <PageHead kicker="Since 2016" field="warm">In the press.</PageHead>
+  <PageHead kicker="Since 2016" id="md">
+    In the press.
+    <p slot="lede" class="lede">
+      Every published appearance by the Center and its principals, each with its source.
+      Scientific American, CNBC, Fortune, Nikkei Asia, the South China Morning Post, and the
+      Senate of Canada.
+    </p>
+  </PageHead>
 
-  <section>
+  <section class="sec" style="padding-top:clamp(40px,5vw,64px)">
     <div class="wrap">
-      <div class="shead"><h2>Selected coverage.</h2></div>
-      <div class="feat">
-        {featured.map((m) => (
-          <a class={`ft ft--${featuredTone[m.slug] ?? "red"}`} href={m.u} target="_blank" rel="noopener noreferrer">
-            <span class="ftlogo">
-              {m.logo && <img src={m.logo.src} alt={m.n} width={Math.round(m.logo.width / 3)} height={Math.round(m.logo.height / 3)} />}
-            </span>
-            <span class="ftbody">
-              <h3>{m.n}</h3>
-              <p>{m.note}</p>
-              <span class="go">{m.date} &nbsp;&middot;&nbsp; Read &rsaquo;</span>
-            </span>
+      <div class="wall">
+        {wall.map((m) => (
+          <a class="wl" href={m.u} target="_blank" rel="noopener noreferrer" aria-label={m.n}>
+            <img src={m.logo.src} alt={m.n} width={Math.round(m.logo.width / 3)} height={Math.round(m.logo.height / 3)} loading="lazy" />
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section class="sec sec--t">
     <div class="wrap">
-      <div class="shead"><h2>Everything.</h2></div>
+      <div class="shead"><h3>Selected coverage</h3></div>
+      <div class="g3">
+        {featured.map((m, i) => (
+          <a class="ncard" href={m.u} target="_blank" rel="noopener noreferrer">
+            <div class="im"><Field v={featuredField[m.slug] ?? "sand"} id={`mf${i}`} w={1200} h={675} /></div>
+            <div class="bd">
+              <p class="mono">{m.n} &middot; {m.date}</p>
+              <h4>{m.note}</h4>
+              <span class="go">Read <Arrow /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--t">
+    <div class="wrap">
+      <div class="shead"><h3>Everything</h3><p class="sm mut">{MEDIA_BY_DATE.length} appearances, newest first.</p></div>
       <div class="rows">
         {MEDIA_BY_DATE.map((m) => (
-          <a class="row" href={m.u} target="_blank" rel="noopener noreferrer">
+          <a class="rrow" href={m.u} target="_blank" rel="noopener noreferrer">
             <span class="mono">{m.date}</span>
             <div>
               <h3>{m.n}</h3>

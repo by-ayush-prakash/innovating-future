@@ -1,7 +1,8 @@
 ---
-import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
-import { ORG } from "../config";
+import PageHead from "../components/PageHead.astro";
+import SubNav from "../components/SubNav.astro";
+import Arrow from "../components/Arrow.astro";
 
 const facts = [
   { k: "Date", v: "2 February 2017" },
@@ -80,81 +81,117 @@ const scorecard = [
   },
 ];
 
-const label = { held: "Held up", partly: "Partly", failed: "Did not hold", open: "Still open" };
+const label: Record<string, string> = { held: "Held up", partly: "Partly", failed: "Did not hold", open: "Still open" };
+const tally = {
+  held: scorecard.filter((s) => s.v === "held").length,
+  failed: scorecard.filter((s) => s.v === "failed").length,
+  other: scorecard.filter((s) => s.v === "partly" || s.v === "open").length,
+};
+
+const sections = [
+  { label: "The appearance", href: "#appearance" },
+  { label: "What we said", href: "#said" },
+  { label: "The scorecard", href: "#scorecard" },
+  { label: "What still stands", href: "#stands" },
+];
 ---
 <Base
   title="Before the Senate"
   description="In February 2017 the Center gave evidence to the Standing Senate Committee on Social Affairs, Science and Technology on robotics, 3D printing and AI in healthcare. This is what it said, and what nine years did to it."
+  ctaHeading="The Center gives evidence."
+  ctaBody="It has appeared before a Senate committee and been cited by the Brookings Institution and the Foreign Policy Research Institute. Committees, agencies and standards bodies working on robotics, automation or AI policy can write directly."
 >
-  <PageHead kicker="Senate of Canada &middot; 2 February 2017" field="sand">
+  <PageHead kicker="Senate of Canada &middot; 2 February 2017" field="dark-teal"
+            caption="Standing Committee on Social Affairs, Science and Technology &middot; 42nd Parliament" id="sn">
     CIF Before the Senate.
+    <p slot="lede" class="lede">
+      The Center was called as a witness on what robotics, 3D printing and artificial intelligence
+      would do to Canadian healthcare. Nine years have passed. Every claim it made that day is on
+      the public record, so here is the scorecard, including the parts it got wrong.
+    </p>
+    <div slot="cta" class="cta" style="margin-top:34px">
+      <a class="btn" href="#scorecard">The scorecard</a>
+      <a class="btn btn--gh" href="https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" target="_blank" rel="noopener noreferrer">Full transcript</a>
+    </div>
   </PageHead>
 
-  <section>
-    <div class="wrap">
-      <p class="lede" style="max-width:56ch">
-        The Center was called as a witness on what robotics, 3D printing and artificial intelligence
-        would do to Canadian healthcare. Nine years have passed. Every claim it made that day is on
-        the public record, so here is the scorecard, including the parts it got wrong.
-      </p>
-      <div class="reg" style="margin-top:44px">
-        {facts.map((f) => (
-          <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
-        ))}
-      </div>
-      <p class="dnote">
-        The full transcript is published by the
-        <a href="https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" target="_blank" rel="noopener noreferrer">Senate of Canada</a>.
-        The committee's report, <em>Challenge Ahead</em>, followed in October 2017.
-      </p>
-    </div>
-  </section>
+  <SubNav items={sections} />
 
-  <section class="field field--sand">
+  <section class="sec" id="appearance">
     <div class="wrap">
-      <div class="shead"><h2>What the Center said</h2></div>
-      <div class="stag">
-        <div class="stag-row">
-          <div class="stag-fig">
-            <img src="/images/senate-01.jpg" alt="The Senate of Canada committee page for the Standing Committee on Social Affairs, Science and Technology, Issue No. 14, Evidence, 2 February 2017." width="1600" height="773">
+      <div class="arow" style="align-items:start">
+        <div>
+          <div class="strip" style="grid-template-columns:repeat(3,1fr)">
+            <div><div class="n">{tally.held}</div><p>Claims that held up against public evidence.</p></div>
+            <div><div class="n">{tally.failed}</div><p>Claims that did not hold, published here anyway.</p></div>
+            <div><div class="n">{tally.other}</div><p>Partly right, or still open nine years on.</p></div>
           </div>
-          <div class="stag-txt">
-            <p>The evidence was a survey of what other countries were already doing and Canada was
-            not. Robots delivering medicine and changing sheets in American hospitals. A smart
-            contact lens in South Korea monitoring diabetes through the eye. Printed blood vessels
-            implanted in a monkey in China. A robot pharmacist in the UAE dispensing twelve
-            medications in under a minute. Eleven robots in Saskatchewan, one of them reaching a
-            First Nations reserve.</p>
-          </div>
+          <p class="dnote">
+            The full transcript is published by the
+            <a href="https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" target="_blank" rel="noopener noreferrer">Senate of Canada</a>.
+            The committee's report, <em>Challenge Ahead</em>, followed in October 2017.
+          </p>
         </div>
-        <div class="stag-row stag-row--flip">
-          <div class="stag-fig"><img src="/images/senate-02.jpg" alt="" width="1600" height="1200"></div>
-          <div class="stag-txt">
-            <p>Underneath the examples sat one recommendation, repeated to several senators.
-            Japan had published a New Robot Strategy. China had Made in China 2025 and a single
-            province with $150 billion earmarked. Canada had neither a federal robotics strategy
-            nor a provincial one. The Center told the committee that grants are not a strategy.</p>
-          </div>
+        <div class="reg">
+          {facts.map((f) => (
+            <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
+          ))}
         </div>
-      </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="sec sec--g" id="said">
     <div class="wrap">
-      <div class="shead"><h2>The scorecard</h2></div>
-      <p class="lede" style="max-width:50ch;margin-bottom:clamp(34px,4vw,52px)">
-        Graded in 2026 against public evidence. Sources on each row.
-      </p>
-      <div class="scard">
+      <div class="shead"><h3>What the Center said</h3></div>
+      <div class="alt">
+        <div class="arow">
+          <div class="afig" style="aspect-ratio:16/9">
+            <img src="/images/senate-01.jpg" alt="The Senate of Canada committee page for the Standing Committee on Social Affairs, Science and Technology, Issue No. 14, Evidence, 2 February 2017." width="1600" height="773" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div>
+            <p style="color:var(--ink-2)">
+              The evidence was a survey of what other countries were already doing and Canada was
+              not. Robots delivering medicine and changing sheets in American hospitals. A smart
+              contact lens in South Korea monitoring diabetes through the eye. Printed blood vessels
+              implanted in a monkey in China. A robot pharmacist in the UAE dispensing twelve
+              medications in under a minute. Eleven robots in Saskatchewan, one of them reaching a
+              First Nations reserve.
+            </p>
+          </div>
+        </div>
+        <div class="arow arow--f">
+          <div class="afig">
+            <img src="/images/senate-02.jpg" alt="" width="1600" height="1200" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div>
+            <p style="color:var(--ink-2)">
+              Underneath the examples sat one recommendation, repeated to several senators.
+              Japan had published a New Robot Strategy. China had Made in China 2025 and a single
+              province with $150 billion earmarked. Canada had neither a federal robotics strategy
+              nor a provincial one. The Center told the committee that grants are not a strategy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="scorecard">
+    <div class="wrap">
+      <div class="shead">
+        <h3>The scorecard</h3>
+        <p class="sm mut" style="max-width:34ch">Graded in 2026 against public evidence. Sources on each row.</p>
+      </div>
+      <div class="rule"></div>
+      <div class="scard" style="border-top:0">
         {scorecard.map((s) => (
-          <div class={`sc sc--${s.v}`}>
-            <div class="sc-v"><span class="sc-tag">{label[s.v]}</span></div>
-            <div class="sc-b">
+          <div class="sc">
+            <div><span class={`tag t-${s.v}`}>{label[s.v]}</span></div>
+            <div>
               <h3>{s.claim}</h3>
-              <p class="sc-then"><span class="mono">2017</span> {s.then}</p>
-              <p class="sc-now"><span class="mono">2026</span> {s.now}</p>
+              <p class="sc-then"><span class="mono">2017</span>{s.then}</p>
+              <p class="sc-now"><span class="mono">2026</span>{s.now}</p>
               <a class="sc-src" href={s.src} target="_blank" rel="noopener noreferrer">{s.srcName} &rsaquo;</a>
             </div>
           </div>
@@ -163,53 +200,33 @@ const label = { held: "Held up", partly: "Partly", failed: "Did not hold", open:
     </div>
   </section>
 
-  <section class="field field--fresh">
+  <section class="sec sec--g" id="stands">
     <div class="wrap">
-      <div class="shead"><h2>What still stands</h2></div>
-      <div class="stag" style="margin-bottom:clamp(38px,4.4vw,64px)">
-        <div class="stag-row">
-          <div class="stag-fig"><img src="/images/robot-density.svg" alt="Industrial robot density by country in 2024. Canada 241 robots per 10,000 manufacturing employees, world average 132, Republic of Korea 1,220."></div>
-          <div class="stag-txt">
-            <p><strong>Canada does not have too many robots. It has too few.</strong> At 241 per
-            10,000 manufacturing workers it sits behind Korea, Singapore, Germany, Japan and the
-            United States, and it imports nearly all of them.</p>
-          </div>
+      <div class="shead"><h3>What still stands</h3></div>
+      <div class="arow">
+        <div class="afig" style="background:#fff;aspect-ratio:16/10;display:flex;align-items:center;padding:clamp(20px,3vw,40px)">
+          <img src="/images/robot-density.svg" alt="Industrial robot density by country in 2024. Canada 241 robots per 10,000 manufacturing employees, world average 132, Republic of Korea 1,220." style="width:100%" />
+        </div>
+        <div class="body">
+          <p><strong>Canada does not have too many robots. It has too few.</strong> At 241 per
+          10,000 manufacturing workers it sits behind Korea, Singapore, Germany, Japan and the
+          United States, and it imports nearly all of them.</p>
+          <p>
+            The recommendation survived the reasoning that produced it. In 2017 the Center argued
+            Canada needed a robotics strategy partly because automation was about to take 42 per cent
+            of Canadian jobs. It did not. Canada added roughly 2.6 million jobs instead.
+          </p>
+          <p>
+            The Canadian Robotics Council, formed five years after this hearing, is still asking for
+            the same document the Center asked for in 2017.
+          </p>
+          <p>
+            That is the useful thing about being on the record. A position taken in public can be
+            checked, and the parts that break tell you more than the parts that hold.
+          </p>
+          <a class="go" href="/media" style="margin-top:8px">Everything the Center is on the record for <Arrow /></a>
         </div>
       </div>
-      <div class="body" style="max-width:44rem">
-        <p>
-          The recommendation survived the reasoning that produced it. In 2017 the Center argued
-          Canada needed a robotics strategy partly because automation was about to take 42 per cent
-          of Canadian jobs. It did not. Canada added roughly 2.6 million jobs instead.
-        </p>
-        <p>
-          The Canadian Robotics Council, formed five years after this hearing, is still asking for
-          the same document the Center asked for in 2017.
-        </p>
-        <p>
-          That is the useful thing about being on the record. A position taken in public can be
-          checked, and the parts that break tell you more than the parts that hold.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="closeband field field--cool">
-    <span class="orb orb--a orb--cool-a" aria-hidden="true"></span>
-    <span class="orb orb--b orb--cool-b" aria-hidden="true"></span>
-    <div class="wrap">
-      <p class="kick kick--cool">Committees, hearings and briefings</p>
-      <h2>The Center gives evidence.</h2>
-      <p>
-        It has appeared before a Senate committee and been cited by the Brookings Institution and
-        the Foreign Policy Research Institute. Committees, agencies and standards bodies working on
-        robotics, automation or AI policy can write to
-        <a href={"mailto:" + ORG.email} style="border-bottom:1px solid rgba(46,67,114,.4)">{ORG.email}</a>.
-      </p>
-      <a class="pill pill--slate" href="/contact">Start a conversation &rsaquo;</a>
-      <p style="margin-top:26px;font-size:15px">
-        <a href="/media" style="border-bottom:1px solid rgba(46,67,114,.3)">Everything the Center is on the record for</a>
-      </p>
     </div>
   </section>
 </Base>

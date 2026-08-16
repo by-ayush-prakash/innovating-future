@@ -1,12 +1,24 @@
 ---
 import { ORG, SKEPTICISM, MANTIC, PODCAST, COPY } from "../config";
+import Mark from "./Mark.astro";
+
 const year = 2026;
+
+// Closing CTA. Every page gets one; pages override the words via props.
+const {
+  ctaHeading = "Work with the Center.",
+  ctaBody = "Host institutions, researchers, and collaborators working on the same questions can reach the Center directly.",
+  ctaLabel = "Start a conversation",
+  ctaHref = "/contact",
+  cta = true,
+} = Astro.props;
 
 const cols = [
   {
     h: "What We Do",
     links: [
       { l: SKEPTICISM.name, u: SKEPTICISM.page },
+      { l: "The First AI-Native Generation", u: "/work/ai-native-generation" },
       { l: MANTIC.name, u: MANTIC.page },
       { l: "All work", u: "/work" },
     ],
@@ -29,53 +41,59 @@ const cols = [
   },
 ];
 ---
-<footer class="site">
+{cta && (
   <div class="wrap">
-    <div class="ftop">
-      <a class="lock lock--stack" href="/">
-        <span>Center for<br />Innovating<br />the Future</span>
-      </a>
-      <div class="fsoc">
-        <a href={ORG.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="11.25" stroke="currentColor" stroke-opacity=".28" />
-            <path d="M8.1 9.9v7.1M8.1 7.4v.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-            <path d="M11.7 17V12.3a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
-        <a href={PODCAST.url} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="11.25" stroke="currentColor" stroke-opacity=".28" />
-            <path d="M10.3 9.2l5 2.8-5 2.8V9.2z" fill="currentColor" />
-          </svg>
-        </a>
+    <div class="ctab">
+      <h3>{ctaHeading}</h3>
+      <div>
+        <p class="mut">{ctaBody}</p>
+        <div class="cta">
+          <a class="btn" href={ctaHref}>{ctaLabel}</a>
+          <a class="btn btn--gh" href={"mailto:" + ORG.email}>{ORG.email}</a>
+        </div>
       </div>
     </div>
+  </div>
+)}
 
-    <div class="fmid">
-      <div class="freach">
-        <h4>Get in touch</h4>
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="fmark" href="/"><Mark last="#fff" /> CIF</a>
+        <p class="fnote">{ORG.name}. {COPY.tagline} {ORG.city}, Canada. Established December {ORG.founded}.</p>
         <a class="fmail" href={"mailto:" + ORG.email}>{ORG.email}</a>
-        <p class="fnote">{COPY.tagline}</p>
+        <div class="fsoc">
+          <a href={ORG.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.1 10.4v8M6.1 6.6v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M10.7 18.4v-5.6a2.9 2.9 0 0 1 5.8 0v5.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href={PODCAST.url} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.8" />
+              <path d="M10.2 9.2l5 2.8-5 2.8V9.2z" fill="currentColor" />
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <div class="fcols">
-        {cols.map((c) => (
-          <div>
-            <h4>{c.h}</h4>
-            {c.links.map((l) => <a href={l.u}>{l.l}</a>)}
-          </div>
-        ))}
-      </div>
+      {cols.map((c) => (
+        <div class="fcol">
+          <h4>{c.h}</h4>
+          {c.links.map((l) => <a href={l.u}>{l.l}</a>)}
+        </div>
+      ))}
     </div>
 
     <div class="fbot">
       <span>
         <a href="/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
         <a href="/terms">Terms of Use</a> &nbsp;&middot;&nbsp;
-        &copy; {year} Center for Innovating the Future Inc. Established December 2010.
+        &copy; {year} Center for Innovating the Future Inc.
       </span>
-      <span>Toronto, Ontario</span>
+      <span>{ORG.city}, Ontario</span>
     </div>
   </div>
 </footer>

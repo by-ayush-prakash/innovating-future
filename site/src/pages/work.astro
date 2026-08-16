@@ -1,76 +1,103 @@
 ---
 import Base from "../layouts/Base.astro";
-import { PROPERTIES } from "../config";
+import PageHead from "../components/PageHead.astro";
+import Field from "../components/Field.astro";
+import Arrow from "../components/Arrow.astro";
+import { SKEPTICISM, MANTIC, PODCAST } from "../config";
+
+const properties = [
+  { ...SKEPTICISM, kind: "Program", field: "dark-red", cta: "Learn more" },
+  { ...MANTIC, kind: "Press", field: "sand-amber", cta: "Visit Mantic" },
+  { ...PODCAST, kind: "Public channel", field: "grey-teal", cta: "Explore episodes" },
+];
+
+const appearances = [
+  {
+    d: "Feb 2025", h: "Microsoft Reactor Toronto",
+    a: "The Center creates and hosts an event in the opening series at Microsoft Reactor Toronto.",
+    s: "The session", u: "/work/coexisting-with-ai/microsoft-reactor", ext: false,
+  },
+  {
+    d: "Aug 2017", h: "RoboBusiness",
+    a: "The Center speaks on coexisting with robots. Robotics Business Review publishes the interview.",
+    s: "Robotics Business Review", u: "https://www.roboticsbusinessreview.com/ai/global-futurist-robobusiness-speaker-aseem-prakash-shares-thoughts-coexisting-with-robots/", ext: true,
+  },
+  {
+    d: "Feb 2017", h: "Witness before the Senate of Canada",
+    a: "The Standing Senate Committee on Social Affairs, Science and Technology hears the Center in its study of robotics, 3D printing and artificial intelligence in the health care system.",
+    s: "The scorecard", u: "/senate-2017", ext: false,
+  },
+];
 ---
 <Base title="Work" description="The Center for Innovating the Future owns and operates its institutions. A Toronto strategy innovation lab, established December 2010.">
-  <header class="phero field field--warm">
-    <span class="orb orb--a" aria-hidden="true"></span>
-    <span class="orb orb--b" aria-hidden="true"></span>
-    <span class="orb orb--c" aria-hidden="true"></span>
-    <div class="wrap">
-      <div>
-        <p class="kick">What we do</p>
-        <h1>The Center owns and operates its institutions.</h1>
-        <p class="lede">Each one carries its own remit, its own audience, and its own standard.</p>
-      </div>
+  <PageHead kicker="What we do" field="stone" caption="Four institutions, one standard" light={true} id="wk">
+    The Center owns and operates its institutions.
+    <p slot="lede" class="lede">
+      Every institution the Center holds carries its own remit, its own audience, and its own
+      standard. Each is built to outlast the attention cycle it was formed in.
+    </p>
+    <div slot="cta" class="cta" style="margin-top:34px">
+      <a class="btn" href="/contact">Work with the Center</a>
+      <a class="btn btn--gh" href="#institutions">The institutions</a>
     </div>
-  </header>
+  </PageHead>
 
-  <section style="padding-bottom:clamp(40px,4vw,56px)">
+  <section class="sec" id="institutions">
     <div class="wrap">
-      <p class="lede">
-        Every institution the Center holds carries its own remit, its own audience, and its own
-        standard. Each is built to outlast the attention cycle it was formed in.
-      </p>
-    </div>
-  </section>
-
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="pcards">
-        {PROPERTIES.map((p, i) => (
-          <a class="pc" href={p.page ?? p.url}>
-            <span class="pcart" style={`background:color-mix(in srgb, ${p.hue} 8%, transparent)`}>
-              <img src={p.tile} alt="" loading="lazy" />
-            </span>
-            <span class="pcnum" style={`color:${p.hue}`}>{String(i + 1).padStart(2, "0")}</span>
-            <h3>{p.name}</h3>
-            <p>{p.blurb}</p>
-            <span class="go">Read more <i>&rsaquo;</i></span>
-          </a>
+      <div class="alt">
+        {properties.map((p, i) => (
+          <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
+            <div class="afig"><Field v={p.field} id={`w${i}`} w={1000} h={750} /></div>
+            <div>
+              <p class="mono" style="margin-bottom:20px">{p.kind}</p>
+              <h3>{p.name}</h3>
+              <p>{p.blurb}</p>
+              <a class="go" href={p.page}>{p.cta} <Arrow /></a>
+            </div>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section class="sec sec--t">
     <div class="wrap">
-      <div class="shead"><h2>Appearances and events</h2></div>
+      <div class="g2">
+        <a class="ncard" href="/work/ai-native-generation">
+          <div class="im"><Field v="dark-violet" id="wa" w={1200} h={675} /></div>
+          <div class="bd bd--lg">
+            <p class="mono">Research &middot; Fieldwork open</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">The First AI-Native Generation</h4>
+            <p class="sm mut">What sustained interaction with conversational AI does to cognition, identity, and agency. First outputs November 2026.</p>
+            <span class="go">Take part <Arrow /></span>
+          </div>
+        </a>
+        <a class="ncard ncard--d" href="/senate-2017">
+          <div class="bd bd--lg" style="justify-content:center">
+            <p class="mono">Resource</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">CIF Before the Senate</h4>
+            <p class="sm mut">The Center gave evidence in 2017. Nine years on, every claim it made that day is graded in public, with sources. Three held. Three failed.</p>
+            <span class="go">Read the scorecard <Arrow /></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--t">
+    <div class="wrap">
+      <div class="shead"><h3>Appearances and events</h3></div>
       <div class="rows">
-        <div class="row row--flat">
-          <span class="mono">Feb 2025</span>
-          <div>
-            <h3>Microsoft Reactor Toronto</h3>
-            <span class="attrib">The Center creates and hosts an event in the opening series at Microsoft Reactor Toronto.</span>
-          </div>
-          <span class="src">Microsoft Reactor</span>
-        </div>
-        <a class="row" href="https://www.roboticsbusinessreview.com/ai/global-futurist-robobusiness-speaker-aseem-prakash-shares-thoughts-coexisting-with-robots/" target="_blank" rel="noopener noreferrer">
-          <span class="mono">Aug 2017</span>
-          <div>
-            <h3>RoboBusiness</h3>
-            <span class="attrib">The Center speaks on coexisting with robots. Robotics Business Review publishes the interview.</span>
-          </div>
-          <span class="src">Robotics Business Review &rsaquo;</span>
-        </a>
-        <a class="row" href="https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" target="_blank" rel="noopener noreferrer">
-          <span class="mono">Feb 2017</span>
-          <div>
-            <h3>Witness before the Senate of Canada</h3>
-            <span class="attrib">The Standing Senate Committee on Social Affairs, Science and Technology hears the Center in its study of robotics, 3D printing and artificial intelligence in the health care system.</span>
-          </div>
-          <span class="src">Committee transcript &rsaquo;</span>
-        </a>
+        {appearances.map((r) => (
+          <a class="rrow" href={r.u} target={r.ext ? "_blank" : undefined} rel={r.ext ? "noopener noreferrer" : undefined}>
+            <span class="mono">{r.d}</span>
+            <div>
+              <h3>{r.h}</h3>
+              <span class="attrib">{r.a}</span>
+            </div>
+            <span class="src">{r.s} &rsaquo;</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>

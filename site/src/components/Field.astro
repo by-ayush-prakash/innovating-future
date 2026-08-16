@@ -1,0 +1,77 @@
+---
+/*
+  A generated image field. Soft-blurred organic forms, given texture by the
+  grain overlay that .rnw / .card / .im apply in CSS.
+
+  These are placeholders with intent: they hold the composition that
+  commissioned photography or 3D renders should eventually occupy, and they
+  look deliberate until then. Swap any <Field /> for an <img> and the layout
+  does not move.
+
+  Usage:  <Field v="dark-red" id="hero" />
+*/
+const { v = "sand", id = "f", w = 1200, h = 800 } = Astro.props;
+
+const V: Record<string, [string, [number, number, number, number, string, number][]]> = {
+  "dark-red": ["#17171C", [
+    [.29,.46,.25,.28,"#3A1E14",.95],[.58,.33,.24,.26,"#DE3A11",.62],
+    [.84,.72,.23,.24,"#5B2E1A",.90],[.44,.86,.25,.21,"#C67E16",.30],
+    [.12,.20,.19,.18,"#7A2E12",.50],
+  ]],
+  "dark-violet": ["#17171C", [
+    [.36,.39,.25,.34,"#3A2E6B",.95],[.47,.55,.28,.39,"#5B3F8C",.75],
+    [.63,.39,.19,.28,"#DE3A11",.55],[.73,.74,.22,.26,"#7670C5",.60],
+    [.25,.82,.20,.24,"#1C6E63",.45],
+  ]],
+  "dark-teal": ["#0B1512", [
+    [.29,.47,.26,.47,"#12463F",.95],[.63,.33,.23,.42,"#1C6E63",.70],
+    [.83,.78,.23,.38,"#0E3A34",.90],[.46,.84,.25,.33,"#DE3A11",.22],
+    [.13,.20,.18,.29,"#1C6E63",.35],
+  ]],
+  "dark-amber": ["#1A1206", [
+    [.29,.47,.26,.47,"#48310F",.95],[.63,.33,.23,.42,"#C67E16",.58],
+    [.83,.78,.23,.38,"#3A2708",.90],[.46,.84,.25,.33,"#DE3A11",.26],
+  ]],
+  "dark-slate": ["#17171C", [
+    [.25,.44,.23,.42,"#232330",1],[.62,.29,.23,.34,"#2E2E3C",1],
+    [.44,.72,.26,.34,"#DE3A11",.18],[.86,.66,.20,.30,"#2C1D3F",.9],
+  ]],
+  "sand": ["#F0EEE9", [
+    [.32,.37,.24,.29,"#E8C79A",.95],[.66,.69,.28,.32,"#DE3A11",.35],
+    [.82,.29,.20,.24,"#D0D5D2",.90],[.18,.79,.20,.23,"#C67E16",.30],
+  ]],
+  "sand-amber": ["#E8E6E1", [
+    [.34,.42,.28,.32,"#C67E16",.44],[.72,.69,.29,.32,"#E8C79A",.95],
+    [.76,.29,.22,.24,"#D0D5D2",.90],
+  ]],
+  "stone": ["#E8E6E1", [
+    [.33,.32,.30,.28,"#D0D5D2",1],[.64,.64,.36,.30,"#DE3A11",.52],
+    [.71,.28,.26,.21,"#C67E16",.50],[.27,.76,.26,.21,"#1C6E63",.42],
+    [.50,.50,.20,.18,"#F0EEE9",.50],
+  ]],
+  "grey-teal": ["#F2F2F2", [
+    [.33,.51,.27,.35,"#1C6E63",.30],[.72,.32,.23,.29,"#D0D5D2",1],
+    [.55,.85,.20,.24,"#C67E16",.22],
+  ]],
+  "grey-red": ["#F2F2F2", [
+    [.33,.51,.27,.35,"#DE3A11",.26],[.72,.32,.23,.29,"#D0D5D2",1],
+  ]],
+};
+
+const [base, blobs] = V[v] ?? V["sand"];
+const blur = Math.round(Math.max(w, h) * 0.055);
+---
+<svg class="rn" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="xMidYMid slice"
+     xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id={`fb-${id}`} x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation={blur} />
+    </filter>
+  </defs>
+  <rect width={w} height={h} fill={base} />
+  <g filter={`url(#fb-${id})`}>
+    {blobs.map(([cx, cy, rx, ry, c, o]) => (
+      <ellipse cx={cx * w} cy={cy * h} rx={rx * w} ry={ry * h} fill={c} opacity={o} />
+    ))}
+  </g>
+</svg>

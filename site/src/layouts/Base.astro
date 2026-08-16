@@ -8,6 +8,12 @@ const {
   title,
   description = "The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010, working to ensure that the forces remaking human life, such as artificial intelligence and geopolitics, are built on purpose rather than inherited.",
   noindex = false,
+  // Closing CTA, passed straight through to the footer.
+  cta = true,
+  ctaHeading,
+  ctaBody,
+  ctaLabel,
+  ctaHref,
 } = Astro.props;
 
 const full = `${ORG.short} | ${title ?? "Home"}`;          // browser tab
@@ -40,7 +46,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -48,6 +54,6 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     <a class="skip" href="#main">Skip to content</a>
     <Nav path={path} />
     <main id="main"><slot /></main>
-    <Footer />
+    <Footer cta={cta} ctaHeading={ctaHeading} ctaBody={ctaBody} ctaLabel={ctaLabel} ctaHref={ctaHref} />
   </body>
 </html>

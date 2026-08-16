@@ -1,6 +1,6 @@
 ---
-import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
 
 const people = [
   {
@@ -9,7 +9,7 @@ const people = [
     photo: "/images/ayush-prakash.jpg",
     bio: [
       "Ayush Prakash is Director of the Center for Innovating the Future, where he leads its programs, publishing, and partnerships.",
-      "He is the author of AI for Gen Z, first published in 2021 with a second edition in 2024, a study of how digital technology shapes cognition, identity, and work for the generation raised inside it. He has co-authored work with Karl Friston in The Montr\u00e9al Review and with Ran D. Anbar, MD, in Psychology Today. He hosts The Ayush Prakash Podcast. Guests include Avi Loeb, Karl Friston, and Yaron Brook.",
+      "He is the author of AI for Gen Z, first published in 2021 with a second edition in 2024, a study of how digital technology shapes cognition, identity, and work for the generation raised inside it. He has co-authored work with Karl Friston in The Montréal Review and with Ran D. Anbar, MD, in Psychology Today. He hosts The Ayush Prakash Podcast. Guests include Avi Loeb, Karl Friston, and Yaron Brook.",
       "He is also Director of Corporate Strategy at New Sapience, an artificial intelligence company, where he leads strategy and operations. He holds a BA in Philosophy from Toronto Metropolitan University.",
     ],
     links: [
@@ -34,18 +34,26 @@ const past = [
     bio: "Led the Center's work on the geopolitics of technology. He appeared as a witness before the Standing Senate Committee on Social Affairs, Science and Technology in February 2017, and his writing from that period appeared in Scientific American, CNBC, Fortune, Nikkei Asia and the South China Morning Post. His work was cited by the Brookings Institution and the Foreign Policy Research Institute.",
   },
 ];
-
 ---
-<Base title="Leadership" description="Leadership at the Center for Innovating the Future.">
-  <PageHead kicker="Who runs it" field="warm">Leadership.</PageHead>
+<Base
+  title="Leadership"
+  description="Leadership at the Center for Innovating the Future."
+  ctaHeading="Work with the Center."
+  ctaBody="Host institutions, researchers, and collaborators working on the same questions can reach the Center directly."
+>
+  <PageHead kicker="Who runs it" id="ld">
+    Leadership.
+    <p slot="lede" class="lede">
+      The Center is small and says so. One director today, and a published record going back to
+      December 2010 under the two who came before.
+    </p>
+  </PageHead>
 
-  <section>
+  <section class="sec" style="padding-top:clamp(40px,5vw,64px)">
     <div class="wrap">
       {people.map((p) => (
         <div class="person">
-          <div class="photo">
-            {p.photo ? <img src={p.photo} alt={p.name} /> : <span class="noph">{p.name.split(" ").map((w) => w[0]).join("")}</span>}
-          </div>
+          <div class="photo"><img src={p.photo} alt={p.name} /></div>
           <div>
             <h2>{p.name}</h2>
             <span class="role">{p.role}</span>
@@ -65,15 +73,15 @@ const past = [
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section class="sec sec--t">
     <div class="wrap">
-      <div class="shead"><h2>Past principals.</h2></div>
-      <div class="past">
+      <div class="shead"><h3>Past principals</h3></div>
+      <div>
         {past.map((p) => (
           <div class="pp">
             <div>
-              <h3>{p.name}</h3>
-              <span class="role">{p.role} &middot; {p.years}</span>
+              <h4>{p.name}</h4>
+              <span class="role" style="margin-bottom:0;margin-top:8px">{p.role} &middot; {p.years}</span>
             </div>
             <p>{p.bio}</p>
           </div>

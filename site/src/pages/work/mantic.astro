@@ -1,53 +1,187 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { MANTIC, ORG } from "../../config";
+import PageHead from "../../components/PageHead.astro";
+import SubNav from "../../components/SubNav.astro";
+import Field from "../../components/Field.astro";
+import Arrow from "../../components/Arrow.astro";
+import { MANTIC } from "../../config";
+
+const PUBLISH = "publishme@manticpublishing.com";
+
+const standards = [
+  {
+    k: "The idea",
+    h: "Contrarian, not trendy.",
+    p: "No subject list. Geopolitics, technology, society, spirituality, and the places they cross. What matters is that the argument runs against the mainstream and holds under pressure. It should hold the same in five minutes as in five hundred years.",
+    field: "sand-amber",
+  },
+  {
+    k: "The author",
+    h: "Someone who will defend it.",
+    p: "Mantic breaks and builds the idea with the author before a word of the manuscript is fixed. That process only works with a writer who intends to stand behind the finished position in public. In special cases the imprint works with an author who is already published.",
+    field: "sand",
+  },
+];
+
+const gets = [
+  { n: "01", h: "Editorial that argues back", p: "The idea is broken and rebuilt with the author before the manuscript is fixed. Nobody at Mantic will tell you an argument is ready when it is not." },
+  { n: "02", h: "A seat on the podcast", p: "Published Mantic authors appear on The Ayush Prakash Podcast. Not a promotional slot. A long-form defence of the book in front of an audience that will push on it." },
+  { n: "03", h: "The Center behind it", p: "Mantic titles carry into the Center's convenings, briefings and institutional work. A book is where the argument starts, not where it stops." },
+];
+
+const sections = [
+  { label: "Standards", href: "#standards" },
+  { label: "The list", href: "#list" },
+  { label: "For authors", href: "#authors" },
+  { label: "How to start", href: "#start" },
+  { label: "More from the Center", href: "#more" },
+];
 ---
 <Base
   title={MANTIC.name}
-  description="The Center's press. A wholly owned imprint publishing books that break the mainstream narrative."
+  description="The Center's press. Books that break the mainstream narrative, built with the author until the argument holds."
+  ctaHeading="Have an argument worth a book?"
+  ctaBody="Mantic reads everything sent to it. Send the idea and why the mainstream has it wrong, not a finished manuscript."
+  ctaLabel="Visit manticpublishing.com"
+  ctaHref={MANTIC.url}
 >
-  <header class="phero field field--sand">
-    <span class="orb orb--a" aria-hidden="true"></span>
-    <span class="orb orb--c" aria-hidden="true"></span>
-    <div class="wrap">
-      <div>
-        <p class="kick kick--amber">The Center's press</p>
-        <h1>Mantic Publishing.</h1>
-        <p class="lede">Books that break the mainstream narrative. Mantic breaks and builds the
-        idea with the author until the argument holds.</p>
-        <div class="cta">
-          <a class="pill pill--solid" href={MANTIC.url} target="_blank" rel="noopener">Visit Mantic &rsaquo;</a>
-        </div>
-      </div>
+  <PageHead kicker="The Center's press" field="sand" caption="Toronto &middot; Montreal" light={true} id="mt">
+    Mantic Publishing.
+    <p slot="lede" class="lede">
+      Books that break the mainstream narrative. We break and build the idea with the author
+      until the argument holds.
+    </p>
+    <div slot="cta" class="cta" style="margin-top:34px">
+      <a class="btn" href={MANTIC.url} target="_blank" rel="noopener noreferrer">Visit manticpublishing.com</a>
+      <a class="btn btn--gh" href="#standards">What we look for</a>
     </div>
-  </header>
+  </PageHead>
 
-  <section>
-    <div class="wrap">
-      <p class="lede">
-        A strategy lab produces briefings, assessments and sessions. All of it is built to be useful
-        inside a particular year. Some arguments are not that shape. They need the length of a book
-        and the patience of an editor, and they need to survive long after the cycle that produced
-        them. Mantic exists for those. It is a separate company, wholly owned by the Center, with
-        its own editorial line and its own front door at
-        <a href={MANTIC.url} target="_blank" rel="noopener noreferrer">manticpublishing.com</a>.
+  <SubNav items={sections} />
+
+  <section class="sec">
+    <div class="wrap" style="max-width:1180px">
+      <h3>Mantic is a separate company, wholly owned by the Center, and it publishes only books.</h3>
+      <p class="lede" style="margin-top:34px;max-width:64ch">
+        Not essays. Not briefs. Not white papers. A book is a position with a name on it, defended
+        at length, and Mantic exists for arguments that cannot survive being shorter. The imprint
+        has its own house, its own submissions, and its own standard.
       </p>
     </div>
   </section>
 
-  <section class="closeband field field--cool">
-    <span class="orb orb--a orb--cool-a" aria-hidden="true"></span>
-    <span class="orb orb--b orb--cool-b" aria-hidden="true"></span>
+  <section class="sec sec--t" id="standards">
     <div class="wrap">
-      <p class="kick kick--cool">For writers</p>
-      <h2>Send Mantic something it can argue with.</h2>
-      <p>
-        Submissions, standards and the current list live at
-        <a href={MANTIC.url} target="_blank" rel="noopener noreferrer" style="border-bottom:1px solid rgba(46,67,114,.4)">manticpublishing.com</a>.
-        Anything for the Center itself goes to
-        <a href={"mailto:" + ORG.email} style="border-bottom:1px solid rgba(46,67,114,.4)">{ORG.email}</a>.
-      </p>
-      <a class="pill pill--slate" href={MANTIC.url} target="_blank" rel="noopener">Visit Mantic &rsaquo;</a>
+      <div class="shead"><h3>What Mantic looks for</h3></div>
+      <div class="alt">
+        {standards.map((s, i) => (
+          <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
+            <div class="afig"><Field v={s.field} id={`ms${i}`} w={1000} h={750} /></div>
+            <div>
+              <p class="mono" style="margin-bottom:20px">{s.k}</p>
+              <h3>{s.h}</h3>
+              <p>{s.p}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="list">
+    <div class="rnw"><Field v="dark-amber" id="ml" w={2400} h={900} /></div>
+    <div class="wrap">
+      <p class="mono">First title</p>
+      <div class="bandgrid" style="align-items:center;grid-template-columns:1fr 340px;margin-top:34px">
+        <div>
+          <h3>The Transcendence of Technology: A Spiritual Return for Humanity</h3>
+          <p>
+            The first book under contract. An argument that the question technology forces on us
+            is not economic or political but spiritual, and that the answer is a return rather
+            than an advance.
+          </p>
+          <a class="btn btn--w" style="margin-top:34px" href={MANTIC.url} target="_blank" rel="noopener noreferrer">Follow the list</a>
+        </div>
+        <div class="card" style="border-radius:14px;aspect-ratio:3/4;box-shadow:0 40px 90px rgba(0,0,0,.45)">
+          <Field v="dark-violet" id="mbk" w={900} h={1200} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="authors">
+    <div class="wrap">
+      <div class="shead">
+        <h3>What an author gets</h3>
+        <p class="sm mut" style="max-width:38ch">Mantic is small on purpose. The trade is fewer titles for more work on each one.</p>
+      </div>
+      <div class="rule"></div>
+      <div class="nums">
+        {gets.map((g) => (
+          <div class="nrow"><span class="n">{g.n}</span><h4>{g.h}</h4><p>{g.p}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--g" id="start">
+    <div class="wrap">
+      <div class="shead"><h3>How to start</h3></div>
+      <div class="g2">
+        <div class="ncard ncard--o">
+          <div class="bd bd--lg">
+            <p class="mono">Submissions</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">Send us something we can argue with.</h4>
+            <p class="sm mut">
+              Not a manuscript. Not a proposal. The idea, why the mainstream has it wrong, and
+              what you know that most people do not.
+            </p>
+            <a class="btn" style="margin-top:18px;align-self:flex-start" href={`mailto:${PUBLISH}`}>{PUBLISH}</a>
+          </div>
+        </div>
+        <div class="ncard ncard--d">
+          <div class="bd bd--lg" style="justify-content:center">
+            <p class="mono">The standard</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">It should hold the same in five minutes as in five hundred years.</h4>
+            <p class="sm mut">That is the whole test. Everything else about the imprint follows from it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="more">
+    <div class="wrap">
+      <div class="shead"><h3>More from the Center</h3></div>
+      <div class="g3">
+        <a class="ncard" href="/podcast">
+          <div class="im"><Field v="grey-teal" id="mn1" w={1200} h={675} /></div>
+          <div class="bd">
+            <p class="mono">Public channel</p>
+            <h4>The Ayush Prakash Podcast</h4>
+            <p class="sm mut">Long-form conversations. Where Mantic authors defend the book.</p>
+            <span class="go">Explore episodes <Arrow /></span>
+          </div>
+        </a>
+        <a class="ncard" href="/work/coexisting-with-ai">
+          <div class="im"><Field v="dark-red" id="mn2" w={1200} h={675} /></div>
+          <div class="bd">
+            <p class="mono">Program</p>
+            <h4>Co-Existing with AI</h4>
+            <p class="sm mut">What changes for people and organizations when the work is done alongside a machine.</p>
+            <span class="go">Learn more <Arrow /></span>
+          </div>
+        </a>
+        <a class="ncard" href="/work/ai-native-generation">
+          <div class="im"><Field v="grey-red" id="mn3" w={1200} h={675} /></div>
+          <div class="bd">
+            <p class="mono">Research &middot; Fieldwork open</p>
+            <h4>The First AI-Native Generation</h4>
+            <p class="sm mut">What sustained interaction with conversational AI does to cognition, identity, and agency.</p>
+            <span class="go">Take part <Arrow /></span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 </Base>

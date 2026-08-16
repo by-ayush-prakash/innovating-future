@@ -1,115 +1,175 @@
 ---
 import Base from "../layouts/Base.astro";
-import { PODCAST } from "../config";
+import PageHead from "../components/PageHead.astro";
+import SubNav from "../components/SubNav.astro";
+import Field from "../components/Field.astro";
+import Arrow from "../components/Arrow.astro";
+import { PODCAST, ORG } from "../config";
 import { getFeed } from "../lib/feed";
 
 const { episodes, fetchFailed } = await getFeed();
-
-const trending = episodes.slice(0, 3);
+const latest = episodes[0] ?? null;
+const rest = episodes.slice(1);
 const cover = PODCAST.cover;
+
+const APPLE = "https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631";
+const SPOTIFY = "https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG";
 
 function fmtDate(pubDate: string) {
   const d = new Date(pubDate);
   if (isNaN(d.getTime())) return "";
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
+
+const sections = [
+  { label: "Latest", href: "#latest" },
+  { label: "All episodes", href: "#all" },
+  { label: "Who comes on", href: "#guests" },
+  { label: "For Mantic authors", href: "#authors" },
+];
 ---
-<Base title="Podcast" description="The Ayush Prakash Podcast: long-form conversations on the technologies reshaping how we think.">
-  <header class="phero field field--fresh">
-    <span class="orb orb--a orb--cool-a" aria-hidden="true"></span>
-    <span class="orb orb--c" aria-hidden="true"></span>
-    <div class="wrap">
-      <div>
-        <p class="kick kick--teal">The Center's public channel</p>
-        <h1>Conversations on the technologies reshaping how we think.</h1>
-        <p class="lede">{PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.</p>
-      <div class="sublinks">
-        <a href="https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5.4" fill="currentColor"/><g fill="#062E29"><circle cx="12" cy="9.1" r="2.15"/><path d="M12 12.4c-1.55 0-2.6.8-2.6 1.85 0 .5.28 2.2.5 3.16.2.88.62 1.34 1.05 1.55.4.2 1.7.2 2.1 0 .43-.21.85-.67 1.05-1.55.22-.96.5-2.66.5-3.16 0-1.05-1.05-1.85-2.6-1.85Z"/><path d="M12 3.9a5.6 5.6 0 0 0-3.5 9.97.72.72 0 0 0 .9-1.12A4.16 4.16 0 1 1 16.16 9.5c0 1.28-.58 2.44-1.5 3.2a.72.72 0 1 0 .9 1.13A5.6 5.6 0 0 0 12 3.9Z"/></g></svg>
-          <span>Apple<br />Podcasts</span>
-        </a>
-        <a href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><g stroke="#062E29" stroke-linecap="round" fill="none"><path d="M6.6 9.3c3.4-1 7.2-.7 10.3 1" stroke-width="2.1"/><path d="M7.4 12.6c2.8-.8 5.9-.5 8.4.9" stroke-width="1.8"/><path d="M8.2 15.7c2.2-.6 4.6-.4 6.6.7" stroke-width="1.5"/></g></svg>
-          <span>Spotify</span>
-        </a>
-        <a href={PODCAST.url} target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect y="4.4" width="24" height="15.2" rx="4.2" fill="currentColor"/><path d="M10 8.6l5.6 3.4L10 15.4V8.6Z" fill="#062E29"/></svg>
-          <span>YouTube</span>
-        </a>
-      </div>
-      </div>
+<Base
+  title="Podcast"
+  description="The Ayush Prakash Podcast: long-form conversations on the technologies reshaping how we think."
+  ctaHeading="Follow the show."
+  ctaBody="New conversations publish on YouTube, Spotify, and Apple Podcasts."
+  ctaLabel="Subscribe on YouTube"
+  ctaHref={PODCAST.url}
+>
+  <PageHead kicker="The Center's public channel" field="dark-teal"
+            caption="Apple Podcasts &middot; Spotify &middot; YouTube" id="pd">
+    Conversations on the technologies reshaping how we think.
+    <p slot="lede" class="lede">
+      {PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.
+    </p>
+    <div slot="cta" class="plat">
+      <a href={APPLE} target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5.4" fill="currentColor"/><g fill="#fff"><circle cx="12" cy="9.1" r="2.15"/><path d="M12 12.4c-1.55 0-2.6.8-2.6 1.85 0 .5.28 2.2.5 3.16.2.88.62 1.34 1.05 1.55.4.2 1.7.2 2.1 0 .43-.21.85-.67 1.05-1.55.22-.96.5-2.66.5-3.16 0-1.05-1.05-1.85-2.6-1.85Z"/><path d="M12 3.9a5.6 5.6 0 0 0-3.5 9.97.72.72 0 0 0 .9-1.12A4.16 4.16 0 1 1 16.16 9.5c0 1.28-.58 2.44-1.5 3.2a.72.72 0 1 0 .9 1.13A5.6 5.6 0 0 0 12 3.9Z"/></g></svg>
+        <span>Apple Podcasts</span>
+      </a>
+      <a href={SPOTIFY} target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><g stroke="#fff" stroke-linecap="round" fill="none"><path d="M6.6 9.3c3.4-1 7.2-.7 10.3 1" stroke-width="2.1"/><path d="M7.4 12.6c2.8-.8 5.9-.5 8.4.9" stroke-width="1.8"/><path d="M8.2 15.7c2.2-.6 4.6-.4 6.6.7" stroke-width="1.5"/></g></svg>
+        <span>Spotify</span>
+      </a>
+      <a href={PODCAST.url} target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect y="4.4" width="24" height="15.2" rx="4.2" fill="currentColor"/><path d="M10 8.6l5.6 3.4L10 15.4V8.6Z" fill="#fff"/></svg>
+        <span>YouTube</span>
+      </a>
     </div>
-  </header>
+  </PageHead>
+
+  <SubNav items={sections} />
 
   {fetchFailed ? (
-    <section>
+    <section class="sec">
       <div class="wrap">
-        <p style="color:var(--ink-70)">
+        <p class="lede">
           Episodes couldn't be loaded from the feed at build time. Listen on
-          <a href={PODCAST.url} target="_blank" rel="noopener noreferrer" style="border-bottom:2px solid var(--accent)"> YouTube</a>
-          or <a href="https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG" target="_blank" rel="noopener noreferrer" style="border-bottom:2px solid var(--accent)">Spotify</a> in the meantime.
+          <a href={PODCAST.url} target="_blank" rel="noopener noreferrer" style="color:var(--ink);border-bottom:1px solid var(--red)"> YouTube</a>
+          or <a href={SPOTIFY} target="_blank" rel="noopener noreferrer" style="color:var(--ink);border-bottom:1px solid var(--red)">Spotify</a> in the meantime.
         </p>
       </div>
     </section>
   ) : (
     <>
-      <section>
+      <section class="sec" id="latest">
         <div class="wrap">
-          <div class="shead"><h2>Latest.</h2></div>
-          <div class="epgrid">
-            {trending.map((ep) => (
-              <div class="epcard">
-                <div class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} loading="lazy" /></div>
-                <div class="body">
-                  <span class="mono">{fmtDate(ep.pubDate)}</span>
-                  <h3>{ep.title}</h3>
-                  {ep.audio && <audio controls preload="none" src={ep.audio}></audio>}
-                </div>
+          <div class="arow" style="grid-template-columns:380px 1fr;align-items:center">
+            <div class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} /></div>
+            {latest && (
+              <div>
+                <p class="mono">Latest episode &middot; {fmtDate(latest.pubDate)}</p>
+                <h3 style="margin-top:22px;max-width:22ch">{latest.title}</h3>
+                {latest.description && <p class="lede" style="margin-top:22px">{latest.description}</p>}
+                {latest.audio && <audio controls preload="none" src={latest.audio} style="margin-top:28px;width:100%;max-width:520px"></audio>}
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
 
-      <section style="padding-top:0">
+      <section class="sec sec--g" id="all">
         <div class="wrap">
           <div class="shead">
-            <h2>All episodes.</h2>
-            <input class="epsearch" id="ep-search" type="text" placeholder="Search episodes…" aria-label="Search episodes" />
+            <h3>All episodes</h3>
+            <input class="srch" id="ep-search" type="text" placeholder="Search episodes" aria-label="Search episodes" />
           </div>
-          <div class="eplist" id="ep-list">
-            {episodes.map((ep) => (
+          <div class="eplist" id="ep-list" style="background:#fff;border-radius:var(--r);padding:0 clamp(20px,3vw,32px);border-top:0">
+            {rest.map((ep, i) => (
               <div class="eprow" data-title={ep.title.toLowerCase()} data-desc={ep.description.toLowerCase()}>
-                <div class="meta">
-                  <span class="mono">{fmtDate(ep.pubDate)}</span>
-                  <h3>{ep.title}</h3>
+                <span class="epn">{String(rest.length - i).padStart(3, "0")}</span>
+                <div>
+                  <span class="ept">{ep.title}</span>
                   {ep.description && <p>{ep.description}</p>}
-                  {ep.audio && <a class="eplisten" href={ep.audio} target="_blank" rel="noopener noreferrer">Listen &rsaquo;</a>}
                 </div>
+                <span class="epa">
+                  {ep.audio
+                    ? <a class="go sm" href={ep.audio} target="_blank" rel="noopener noreferrer">Listen <Arrow /></a>
+                    : <span class="mono">{fmtDate(ep.pubDate)}</span>}
+                </span>
               </div>
             ))}
           </div>
-          <p id="ep-empty" style="display:none;padding:40px 0;color:var(--ink-45)">No episodes match that search.</p>
+          <p id="ep-empty" style="display:none;padding:40px 0;color:var(--mut)">No episodes match that search.</p>
         </div>
       </section>
     </>
   )}
 
-  <section class="close">
+  <section class="band" id="guests">
+    <div class="rnw"><Field v="dark-slate" id="pg" w={2400} h={900} /></div>
     <div class="wrap">
-      <h2>Follow the show.</h2>
-      <p>New conversations publish on YouTube, Spotify, and Apple Podcasts.</p>
-      <a class="pill" href={PODCAST.url} target="_blank" rel="noopener noreferrer">Subscribe on YouTube &rsaquo;</a>
+      <p class="mono">Who comes on</p>
+      <h3 style="margin-top:26px">Researchers, critics, and builders. Nobody selling anything.</h3>
+      <p>
+        The show books people who have spent years on a question and are willing to be pushed on
+        the answer for an hour. Conversations run long because the interesting part is rarely in
+        the first twenty minutes.
+      </p>
+      <div class="strip" style="margin-top:clamp(44px,5.4vw,76px)">
+        <div><div class="n">{episodes.length > 0 ? `${episodes.length}` : "150+"}</div><p>Conversations published to date.</p></div>
+        <div><div class="n">3</div><p>Platforms, same cut. Apple, Spotify, YouTube.</p></div>
+        <div><div class="n">{ORG.founded}</div><p>The Center behind the show. Sixteen years of published record.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="authors">
+    <div class="wrap">
+      <div class="g2">
+        <a class="ncard ncard--d" href="/work/mantic">
+          <div class="bd bd--lg" style="justify-content:center">
+            <p class="mono">Mantic Publishing</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">Every published Mantic author gets a seat.</h4>
+            <p class="sm mut">
+              Not a promotional slot. A long-form defence of the book in front of an audience that
+              will push on it. The book is where the argument starts. This is where it gets tested.
+            </p>
+            <span class="go">About the imprint <Arrow /></span>
+          </div>
+        </a>
+        <div class="ncard ncard--o">
+          <div class="bd bd--lg" style="justify-content:center">
+            <p class="mono">Pitch the show</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">Working on something most people have wrong?</h4>
+            <p class="sm mut">
+              The show reads every pitch. Send the question you have been sitting with, what the
+              consensus answer is, and why it does not hold.
+            </p>
+            <a class="btn" style="margin-top:18px;align-self:flex-start" href={"mailto:" + ORG.email}>{ORG.email}</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </Base>
 
 <script>
-  const input = document.getElementById("ep-search") as HTMLInputElement | null;
+  const input = document.getElementById("ep-search");
   const list = document.getElementById("ep-list");
   const empty = document.getElementById("ep-empty");
   if (input && list) {
-    const rows = Array.from(list.querySelectorAll<HTMLElement>(".eprow"));
+    const rows = Array.from(list.querySelectorAll(".eprow"));
     input.addEventListener("input", () => {
       const q = input.value.trim().toLowerCase();
       let visible = 0;

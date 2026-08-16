@@ -1,6 +1,6 @@
 ---
-import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
 import { ORG, PODCAST } from "../config";
 
 const topics = [
@@ -10,88 +10,94 @@ const topics = [
   { v: "Press", d: "The Center answers questions about its work and its ownership on the record." },
 ];
 ---
-<Base title="Contact" description="Reach the Center for Innovating the Future.">
-  <PageHead kicker="Start a conversation" field="warm">Contact.</PageHead>
+<Base title="Contact" description="Reach the Center for Innovating the Future." cta={false}>
+  <PageHead kicker="Start a conversation" id="ct">
+    Contact.
+    <p slot="lede" class="lede">
+      Host institutions, researchers, collaborators and press can reach the Center directly.
+      Everything sent here is read.
+    </p>
+  </PageHead>
 
-  <section>
-    <div class="wrap cgrid">
-      <div>
-        <h2 class="cformh">Get in touch.</h2>
-        <form
-          class="cform"
-          name="contact"
-          method="POST"
-          action="/contact/thanks"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <p class="hp"><label>Leave this empty <input name="bot-field" /></label></p>
+  <section class="sec" style="padding-top:clamp(40px,5vw,64px)">
+    <div class="wrap">
+      <div class="cgrid">
+        <div>
+          <form
+            class="cform"
+            name="contact"
+            method="POST"
+            action="/contact/thanks"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            style="margin-top:0"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hp"><label>Leave this empty <input name="bot-field" /></label></p>
 
-          <fieldset class="topics">
-            <legend class="lbl">What is this about</legend>
-            {topics.map((t, i) => (
-              <label class="radio">
-                <input type="radio" name="topic" value={t.v} checked={i === 0} />
-                <span>
-                  <b>{t.v}</b>
-                  <em>{t.d}</em>
-                </span>
+            <fieldset class="topics">
+              <legend class="lbl">What is this about</legend>
+              {topics.map((t, i) => (
+                <label class="radio">
+                  <input type="radio" name="topic" value={t.v} checked={i === 0} />
+                  <span>
+                    <b>{t.v}</b>
+                    <em>{t.d}</em>
+                  </span>
+                </label>
+              ))}
+            </fieldset>
+
+            <div class="frow">
+              <label>
+                <span class="lbl">First name</span>
+                <input type="text" name="first-name" autocomplete="given-name" required />
               </label>
-            ))}
-          </fieldset>
+              <label>
+                <span class="lbl">Last name</span>
+                <input type="text" name="last-name" autocomplete="family-name" required />
+              </label>
+            </div>
 
-          <div class="frow">
             <label>
-              <span class="lbl">First name</span>
-              <input type="text" name="first-name" autocomplete="given-name" required />
+              <span class="lbl">Email</span>
+              <input type="email" name="email" autocomplete="email" required />
             </label>
+
             <label>
-              <span class="lbl">Last name</span>
-              <input type="text" name="last-name" autocomplete="family-name" required />
+              <span class="lbl">Organization</span>
+              <input type="text" name="organization" autocomplete="organization" />
             </label>
-          </div>
 
-          <label class="fblock">
-            <span class="lbl">Email</span>
-            <input type="email" name="email" autocomplete="email" required />
-          </label>
+            <label>
+              <span class="lbl">Message</span>
+              <textarea name="message" rows="6" required></textarea>
+            </label>
 
-          <label class="fblock">
-            <span class="lbl">Organization</span>
-            <input type="text" name="organization" autocomplete="organization" />
-          </label>
-
-          <label class="fblock">
-            <span class="lbl">Message</span>
-            <textarea name="message" rows="6" required></textarea>
-          </label>
-
-          <button class="pill pill--solid" type="submit">Send message</button>
-          <p class="fnotice">
-            What you send is used to answer you and nothing else. See the
-            <a href="/privacy">privacy policy</a>.
-          </p>
-        </form>
-      </div>
-
-      <aside class="cinfo">
-        <h3>{ORG.name}</h3>
-        <p class="caddr">Toronto, Ontario<br />Canada</p>
-        <p class="cmail">
-          <a href={"mailto:" + ORG.email}>{ORG.email}</a>
-        </p>
-        <div class="clist">
-          <a href={ORG.linkedin} target="_blank" rel="noopener noreferrer">
-            <span class="lbl">LinkedIn</span>
-            <span>Center for Innovating the Future</span>
-          </a>
-          <a href={PODCAST.url} target="_blank" rel="noopener noreferrer">
-            <span class="lbl">YouTube</span>
-            <span>@ayushprakashofficial</span>
-          </a>
+            <button class="btn btn--lg" type="submit" style="align-self:flex-start">Send message</button>
+            <p class="fnotice">
+              What you send is used to answer you and nothing else. See the
+              <a href="/privacy">privacy policy</a>.
+            </p>
+          </form>
         </div>
-      </aside>
+
+        <aside class="cinfo">
+          <h3>{ORG.name}</h3>
+          <p class="caddr">{ORG.city}, Ontario<br />Canada</p>
+          <p class="cmail"><a href={"mailto:" + ORG.email}>{ORG.email}</a></p>
+          <div class="clist">
+            <a href={ORG.linkedin} target="_blank" rel="noopener noreferrer">
+              <span class="lbl">LinkedIn</span>
+              <span>Center for Innovating the Future</span>
+            </a>
+            <a href={PODCAST.url} target="_blank" rel="noopener noreferrer">
+              <span class="lbl">YouTube</span>
+              <span>@ayushprakashofficial</span>
+            </a>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 </Base>

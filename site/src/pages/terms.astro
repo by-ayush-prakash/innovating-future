@@ -1,28 +1,26 @@
 ---
-import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
 import { ORG } from "../config";
-
-const paragraphs = [
-  "In effect August 2026. These terms govern your use of innovatingfuture.com, operated by Center for Innovating the Future Inc.",
-  "Using the site means accepting these terms. If you do not accept them, do not use the site.",
-  "Text, images, diagrams, logos, and publications on this site belong to the Center or to the people who licensed them to it, and are protected by copyright and trademark law. You may quote and link to this material with attribution. Reproducing, redistributing, or building derivative work from it requires written permission from the Center.",
-  "The site is provided as is. The Center works to keep it accurate and available but makes no warranty that it will be either, and research positions published here may change as evidence changes.",
-  "Links to other websites are not endorsements. The Center does not control them and is not responsible for what they contain.",
-  "To the extent the law allows, the Center and its directors, employees, and contractors are not liable for indirect, incidental, or consequential loss arising from use of this site or reliance on anything published on it.",
-  "These terms may be revised. The version in effect is the one published here, with the date shown above. Continuing to use the site after a revision means accepting it.",
-  "These terms are governed by the laws of the Province of Ontario and the federal laws of Canada that apply in it. The courts of Ontario have jurisdiction over any dispute.",
-];
 ---
-<Base title="Terms of Use" description="Terms governing use of innovatingfuture.com, operated by Center for Innovating the Future Inc.">
-  <PageHead>Terms of Use</PageHead>
-  <div class="wrap">
-    <div class="legal">
-      {paragraphs.map((p) => <p>{p}</p>)}
-      <p>
-        Permission requests and questions go to
-        <a href={"mailto:" + ORG.email} style="border-bottom:2px solid var(--accent)">{ORG.email}</a>.
-      </p>
+<Base title="Terms of Use" description="Terms of use for innovatingfuture.com." cta={false}>
+  <PageHead kicker="Last updated 2026" id="tm">
+    Terms of Use.
+    <p slot="lede" class="lede">
+      What this site is, and what it is not.
+    </p>
+  </PageHead>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="body">
+        <p><strong>What this site is.</strong> A publication of the Center for Innovating the Future Inc., a company established in Toronto in December 2010. It describes the Center's work and publishes its research.</p>
+        <p><strong>Not advice.</strong> Nothing here is legal, financial, medical or investment advice. Research published by the Center is offered as analysis, and the reader is responsible for what they do with it.</p>
+        <p><strong>Accuracy.</strong> The Center sources what it publishes and corrects what it gets wrong. Where a claim has been graded against later evidence, the grade is published alongside it. Material is accurate as at the date shown and is not guaranteed to remain so.</p>
+        <p><strong>Ownership.</strong> Text, research and design on this site belong to the Center unless otherwise credited. Quote it with attribution and a link. Do not republish work in full without asking.</p>
+        <p><strong>Links out.</strong> The Center links to sources so claims can be checked. It does not control those sites and is not responsible for what they publish.</p>
+        <p><strong>Questions.</strong> Write to <a href={"mailto:" + ORG.email}>{ORG.email}</a>.</p>
+      </div>
     </div>
-  </div>
+  </section>
 </Base>

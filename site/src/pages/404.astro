@@ -1,14 +1,26 @@
 ---
-import PageHead from "../components/PageHead.astro";
 import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import Arrow from "../components/Arrow.astro";
 ---
-<Base title="Page not found" noindex={true}>
-  <PageHead>That page does not exist.</PageHead>
-  <section>
+<Base title="Page not found" noindex={true} cta={false}>
+  <PageHead kicker="404" id="nf">
+    That page does not exist.
+    <p slot="lede" class="lede">
+      The address may have changed. Start from one of these, or write to the Center.
+    </p>
+  </PageHead>
+
+  <section class="sec">
     <div class="wrap">
-      <div class="body">
-        <p>The address may have changed. Start from the <a href="/" style="border-bottom:1px solid var(--accent)">homepage</a>, or write to the Center.</p>
+      <div class="lrows">
+        <a class="lrow" href="/"><span class="t">Homepage</span></a>
+        <a class="lrow" href="/work"><span class="t">What the Center does</span></a>
+        <a class="lrow" href="/senate-2017"><span class="t">CIF Before the Senate</span></a>
+        <a class="lrow" href="/media"><span class="t">In the press</span></a>
+        <a class="lrow" href="/contact"><span class="t">Contact</span></a>
       </div>
+      <a class="go" href="/" style="margin-top:40px">Back to the homepage <Arrow /></a>
     </div>
   </section>
 </Base>
