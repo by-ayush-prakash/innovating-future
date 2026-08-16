@@ -12,7 +12,7 @@ const logoFor = (slug: string) =>
 const featuredOrder = ["montreal-review", "psychology-today", "cnbc"];
 const featuredField: Record<string, string> = {
   "montreal-review": "sand",
-  "psychology-today": "grey-teal",
+  "psychology-today": "gray-teal",
   cnbc: "dark-violet",
 };
 const featured = featuredOrder
@@ -31,7 +31,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
   ctaBody="The Center answers questions about its work and its ownership on the record."
   ctaLabel="Get in touch"
 >
-  <PageHead kicker="Since 2016" id="md">
+  <PageHead id="md">
     In the press.
     <p slot="lede" class="lede">
       Every published appearance by the Center and its principals, each with its source.

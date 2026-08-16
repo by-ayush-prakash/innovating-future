@@ -9,24 +9,24 @@ const facts = [
   { k: "Status", v: "Fieldwork open" },
   { k: "First outputs", v: "November 2026" },
   { k: "Method", v: "Elite-informant qualitative interviews, plus new fieldwork" },
-  { k: "Geography", v: "Canada, against US-centred comparators" },
+  { k: "Geography", v: "Canada, against US-centered comparators" },
   { k: "Program", v: "Co-Existing with AI" },
 ];
 
 // What is already published, so the reader can see what this study is not duplicating.
 const known = [
   { n: "01", src: "Gallup, with the Walton Family Foundation and GSV Ventures, April 2026",
-    f: "n = 1,572, ages 14 to 29. Excitement about AI down 14 points. Anger at 31 per cent." },
+    f: "n = 1,572, ages 14 to 29. Excitement about AI down 14 points. Anger at 31 percent." },
   { n: "02", src: "Wharton, with Gallup",
-    f: "79 per cent of Gen Z say AI causes laziness." },
+    f: "79 percent of Gen Z say AI causes laziness." },
   { n: "03", src: "TalentLMS",
-    f: "47 per cent of Gen Z employees say they get better guidance from AI than from their managers." },
+    f: "47 percent of Gen Z employees say they get better guidance from AI than from their managers." },
 ];
 
 const outputs = [
-  { n: "Output 01", h: "The report", p: "Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are. Full quote appendix with sources.", field: "dark-violet" },
-  { n: "Output 02", h: "The policy brief", p: "Six to ten pages for the people who write rules, written so they can act on it.", field: "grey-teal" },
-  { n: "Output 03", h: "The framework", p: "A developmentally responsible AI framework organizations can apply without a research team.", field: "sand" },
+  { h: "The report", p: "Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are. Full quote appendix with sources.", field: "dark-violet" },
+  { h: "The policy brief", p: "Six to ten pages for the people who write rules, written so they can act on it.", field: "gray-teal" },
+  { h: "The framework", p: "A developmentally responsible AI framework organizations can apply without a research team.", field: "sand" },
 ];
 
 const sections = [
@@ -43,8 +43,7 @@ const sections = [
   ctaHeading="Take part in the study."
   ctaBody="The Center is speaking with people who came of age using conversational AI, and with researchers working on cognition, learning and human-machine interaction. Organizations that want the findings applied to their own operation can also write."
 >
-  <PageHead kicker="The Center's current research" field="dark-violet"
-            caption="Fieldwork open &middot; First outputs November 2026" id="an">
+  <PageHead photo="/images/coexisting-ai.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" id="an">
     The First <span style="white-space:nowrap">AI-Native</span> Generation.
     <p slot="lede" class="lede">
       A generation is coming of age inside a technology nobody has finished understanding.
@@ -95,8 +94,7 @@ const sections = [
   <section class="band" id="open">
     <div class="rnw"><Field v="dark-slate" id="ao" w={2400} h={900} /></div>
     <div class="wrap">
-      <p class="mono">What is open</p>
-      <h3 style="margin-top:26px">Three gaps, and they are the reason this study exists.</h3>
+      <h3>Three gaps, and they are the reason this study exists.</h3>
       <div class="bandgrid" style="grid-template-columns:1fr;gap:0;margin-top:clamp(36px,4.4vw,64px)">
         <div class="lrows" style="border-top:1px solid rgba(255,255,255,.16);max-width:900px">
           <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
@@ -104,7 +102,7 @@ const sections = [
             <p style="color:rgba(255,255,255,.6);margin-top:8px">Everything published is quantitative sentiment. There is very little work on how AI-native people actually reason, how they decide what to delegate, and how they structure work when a machine is always available.</p>
           </div>
           <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
-            <span class="t" style="color:#fff">The datasets are US-centred.</span>
+            <span class="t" style="color:#fff">The datasets are US-centered.</span>
             <p style="color:rgba(255,255,255,.6);margin-top:8px">A Canadian qualitative cut does not exist.</p>
           </div>
           <div class="lrow" style="border-bottom-color:rgba(255,255,255,.16)">
@@ -121,7 +119,6 @@ const sections = [
       <div class="arow">
         <div class="afig"><Field v="stone" id="al" w={1000} h={750} /></div>
         <div>
-          <p class="mono" style="margin-bottom:20px">Two evidence layers</p>
           <h3>Kept separate, on purpose.</h3>
           <div class="body" style="max-width:none;margin-top:22px">
             <p><strong>Layer one, what experts believe.</strong> The Center has conducted long-form
@@ -131,7 +128,7 @@ const sections = [
             <p><strong>Layer two, what AI-natives actually do.</strong> This requires new fieldwork,
             because researchers are not AI-natives and the corpus cannot answer for them. That
             fieldwork is open now.</p>
-            <p>A study that blurs expert belief into lived behaviour is describing neither.</p>
+            <p>A study that blurs expert belief into lived behavior is describing neither.</p>
           </div>
         </div>
       </div>
@@ -173,7 +170,6 @@ const sections = [
           <div class="ncard">
             <div class="im"><Field v={o.field} id={`ap${i}`} w={1200} h={675} /></div>
             <div class="bd">
-              <p class="mono">{o.n}</p>
               <h4>{o.h}</h4>
               <p class="sm mut">{o.p}</p>
             </div>

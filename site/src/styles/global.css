@@ -2,8 +2,8 @@
    Center for Innovating the Future
    Design system. Every value here is deliberate; see the notes.
 
-   Base is white on black. Colour arrives as panels and images,
-   never as coloured type. Headings are weight 400 at every size.
+   Base is white on black. Color arrives as panels and images,
+   never as colored type. Headings are weight 400 at every size.
    One radius (22px) and one pill (9999px). Nothing else.
    ============================================================ */
 
@@ -17,7 +17,7 @@
   --hair-d:rgba(255,255,255,.14);
 
   /* panels. these are the only fills used at section scale */
-  --grey:#F2F2F2;
+  --gray:#F2F2F2;
   --sand:#F0EEE9;
   --sage:#D0D5D2;
   --dark:#17171C;
@@ -25,7 +25,7 @@
   --off:#FAFAFA;
 
   /* the three property hues. used in imagery and the accent rule.
-     never as body or heading colour. */
+     never as body or heading color. */
   --red:#DE3A11;
   --amber:#C67E16;
   --teal:#1C6E63;
@@ -88,7 +88,7 @@ p{text-wrap:pretty}
   line-height:24px;white-space:nowrap;border:1px solid transparent;transition:.2s;cursor:pointer}
 .btn:hover{background:#2E2E3C}
 .btn--gh{background:transparent;color:var(--ink);border-color:#D6D6D6}
-.btn--gh:hover{background:var(--grey)}
+.btn--gh:hover{background:var(--gray)}
 .btn--w{background:#fff;color:var(--dark)}
 .btn--w:hover{background:#E8E8E8}
 .btn--lg{height:52px;padding:0 30px;font-size:15px}
@@ -101,7 +101,7 @@ p{text-wrap:pretty}
 .sec{padding:clamp(64px,9vw,120px) 0}
 .sec--t{padding-top:0}
 .sec--b{padding-bottom:0}
-.sec--g{background:var(--grey)}
+.sec--g{background:var(--gray)}
 .sec--s{background:var(--sand)}
 .sec--d{background:var(--dark);color:#FAFAFA}
 .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;
@@ -150,7 +150,7 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .ndrop:hover .npanel,.ndrop:focus-within .npanel{opacity:1;visibility:visible;transform:none}
 .npanel a{display:flex;align-items:center;justify-content:space-between;gap:20px;
   padding:13px 16px;border-radius:14px;font-size:15px;line-height:21px;transition:.15s}
-.npanel a:hover{background:var(--grey)}
+.npanel a:hover{background:var(--gray)}
 .npanel a svg{opacity:0;transition:.15s;flex:none}
 .npanel a:hover svg{opacity:.5}
 .navr{margin-left:auto;display:flex;align-items:center;gap:22px;font-size:16px}
@@ -269,7 +269,7 @@ a.rrow:hover{background:var(--off);padding-inline:14px;margin-inline:-14px}
 .g3--c>*{display:flex;flex-direction:column;align-items:center;text-align:center}
 .g3--c svg.ico{margin-inline:auto}
 .g3--c p{max-width:34ch}
-.ncard{border-radius:var(--r);overflow:hidden;background:var(--grey);display:flex;
+.ncard{border-radius:var(--r);overflow:hidden;background:var(--gray);display:flex;
   flex-direction:column;transition:.2s}
 a.ncard:hover{transform:translateY(-4px)}
 .ncard .im{aspect-ratio:16/9;border-radius:0}
@@ -314,7 +314,7 @@ a.wl:hover img{opacity:1;filter:none}
 
 /* ---------- people ---------- */
 .person{display:grid;grid-template-columns:340px 1fr;gap:clamp(32px,5vw,80px);align-items:start}
-.person .photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--grey)}
+.person .photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--gray)}
 .person .photo img{width:100%;height:100%;object-fit:cover}
 .person h2{margin-bottom:8px}
 .role{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;
@@ -352,7 +352,7 @@ a.wl:hover img{opacity:1;filter:none}
 .hp{position:absolute;left:-9999px}
 .fnotice{font-size:13px;color:var(--mut)}
 .fnotice a{border-bottom:1px solid var(--hair)}
-.cinfo{background:var(--grey);border-radius:var(--r);padding:clamp(28px,3vw,40px)}
+.cinfo{background:var(--gray);border-radius:var(--r);padding:clamp(28px,3vw,40px)}
 .cinfo h3{font-size:22px;line-height:1.28;margin-bottom:18px}
 .caddr,.cmail{font-size:15px;line-height:24px;color:var(--mut);margin-bottom:16px}
 .cmail a{color:var(--ink);border-bottom:1px solid var(--hair)}
@@ -367,7 +367,7 @@ a.wl:hover img{opacity:1;filter:none}
 .plat{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .plat a{display:inline-flex;align-items:center;gap:11px;height:52px;padding:0 24px;
   border-radius:9999px;border:1px solid #D6D6D6;font-size:15px;transition:.2s}
-.plat a:hover{background:var(--grey)}
+.plat a:hover{background:var(--gray)}
 .plat svg{width:22px;height:22px;flex:none}
 .eplist{border-top:1px solid var(--hair)}
 .eprow{display:grid;grid-template-columns:80px 1fr 150px;gap:clamp(18px,3vw,40px);
@@ -380,7 +380,7 @@ a.wl:hover img{opacity:1;filter:none}
 .cov{border-radius:var(--r);overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.2)}
 
 /* ---------- closing CTA + footer ---------- */
-.ctab{background:var(--grey);border-radius:var(--r);padding:clamp(40px,6vw,96px);
+.ctab{background:var(--gray);border-radius:var(--r);padding:clamp(40px,6vw,96px);
   display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,64px);align-items:center;
   margin-bottom:clamp(64px,9vw,120px)}
 .ctab h3{max-width:15ch}

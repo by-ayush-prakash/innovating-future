@@ -2,29 +2,27 @@
 import Field from "./Field.astro";
 
 /*
-  Inner-page hero. Split grid: kicker and H1 left, lede and buttons right,
-  then an optional 21:8 bleed image.
+  Inner-page hero. Split grid: H1 left, lede and buttons right, then an
+  optional 21:8 bleed image.
+
+  No eyebrow. The heading carries the page.
 
   Props
-    kicker    small mono line above the H1
-    field     Field variant for the bleed image; omit for no image
-    caption   mono line sitting on the bleed image
-    light     true when the bleed image is light, so the caption goes dark
+    field   Field variant for the bleed image
+    photo   path to a real photograph, used instead of field
+    alt     alt text for photo
   Slots
     default   the H1 text
     lede      the paragraph on the right
     cta       buttons under the lede
 */
-const { kicker = null, field = null, caption = null, light = false, id = "ph" } = Astro.props;
+const { field = null, photo = null, alt = "", id = "ph" } = Astro.props;
 const hasSide = Astro.slots.has("lede") || Astro.slots.has("cta");
 ---
 <header class="ph-sec">
   <div class="wrap">
     <div class="ph-grid" style={hasSide ? undefined : "grid-template-columns:1fr"}>
-      <div>
-        {kicker && <p class="mono" style="margin-bottom:24px" set:html={kicker} />}
-        <h1 class="ph"><slot /></h1>
-      </div>
+      <h1 class="ph"><slot /></h1>
       {hasSide && (
         <div>
           <slot name="lede" />
@@ -33,14 +31,11 @@ const hasSide = Astro.slots.has("lede") || Astro.slots.has("cta");
       )}
     </div>
 
-    {field && (
+    {(photo || field) && (
       <div class="bleed">
-        <Field v={field} id={id} w={2400} h={914} />
-        {caption && (
-          <div class={light ? "lab lab--d" : "lab"}>
-            <p class="mono" style={light ? undefined : "color:rgba(255,255,255,.72)"} set:html={caption} />
-          </div>
-        )}
+        {photo
+          ? <img class="rn" src={photo} alt={alt} loading="eager" />
+          : <Field v={field} id={id} w={2400} h={914} />}
       </div>
     )}
   </div>

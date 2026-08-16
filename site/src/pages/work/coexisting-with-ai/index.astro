@@ -33,10 +33,24 @@ const motions = [
   { n: "03", h: "Advise", p: "Private briefings and workshops for leadership teams, delivered by the Center's own principals. No client, sponsor or employer determines what the program publishes." },
 ];
 
+// Ways an organization takes the program on. Named as shapes, not tiers,
+// and never priced on the page. Every one is built for the room.
+const shapes = [
+  { t: "A briefing",
+    p: "Ninety minutes with a leadership team. The argument, the evidence behind it, and what it means for one specific operation rather than for the economy." },
+  { t: "A working session",
+    p: "A full day, built around the decisions actually in front of the team. They leave with their own answer written down, not the Center's." },
+  { t: "A standing arrangement",
+    p: "The Center works alongside a team across a quarter or a year, because the question keeps moving and a single session freezes it." },
+  { t: "A hosted convening",
+    p: "The organization hosts a public session and shapes the agenda alongside the Center rather than joining a finished one." },
+];
+
 const sections = [
   { label: "The program", href: "#program" },
   { label: "How it works", href: "#how" },
   { label: "Sessions", href: "#sessions" },
+  { label: "Bring it in", href: "#bring" },
   { label: "The record", href: "#record" },
   { label: "More from the Center", href: "#more" },
 ];
@@ -47,8 +61,7 @@ const sections = [
   ctaHeading="Host, partner, or bring the program in."
   ctaBody="Host institutions shape the agenda alongside the Center rather than joining a finished one. Partners and organizations working on the same questions can write directly."
 >
-  <PageHead kicker="A program of the Center" field="dark-red"
-            caption="Microsoft Reactor Toronto &middot; CIBC Square &middot; February 2025" id="cx">
+  <PageHead photo="/images/coexisting-ai.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" id="cx">
     Co-Existing with AI.
     <p slot="lede" class="lede">
       Whether you are a student, an entrepreneur, or the leader of a business or a nation, you
@@ -84,7 +97,6 @@ const sections = [
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
             <div class="afig"><Field v={k.field} id={`cp${i}`} w={1000} h={750} /></div>
             <div>
-              <p class="mono" style="margin-bottom:20px">{k.n}</p>
               <h3>{k.h}</h3>
               <p>{k.p}</p>
             </div>
@@ -115,9 +127,8 @@ const sections = [
   <section class="band" id="record">
     <div class="rnw"><Field v="dark-teal" id="cs" w={2400} h={900} /></div>
     <div class="wrap">
-      <p class="mono">The record</p>
-      <h3 style="margin-top:26px">
-        We told a Senate committee that 42 per cent of Canadian jobs were at risk.
+      <h3>
+        We told a Senate committee that 42 percent of Canadian jobs were at risk.
         Canada added jobs instead.
       </h3>
       <p>
@@ -133,31 +144,50 @@ const sections = [
   <section class="sec" id="sessions">
     <div class="wrap">
       <div class="shead"><h3>From the program</h3></div>
-      <div class="g2">
-        <a class="ncard" href="/work/coexisting-with-ai/microsoft-reactor">
-          <div class="im"><Field v="sand-amber" id="cm" w={1200} h={675} /></div>
-          <div class="bd">
-            <p class="mono">Microsoft Reactor Toronto &middot; 20 February 2025</p>
-            <h4>Coexisting with AI: Succeeding In the New Era</h4>
-            <p class="sm mut">Created and hosted by the Center at CIBC Square. Part of the opening series at Microsoft Reactor Toronto.</p>
-            <span class="go">The session <Arrow /></span>
-          </div>
-        </a>
-        <div class="ncard ncard--d">
-          <div class="bd bd--lg" style="justify-content:center">
-            <p class="mono">Private</p>
-            <h4 style="font-size:clamp(24px,2.6vw,32px)">Bring it to your organization.</h4>
-            <p class="sm mut">
-              The Center runs the session as a private briefing or a full-day workshop for
-              leadership teams working out what changes in their own operation.
-            </p>
-            <a class="btn btn--w" style="margin-top:18px;align-self:flex-start" href="/contact">Enquire</a>
+      <a class="arow" href="/work/coexisting-with-ai/microsoft-reactor" style="align-items:center">
+        <div class="afig" style="aspect-ratio:16/10">
+          <img class="rn" src="/images/microsoft-reactor.jpg" alt="Microsoft Reactor Toronto at CIBC Square, people arriving for a session" loading="lazy" />
+        </div>
+        <div>
+          <p class="mono">Microsoft Reactor Toronto &middot; 20 February 2025</p>
+          <h3 style="margin-top:18px">Coexisting with AI: Succeeding In the New Era</h3>
+          <p style="margin-top:20px">
+            Created and hosted by the Center at CIBC Square. Part of the opening series at
+            Microsoft Reactor Toronto.
+          </p>
+          <span class="go" style="margin-top:28px">The session <Arrow /></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec sec--g" id="bring">
+    <div class="wrap">
+      <div class="arow" style="align-items:start">
+        <div>
+          <h3>Bring the program into your organization.</h3>
+          <p class="lede" style="margin-top:24px">
+            Delivered by the Center's own principals. No associates, and no deck written
+            by someone who has never sat in your room.
+          </p>
+          <div class="cta" style="margin-top:34px">
+            <a class="btn" href="/contact">Start a conversation</a>
+            <a class="btn btn--gh" style="background:#fff" href={"mailto:" + ORG.email}>{ORG.email}</a>
           </div>
         </div>
+        <div>
+          <div class="rule"></div>
+          <div class="lrows" style="border-top:0">
+            {shapes.map((k) => (
+              <div class="lrow">
+                <span class="t">{k.t}</span>
+                <p>{k.p}</p>
+              </div>
+            ))}
+          </div>
+          <p class="dnote">Each one is built for the organization it is delivered to.</p>
+        </div>
       </div>
-      <p class="dnote">
-        Requests for the material go to <a href={"mailto:" + ORG.email}>{ORG.email}</a>.
-      </p>
     </div>
   </section>
 
@@ -166,9 +196,8 @@ const sections = [
       <div class="shead"><h3>More from the Center</h3></div>
       <div class="g3">
         <a class="ncard" href="/work/ai-native-generation">
-          <div class="im"><Field v="grey-red" id="cn1" w={1200} h={675} /></div>
+          <div class="im"><img class="rn" src="/images/coexisting-ai.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd">
-            <p class="mono">Research &middot; Fieldwork open</p>
             <h4>The First AI-Native Generation</h4>
             <p class="sm mut">What sustained interaction with conversational AI does to cognition, identity, and agency.</p>
             <span class="go">Take part <Arrow /></span>
@@ -177,16 +206,14 @@ const sections = [
         <a class="ncard" href="/work/mantic">
           <div class="im"><Field v="sand" id="cn2" w={1200} h={675} /></div>
           <div class="bd">
-            <p class="mono">Press</p>
             <h4>Mantic Publishing</h4>
             <p class="sm mut">The Center's press. Long-form arguments on the ideas changing what it means to be human.</p>
             <span class="go">Visit Mantic <Arrow /></span>
           </div>
         </a>
         <a class="ncard" href="/podcast">
-          <div class="im"><Field v="grey-teal" id="cn3" w={1200} h={675} /></div>
+          <div class="im"><Field v="gray-teal" id="cn3" w={1200} h={675} /></div>
           <div class="bd">
-            <p class="mono">Public channel</p>
             <h4>The Ayush Prakash Podcast</h4>
             <p class="sm mut">Long-form conversations with researchers, critics, and builders.</p>
             <span class="go">Explore episodes <Arrow /></span>

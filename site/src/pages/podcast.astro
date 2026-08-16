@@ -36,8 +36,7 @@ const sections = [
   ctaLabel="Subscribe on YouTube"
   ctaHref={PODCAST.url}
 >
-  <PageHead kicker="The Center's public channel" field="dark-teal"
-            caption="Apple Podcasts &middot; Spotify &middot; YouTube" id="pd">
+  <PageHead field="dark-teal" id="pd">
     Conversations on the technologies reshaping how we think.
     <p slot="lede" class="lede">
       {PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.
@@ -78,8 +77,7 @@ const sections = [
             <div class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} /></div>
             {latest && (
               <div>
-                <p class="mono">Latest episode &middot; {fmtDate(latest.pubDate)}</p>
-                <h3 style="margin-top:22px;max-width:22ch">{latest.title}</h3>
+                <h3 style="max-width:22ch">{latest.title}</h3>
                 {latest.description && <p class="lede" style="margin-top:22px">{latest.description}</p>}
                 {latest.audio && <audio controls preload="none" src={latest.audio} style="margin-top:28px;width:100%;max-width:520px"></audio>}
               </div>
@@ -119,8 +117,7 @@ const sections = [
   <section class="band" id="guests">
     <div class="rnw"><Field v="dark-slate" id="pg" w={2400} h={900} /></div>
     <div class="wrap">
-      <p class="mono">Who comes on</p>
-      <h3 style="margin-top:26px">Researchers, critics, and builders. Nobody selling anything.</h3>
+      <h3>Researchers, critics, and builders. Nobody selling anything.</h3>
       <p>
         The show books people who have spent years on a question and are willing to be pushed on
         the answer for an hour. Conversations run long because the interesting part is rarely in
@@ -139,10 +136,9 @@ const sections = [
       <div class="g2">
         <a class="ncard ncard--d" href="/work/mantic">
           <div class="bd bd--lg" style="justify-content:center">
-            <p class="mono">Mantic Publishing</p>
             <h4 style="font-size:clamp(24px,2.6vw,32px)">Every published Mantic author gets a seat.</h4>
             <p class="sm mut">
-              Not a promotional slot. A long-form defence of the book in front of an audience that
+              Not a promotional slot. A long-form defense of the book in front of an audience that
               will push on it. The book is where the argument starts. This is where it gets tested.
             </p>
             <span class="go">About the imprint <Arrow /></span>
@@ -150,7 +146,6 @@ const sections = [
         </a>
         <div class="ncard ncard--o">
           <div class="bd bd--lg" style="justify-content:center">
-            <p class="mono">Pitch the show</p>
             <h4 style="font-size:clamp(24px,2.6vw,32px)">Working on something most people have wrong?</h4>
             <p class="sm mut">
               The show reads every pitch. Send the question you have been sitting with, what the

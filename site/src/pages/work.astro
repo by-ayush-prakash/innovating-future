@@ -6,9 +6,9 @@ import Arrow from "../components/Arrow.astro";
 import { SKEPTICISM, MANTIC, PODCAST } from "../config";
 
 const properties = [
-  { ...SKEPTICISM, kind: "Program", field: "dark-red", cta: "Learn more" },
-  { ...MANTIC, kind: "Press", field: "sand-amber", cta: "Visit Mantic" },
-  { ...PODCAST, kind: "Public channel", field: "grey-teal", cta: "Explore episodes" },
+  { ...SKEPTICISM, photo: "/images/coexisting-ai.jpg", alt: "A model brain on a yellow grid, marked by a cursor and a red dot", cta: "Learn more" },
+  { ...MANTIC, field: "sand-amber", cta: "Visit Mantic" },
+  { ...PODCAST, field: "gray-teal", cta: "Explore episodes" },
 ];
 
 const appearances = [
@@ -30,7 +30,7 @@ const appearances = [
 ];
 ---
 <Base title="Work" description="The Center for Innovating the Future owns and operates its institutions. A Toronto strategy innovation lab, established December 2010.">
-  <PageHead kicker="What we do" field="stone" caption="Four institutions, one standard" light={true} id="wk">
+  <PageHead field="stone" id="wk">
     The Center owns and operates its institutions.
     <p slot="lede" class="lede">
       Every institution the Center holds carries its own remit, its own audience, and its own
@@ -47,9 +47,8 @@ const appearances = [
       <div class="alt">
         {properties.map((p, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
-            <div class="afig"><Field v={p.field} id={`w${i}`} w={1000} h={750} /></div>
+            <div class="afig">{p.photo ? <img class="rn" src={p.photo} alt={p.alt} loading="lazy" /> : <Field v={p.field} id={`w${i}`} w={1000} h={750} />}</div>
             <div>
-              <p class="mono" style="margin-bottom:20px">{p.kind}</p>
               <h3>{p.name}</h3>
               <p>{p.blurb}</p>
               <a class="go" href={p.page}>{p.cta} <Arrow /></a>
@@ -64,9 +63,8 @@ const appearances = [
     <div class="wrap">
       <div class="g2">
         <a class="ncard" href="/work/ai-native-generation">
-          <div class="im"><Field v="dark-violet" id="wa" w={1200} h={675} /></div>
+          <div class="im"><img class="rn" src="/images/coexisting-ai.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd bd--lg">
-            <p class="mono">Research &middot; Fieldwork open</p>
             <h4 style="font-size:clamp(24px,2.6vw,32px)">The First AI-Native Generation</h4>
             <p class="sm mut">What sustained interaction with conversational AI does to cognition, identity, and agency. First outputs November 2026.</p>
             <span class="go">Take part <Arrow /></span>
@@ -74,7 +72,6 @@ const appearances = [
         </a>
         <a class="ncard ncard--d" href="/senate-2017">
           <div class="bd bd--lg" style="justify-content:center">
-            <p class="mono">Resource</p>
             <h4 style="font-size:clamp(24px,2.6vw,32px)">CIF Before the Senate</h4>
             <p class="sm mut">The Center gave evidence in 2017. Nine years on, every claim it made that day is graded in public, with sources. Three held. Three failed.</p>
             <span class="go">Read the scorecard <Arrow /></span>
