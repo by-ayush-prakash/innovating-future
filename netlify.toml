@@ -21,19 +21,19 @@
 
 [[redirects]]
   from = "/news"
-  to = "/writing"
+  to = "/media"
   status = 301
   force = true
 
 [[redirects]]
   from = "/press"
-  to = "/writing"
+  to = "/media"
   status = 301
   force = true
 
 [[redirects]]
   from = "/members"
-  to = "/leadership"
+  to = "/team"
   status = 301
   force = true
 
@@ -71,5 +71,11 @@
 [[redirects]]
   from = "/work/senate-2017"
   to = "/senate-2017"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/leadership"
+  to = "/team"
   status = 301
   force = true

@@ -36,13 +36,14 @@ const past = [
 ];
 ---
 <Base
-  title="Leadership"
-  description="Leadership at the Center for Innovating the Future."
+  title="Team"
+  description="Who runs the Center for Innovating the Future."
   ctaHeading="Work with the Center."
   ctaBody="Host institutions, researchers, and collaborators working on the same questions can reach the Center directly."
 >
   <PageHead id="ld">
-    Leadership.
+    Team.
+    <p slot="lede" class="lede">No associates. The principals do the work.</p>
   </PageHead>
 
   <section class="sec" style="padding-top:clamp(40px,5vw,64px)">
@@ -71,7 +72,7 @@ const past = [
 
   <section class="sec sec--t">
     <div class="wrap">
-      <div class="shead"><h3>Past principals</h3></div>
+      <div class="shead"><h3>Before</h3></div>
       <div class="g2">
         {past.map((p) => (
           <div class="pp">

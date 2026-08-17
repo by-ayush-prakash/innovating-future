@@ -14,7 +14,7 @@ const routes = files
 // Pages a journalist or partner lands on first get a higher priority.
 const priority = (r: string) =>
   r === "" ? "1.0"
-  : ["work", "work/coexisting-with-ai", "leadership", "media"].includes(r) ? "0.9"
+  : ["work", "work/coexisting-with-ai", "team", "media"].includes(r) ? "0.9"
   : ["terms", "privacy"].includes(r) ? "0.3"
   : "0.7";
 
