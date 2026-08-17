@@ -140,6 +140,25 @@ p{text-wrap:pretty}
 .caveat{background:#fff;border-radius:var(--r);padding:clamp(24px,2.8vw,34px)}
 .caveat h4{font-size:18px;line-height:1.32;margin-bottom:12px;max-width:24ch}
 .caveat p{font-size:15px;line-height:25px;color:var(--ink-2)}
+
+/* ---------- support ----------
+   Two ways to give, then the quieter routes folded away underneath. */
+.give{display:grid;gap:14px}
+.giverow{display:block;border:1px solid var(--hair);border-radius:var(--r);
+  padding:clamp(20px,2.4vw,28px);transition:.18s}
+.giverow:hover{border-color:var(--ink);background:var(--off)}
+.giverow .gt{display:block;font-size:clamp(20px,1.9vw,24px);line-height:1.3;letter-spacing:-.01em}
+.giverow .gp{display:block;margin-top:8px;font-size:15px;line-height:24px;color:var(--mut);max-width:44ch}
+.ways{margin-top:clamp(26px,3vw,38px);border-top:1px solid var(--hair)}
+.ways details{border-bottom:1px solid var(--hair)}
+.ways summary{list-style:none;cursor:pointer;padding:20px 0;font-size:18px;
+  display:flex;justify-content:space-between;align-items:center;transition:.18s}
+.ways summary::-webkit-details-marker{display:none}
+.ways summary::after{content:"";width:9px;height:9px;border-right:1.4px solid var(--mut);
+  border-bottom:1.4px solid var(--mut);transform:rotate(45deg) translate(-3px,-3px);transition:.2s}
+.ways details[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.ways summary:hover{color:var(--mut)}
+.ways details p{padding:0 0 22px;font-size:15px;line-height:25px;color:var(--mut);max-width:52ch}
 /* Closing line of a section: the note on the left, where it goes next on
    the right, sitting on a hairline. Mirrors .shead at the other end. */
 .sfoot{display:flex;justify-content:space-between;align-items:baseline;gap:clamp(20px,3vw,40px);

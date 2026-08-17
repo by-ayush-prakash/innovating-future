@@ -1,0 +1,124 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHead from "../components/PageHead.astro";
+import { ORG, SUPPORT } from "../config";
+
+// Until the Stripe links exist the buttons route to the form rather than
+// dead-ending. Swap SUPPORT.once / SUPPORT.monthly in config.ts.
+const onceHref = SUPPORT.once || "/contact";
+const monthlyHref = SUPPORT.monthly || "/contact";
+
+const goes = [
+  {
+    h: "The First AI-Native Generation",
+    p: "Thirty long-form conversations, each transcribed and coded against a fixed frame. The first report is due November 2026.",
+  },
+  {
+    h: "Co-Existing with AI",
+    p: "Convenings that put researchers, policy staff, and operators in one room on one question, and the assessments that come out of them.",
+  },
+  {
+    h: "Publishing it free",
+    p: "The report, the policy brief, and the framework go out at no cost to the reader. So does the Senate scorecard, including the claims that failed.",
+  },
+];
+---
+<Base
+  title="Support the work"
+  description="How to fund the Center for Innovating the Future. Independent research, published free, with no sponsor determining what it finds."
+  ctaHeading="Rather talk it through first?"
+  ctaBody="Foundations and institutions funding a named program can write to the Center directly."
+  ctaField="dark-teal"
+>
+  <PageHead id="sp">
+    Support the work.
+    <p slot="lede" class="lede">
+      The Center publishes what it finds free, and takes no direction from a funder on what
+      that turns out to be. That combination has to be paid for.
+    </p>
+  </PageHead>
+
+  <section class="sec" style="padding-top:clamp(30px,3.4vw,44px)">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="shead"><h3>Give by card</h3></div>
+
+          <div class="give">
+            <a class="giverow" href={onceHref}>
+              <span class="gt">Once</span>
+              <span class="gp">A single contribution. You choose the amount at checkout.</span>
+            </a>
+            <a class="giverow" href={monthlyHref}>
+              <span class="gt">Monthly</span>
+              <span class="gp">Recurring support is what lets the Center commit to a study that runs past the current quarter.</span>
+            </a>
+          </div>
+
+          <div class="ways">
+            <details>
+              <summary>Give by wire</summary>
+              <p>
+                {SUPPORT.wire
+                  ? SUPPORT.wire
+                  : `Write to the Center through the contact form and the banking details are sent back the same week.`}
+              </p>
+            </details>
+            <details>
+              <summary>Give by cheque</summary>
+              <p>
+                {SUPPORT.cheque
+                  ? SUPPORT.cheque
+                  : `Payable to ${ORG.name}. Write through the contact form for the mailing address.`}
+              </p>
+            </details>
+            <details>
+              <summary>Fund a program</summary>
+              <p>
+                Foundations and institutions back a named program rather than the organization
+                as a whole. What the money covers and what gets published are agreed in writing
+                before anything starts, and the Center keeps editorial control of the findings.
+              </p>
+            </details>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="max-width:16ch">Independent work costs money and answers to nobody.</h3>
+          <p class="lede" style="margin-top:24px">
+            No client, sponsor, or employer determines what the Center publishes. That is easy to
+            write on a page and expensive to hold to, because it means the funding cannot be
+            contingent on the finding.
+          </p>
+          <p class="lede" style="margin-top:20px">
+            Support goes to the research, the rooms, and getting the result in front of people
+            who have to act on it.
+          </p>
+          <div class="caveat" style="background:var(--gray);margin-top:clamp(28px,3vw,40px)">
+            <h4>Not a charitable receipt</h4>
+            <p>
+              {ORG.name} is a company, not a registered charity. Contributions support the work
+              and are not tax-deductible. The Center would rather say that here than have you
+              find out at tax time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--g">
+    <div class="wrap">
+      <div class="shead"><h3>Where it goes</h3></div>
+      <div class="nums">
+        {goes.map((g, i) => (
+          <div class="nrow">
+            <span class="n">{String(i + 1).padStart(2, "0")}</span>
+            <h4>{g.h}</h4>
+            <p>{g.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
