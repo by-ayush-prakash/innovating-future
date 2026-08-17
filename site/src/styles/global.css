@@ -106,7 +106,9 @@ p{text-wrap:pretty}
 .sec--d{background:var(--dark);color:#FAFAFA}
 .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;
   margin-bottom:clamp(36px,5vw,60px);flex-wrap:wrap}
-.shead h2,.shead h3{max-width:22ch}
+/* Section headings are h3 everywhere. Anything else in a .shead is a mistake
+   and gets pulled back to the same scale rather than rendering a size apart. */
+.shead h2,.shead h3,.shead h4{max-width:22ch;font-size:clamp(28px,3.4vw,48px);line-height:1.2}
 .rule{height:2px;background:var(--grad);border-radius:2px;width:100%}
 /* Closing line of a section: the note on the left, where it goes next on
    the right, sitting on a hairline. Mirrors .shead at the other end. */
