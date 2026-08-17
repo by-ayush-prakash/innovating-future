@@ -14,6 +14,7 @@ const {
   ctaBody,
   ctaLabel,
   ctaHref,
+  ctaField,
 } = Astro.props;
 
 const full = `${ORG.short} | ${title ?? "Home"}`;          // browser tab
@@ -54,6 +55,6 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     <a class="skip" href="#main">Skip to content</a>
     <Nav path={path} />
     <main id="main"><slot /></main>
-    <Footer cta={cta} ctaHeading={ctaHeading} ctaBody={ctaBody} ctaLabel={ctaLabel} ctaHref={ctaHref} />
+    <Footer cta={cta} ctaHeading={ctaHeading} ctaBody={ctaBody} ctaLabel={ctaLabel} ctaHref={ctaHref} ctaField={ctaField} />
   </body>
 </html>

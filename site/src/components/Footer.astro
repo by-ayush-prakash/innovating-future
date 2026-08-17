@@ -1,6 +1,7 @@
 ---
 import { ORG, SKEPTICISM, MANTIC, PODCAST, COPY } from "../config";
 import Mark from "./Mark.astro";
+import Field from "./Field.astro";
 
 const year = 2026;
 
@@ -12,6 +13,9 @@ const {
   // published across the site; the form is the front door.
   ctaLabel = "Start a conversation",
   ctaHref = "/contact",
+  // The field behind it. Pages set this so the closing band is not identical
+  // on every page of the site.
+  ctaField = "dark-violet",
   cta = true,
 } = Astro.props;
 
@@ -44,17 +48,14 @@ const cols = [
 ];
 ---
 {cta && (
-  <div class="wrap">
-    <div class="ctab">
-      <h3>{ctaHeading}</h3>
-      <div>
-        <p class="mut">{ctaBody}</p>
-        <div class="cta">
-          <a class="btn btn--lg" href={ctaHref}>{ctaLabel}</a>
-        </div>
-      </div>
+  <section class="ctab">
+    <div class="rnw"><Field v={ctaField} id="ctaf" w={2400} h={900} /></div>
+    <div class="wrap">
+      <h2>{ctaHeading}</h2>
+      {ctaBody && <p>{ctaBody}</p>}
+      <a class="btn btn--w btn--lg" href={ctaHref}>{ctaLabel}</a>
     </div>
-  </div>
+  </section>
 )}
 
 <footer class="site">
