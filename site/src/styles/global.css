@@ -340,17 +340,22 @@ a.rrow:hover{background:var(--off)}
 
 /* One number carrying a section. Three columns so it fills the measure:
    the figure, the claim, the detail. */
-.bignum{display:grid;grid-template-columns:auto minmax(0,1.05fr) minmax(0,.95fr);
-  gap:clamp(24px,4vw,64px);align-items:start}
-.bignum .fig{font-size:clamp(110px,13vw,190px);line-height:.78;letter-spacing:-.05em;
-  margin-top:-.06em}
-.bignum .say{font-size:clamp(26px,3vw,42px);line-height:1.14;letter-spacing:-.02em}
-.bignum .sub{color:var(--mut);font-size:16px;line-height:26px}
-@media(max-width:1080px){
-  .bignum{grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px)}
-  .bignum .sub{grid-column:2}
+/* Number and statement read as one unit on the left; the detail sits beside
+   them. Three type sizes in a single row made this section read as three
+   unrelated things. */
+.bignum{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  column-gap:clamp(28px,4vw,72px);align-items:start}
+.bignum .fig{grid-column:1;grid-row:1;display:block;font-size:clamp(96px,11vw,168px);
+  line-height:.82;letter-spacing:-.05em;margin:-.06em 0 clamp(14px,1.6vw,22px) -.012em}
+.bignum .say{grid-column:1;grid-row:2;font-size:clamp(24px,2.8vw,38px);line-height:1.16;
+  letter-spacing:-.02em;max-width:22ch;margin:0}
+/* .sub is the sticky section bar. This paragraph needs its own name. */
+.bignum .note{grid-column:2;grid-row:2;color:var(--mut);font-size:16px;line-height:26px;
+  max-width:52ch;margin:0}
+@media(max-width:860px){
+  .bignum{grid-template-columns:1fr;row-gap:clamp(18px,3vw,28px)}
+  .bignum .fig,.bignum .say,.bignum .note{grid-column:1;grid-row:auto}
 }
-@media(max-width:700px){ .bignum{grid-template-columns:1fr} .bignum .sub{grid-column:1} }
 
 /* stats */
 .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,4.4vw,64px)}
