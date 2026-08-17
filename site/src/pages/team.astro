@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
+import Arrow from "../components/Arrow.astro";
 
 const people = [
   {
@@ -43,7 +44,7 @@ const past = [
 >
   <PageHead id="ld">
     Team.
-    <p slot="lede" class="lede">No associates. The principals do the work.</p>
+    <p slot="lede" class="lede">A small core, and room for the people who want to build this with us.</p>
   </PageHead>
 
   <section class="sec" style="padding-top:clamp(40px,5vw,64px)">
@@ -81,6 +82,21 @@ const past = [
             <p>{p.bio}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--g">
+    <div class="wrap">
+      <div class="shead">
+        <h3>Most of the work ahead belongs to people who are not on this page yet.</h3>
+      </div>
+      <div class="sfoot" style="border-top:0;margin-top:0;padding-top:0">
+        <p>
+          Researchers, writers, editors, organizers, and people whose background does not
+          fit any of those words. The Center takes proposals year round.
+        </p>
+        <a class="go" href="/careers">How to propose <Arrow /></a>
       </div>
     </div>
   </section>
