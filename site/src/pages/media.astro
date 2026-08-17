@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import Field from "../components/Field.astro";
 import Arrow from "../components/Arrow.astro";
 import { MEDIA, MEDIA_BY_DATE } from "../config";
 
@@ -10,11 +9,6 @@ const logoFor = (slug: string) =>
   (Object.entries(logoFiles).find(([path]) => path.includes(`/${slug}.`))?.[1] as any)?.default;
 
 const featuredOrder = ["montreal-review", "psychology-today", "cnbc"];
-const featuredField: Record<string, string> = {
-  "montreal-review": "sand",
-  "psychology-today": "gray-teal",
-  cnbc: "dark-violet",
-};
 const featured = featuredOrder
   .map((slug) => MEDIA.find((m) => m.slug === slug))
   .filter((m): m is (typeof MEDIA)[number] => Boolean(m))
@@ -39,7 +33,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
     </p>
   </PageHead>
 
-  <section class="sec" style="padding-top:clamp(40px,5vw,64px)">
+  <section class="sec" style="padding-top:clamp(30px,3.4vw,44px)">
     <div class="wrap">
       <div class="wall">
         {wall.map((m) => (
@@ -55,9 +49,11 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
     <div class="wrap">
       <div class="shead"><h3>Selected coverage</h3></div>
       <div class="g3">
-        {featured.map((m, i) => (
+        {featured.map((m) => (
           <a class="ncard" href={m.u} target="_blank" rel="noopener noreferrer">
-            <div class="im"><Field v={featuredField[m.slug] ?? "sand"} id={`mf${i}`} w={1200} h={675} /></div>
+            <div class={m.slug === "psychology-today" ? "im im--logo is-cool" : "im im--logo"}>
+              <img src={m.logo?.src} alt={m.n} loading="lazy" />
+            </div>
             <div class="bd">
               <p class="mono">{m.n} &middot; {m.date}</p>
               <h4>{m.note}</h4>
@@ -71,7 +67,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
 
   <section class="sec sec--t">
     <div class="wrap">
-      <div class="shead"><h3>Everything</h3><p class="sm mut">{MEDIA_BY_DATE.length} appearances, newest first.</p></div>
+      <div class="shead"><h3>Everything</h3></div>
       <div class="rows">
         {MEDIA_BY_DATE.map((m) => (
           <a class="rrow" href={m.u} target="_blank" rel="noopener noreferrer">
@@ -84,9 +80,6 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
           </a>
         ))}
       </div>
-      <p class="dnote">
-        Press inquiries go through the <a href="/contact">contact form</a>.
-      </p>
     </div>
   </section>
 </Base>

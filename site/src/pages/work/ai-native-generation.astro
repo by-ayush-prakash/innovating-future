@@ -3,11 +3,9 @@ import Base from "../../layouts/Base.astro";
 import PageHead from "../../components/PageHead.astro";
 import SubNav from "../../components/SubNav.astro";
 import Field from "../../components/Field.astro";
-import Arrow from "../../components/Arrow.astro";
 
 const facts = [
   { k: "Status", v: "Open call. Fieldwork in progress" },
-  { k: "Conversations", v: "30 in the first round. Eleven recorded, nineteen scheduled" },
   { k: "Informants", v: "Researchers, founders and executives, policymakers, skeptics" },
   { k: "Format", v: "Recorded conversation, remote or in person in Montreal and Toronto" },
   { k: "First report", v: "November 2026" },
@@ -84,12 +82,14 @@ const sections = [
     </div>
   </section>
 
-  <section class="sec" style="padding-top:0">
+  <section class="sec sec--t">
     <div class="wrap">
-      <div class="rule"></div>
-      <div class="bignum" style="padding-top:clamp(34px,4vw,52px)">
-        <span class="fig">30</span>
-        <h3 class="say">Long-form conversations with people who have spent years on this.</h3>
+      <div class="shead"><h3>The people in it have spent years on the question.</h3></div>
+      <div class="bignum">
+        <div>
+          <span class="fig">30</span>
+          <span class="cap">Long-form conversations in the first round</span>
+        </div>
         <p class="note">
           Eleven researchers in AI, cognition and machine learning have already sat down on
           The Ayush Prakash Podcast. Nineteen more are scheduled: further researchers, plus
@@ -105,7 +105,6 @@ const sections = [
       <div class="shead">
         <h3>The surveys already agree.</h3>
       </div>
-      <div class="rule"></div>
       <div class="nums">
         {known.map((k) => (
           <div class="nrow"><span class="n">{k.n}</span><h4>{k.src}</h4><p>{k.f}</p></div>
@@ -144,8 +143,7 @@ const sections = [
       <div class="shead">
         <h3>The method is public before the findings are.</h3>
       </div>
-      <div class="rule"></div>
-      <div class="nums" style="margin-bottom:clamp(40px,5vw,64px)">
+      <div class="nums" style="margin-bottom:clamp(30px,3.4vw,44px)">
         <div class="nrow">
           <span class="n">Layer 01</span>
           <h4>What experts believe</h4>
@@ -190,11 +188,7 @@ const sections = [
     <div class="wrap">
       <div class="shead">
         <h3>You keep a veto over your own words.</h3>
-        <p class="sm mut" style="max-width:36ch">
-          You see every quote attributed to you before publication, and you can strike anything.
-        </p>
       </div>
-      <div class="rule"></div>
       <div class="nums">
         {calls.map((c, i) => (
           <div class="nrow">
@@ -203,10 +197,6 @@ const sections = [
             <p>{c.p}</p>
           </div>
         ))}
-      </div>
-      <div class="sfoot">
-        <p>Two open calls for the next round.</p>
-        <a class="go" href="/contact">Take part <Arrow /></a>
       </div>
     </div>
   </section>
@@ -226,10 +216,6 @@ const sections = [
             </div>
           </div>
         ))}
-      </div>
-      <div class="sfoot">
-        <p>Published free, as every comparable flagship is. First outputs November 2026.</p>
-        <a class="go" href="/work/coexisting-with-ai">Co-Existing with AI <Arrow /></a>
       </div>
     </div>
   </section>
