@@ -6,8 +6,6 @@ import Field from "../../components/Field.astro";
 import Arrow from "../../components/Arrow.astro";
 import { MANTIC } from "../../config";
 
-const PUBLISH = "publishme@manticpublishing.com";
-
 const standards = [
   {
     k: "The idea",
@@ -42,10 +40,6 @@ const sections = [
 <Base
   title={MANTIC.name}
   description="The Center's press. Books that break the mainstream narrative, built with the author until the argument holds."
-  ctaHeading="Have an argument worth a book?"
-  ctaBody="Send the idea and why the mainstream has it wrong, not a finished manuscript."
-  ctaLabel="Visit manticpublishing.com"
-  ctaHref={MANTIC.url}
   ctaField="dark-amber"
 >
   <PageHead id="mt">
@@ -65,11 +59,11 @@ const sections = [
   <section class="sec">
     <div class="wrap">
       <div class="intro">
-        <h3>A separate company, wholly owned by the Center, that publishes only books.</h3>
+        <h3>Some arguments cannot survive being shorter.</h3>
         <p class="lede">
-          Not essays. Not briefs. Not white papers. A book is a position with a name on it, defended
-          at length, and Mantic exists for arguments that cannot survive being shorter. It has its
-          own house, its own submissions, and its own standard.
+          An argument that fits in a post collects agreement. One that has to hold for three
+          hundred pages gets found out. Mantic is the Center's press, wholly owned and edited
+          independently, and it publishes few books because finding out takes time.
         </p>
       </div>
     </div>
@@ -142,7 +136,7 @@ const sections = [
               Not a manuscript. Not a proposal. The idea, why the mainstream has it wrong, and
               what you know that most people do not.
             </p>
-            <a class="btn" style="margin-top:18px;align-self:flex-start" href={`mailto:${PUBLISH}`}>{PUBLISH}</a>
+            <a class="btn" style="margin-top:18px;align-self:flex-start" href={MANTIC.url} target="_blank" rel="noopener noreferrer">Visit manticpublishing.com</a>
           </div>
         </div>
         <div class="ncard ncard--d">

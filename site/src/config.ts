@@ -13,17 +13,6 @@ export const COPY = {
   tagline: "A Toronto strategy innovation lab.",
 };
 
-// Payment destinations for /support. Create two Stripe Payment Links with
-// "let customers choose what to pay" turned on, one one-time and one monthly,
-// then paste them here. Until they are filled in, the buttons route to the form.
-export const SUPPORT = {
-  once: "",
-  monthly: "",
-  // Filled in when the Center publishes them. Left blank the panel stays closed.
-  wire: "",
-  cheque: "",
-};
-
 export const SKEPTICISM = {
   name: "Co-Existing with AI",
   page: "/work/coexisting-with-ai",
