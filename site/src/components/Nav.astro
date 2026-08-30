@@ -32,6 +32,11 @@ const nav = [
   },
 ];
 
+const mobileNav = nav.map((group) => ({
+  ...group,
+  items: group.items.filter((item) => item.label !== "Careers" && item.label !== "Contact"),
+}));
+
 const active = (h: string) => path === h;
 const groupActive = (g: any) => g.items?.some((i: any) => path === i.href);
 ---
@@ -65,21 +70,33 @@ const groupActive = (g: any) => g.items?.some((i: any) => path === i.href);
     </div>
 
     <button id="menubtn" class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilemenu">
-      <span></span><span></span>
+      <svg class="burger__menu" width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+        <path d="M1 4h24M1 14h24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+      </svg>
+      <svg class="burger__close" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 3l18 18M21 3L3 21" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+      </svg>
     </button>
   </div>
 
   <div id="mobilemenu" class="mnav" aria-hidden="true">
-    <div class="wrap">
-      {nav.map((n) => (
-        <div class="mgroup">
-          <h4>{n.label}</h4>
-          {n.items.map((i) => (
-            <a href={i.href} aria-current={active(i.href) ? "page" : undefined}>{i.label}</a>
-          ))}
-        </div>
-      ))}
-      <a class="btn mcta" href="/contact">Work with the Center</a>
+    <div class="wrap mnavin">
+      <div class="mgroups">
+        {mobileNav.map((group) => (
+          <section class="mgroup" aria-labelledby={`mobile-${group.label.replaceAll(" ", "-").toLowerCase()}`}>
+            <h4 id={`mobile-${group.label.replaceAll(" ", "-").toLowerCase()}`}>{group.label}</h4>
+            <div class="mlinks">
+              {group.items.map((item) => (
+                <a href={item.href} aria-current={active(item.href) ? "page" : undefined}>{item.label}</a>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+      <div class="mactions">
+        <a class="btn btn--gh" href="/careers">Careers</a>
+        <a class="btn" href="/contact">Work with the Center</a>
+      </div>
     </div>
   </div>
 </nav>
