@@ -627,6 +627,13 @@ footer.site .fcol a:hover{color:#fff}
   .ncard .im:has(>img.rn){aspect-ratio:auto}
   .ncard .im>img.rn{height:auto;object-fit:contain}
   .person .photo{aspect-ratio:1;max-width:360px}
+
+  /* Episode titles are desktop hover detail. Letting them enter the touch
+     layout as a fourth grid item crushes every word into the number and
+     arrow columns. Mobile rows stay to one name, one affiliation, one arrow. */
+  .fconv .ep{display:none}
+  .fconv .r{display:block!important;opacity:1!important}
+  .fconv .ar{opacity:.45;transform:none}
 }
 @media(max-width:620px){
   :root{--gut:20px}
