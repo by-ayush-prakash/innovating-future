@@ -95,7 +95,7 @@ const properties = [
         <h3>The podcast</h3>
         <a class="go sm" href="/podcast">All episodes <Arrow /></a>
       </div>
-      <div class="arow" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center">
+      <div class="arow arow--podcast">
         <a class="cov" href="/podcast" style="display:block">
           <img src={PODCAST.cover} alt={`${PODCAST.name} cover art`} />
         </a>
@@ -125,7 +125,7 @@ const properties = [
       <div class="g3 g3--c">
         {pillars.map((p, i) => (
           <div>
-            <svg width="126" height="126" viewBox="0 0 120 120" class="ico" fill="none" stroke="#000" stroke-width="1" style="margin-bottom:44px" aria-hidden="true">
+            <svg width="126" height="126" viewBox="0 0 120 120" class="ico" fill="none" stroke="#000" stroke-width="1" aria-hidden="true">
               {i === 0 && (
                 <g><path d="M60 6 114 60 60 114 6 60Z"/><path d="M60 26 94 60 60 94 26 60Z"/><path d="M60 44 76 60 60 76 44 60Z"/><circle cx="60" cy="60" r="5"/></g>
               )}

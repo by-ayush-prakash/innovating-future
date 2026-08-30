@@ -23,11 +23,11 @@ import Field from "./Field.astro";
     lede      the paragraph under it
     cta       buttons under the lede
 */
-const { field = null, photo = null, alt = "", id = "ph", fit = "cover" } = Astro.props;
+const { field = null, photo = null, alt = "", id = "ph", fit = "cover", className = "" } = Astro.props;
 const hasMedia = Astro.slots.has("media");
 const hasAside = Astro.slots.has("aside");
 ---
-<header class="ph-sec">
+<header class:list={["ph-sec", className]}>
   <div class="wrap">
     <div class={hasAside ? "ph-split" : undefined}>
       <div>

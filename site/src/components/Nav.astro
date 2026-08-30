@@ -64,12 +64,12 @@ const groupActive = (g: any) => g.items?.some((i: any) => path === i.href);
       <a class="btn" href="/contact">Work with the Center</a>
     </div>
 
-    <button id="menubtn" class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilemenu">
+    <button id="menubtn" class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilemenu">
       <span></span><span></span>
     </button>
   </div>
 
-  <div id="mobilemenu" class="mnav">
+  <div id="mobilemenu" class="mnav" aria-hidden="true">
     <div class="wrap">
       {nav.map((n) => (
         <div class="mgroup">
@@ -88,16 +88,23 @@ const groupActive = (g: any) => g.items?.some((i: any) => path === i.href);
   const btn = document.getElementById("menubtn");
   const menu = document.getElementById("mobilemenu");
   if (btn && menu) {
-    btn.addEventListener("click", () => {
-      const open = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!open));
-      btn.setAttribute("aria-label", open ? "Open menu" : "Close menu");
-      if (open) menu.removeAttribute("data-open");
-      else menu.setAttribute("data-open", "");
-      document.body.classList.toggle("menu-open", !open);
-    });
+    const setMenu = (open: boolean) => {
+      btn.setAttribute("aria-expanded", String(open));
+      btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      btn.classList.toggle("is-open", open);
+      menu.setAttribute("aria-hidden", String(!open));
+      if (open) menu.setAttribute("data-open", "");
+      else menu.removeAttribute("data-open");
+      document.body.classList.toggle("menu-open", open);
+    };
+
+    btn.addEventListener("click", () => setMenu(btn.getAttribute("aria-expanded") !== "true"));
+    menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") btn.click();
+      if (e.key === "Escape") setMenu(false);
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1080) setMenu(false);
     });
   }
 

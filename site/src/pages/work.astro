@@ -1,14 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import Field from "../components/Field.astro";
 import Arrow from "../components/Arrow.astro";
 import { SKEPTICISM, MANTIC, PODCAST } from "../config";
 
 const properties = [
   { ...SKEPTICISM, photo: "/images/coexisting-with-ai.jpg", alt: "A head in silhouette opening onto a green field, with a bird on the steps and clouds passing through", cta: "Learn more" },
-  { ...MANTIC, field: "sand-amber", cta: "Visit Mantic" },
-  { ...PODCAST, field: "gray-teal", cta: "Explore episodes" },
+  { ...MANTIC, panel: "mantic", photo: null, alt: "", cta: "Visit Mantic" },
+  { ...PODCAST, photo: "/images/podcast-cover.png", alt: "The Ayush Prakash Podcast cover", fit: "contain", cta: "Explore episodes" },
 ];
 
 const appearances = [
@@ -30,7 +29,7 @@ const appearances = [
 ];
 ---
 <Base ctaField="dark-slate" title="Work" description="The Center for Innovating the Future owns and operates its institutions. A Toronto strategy innovation lab, established December 2010.">
-  <PageHead field="stone" id="wk">
+  <PageHead className="work-head">
     The Center owns and operates its institutions.
     <p slot="lede" class="lede">
       Every institution the Center holds carries its own remit, its own audience, and its own
@@ -38,7 +37,7 @@ const appearances = [
     </p>
     <div slot="cta" class="cta">
       <a class="btn" href="/contact">Work with the Center</a>
-      <a class="btn btn--gh" href="#institutions">The institutions</a>
+      <a class="btn btn--gh" href="#institutions">See the institutions</a>
     </div>
   </PageHead>
 
@@ -47,7 +46,20 @@ const appearances = [
       <div class="alt">
         {properties.map((p, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
-            <div class="afig">{p.photo ? <img class="rn" src={p.photo} alt={p.alt} loading="lazy" /> : <Field v={p.field} id={`w${i}`} w={1000} h={750} />}</div>
+            <div class:list={["afig", p.fit === "contain" && "afig--art", p.panel === "mantic" && "mantic-panel"]}>
+              {p.panel === "mantic" ? (
+                <div class="mantic-panel__inner" aria-hidden="true">
+                  <span class="mantic-panel__kicker">Mantic Publishing</span>
+                  <span class="mantic-panel__monogram">M</span>
+                  <span class="mantic-panel__mark mantic-panel__mark--mint"></span>
+                  <span class="mantic-panel__mark mantic-panel__mark--lavender"></span>
+                  <span class="mantic-panel__underline"></span>
+                  <span class="mantic-panel__place">Toronto · Montreal / Independent Press</span>
+                </div>
+              ) : (
+                <img class="rn" src={p.photo} alt={p.alt} loading="lazy" />
+              )}
+            </div>
             <div>
               <h3>{p.name}</h3>
               <p>{p.blurb}</p>
