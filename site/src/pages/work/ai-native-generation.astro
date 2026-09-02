@@ -1,226 +1,38 @@
 ---
 import Base from "../../layouts/Base.astro";
 import PageHead from "../../components/PageHead.astro";
-import SubNav from "../../components/SubNav.astro";
-import Field from "../../components/Field.astro";
-
-const facts = [
-  { k: "Status", v: "Open call. Fieldwork in progress" },
-  { k: "Informants", v: "Researchers, founders and executives, policymakers, skeptics" },
-  { k: "Format", v: "Recorded conversation, remote or in person in Montreal and Toronto" },
-  { k: "First report", v: "November 2026" },
-  { k: "Program", v: "Co-Existing with AI" },
-];
-
-// The two strands of the open call.
-const calls = [
-  {
-    who: "Researchers",
-    p: "Working in AI, cognition or machine learning. A recorded conversation, remote or in person in Montreal and Toronto.",
-  },
-  {
-    who: "Founders, executives, and people in AI governance",
-    p: "A parallel strand on what happens when this technology meets an actual organization. Different questions, same format.",
-  },
-];
-
-// What is already published, so the reader can see what this study is not duplicating.
-const known = [
-  { n: "01", src: "Gallup, with the Walton Family Foundation and GSV Ventures, April 2026",
-    f: "n = 1,572, ages 14 to 29. Excitement about AI down 14 points. Anger at 31 percent." },
-  { n: "02", src: "Wharton, with Gallup",
-    f: "79 percent of Gen Z say AI causes laziness." },
-  { n: "03", src: "TalentLMS",
-    f: "47 percent of Gen Z employees say they get better guidance from AI than from their managers." },
-];
-
-const outputs = [
-  { h: "The report", p: "Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are. Full quote appendix with sources.",
-    photo: "/images/output-report.jpg", alt: "Stacks of paper documents and file folders", field: "dark-violet" },
-  { h: "The policy brief", p: "Six to ten pages for the people who write rules, written so they can act on it.",
-    photo: "/images/output-brief.jpg", alt: "The interior of a parliament chamber", field: "gray-teal" },
-  { h: "The framework", p: "A developmentally responsible AI framework organizations can apply without a research team.",
-    photo: "/images/output-framework.jpg", alt: "Architectural blueprints spread out on a surface", field: "sand" },
-];
-
-const sections = [
-  { label: "Already known", href: "#known" },
-  { label: "What is open", href: "#open" },
-  { label: "Method", href: "#method" },
-  { label: "Take part", href: "#calls" },
-  { label: "What gets published", href: "#outputs" },
-];
 ---
 <Base
   title="The First AI-Native Generation"
-  description="A Center for Innovating the Future study on what sustained interaction with conversational AI does to cognition, identity and agency. Fieldwork open, first outputs November 2026."
-  ctaHeading="Take part in the study."
-  ctaBody="The Center is speaking with people who came of age using conversational AI, and with researchers working on cognition, learning and human-machine interaction. Organizations that want the findings applied to their own operation can also write."
-  ctaField="dark-violet"
+  description="The First AI-Native Generation is a Center for Innovating the Future research project currently in development."
+  cta={false}
 >
   <PageHead photo="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" id="an">
     The First <span style="white-space:nowrap">AI-Native</span> Generation.
     <p slot="lede" class="lede">
-      A generation is coming of age inside a technology nobody has finished understanding.
-      The Center is asking what sustained interaction with conversational AI does to cognition,
-      identity and agency, and publishing what it finds.
+      A Center for Innovating the Future research project currently in development.
+      The corpus, source review, methodology and publication format are still being completed.
     </p>
-    <div slot="cta" class="cta">
-      <a class="btn" href="/contact">Take part</a>
-      <a class="btn btn--gh" href="#method">The method</a>
-    </div>
   </PageHead>
-
-  <SubNav items={sections} />
 
   <section class="sec">
     <div class="wrap">
-      <div class="reg">
-        {facts.map((f) => (
-          <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--t">
-    <div class="wrap">
-      <div class="shead"><h3>The people in it have spent years on the question.</h3></div>
-      <div class="bignum">
-        <div>
-          <span class="fig">30</span>
-          <span class="cap">Long-form conversations in the first round</span>
-        </div>
-        <p class="note">
-          Eleven researchers in AI, cognition and machine learning have already sat down on
-          The Ayush Prakash Podcast. Nineteen more are scheduled: further researchers, plus
-          founders and executives, policymakers, and skeptics. Every one is transcribed,
-          coded, and built into the series.
+      <div class="holding">
+        <span class="mono">Work in progress</span>
+        <h2>The evidence is not ready for publication.</h2>
+        <p>
+          CIF will publish the project when its source record, limitations and review process
+          are ready for public inspection. Working interview counts, provisional claims and
+          internal analysis are not public findings and should not be cited as such.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="known">
-    <div class="wrap">
-      <div class="shead">
-        <h3>The surveys already agree.</h3>
-      </div>
-      <div class="nums">
-        {known.map((k) => (
-          <div class="nrow"><span class="n">{k.n}</span><h4>{k.src}</h4><p>{k.f}</p></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--dim" id="open">
-    <div class="rnw"><Field v="dark-slate" id="ao" w={2400} h={900} /></div>
-    <div class="wrap">
-      <h3 style="max-width:20ch">Everyone measured how they feel. Nobody watched what they do.</h3>
-      <div class="pts">
-        <div class="pt">
-          <span class="n">Gap 01</span>
-          <h4>Nobody is doing qualitative depth.</h4>
-          <p>Everything published is quantitative sentiment. There is very little work on how AI-native people actually reason, how they decide what to delegate, and how they structure work when a machine is always available.</p>
-        </div>
-        <div class="pt">
-          <span class="n">Gap 02</span>
-          <h4>The datasets are US-centered.</h4>
-          <p>A Canadian qualitative cut does not exist.</p>
-        </div>
-        <div class="pt">
-          <span class="n">Gap 03</span>
-          <h4>Nobody has asked the researchers.</h4>
-          <p>The people building and studying these systems have views about the generation growing up inside them, and those views have not been collected in one place.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="sec sec--g" id="method">
-    <div class="wrap">
-      <div class="shead">
-        <h3>The method is public before the findings are.</h3>
-      </div>
-      <div class="nums" style="margin-bottom:clamp(30px,3.4vw,44px)">
-        <div class="nrow">
-          <span class="n">Layer 01</span>
-          <h4>What experts believe</h4>
-          <p>Long-form interviews with AI and machine learning researchers through the Co-Existing with AI series, weighted toward the Amii, Mila and CIFAR network, published as an elite-informant qualitative study.</p>
-        </div>
-        <div class="nrow">
-          <span class="n">Layer 02</span>
-          <h4>What AI-natives actually do</h4>
-          <p>New fieldwork, because researchers are not AI-natives and the corpus cannot answer for them. Open now.</p>
-        </div>
-      </div>
-      <div class="split">
-        <div class="body">
-          <p>
-            The two layers never merge. A study that blurs expert belief into lived behavior is
-            describing neither, and keeping them apart is what makes either one readable.
-          </p>
-          <p>
-            Long-form interviews rather than survey instruments, coded against a fixed frame:
-            what current systems cannot do, where the field is overconfident, what changes about
-            human work and judgment, what the public misunderstands, and where informants disagree
-            with each other. The disagreements are the finding.
-          </p>
-          <p>
-            Podcast and long-form interview material is treated as data under an established
-            protocol, following Kulkov, Kulkova, Rohrbeck and Menvielle in the
-            <em>International Journal of Qualitative Methods</em> (2024). Sample adequacy follows
-            Guest, Bunce and Johnson in <em>Field Methods</em> (2006), which found thematic
-            saturation within the first twelve interviews.
-          </p>
-        </div>
-        <div class="caveat">
-          <h4>Two limitations, named here rather than buried</h4>
-          <p>
-            Informants were invited rather than sampled, so selection is not random. And these
-            were conversations rather than protocol-driven interviews, so interviewer effect is
-            present. Both will be stated in the published methods section.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="calls">
-    <div class="wrap">
-      <div class="shead">
-        <h3>You keep a veto over your own words.</h3>
-      </div>
-      <div class="nums">
-        {calls.map((c, i) => (
-          <div class="nrow">
-            <span class="n">{String(i + 1).padStart(2, "0")}</span>
-            <h4>{c.who}</h4>
-            <p>{c.p}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="outputs">
-    <div class="wrap">
-      <div class="shead"><h3>Written to be used, not cited.</h3></div>
-      <div class="g3">
-        {outputs.map((o, i) => (
-          <div class="ncard">
-            <div class="im">{o.photo
-              ? <img class="rn" src={o.photo} alt={o.alt} loading="lazy" />
-              : <Field v={o.field} id={`ap${i}`} w={1200} h={675} />}</div>
-            <div class="bd">
-              <h4>{o.h}</h4>
-              <p class="sm mut">{o.p}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <style>
+    .holding{display:grid;grid-template-columns:minmax(0,.5fr) minmax(0,1fr) minmax(280px,.75fr);gap:clamp(28px,5vw,72px);align-items:start;border-top:2px solid transparent;border-image:linear-gradient(to right,#DE3A11,#C67E16,#1C6E63) 1;padding-top:clamp(28px,3.4vw,44px)}
+    .holding h2{font-size:clamp(32px,4.6vw,62px);line-height:1.05;max-width:13ch}
+    .holding p{color:var(--mut);font-size:17px;line-height:1.65;max-width:48ch}
+    @media(max-width:900px){.holding{grid-template-columns:1fr}.holding h2{max-width:16ch}}
+  </style>
 </Base>
