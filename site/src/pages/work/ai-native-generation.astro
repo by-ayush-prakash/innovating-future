@@ -2,225 +2,354 @@
 import Base from "../../layouts/Base.astro";
 import PageHead from "../../components/PageHead.astro";
 import SubNav from "../../components/SubNav.astro";
-import Field from "../../components/Field.astro";
 
 const facts = [
-  { k: "Status", v: "Open call. Fieldwork in progress" },
-  { k: "Informants", v: "Researchers, founders and executives, policymakers, skeptics" },
-  { k: "Format", v: "Recorded conversation, remote or in person in Montreal and Toronto" },
-  { k: "First report", v: "November 2026" },
-  { k: "Program", v: "Co-Existing with AI" },
+  { k: "Edition", v: "Working edition 0.1" },
+  { k: "Corpus", v: "18 published long-form conversations" },
+  { k: "Evidence", v: "More than 180 provisional claims structured" },
+  { k: "Format", v: "Living website with dated editions" },
+  { k: "Status", v: "Source review and external verification in progress" },
 ];
 
-// The two strands of the open call.
-const calls = [
+const questions = [
+  { key: "mind", n: "01", h: "Mind", q: "What counts as intelligence when language can be generated without a living mind?" },
+  { key: "agency", n: "02", h: "Agency", q: "Which judgments remain ours after delegation becomes ordinary?" },
+  { key: "trust", n: "03", h: "Trust", q: "Why do people confer authority, personality and care on a system?" },
+  { key: "work", n: "04", h: "Work", q: "What happens to skill when assistance becomes dependence?" },
+  { key: "power", n: "05", h: "Power", q: "Who sets the goals, owns the infrastructure and bears the failure?" },
+  { key: "future", n: "06", h: "Futures", q: "Which predictions deserve action, and which need resistance?" },
+];
+
+const claims = [
   {
-    who: "Researchers",
-    p: "Working in AI, cognition or machine learning. A recorded conversation, remote or in person in Montreal and Toronto.",
+    topic: "work",
+    label: "Work",
+    speaker: "Matthew Guzdial",
+    time: "10:18",
+    href: "https://www.youtube.com/watch?v=htpmlaFfp1Q&t=618s",
+    claim: "Repeated dependence on generative AI can reduce the ability to perform delegated tasks unaided.",
+    confidence: "Speaker stated with certainty",
+    counter: "Effects may differ by task, experience and the way tools are used.",
+    verify: "Identify the underlying studies and test unaided performance over time.",
   },
   {
-    who: "Founders, executives, and people in AI governance",
-    p: "A parallel strand on what happens when this technology meets an actual organization. Different questions, same format.",
+    topic: "mind",
+    label: "Mind",
+    speaker: "Karl Friston",
+    time: "04:47",
+    href: "https://www.youtube.com/watch?v=zpO22W294bc&t=287s",
+    claim: "Human-like output makes it easy for users to infer intelligence and project human qualities onto a chatbot.",
+    confidence: "Qualified speaker claim",
+    counter: "Attribution may vary across age groups, interfaces and disclosure conditions.",
+    verify: "Compare user attribution across populations and interface designs.",
+  },
+  {
+    topic: "future",
+    label: "Creativity",
+    speaker: "Maya Ackerman",
+    time: "00:29",
+    href: "https://www.youtube.com/watch?v=1oL9UL4e_Es&t=29s",
+    claim: "Creativity and hallucination are inherent to human cognition, and generative AI uses a similar predictive mechanism.",
+    confidence: "Speaker stated with certainty",
+    counter: "Mathematical similarity does not establish biological equivalence.",
+    verify: "Separate metaphor, computational similarity and biological mechanism.",
+  },
+  {
+    topic: "trust",
+    label: "Trust",
+    speaker: "Ashleigh Rankin",
+    time: "04:08",
+    href: "https://www.youtube.com/watch?v=Ko3oTTZfNKw&t=248s",
+    claim: "Current evidence cannot establish whether generative AI causes psychosis or makes existing vulnerability easier to express.",
+    confidence: "Explicitly uncertain",
+    counter: "Exposure may still interact with vulnerability in clinically significant ways.",
+    verify: "Use clinical studies with baselines, exposure histories and alternative causes.",
+  },
+  {
+    topic: "mind",
+    label: "Embodiment",
+    speaker: "Viviane Clay",
+    time: "00:20",
+    href: "https://www.youtube.com/watch?v=aQmazrukbMk&t=20s",
+    claim: "Intelligence evolved to support movement, survival and purposeful interaction with the environment.",
+    confidence: "Speaker stated with certainty",
+    counter: "Competing definitions may not make movement a necessary condition of intelligence.",
+    verify: "Compare evolutionary accounts and define intelligence independently from movement.",
+  },
+  {
+    topic: "future",
+    label: "Evolution",
+    speaker: "Risto Miikkulainen",
+    time: "04:54",
+    href: "https://www.youtube.com/watch?v=Y6BRlL-Rn-M&t=294s",
+    claim: "Evolutionary simulations can provide computational evidence for theories of language and social development without proving them.",
+    confidence: "Qualified speaker claim",
+    counter: "Simulation results remain sensitive to their assumptions and fitness functions.",
+    verify: "Compare simulations with biological, linguistic and archaeological evidence.",
   },
 ];
 
-// What is already published, so the reader can see what this study is not duplicating.
-const known = [
-  { n: "01", src: "Gallup, with the Walton Family Foundation and GSV Ventures, April 2026",
-    f: "n = 1,572, ages 14 to 29. Excitement about AI down 14 points. Anger at 31 percent." },
-  { n: "02", src: "Wharton, with Gallup",
-    f: "79 percent of Gen Z say AI causes laziness." },
-  { n: "03", src: "TalentLMS",
-    f: "47 percent of Gen Z employees say they get better guidance from AI than from their managers." },
+const people = [
+  ["Renée Sieber", "Policy"], ["Nidhi Hegde", "Policy"], ["Fenwick McKelvey", "Policy"],
+  ["Matthew Guzdial", "Research"], ["Matthew E. Taylor", "Research"], ["Alex Hernández-García", "Research"],
+  ["Alistair Alexander", "Critic"], ["Karl Friston", "Research"], ["Maya Ackerman", "Research"],
+  ["Ashleigh Rankin", "Critic"], ["David Alter", "Critic"], ["Shashank Tiwari", "Operator"],
+  ["Zoltan Istvan", "Critic"], ["Jeff Burningham", "Critic"], ["Cole Wyeth", "Research"],
+  ["Viviane Clay", "Research"], ["Risto Miikkulainen", "Research"], ["Nicholas Nadeau", "Operator"],
 ];
 
-const outputs = [
-  { h: "The report", p: "Thirty to fifty pages on what the evidence supports, what it does not, and where the open questions are. Full quote appendix with sources.",
-    photo: "/images/output-report.jpg", alt: "Stacks of paper documents and file folders", field: "dark-violet" },
-  { h: "The policy brief", p: "Six to ten pages for the people who write rules, written so they can act on it.",
-    photo: "/images/output-brief.jpg", alt: "The interior of a parliament chamber", field: "gray-teal" },
-  { h: "The framework", p: "A developmentally responsible AI framework organizations can apply without a research team.",
-    photo: "/images/output-framework.jpg", alt: "Architectural blueprints spread out on a surface", field: "sand" },
+const method = [
+  { n: "01", h: "Source", p: "Preserve the complete public conversation, transcript location, date and affiliation at the time." },
+  { n: "02", h: "Claim", p: "Extract a precise position and label its evidence type and the speaker's expressed certainty." },
+  { n: "03", h: "Challenge", p: "State a serious counterclaim and record what evidence could support, qualify or overturn the position." },
+  { n: "04", h: "Context", p: "Keep the surrounding passage and CIF's interpretation visible as separate parts of the record." },
+  { n: "05", h: "Revision", p: "Date corrections, source responses and changes so the development of the record remains inspectable." },
 ];
 
 const sections = [
-  { label: "Already known", href: "#known" },
-  { label: "What is open", href: "#open" },
+  { label: "Project", href: "#project" },
+  { label: "Question map", href: "#questions" },
+  { label: "Evidence", href: "#evidence" },
+  { label: "Corpus", href: "#corpus" },
   { label: "Method", href: "#method" },
-  { label: "Take part", href: "#calls" },
-  { label: "What gets published", href: "#outputs" },
+  { label: "Editions", href: "#editions" },
 ];
 ---
 <Base
   title="The First AI-Native Generation"
-  description="A Center for Innovating the Future study on what sustained interaction with conversational AI does to cognition, identity and agency. Fieldwork open, first outputs November 2026."
-  ctaHeading="Take part in the study."
-  ctaBody="The Center is speaking with people who came of age using conversational AI, and with researchers working on cognition, learning and human-machine interaction. Organizations that want the findings applied to their own operation can also write."
+  description="A living evidence project from the Center for Innovating the Future on what sustained interaction with conversational AI may change about cognition, identity, agency, learning and work."
+  ctaHeading="Enter the living record."
+  ctaBody="Follow the evidence, challenge a claim, contribute a source or ask CIF to apply the work to a specific decision."
+  ctaLabel="Write to CIF"
   ctaField="dark-violet"
 >
   <PageHead photo="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" id="an">
     The First <span style="white-space:nowrap">AI-Native</span> Generation.
     <p slot="lede" class="lede">
-      A generation is coming of age inside a technology nobody has finished understanding.
-      The Center is asking what sustained interaction with conversational AI does to cognition,
-      identity and agency, and publishing what it finds.
+      A living map of what AI may be changing in us. Every claim leads back to a source,
+      meets its strongest objection and remains open to revision.
     </p>
     <div slot="cta" class="cta">
-      <a class="btn" href="/contact">Take part</a>
-      <a class="btn btn--gh" href="#method">The method</a>
+      <a class="btn" href="#evidence">Explore the evidence</a>
+      <a class="btn btn--gh" href="#method">Read the method</a>
     </div>
   </PageHead>
 
   <SubNav items={sections} />
 
-  <section class="sec">
+  <section class="sec" id="project">
     <div class="wrap">
-      <div class="reg">
-        {facts.map((f) => (
-          <div class="rg"><span class="lbl">{f.k}</span><span>{f.v}</span></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--t">
-    <div class="wrap">
-      <div class="shead"><h3>The people in it have spent years on the question.</h3></div>
-      <div class="bignum">
+      <div class="edition-head">
         <div>
-          <span class="fig">30</span>
-          <span class="cap">Long-form conversations in the first round</span>
+          <span class="mono">Living record / Working edition</span>
+          <h2>There is no final interview.</h2>
         </div>
-        <p class="note">
-          Eleven researchers in AI, cognition and machine learning have already sat down on
-          The Ayush Prakash Podcast. Nineteen more are scheduled: further researchers, plus
-          founders and executives, policymakers, and skeptics. Every one is transcribed,
-          coded, and built into the series.
-        </p>
+        <p>The corpus can grow, claims can be contested and conclusions can change. Dated editions preserve what CIF could support at a specific moment.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="sec" id="known">
-    <div class="wrap">
-      <div class="shead">
-        <h3>The surveys already agree.</h3>
-      </div>
-      <div class="nums">
-        {known.map((k) => (
-          <div class="nrow"><span class="n">{k.n}</span><h4>{k.src}</h4><p>{k.f}</p></div>
+      <div class="ledger" aria-label="Project status">
+        {facts.map((f) => (
+          <div class="ledger__item"><span class="mono">{f.k}</span><strong>{f.v}</strong></div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="band band--dim" id="open">
-    <div class="rnw"><Field v="dark-slate" id="ao" w={2400} h={900} /></div>
+  <section class="sec sec--s" id="questions">
     <div class="wrap">
-      <h3 style="max-width:20ch">Everyone measured how they feel. Nobody watched what they do.</h3>
-      <div class="pts">
-        <div class="pt">
-          <span class="n">Gap 01</span>
-          <h4>Nobody is doing qualitative depth.</h4>
-          <p>Everything published is quantitative sentiment. There is very little work on how AI-native people actually reason, how they decide what to delegate, and how they structure work when a machine is always available.</p>
+      <div class="shead"><h3>Six questions organize the record.</h3></div>
+      <div class="atlas">
+        <div class="atlas__core">
+          <span class="mono">At the centre</span>
+          <strong>The human being</strong>
+          <p>What changes when an artificial interlocutor becomes ordinary?</p>
         </div>
-        <div class="pt">
-          <span class="n">Gap 02</span>
-          <h4>The datasets are US-centered.</h4>
-          <p>A Canadian qualitative cut does not exist.</p>
-        </div>
-        <div class="pt">
-          <span class="n">Gap 03</span>
-          <h4>Nobody has asked the researchers.</h4>
-          <p>The people building and studying these systems have views about the generation growing up inside them, and those views have not been collected in one place.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="sec sec--g" id="method">
-    <div class="wrap">
-      <div class="shead">
-        <h3>The method is public before the findings are.</h3>
-      </div>
-      <div class="nums" style="margin-bottom:clamp(30px,3.4vw,44px)">
-        <div class="nrow">
-          <span class="n">Layer 01</span>
-          <h4>What experts believe</h4>
-          <p>Long-form interviews with AI and machine learning researchers through the Co-Existing with AI series, weighted toward the Amii, Mila and CIFAR network, published as an elite-informant qualitative study.</p>
-        </div>
-        <div class="nrow">
-          <span class="n">Layer 02</span>
-          <h4>What AI-natives actually do</h4>
-          <p>New fieldwork, because researchers are not AI-natives and the corpus cannot answer for them. Open now.</p>
-        </div>
-      </div>
-      <div class="split">
-        <div class="body">
-          <p>
-            The two layers never merge. A study that blurs expert belief into lived behavior is
-            describing neither, and keeping them apart is what makes either one readable.
-          </p>
-          <p>
-            Long-form interviews rather than survey instruments, coded against a fixed frame:
-            what current systems cannot do, where the field is overconfident, what changes about
-            human work and judgment, what the public misunderstands, and where informants disagree
-            with each other. The disagreements are the finding.
-          </p>
-          <p>
-            Podcast and long-form interview material is treated as data under an established
-            protocol, following Kulkov, Kulkova, Rohrbeck and Menvielle in the
-            <em>International Journal of Qualitative Methods</em> (2024). Sample adequacy follows
-            Guest, Bunce and Johnson in <em>Field Methods</em> (2006), which found thematic
-            saturation within the first twelve interviews.
-          </p>
-        </div>
-        <div class="caveat">
-          <h4>Two limitations, named here rather than buried</h4>
-          <p>
-            Informants were invited rather than sampled, so selection is not random. And these
-            were conversations rather than protocol-driven interviews, so interviewer effect is
-            present. Both will be stated in the published methods section.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="calls">
-    <div class="wrap">
-      <div class="shead">
-        <h3>You keep a veto over your own words.</h3>
-      </div>
-      <div class="nums">
-        {calls.map((c, i) => (
-          <div class="nrow">
-            <span class="n">{String(i + 1).padStart(2, "0")}</span>
-            <h4>{c.who}</h4>
-            <p>{c.p}</p>
-          </div>
+        {questions.map((q) => (
+          <article class={`atlas__node atlas__node--${q.key}`}>
+            <span class="mono">{q.n} / {q.h}</span>
+            <p>{q.q}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="sec" id="outputs">
+  <section class="sec" id="evidence">
     <div class="wrap">
-      <div class="shead"><h3>Written to be used, not cited.</h3></div>
-      <div class="g3">
-        {outputs.map((o, i) => (
-          <div class="ncard">
-            <div class="im">{o.photo
-              ? <img class="rn" src={o.photo} alt={o.alt} loading="lazy" />
-              : <Field v={o.field} id={`ap${i}`} w={1200} h={675} />}</div>
-            <div class="bd">
-              <h4>{o.h}</h4>
-              <p class="sm mut">{o.p}</p>
+      <div class="shead evidence-head">
+        <div>
+          <span class="mono">Evidence explorer / Prototype</span>
+          <h3>Read the claim. Then inspect the argument around it.</h3>
+        </div>
+        <p>These are provisional syntheses from published conversations. Speaker certainty describes delivery in the source; it does not establish factual truth.</p>
+      </div>
+      <div class="filters" aria-label="Filter evidence by question">
+        <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All records</button>
+        <button class="filter" type="button" data-filter="mind" aria-pressed="false">Mind</button>
+        <button class="filter" type="button" data-filter="trust" aria-pressed="false">Trust</button>
+        <button class="filter" type="button" data-filter="work" aria-pressed="false">Work</button>
+        <button class="filter" type="button" data-filter="future" aria-pressed="false">Futures</button>
+      </div>
+      <div class="claim-grid" aria-live="polite">
+        {claims.map((c, i) => (
+          <article class="claim" data-topic={c.topic}>
+            <div class="claim__top">
+              <span class="claim__num">{String(i + 1).padStart(2, "0")}</span>
+              <span class="pill">{c.label}</span>
+              <span class="pill pill--open">Provisional</span>
             </div>
-          </div>
+            <h4>{c.claim}</h4>
+            <a class="claim__source" href={c.href} target="_blank" rel="noopener noreferrer">
+              <span>{c.speaker}</span><span>{c.time} ↗</span>
+            </a>
+            <dl>
+              <div><dt>Reading</dt><dd>{c.confidence}</dd></div>
+              <div><dt>Counterclaim</dt><dd>{c.counter}</dd></div>
+              <div><dt>What would test it</dt><dd>{c.verify}</dd></div>
+            </dl>
+          </article>
         ))}
+      </div>
+      <p class="evidence-note">The public version will add full surrounding transcript passages, external sources, correction history and CIF analysis to each record.</p>
+    </div>
+  </section>
+
+  <section class="sec sec--d" id="corpus">
+    <div class="wrap">
+      <div class="corpus-head">
+        <div><span class="corpus-count">18</span><span class="mono">Published conversations<br />in the initial corpus</span></div>
+        <h3>A growing set of positions, not a panel speaking with one voice.</h3>
+      </div>
+      <div class="people">
+        {people.map((p, i) => (
+          <div class="person-row"><span>{String(i + 1).padStart(2, "0")}</span><strong>{p[0]}</strong><em>{p[1]}</em></div>
+        ))}
+      </div>
+      <p class="corpus-note">Affiliations identify speakers in individual source records. Their inclusion does not imply participation in, approval of or institutional endorsement of this project.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <div class="shead"><h3>How a conversation becomes evidence.</h3></div>
+      <div class="method-line">
+        {method.map((m) => (
+          <article><span class="mono">Step {m.n}</span><h4>{m.h}</h4><p>{m.p}</p></article>
+        ))}
+      </div>
+      <div class="context-box">
+        <div><span class="mono">Editorial rule</span><h3>Fair context is part of the product.</h3></div>
+        <div>
+          <p>Quoted words remain attached to the surrounding passage and complete public source. CIF's interpretation is identified separately.</p>
+          <p>People quoted can flag transcription errors, missing context and outdated affiliations. CIF records substantive responses and retains responsibility for its analysis.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <section class="sec sec--g" id="editions">
+    <div class="wrap">
+      <div class="shead"><h3>One project. Several useful forms.</h3></div>
+      <div class="edition-grid">
+        <article><span class="mono">Always current</span><h4>Living website</h4><p>Searchable claims, disagreements, sources, responses and revision history.</p></article>
+        <article><span class="mono">Stable record</span><h4>Dated editions</h4><p>Fixed releases that readers can cite, compare and archive.</p></article>
+        <article><span class="mono">For a decision</span><h4>Applied briefings</h4><p>Focused readings for policymakers, researchers and organizations.</p></article>
+      </div>
+      <div class="release-line"><span class="pulse" aria-hidden="true"></span><span>Working edition 0.1</span><span>Corpus assembled</span><span>Claim review underway</span><span>First public edition forthcoming</span></div>
+    </div>
+  </section>
+
+  <script>
+    const filters = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
+    const records = Array.from(document.querySelectorAll<HTMLElement>("[data-topic]"));
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.filter;
+        filters.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle("is-active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+        records.forEach((record) => {
+          record.hidden = selected !== "all" && record.dataset.topic !== selected;
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .edition-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:clamp(34px,7vw,110px);align-items:end;margin-bottom:42px}
+    .edition-head h2{font-size:clamp(34px,5vw,68px);line-height:1.02;margin-top:12px;max-width:12ch}
+    .edition-head>p{color:var(--mut);font-size:18px;line-height:1.55;max-width:48ch}
+    .ledger{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+    .ledger__item{padding:22px 18px 24px;border-right:1px solid var(--hair);min-height:128px;display:flex;flex-direction:column;gap:18px}
+    .ledger__item:first-child{padding-left:0}.ledger__item:last-child{border-right:0;padding-right:0}
+    .ledger__item strong{font-size:17px;line-height:1.4;font-weight:400}
+
+    .atlas{position:relative;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:14px;min-height:520px}
+    .atlas::before{content:"";position:absolute;inset:10% 12%;background:radial-gradient(circle at center,rgba(222,58,17,.13),transparent 28%),repeating-radial-gradient(circle at center,transparent 0 55px,rgba(0,0,0,.08) 56px 57px);pointer-events:none}
+    .atlas__core,.atlas__node{position:relative;z-index:1;border:1px solid rgba(0,0,0,.12);background:rgba(255,255,255,.84);backdrop-filter:blur(12px);border-radius:var(--r);padding:clamp(22px,2.7vw,34px)}
+    .atlas__core{grid-column:2/4;grid-row:1/3;align-self:center;justify-self:center;width:min(100%,420px);aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.1)}
+    .atlas__core strong{font-size:clamp(32px,4vw,54px);line-height:1.02;font-weight:400;margin:14px 0 20px}
+    .atlas__core p{color:var(--mut);max-width:28ch;margin-inline:auto}
+    .atlas__node{min-height:180px;display:flex;flex-direction:column;justify-content:space-between}
+    .atlas__node p{font-size:18px;line-height:1.45;max-width:28ch}
+    .atlas__node--mind,.atlas__node--trust{grid-column:1}.atlas__node--agency,.atlas__node--work{grid-column:4}
+    .atlas__node--mind,.atlas__node--agency{grid-row:1}.atlas__node--trust,.atlas__node--work{grid-row:2}
+    .atlas__node--power{grid-column:2;grid-row:3}.atlas__node--future{grid-column:3;grid-row:3}
+
+    .evidence-head>div{max-width:720px}.evidence-head>p{max-width:440px;color:var(--mut);font-size:14px;line-height:1.65}
+    .evidence-head h3{margin-top:10px;max-width:18ch!important}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+    .filter{border:1px solid var(--hair);background:#fff;border-radius:9999px;padding:9px 16px;cursor:pointer;font-size:13px;transition:.15s}
+    .filter:hover{background:var(--gray)}.filter.is-active{background:var(--dark);border-color:var(--dark);color:#fff}
+    .claim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .claim{border:1px solid var(--hair);border-radius:var(--r);padding:clamp(24px,3vw,38px);display:flex;flex-direction:column;min-height:500px;background:#fff}
+    .claim[hidden]{display:none}.claim__top{display:flex;align-items:center;gap:8px;margin-bottom:34px}.claim__num{font-family:var(--mono);font-size:12px;color:var(--mut);margin-right:auto}
+    .pill{font-family:var(--mono);font-size:10px;line-height:1;text-transform:uppercase;letter-spacing:.06em;padding:7px 10px;border-radius:9999px;background:var(--gray)}
+    .pill--open{background:#FFF2DD;color:#704600}
+    .claim h4{font-size:clamp(24px,2.6vw,34px);line-height:1.18;max-width:22ch;margin-bottom:34px}
+    .claim__source{display:flex;justify-content:space-between;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:14px 0;margin-top:auto;font-size:14px}
+    .claim__source:hover{color:var(--mut)}
+    .claim dl>div{display:grid;grid-template-columns:120px 1fr;gap:20px;padding-top:16px}
+    .claim dt{font-family:var(--mono);font-size:10px;line-height:1.5;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+    .claim dd{font-size:13px;line-height:1.55;color:var(--ink-2)}
+    .evidence-note{font-size:13px;color:var(--mut);max-width:72ch;margin-top:24px}
+
+    .corpus-head{display:grid;grid-template-columns:.6fr 1fr;gap:60px;align-items:end;margin-bottom:54px}
+    .corpus-head>div{display:flex;align-items:flex-end;gap:20px}.corpus-count{font-size:clamp(86px,12vw,180px);line-height:.75;letter-spacing:-.07em}
+    .corpus-head .mono{color:rgba(255,255,255,.55)}.corpus-head h3{max-width:17ch}
+    .people{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair-d)}
+    .person-row{display:grid;grid-template-columns:34px 1fr auto;gap:14px;padding:18px 16px;border-bottom:1px solid var(--hair-d);border-right:1px solid var(--hair-d);align-items:baseline}
+    .person-row:nth-child(3n){border-right:0}.person-row>span{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.38)}
+    .person-row strong{font-size:16px;font-weight:400}.person-row em{font-family:var(--mono);font-size:9px;text-transform:uppercase;font-style:normal;color:rgba(255,255,255,.5)}
+    .corpus-note{font-size:12px;line-height:1.6;color:rgba(255,255,255,.48);max-width:88ch;margin-top:28px}
+
+    .method-line{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--hair);margin-bottom:72px}
+    .method-line article{padding:24px 20px 30px;border-right:1px solid var(--hair)}.method-line article:first-child{padding-left:0}.method-line article:last-child{border-right:0;padding-right:0}
+    .method-line h4{margin:30px 0 14px}.method-line p{font-size:14px;line-height:1.6;color:var(--mut)}
+    .context-box{display:grid;grid-template-columns:1fr 1fr;gap:50px;background:var(--dark);color:#fff;border-radius:var(--r);padding:clamp(30px,5vw,70px)}
+    .context-box .mono{color:rgba(255,255,255,.55)}.context-box h3{margin-top:16px;max-width:13ch}.context-box p{color:rgba(255,255,255,.7);margin-bottom:18px;max-width:52ch}
+
+    .edition-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.edition-grid article{background:#fff;border-radius:var(--r);padding:clamp(26px,3vw,40px);min-height:240px}
+    .edition-grid h4{font-size:28px;margin:50px 0 14px}.edition-grid p{color:var(--mut);max-width:32ch}
+    .release-line{display:flex;align-items:center;gap:22px;flex-wrap:wrap;border-top:1px solid var(--hair);margin-top:36px;padding-top:22px;font-family:var(--mono);font-size:11px;text-transform:uppercase;color:var(--mut)}
+    .release-line span+span::before{content:"/";margin-right:22px;color:var(--hair)}.release-line .pulse{width:9px;height:9px;border-radius:50%;background:var(--red)}.release-line .pulse+span::before{display:none}
+
+    @media(max-width:1080px){
+      .ledger{grid-template-columns:repeat(2,1fr)}.ledger__item{border-bottom:1px solid var(--hair)}
+      .atlas{grid-template-columns:1fr 1fr;display:grid;min-height:0}.atlas::before{display:none}.atlas__core{grid-column:1/3;grid-row:auto;width:100%;aspect-ratio:auto;min-height:300px}.atlas__node,.atlas__node--mind,.atlas__node--agency,.atlas__node--trust,.atlas__node--work,.atlas__node--power,.atlas__node--future{grid-column:auto;grid-row:auto}
+      .people{grid-template-columns:repeat(2,1fr)}.person-row:nth-child(3n){border-right:1px solid var(--hair-d)}.person-row:nth-child(2n){border-right:0}
+      .method-line{grid-template-columns:repeat(2,1fr)}.method-line article{border-bottom:1px solid var(--hair)}
+    }
+    @media(max-width:620px){
+      .edition-head,.corpus-head,.context-box{grid-template-columns:1fr;gap:24px}.ledger,.claim-grid,.people,.method-line,.edition-grid,.atlas{grid-template-columns:1fr}
+      .ledger__item,.ledger__item:first-child,.ledger__item:last-child{padding:18px 0;min-height:0;border-right:0}.ledger__item{gap:8px}
+      .atlas__core{grid-column:1;min-height:260px}.atlas__node{min-height:150px}.atlas__node p{font-size:17px}
+      .claim{min-height:0}.claim h4{font-size:25px}.claim dl>div{grid-template-columns:1fr;gap:4px}.claim__source{margin-top:10px}
+      .corpus-head>div{align-items:center}.corpus-count{font-size:100px}.people{border-top:1px solid var(--hair-d)}
+      .person-row,.person-row:nth-child(3n),.person-row:nth-child(2n){border-right:0;padding-inline:0}.person-row{grid-template-columns:28px 1fr auto}
+      .method-line article,.method-line article:first-child,.method-line article:last-child{padding:22px 0;border-right:0}.method-line h4{margin:18px 0 10px}
+      .context-box{padding:28px 22px}.edition-grid article{min-height:210px}.release-line{display:grid;gap:10px}.release-line span+span::before{display:none}
+    }
+  </style>
 </Base>

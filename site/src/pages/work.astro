@@ -28,21 +28,48 @@ const appearances = [
   },
 ];
 ---
-<Base ctaField="dark-slate" title="Work" description="The Center for Innovating the Future owns and operates its institutions. A Toronto strategy innovation lab, established December 2010.">
+<Base ctaField="dark-slate" title="Work" description="The Center for Innovating the Future builds independent institutions, living evidence projects and public work. A Toronto strategy innovation lab, established December 2010.">
   <PageHead className="work-head">
-    The Center owns and operates its institutions.
+    The Center builds institutions and public evidence.
     <p slot="lede" class="lede">
-      Every institution the Center holds carries its own remit, its own audience, and its own
-      standard. Each is built to outlast the attention cycle it was formed in.
+      Each institution has its own remit and audience. Each research project keeps its sources,
+      disagreements and revisions visible enough to be tested in public.
     </p>
     <div slot="cta" class="cta">
       <a class="btn" href="/contact">Work with the Center</a>
-      <a class="btn btn--gh" href="#institutions">See the institutions</a>
+      <a class="btn btn--gh" href="#research">See the living research</a>
     </div>
   </PageHead>
 
-  <section class="sec" id="institutions">
+  <section class="sec" id="research">
     <div class="wrap">
+      <div class="shead"><h3>Living research</h3></div>
+      <div class="g2">
+        <a class="ncard" href="/work/ai-native-generation">
+          <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
+          <div class="bd bd--lg">
+            <p class="mono">Working edition 0.1</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">The First AI-Native Generation</h4>
+            <p class="sm mut">Eighteen published conversations and more than 180 provisional claims organized as a source-linked, revisable public record.</p>
+            <span class="go">Explore the evidence <Arrow /></span>
+          </div>
+        </a>
+        <a class="ncard ncard--d" href="/senate-2017">
+          <div class="im"><img class="rn" src="/images/senate-02.jpg" alt="" loading="lazy" /></div>
+          <div class="bd bd--lg">
+            <p class="mono">Retrospective evidence audit</p>
+            <h4 style="font-size:clamp(24px,2.6vw,32px)">CIF Before the Senate</h4>
+            <p class="sm mut">The Center gave evidence in 2017. Nine years on, each published claim is graded against the record.</p>
+            <span class="go">Read the scorecard <Arrow /></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--t" id="institutions">
+    <div class="wrap">
+      <div class="shead"><h3>Institutions</h3></div>
       <div class="alt">
         {properties.map((p, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
@@ -67,29 +94,6 @@ const appearances = [
             </div>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--t">
-    <div class="wrap">
-      <div class="g2">
-        <a class="ncard" href="/work/ai-native-generation">
-          <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
-          <div class="bd bd--lg">
-            <h4 style="font-size:clamp(24px,2.6vw,32px)">The First AI-Native Generation</h4>
-            <p class="sm mut">What sustained interaction with conversational AI does to cognition, identity, and agency. First outputs November 2026.</p>
-            <span class="go">Take part <Arrow /></span>
-          </div>
-        </a>
-        <a class="ncard ncard--d" href="/senate-2017">
-          <div class="im"><img class="rn" src="/images/senate-02.jpg" alt="" loading="lazy" /></div>
-          <div class="bd bd--lg">
-            <h4 style="font-size:clamp(24px,2.6vw,32px)">CIF Before the Senate</h4>
-            <p class="sm mut">The Center gave evidence in 2017. Nine years on, every claim it made that day is graded in public, with sources. Three held. Three failed.</p>
-            <span class="go">Read the scorecard <Arrow /></span>
-          </div>
-        </a>
       </div>
     </div>
   </section>
