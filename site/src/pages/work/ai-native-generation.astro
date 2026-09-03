@@ -31,13 +31,17 @@ const sections = [
   { label: "Who informs it", href: "#voices" },
   { label: "How it works", href: "#method" },
   { label: "Public result", href: "#result" },
-  { label: "Status", href: "#status" },
+  { label: "Be part of this", href: "/contact" },
 ];
 ---
 <Base
   title="The First AI-Native Generation"
   description="CIF’s living, source-linked analysis of agreement, disagreement and uncertainty across its public podcast archive."
-  cta={false}
+  ctaHeading="Be part of this."
+  ctaBody="Researchers, practitioners, institutions and listeners who can add a perspective, source, correction or challenge can write to the Center."
+  ctaLabel="Write to the Center"
+  ctaHref="/contact"
+  ctaField="dark-slate"
 >
   <PageHead photo="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" id="an">
     The First <span style="white-space:nowrap">AI-Native</span> Generation.
@@ -109,26 +113,15 @@ const sections = [
     </div>
   </section>
 
-  <section class="sec sec--d" id="status">
-    <div class="wrap">
-      <div class="status">
-        <span class="mono">Work in progress</span>
-        <h2>The evidence is not ready for publication.</h2>
-        <p>CIF is still completing the corpus, source review, methodology and publication format. Working interview counts, names, provisional claims and internal analysis are not public findings and should not be cited as such.</p>
-      </div>
-    </div>
-  </section>
-
   <style>
     .result-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);margin-bottom:clamp(58px,8vw,110px)}
     .result-grid article{padding:clamp(24px,3vw,38px);border-right:1px solid var(--hair);min-height:260px}
     .result-grid article:first-child{padding-left:0}.result-grid article:last-child{border-right:0;padding-right:0}
     .result-grid h4{font-size:clamp(24px,2.4vw,32px);margin:54px 0 14px}.result-grid p{color:var(--mut);font-size:14px;line-height:1.65}
     .reader{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,7vw,110px);align-items:start;background:var(--sand);border-radius:var(--r);padding:clamp(30px,5vw,70px)}
-    .reader h3{margin-top:14px;max-width:13ch}.status{display:grid;grid-template-columns:.45fr 1fr .8fr;gap:clamp(28px,5vw,72px);align-items:start}
+    .reader h3{margin-top:14px;max-width:13ch}
     .evidence-path{margin-bottom:clamp(48px,7vw,86px)}.compact{padding-top:0}
-    .status .mono{color:rgba(255,255,255,.55)}.status h2{font-size:clamp(32px,4.6vw,62px);line-height:1.05;font-weight:400;max-width:13ch}.status p{color:rgba(255,255,255,.65);font-size:17px;line-height:1.65;max-width:48ch}
-    @media(max-width:900px){.result-grid{grid-template-columns:repeat(2,1fr)}.result-grid article:nth-child(2){border-right:0}.reader,.status{grid-template-columns:1fr}}
+    @media(max-width:900px){.result-grid{grid-template-columns:repeat(2,1fr)}.result-grid article:nth-child(2){border-right:0}.reader{grid-template-columns:1fr}}
     @media(max-width:620px){.result-grid{grid-template-columns:1fr}.result-grid article,.result-grid article:first-child,.result-grid article:last-child{padding:24px 0;border-right:0;border-bottom:1px solid var(--hair);min-height:0}.result-grid h4{margin:24px 0 10px}.reader{padding:28px 22px}}
   </style>
 </Base>
