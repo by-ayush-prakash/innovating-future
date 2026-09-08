@@ -1,7 +1,6 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import PageHead from "../../../components/PageHead.astro";
-import SubNav from "../../../components/SubNav.astro";
 import Field from "../../../components/Field.astro";
 import Arrow from "../../../components/Arrow.astro";
 import { SKEPTICISM, ORG } from "../../../config";
@@ -46,14 +45,6 @@ const shapes = [
     p: "The organization hosts a public session and shapes the agenda alongside the Center rather than joining a finished one." },
 ];
 
-const sections = [
-  { label: "The program", href: "#program" },
-  { label: "How it works", href: "#how" },
-  { label: "Sessions", href: "#sessions" },
-  { label: "Bring it in", href: "#bring" },
-  { label: "The record", href: "#record" },
-  { label: "More from the Center", href: "#more" },
-];
 ---
 <Base
   title={SKEPTICISM.name}
@@ -73,8 +64,6 @@ const sections = [
       <a class="btn btn--gh" href="#program">What the program holds</a>
     </div>
   </PageHead>
-
-  <SubNav items={sections} />
 
   <section class="sec">
     <div class="wrap">

@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import SubNav from "../components/SubNav.astro";
 import Field from "../components/Field.astro";
 import Arrow from "../components/Arrow.astro";
 import { PODCAST, ORG } from "../config";
@@ -37,12 +36,6 @@ const guests = [
   { n: "Nidhi Hegde", r: "Computing science, University of Alberta" },
 ];
 
-const sections = [
-  { label: "Latest", href: "#latest" },
-  { label: "All episodes", href: "#all" },
-  { label: "Who comes on", href: "#guests" },
-  { label: "For Mantic authors", href: "#authors" },
-];
 ---
 <Base
   title="Podcast"
@@ -74,8 +67,6 @@ const sections = [
       </a>
     </div>
   </PageHead>
-
-  <SubNav items={sections} />
 
   {fetchFailed ? (
     <section class="sec">

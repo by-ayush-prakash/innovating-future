@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import SubNav from "../components/SubNav.astro";
 import Arrow from "../components/Arrow.astro";
 
 const facts = [
@@ -88,12 +87,6 @@ const tally = {
   other: scorecard.filter((s) => s.v === "partly" || s.v === "open").length,
 };
 
-const sections = [
-  { label: "The appearance", href: "#appearance" },
-  { label: "What we said", href: "#said" },
-  { label: "The scorecard", href: "#scorecard" },
-  { label: "What still stands", href: "#stands" },
-];
 ---
 <Base
   title="Before the Senate"
@@ -114,8 +107,6 @@ const sections = [
       <a class="btn btn--gh" href="https://sencanada.ca/en/content/sen/Committee/421/soci/14ev-53044-e" target="_blank" rel="noopener noreferrer">Full transcript</a>
     </div>
   </PageHead>
-
-  <SubNav items={sections} />
 
   <section class="sec" id="appearance">
     <div class="wrap">
