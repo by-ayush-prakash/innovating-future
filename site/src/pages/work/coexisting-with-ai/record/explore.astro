@@ -845,7 +845,10 @@ const learningGuides = {
           </div>
           <div class="inspector-media" data-inspector-media hidden>
             <header><button type="button" data-close-inspector-media>← Back to the view</button><span><b data-inspector-speaker></b><i data-inspector-link-time></i></span></header>
-            <div class="inspector-media-frame"><iframe data-inspector-frame title="Original interview at the cited moment" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="inspector-media-frame">
+              <iframe data-inspector-frame title="Original interview at the cited moment" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+              <audio data-inspector-audio controls preload="metadata" hidden></audio>
+            </div>
             <section>
               <h2 data-inspector-claim></h2>
               <div class="inspector-media-copy"><article><h3>Context around the claim</h3><p data-inspector-media-transcript></p></article><article><h3>Why this moment matters</h3><p data-inspector-context></p></article></div>
@@ -1490,10 +1493,16 @@ const learningGuides = {
     const empty = root?.querySelector<HTMLElement>('[data-inspector-empty]'); const record = root?.querySelector<HTMLElement>('[data-inspector-record]'); const inspector = root?.querySelector<HTMLElement>('[data-inspector]'); const inspectorBackdrop = root?.querySelector<HTMLElement>('[data-inspector-backdrop]');
     const inspectorMedia = root?.querySelector<HTMLElement>('[data-inspector-media]');
     const inspectorFrame = root?.querySelector<HTMLIFrameElement>('[data-inspector-frame]');
+    const inspectorAudio = root?.querySelector<HTMLAudioElement>('[data-inspector-audio]');
     const inspectorVideo = root?.querySelector<HTMLButtonElement>('[data-inspector-video]');
     const inspectorSourceStatus = root?.querySelector<HTMLElement>('[data-inspector-source-status]');
     const setText = (selector: string, value = '') => { root?.querySelectorAll<HTMLElement>(selector).forEach((el) => { el.textContent = value; }); };
-    const showInspectorRecord = () => { if (record) record.hidden = false; if (inspectorMedia) inspectorMedia.hidden = true; if (inspectorFrame) inspectorFrame.src = ''; };
+    const showInspectorRecord = () => {
+      if (record) record.hidden = false;
+      if (inspectorMedia) inspectorMedia.hidden = true;
+      if (inspectorFrame) { inspectorFrame.src = ''; inspectorFrame.hidden = false; }
+      if (inspectorAudio) { inspectorAudio.pause(); inspectorAudio.removeAttribute('src'); inspectorAudio.load(); inspectorAudio.hidden = true; }
+    };
     const closeInspector = () => {
       showInspectorRecord();
       inspector?.classList.remove('open');
@@ -1512,7 +1521,29 @@ const learningGuides = {
       } catch { return ''; }
     };
     root?.querySelectorAll<HTMLButtonElement>('[data-evidence]').forEach((card) => card.addEventListener('click', () => { const state = card.dataset.state || ''; const transcript = card.dataset.transcript || ''; const video = card.dataset.video || ''; root.querySelectorAll('[data-evidence]').forEach((item) => item.classList.toggle('selected', item === card)); showInspectorRecord(); setText('[data-inspector-claim]', card.dataset.claim); setText('[data-inspector-speaker]', card.dataset.speaker); setText('[data-inspector-segment]', card.dataset.segment); setText('[data-inspector-time]', card.dataset.timestamp); setText('[data-inspector-link-time]', card.dataset.timestamp); setText('[data-inspector-context]', card.dataset.context); setText('[data-inspector-transcript]', transcript); setText('[data-inspector-media-transcript]', transcript); if (inspectorVideo) { inspectorVideo.dataset.video = video; inspectorVideo.dataset.timestamp = card.dataset.timestamp || ''; inspectorVideo.hidden = !video; } if (inspectorSourceStatus) inspectorSourceStatus.hidden = Boolean(video); if (inspector) inspector.dataset.state = state; if (empty && record) { empty.hidden = true; record.hidden = false; } inspector?.classList.add('open'); inspectorBackdrop?.classList.add('open'); root.querySelector<HTMLButtonElement>('[data-close-inspector]')?.focus(); }));
-    inspectorVideo?.addEventListener('click', () => { const embed = youtubeEmbed(inspectorVideo.dataset.video, inspectorVideo.dataset.timestamp); if (!embed || !inspectorMedia || !record || !inspectorFrame) return; inspectorFrame.src = embed; record.hidden = true; inspectorMedia.hidden = false; inspectorMedia.querySelector<HTMLButtonElement>('[data-close-inspector-media]')?.focus(); });
+    inspectorVideo?.addEventListener('click', () => {
+      const source = inspectorVideo.dataset.video || '';
+      const timestamp = inspectorVideo.dataset.timestamp || '';
+      const embed = youtubeEmbed(source, timestamp);
+      if (!source || !inspectorMedia || !record || !inspectorFrame) return;
+      if (embed) {
+        inspectorFrame.src = embed;
+        inspectorFrame.hidden = false;
+        if (inspectorAudio) inspectorAudio.hidden = true;
+      } else if (inspectorAudio) {
+        inspectorFrame.src = '';
+        inspectorFrame.hidden = true;
+        inspectorAudio.src = source;
+        inspectorAudio.hidden = false;
+        const seek = () => { inspectorAudio.currentTime = timestampSeconds(timestamp); };
+        if (inspectorAudio.readyState >= 1) seek();
+        else inspectorAudio.addEventListener('loadedmetadata', seek, { once: true });
+        inspectorAudio.play().catch(() => {});
+      } else return;
+      record.hidden = true;
+      inspectorMedia.hidden = false;
+      inspectorMedia.querySelector<HTMLButtonElement>('[data-close-inspector-media]')?.focus();
+    });
     root?.querySelector('[data-close-inspector-media]')?.addEventListener('click', () => { showInspectorRecord(); inspectorVideo?.focus(); });
     root?.querySelector('[data-close-inspector]')?.addEventListener('click', closeInspector);
     inspectorBackdrop?.addEventListener('click', closeInspector);
@@ -4852,6 +4883,7 @@ const learningGuides = {
     .inspector-media>header i{color:var(--atlas-red);font:500 11px var(--mono);font-style:normal}
     .inspector-media-frame{position:relative;aspect-ratio:16/9;margin-top:26px;overflow:hidden;border-radius:18px;background:var(--atlas-ink)}
     .inspector-media-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .inspector-media-frame audio{position:absolute;left:8%;top:50%;width:84%;transform:translateY(-50%)}
     .inspector-media>section{padding:28px 0 0}
     .inspector-media-label{color:var(--atlas-muted);font-size:12px}
     .inspector-media-label b{color:var(--atlas-red);font:500 11px var(--mono)}

@@ -68,6 +68,28 @@ test('source panels have durable URLs and Back closes the source', async ({ page
   await expect(page.locator('[data-inspector]')).not.toHaveClass(/open/);
 });
 
+test('every published position has a recording and audio sources open at the cited moment', async ({ page }) => {
+  await page.goto(`${recordPath}?view=explore&question=understanding`);
+  const evidence = page.locator('[data-evidence]');
+  const sources = await evidence.evaluateAll((items) => items.map((item) => ({
+    video: (item as HTMLElement).dataset.video,
+  })));
+  expect(sources.filter(({ video }) => !video)).toEqual([]);
+
+  const audioEvidence = page.locator('[data-view="understanding"] [data-evidence][data-video^="https://anchor.fm"]').first();
+  const audioKey = await audioEvidence.getAttribute('data-evidence-key');
+  expect(audioKey).toBeTruthy();
+  await page.locator('[data-view="understanding"] [data-show-all-positions]:visible').click();
+  const audioSource = page.locator(`.all-position-card[data-open-evidence-key="${audioKey}"]`);
+  await expect(audioSource).toBeVisible();
+  await audioSource.click();
+  await page.getByRole('button', { name: /Listen to the context/ }).click();
+  const audio = page.locator('[data-inspector-audio]');
+  await expect(audio).toBeVisible();
+  await expect(audio).toHaveAttribute('src', /^https:\/\/anchor\.fm\//);
+  await expect(page.locator('[data-inspector-frame]')).toBeHidden();
+});
+
 test('public forms have spam traps and preserve submissions for review', async ({ page }) => {
   await page.goto('/work/coexisting-with-ai/record/');
   const landingUpdates = page.locator('form[name="coexistence-record-updates"]');
