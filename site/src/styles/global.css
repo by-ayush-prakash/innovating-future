@@ -16,13 +16,15 @@
   --hair:#E3E3E3;
   --hair-d:rgba(255,255,255,.14);
 
-  /* panels. these are the only fills used at section scale */
-  --gray:#F2F2F2;
-  --sand:#F0EEE9;
-  --sage:#D0D5D2;
+  /* warm surfaces. Section contrast comes from paper, oat and sage tints,
+     never from flat grey. */
+  --paper:#F7F0E6;
+  --paper-hi:#FFF9F0;
+  --sand:#F3E3CF;
+  --sage:#DDE9DE;
   --dark:#17171C;
   --dark-2:#212121;
-  --off:#FAFAFA;
+  --off:#FFF9F0;
 
   /* the three property hues. used in imagery and the accent rule.
      never as body or heading color. */
@@ -90,9 +92,9 @@ p{text-wrap:pretty}
   line-height:24px;white-space:nowrap;border:1px solid transparent;transition:.2s;cursor:pointer}
 .btn:hover{background:#2E2E3C}
 .btn--gh{background:transparent;color:var(--ink);border-color:#D6D6D6}
-.btn--gh:hover{background:var(--gray)}
+.btn--gh:hover{background:var(--paper)}
 .btn--w{background:#fff;color:var(--dark)}
-.btn--w:hover{background:#E8E8E8}
+.btn--w:hover{background:var(--paper)}
 .btn--lg{height:52px;padding:0 30px;font-size:15px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .go{display:inline-flex;align-items:center;gap:9px;transition:.2s}
@@ -105,7 +107,7 @@ p{text-wrap:pretty}
 .sec{padding:clamp(48px,5.4vw,78px) 0}
 .sec--t{padding-top:0}
 .sec--b{padding-bottom:0}
-.sec--g{background:var(--gray)}
+.sec--paper{background:linear-gradient(135deg,var(--paper-hi) 0%,var(--paper) 62%,#EEF3EC 100%)}
 .sec--s{background:var(--sand)}
 .sec--d{background:var(--dark);color:#FAFAFA}
 .shead{display:flex;justify-content:space-between;align-items:flex-end;
@@ -197,7 +199,7 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 .ndrop:hover .npanel,.ndrop:focus-within .npanel{opacity:1;visibility:visible;transform:none}
 .npanel a{display:flex;align-items:center;justify-content:space-between;gap:20px;
   padding:13px 16px;border-radius:14px;font-size:15px;line-height:21px;transition:.15s}
-.npanel a:hover{background:var(--gray)}
+.npanel a:hover{background:var(--paper)}
 .npanel a svg{opacity:0;transition:.15s;flex:none}
 .npanel a:hover svg{opacity:.5}
 .navr{margin-left:auto;display:flex;align-items:center;gap:22px;font-size:16px}
@@ -265,7 +267,7 @@ a:hover>.brand--light{color:rgba(255,255,255,.75)}
 }
 .bleed{margin-top:clamp(34px,4.4vw,60px);aspect-ratio:21/8;min-height:260px}
 /* A document in the hero: shown whole, never cropped. */
-.bleed--doc{background:var(--grey);padding:clamp(18px,3vw,44px);display:flex;align-items:center;justify-content:center}
+.bleed--doc{background:var(--paper);padding:clamp(18px,3vw,44px);display:flex;align-items:center;justify-content:center}
 .bleed--doc img{width:auto;max-width:100%;max-height:100%;height:auto;object-fit:contain;
   border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.07)}
 
@@ -293,7 +295,7 @@ section[id],header[id],.band[id],.sec[id]{scroll-margin-top:var(--chrome)}
 .arow--podcast{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
 .arow--f .afig{order:2}
 .afig{aspect-ratio:4/3}
-.afig--art{background:var(--gray);display:flex;align-items:center;justify-content:center;
+.afig--art{background:var(--paper);display:flex;align-items:center;justify-content:center;
   padding:clamp(28px,4.2vw,58px)}
 .afig--art img{width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:12px;
   box-shadow:0 18px 44px rgba(0,0,0,.14),0 0 0 1px rgba(0,0,0,.05)}
@@ -443,7 +445,7 @@ a.rrow:hover{background:var(--off)}
 .g3--c svg.ico{margin-inline:auto}
 .g3--c svg.ico{margin-bottom:44px}
 .g3--c p{max-width:34ch}
-.ncard{border-radius:var(--r);overflow:hidden;background:var(--gray);display:flex;
+.ncard{border-radius:var(--r);overflow:hidden;background:var(--paper);display:flex;
   flex-direction:column;transition:.2s}
 a.ncard:hover{transform:translateY(-4px)}
 .ncard .im{aspect-ratio:16/9;border-radius:0}
@@ -452,7 +454,7 @@ a.ncard:hover{transform:translateY(-4px)}
 .im--logo{background:var(--sand);display:flex;align-items:center;justify-content:center;
   padding:clamp(28px,4vw,52px)}
 .im--logo img{max-height:clamp(34px,4.4vw,58px);width:auto;max-width:72%;object-fit:contain}
-.im--logo.is-cool{background:var(--grey)}
+.im--logo.is-cool{background:var(--sage)}
 
 /* Square or fixed-ratio art in a 16:9 card: framed, never cropped. */
 .im--art{background:var(--sand);display:flex;align-items:center;justify-content:center;
@@ -465,6 +467,38 @@ a.ncard:hover{transform:translateY(-4px)}
 .ncard--d{background:var(--dark);color:#FAFAFA}
 .ncard--d .mut,.ncard--d .mono{color:rgba(250,250,250,.6)}
 .ncard--o{background:#fff;box-shadow:0 0 0 1px var(--hair)}
+
+/* One recognizable entry treatment for every CTA leading into the Record. */
+a[href^="/work/coexisting-with-ai/atlas/"].btn,
+a[href^="/work/coexisting-with-ai/atlas/"] .go{
+  position:relative;
+  overflow:hidden;
+  border:1px solid transparent;
+  border-radius:9999px;
+  background:linear-gradient(110deg,#171719 0%,#171719 22%,#5a3fbd 38%,#a92e1d 54%,#08756d 70%,#171719 86%,#171719 100%) padding-box,var(--grad) border-box;
+  background-size:320% 100%,100% 100%;
+  background-position:0 50%,0 0;
+  color:#fff;
+  box-shadow:0 10px 24px rgba(23,23,25,.12);
+  animation:atlas-entry-colour 12s ease-in-out infinite;
+}
+a[href^="/work/coexisting-with-ai/atlas/"] .go{
+  align-self:flex-start;
+  padding:10px 16px;
+}
+a[href^="/work/coexisting-with-ai/atlas/"].btn:hover,
+a[href^="/work/coexisting-with-ai/atlas/"] .go:hover{
+  color:#fff;
+  box-shadow:0 14px 30px rgba(23,23,25,.18);
+}
+@keyframes atlas-entry-colour{
+  0%,100%{background-position:0 50%,0 0}
+  50%{background-position:100% 50%,0 0}
+}
+@media(prefers-reduced-motion:reduce){
+  a[href^="/work/coexisting-with-ai/atlas/"].btn,
+  a[href^="/work/coexisting-with-ai/atlas/"] .go{animation:none}
+}
 
 /* ---------- floating white panel over a band ---------- */
 .ui{background:#fff;color:var(--ink);border-radius:var(--r);padding:26px 28px 30px;
@@ -500,7 +534,7 @@ a.wl:hover img{opacity:1;filter:none}
 
 /* ---------- people ---------- */
 .person{display:grid;grid-template-columns:340px 1fr;gap:clamp(32px,5vw,80px);align-items:start}
-.person .photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--gray)}
+.person .photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--paper)}
 .person .photo img{width:100%;height:100%;object-fit:cover}
 .person h2{margin-bottom:8px}
 .role{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;
@@ -511,7 +545,7 @@ a.wl:hover img{opacity:1;filter:none}
 .cl .lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
 .cl a{border-bottom:1px solid var(--hair)}
 .cl a:hover{border-bottom-color:var(--ink)}
-.pp{background:var(--gray);border-radius:var(--r);padding:clamp(28px,3.4vw,44px);
+.pp{background:var(--paper);border-radius:var(--r);padding:clamp(28px,3.4vw,44px);
   display:flex;flex-direction:column;gap:14px}
 .pp p{color:var(--ink-2);margin:0}
 
@@ -537,7 +571,7 @@ a.wl:hover img{opacity:1;filter:none}
 .hp{position:absolute;left:-9999px}
 .fnotice{font-size:13px;color:var(--mut)}
 .fnotice a{border-bottom:1px solid var(--hair)}
-.cinfo{background:var(--gray);border-radius:var(--r);padding:clamp(28px,3vw,40px)}
+.cinfo{background:var(--paper);border-radius:var(--r);padding:clamp(28px,3vw,40px)}
 .cinfo h3{font-size:22px;line-height:1.28;margin-bottom:18px}
 .caddr,.cmail{font-size:15px;line-height:24px;color:var(--mut);margin-bottom:16px}
 .cmail a{color:var(--ink);border-bottom:1px solid var(--hair)}
@@ -555,13 +589,13 @@ a.wl:hover img{opacity:1;filter:none}
 .plat{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .plat a{display:inline-flex;align-items:center;gap:11px;height:52px;padding:0 24px;
   border-radius:9999px;border:1px solid #D6D6D6;font-size:15px;transition:.2s}
-.plat a:hover{background:var(--gray)}
+.plat a:hover{background:var(--paper)}
 .plat svg{width:22px;height:22px;flex:none}
 .eplist{border-top:1px solid var(--hair)}
 .eprow{display:grid;grid-template-columns:64px 52px 1fr auto;gap:clamp(16px,2.4vw,32px);
   padding:18px 0;border-bottom:1px solid var(--hair);align-items:center;transition:.15s}
 a.eprow:hover{background:var(--off)}
-.epcov{width:64px;height:64px;border-radius:10px;overflow:hidden;background:var(--grey);flex:none}
+.epcov{width:64px;height:64px;border-radius:10px;overflow:hidden;background:var(--paper);flex:none}
 .epcov img{width:100%;height:100%;object-fit:cover}
 .eprow .epn{font-family:var(--mono);font-size:13px;color:var(--mut)}
 .eprow .ept{font-size:18px;line-height:26px;letter-spacing:-.01em;display:block}
@@ -737,4 +771,49 @@ footer.site .fcol a:hover{color:#fff}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto}
+}
+
+/* Shared motion language ---------------------------------------------------
+   The site stays editorial and still by default. When JavaScript is present,
+   major ideas enter with the same quiet lift used by the Record artwork. */
+.motion-ready [data-motion-reveal]{
+  opacity:0;
+  transform:translateY(24px);
+  transition:
+    opacity .72s cubic-bezier(.22,1,.36,1),
+    transform .72s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--motion-delay,0ms);
+  will-change:opacity,transform;
+}
+.motion-ready [data-motion-reveal="media"]{
+  transform:translateY(28px) scale(.975);
+}
+.motion-ready [data-motion-reveal].is-visible{
+  opacity:1;
+  transform:none;
+  will-change:auto;
+}
+.motion-ready .card,
+.motion-ready .ncard,
+.motion-ready .person,
+.motion-ready .prow,
+.motion-ready .fconv{
+  transition:
+    transform .26s cubic-bezier(.22,1,.36,1),
+    box-shadow .26s ease,
+    border-color .26s ease;
+}
+@media(hover:hover){
+  .motion-ready .card:hover,
+  .motion-ready .ncard:hover,
+  .motion-ready .person:hover{
+    transform:translateY(-4px);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-ready [data-motion-reveal]{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
 }

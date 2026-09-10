@@ -31,13 +31,12 @@ const checks = [
 
   <section class="sec">
     <div class="wrap">
-      <div class="arow" style="align-items:start">
+      <div class="arow careers-proposal">
         <div>
           <h3>Proposals, not applications.</h3>
         </div>
-        <div class="body" style="max-width:none">
-          <p>CIF builds institutions and holds them. Each will need people running it as it matures.</p>
-          <p>That makes a position here less a matter of an opening that exists today than of which institution someone wants to help build. Early positions carry wide scope and direct ownership of outcomes.</p>
+        <div class="body">
+          <p>CIF builds institutions and holds them. Each will need people running it as it matures. That makes a position here less a matter of an opening that exists today than of which institution someone wants to help build. Early positions carry wide scope and direct ownership of outcomes.</p>
         </div>
       </div>
     </div>
@@ -46,11 +45,19 @@ const checks = [
   <section class="sec sec--t">
     <div class="wrap">
       <div class="rule"></div>
-      <div class="nums">
+      <div class="nums careers-checks">
         {checks.map((c) => (
           <div class="nrow"><span class="n">{c.n}</span><h4>{c.h}</h4><p>{c.p}</p></div>
         ))}
       </div>
     </div>
   </section>
+
+  <style>
+    .careers-proposal{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(32px,4vw,56px);align-items:start}
+    .careers-proposal .body{max-width:60ch;padding-top:7px}
+    .careers-proposal p{max-width:none}
+    .careers-checks .nrow:last-child{border-bottom:0}
+    @media(max-width:1080px){.careers-proposal{grid-template-columns:1fr;gap:22px}.careers-proposal .body{padding-top:0}}
+  </style>
 </Base>

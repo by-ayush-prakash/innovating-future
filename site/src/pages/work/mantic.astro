@@ -107,7 +107,7 @@ const gets = [
       <div class="shead">
         <h3>Fewer books. More work on each.</h3>
       </div>
-      <div class="nums">
+      <div class="nums mantic-author-list">
         {gets.map((g) => (
           <div class="nrow"><span class="n">{g.n}</span><h4>{g.h}</h4><p>{g.p ?? <>Published Mantic authors appear on <a class="podcast-link" href="/podcast">The Ayush Prakash Podcast</a> for a long-form conversation about the book with an audience that will push on it.</>}</p></div>
         ))}
@@ -115,7 +115,7 @@ const gets = [
     </div>
   </section>
 
-  <section class="sec sec--g" id="start">
+  <section class="sec sec--paper" id="start">
     <div class="wrap">
       <div class="shead"><h3>How to start</h3></div>
       <div class="g2">
@@ -159,15 +159,19 @@ const gets = [
             <span class="go">Learn more <Arrow /></span>
           </div>
         </a>
-        <a class="ncard" href="/work/ai-native-generation">
+        <a class="ncard" href="/work/coexisting-with-ai/atlas/">
           <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd">
-            <h4>The First AI-Native Generation</h4>
-            <p class="sm mut">A research project currently in development. Findings and source material have not been published.</p>
-            <span class="go">Project status <Arrow /></span>
+            <h4>The Co-Existence Record</h4>
+            <p class="sm mut">A source-linked atlas for exploring questions, evidence, and perspectives about AI.</p>
+            <span class="go">Explore the Record <Arrow /></span>
           </div>
         </a>
       </div>
     </div>
   </section>
+
+  <style>
+    .mantic-author-list .nrow:last-child{border-bottom:0}
+  </style>
 </Base>

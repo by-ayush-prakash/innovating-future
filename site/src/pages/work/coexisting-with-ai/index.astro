@@ -96,12 +96,12 @@ const shapes = [
     </div>
   </section>
 
-  <section class="sec sec--g" id="how">
+  <section class="sec sec--paper" id="how">
     <div class="wrap">
       <div class="shead">
         <h3>How the program works</h3>
       </div>
-      <div class="nums">
+      <div class="nums program-steps">
         {motions.map((m) => (
           <div class="nrow"><span class="n">{m.n}</span><h4>{m.h}</h4><p>{m.p}</p></div>
         ))}
@@ -112,7 +112,7 @@ const shapes = [
   <section class="sec" id="record">
     <div class="wrap">
       <div class="shead"><h3>The record</h3></div>
-      <div class="arow" style="align-items:center">
+      <div class="arow record-feature">
         <div class="afig">
           <img class="rn" src="/images/senate-02.jpg" alt="The colonnade of a parliamentary building" loading="lazy" />
         </div>
@@ -139,7 +139,7 @@ const shapes = [
   <section class="sec" id="sessions">
     <div class="wrap">
       <div class="shead"><h3>From the program</h3></div>
-      <a class="arow" href="/work/coexisting-with-ai/microsoft-reactor" style="align-items:center">
+      <a class="arow session-feature" href="/work/coexisting-with-ai/microsoft-reactor">
         <div class="afig" style="aspect-ratio:16/10">
           <img class="rn" src="/images/microsoft-reactor.jpg" alt="Microsoft Reactor Toronto at CIBC Square, people arriving for a session" loading="lazy" />
         </div>
@@ -156,7 +156,7 @@ const shapes = [
     </div>
   </section>
 
-  <section class="sec sec--g" id="bring">
+  <section class="sec sec--paper" id="bring">
     <div class="wrap">
       <div class="arow" style="align-items:start">
         <div>
@@ -172,7 +172,7 @@ const shapes = [
         </div>
         <div>
           <div class="rule"></div>
-          <div class="lrows" style="border-top:0">
+          <div class="lrows program-formats" style="border-top:0">
             {shapes.map((k) => (
               <div class="lrow">
                 <span class="t">{k.t}</span>
@@ -189,12 +189,12 @@ const shapes = [
     <div class="wrap">
       <div class="shead"><h3>More from the Center</h3></div>
       <div class="g3">
-        <a class="ncard" href="/work/ai-native-generation">
+        <a class="ncard" href="/work/coexisting-with-ai/atlas/">
           <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd">
-            <h4>The First AI-Native Generation</h4>
-            <p class="sm mut">A research project currently in development. Findings and source material have not been published.</p>
-            <span class="go">Project status <Arrow /></span>
+            <h4>The Co-Existence Record</h4>
+            <p class="sm mut">A source-linked atlas for exploring questions, evidence, and perspectives about AI.</p>
+            <span class="go">Explore the Record <Arrow /></span>
           </div>
         </a>
         <a class="ncard" href="/work/mantic">
@@ -216,4 +216,13 @@ const shapes = [
       </div>
     </div>
   </section>
+
+  <style>
+    .record-feature,.session-feature{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(36px,4vw,64px);align-items:center}
+    .record-feature h3,.session-feature h3{max-width:none}
+    .record-feature p,.session-feature p{max-width:62ch}
+    .program-steps .nrow:last-child{border-bottom:0}
+    .program-formats .lrow:last-child{border-bottom:0}
+    @media(max-width:1080px){.record-feature,.session-feature{grid-template-columns:1fr;gap:28px}}
+  </style>
 </Base>

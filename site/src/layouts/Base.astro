@@ -8,6 +8,7 @@ const {
   title,
   description = "The Center for Innovating the Future is a Toronto strategy innovation lab, established in 2010, working to ensure that the forces remaking human life, such as artificial intelligence and geopolitics, are built on purpose rather than inherited.",
   noindex = false,
+  appShell = false,
   // Closing CTA, passed straight through to the footer.
   cta = true,
   ctaHeading,
@@ -56,8 +57,46 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <Nav path={path} />
+    {!appShell && <Nav path={path} />}
     <main id="main"><slot /></main>
-    <Footer cta={cta} ctaHeading={ctaHeading} ctaBody={ctaBody} ctaLabel={ctaLabel} ctaHref={ctaHref} ctaField={ctaField} />
+    {!appShell && <Footer cta={cta} ctaHeading={ctaHeading} ctaBody={ctaBody} ctaLabel={ctaLabel} ctaHref={ctaHref} ctaField={ctaField} />}
+    {!appShell && (
+      <script is:inline>
+        (() => {
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const selectors = [
+            '.hero h1', '.hero .lede', '.hero .cta', '.hcards > *',
+            '.ph-sec h1', '.ph-sec .lede', '.ph-sec .cta', '.ph-split > *',
+            '.sec .wrap > *', '.band .wrap > *', '.ctab .wrap > *',
+            '.fgrid > *'
+          ];
+          const items = [...new Set(selectors.flatMap((selector) => [...document.querySelectorAll(selector)]))];
+
+          items.forEach((item) => {
+            const media = item.matches('.card, .ncard, .bleed, .afig, .cov, .person, .hcards > *');
+            item.setAttribute('data-motion-reveal', media ? 'media' : 'content');
+            const siblings = item.parentElement ? [...item.parentElement.children] : [];
+            const siblingIndex = Math.max(0, siblings.indexOf(item));
+            item.style.setProperty('--motion-delay', `${Math.min(siblingIndex, 4) * 70}ms`);
+          });
+
+          document.documentElement.classList.add('motion-ready');
+          if (reduced || !('IntersectionObserver' in window)) {
+            items.forEach((item) => item.classList.add('is-visible'));
+            return;
+          }
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            });
+          }, { threshold: .08, rootMargin: '0px 0px -8% 0px' });
+
+          requestAnimationFrame(() => items.forEach((item) => observer.observe(item)));
+        })();
+      </script>
+    )}
   </body>
 </html>
