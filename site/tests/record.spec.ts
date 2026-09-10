@@ -69,6 +69,13 @@ test('source panels have durable URLs and Back closes the source', async ({ page
 });
 
 test('public forms have spam traps and preserve submissions for review', async ({ page }) => {
+  await page.goto('/work/coexisting-with-ai/record/');
+  const landingUpdates = page.locator('form[name="coexistence-record-updates"]');
+  await expect(landingUpdates).toHaveAttribute('data-netlify-honeypot', 'bot-field');
+  await landingUpdates.getByLabel('Email address').fill('reader@example.com');
+  await landingUpdates.getByRole('button', { name: 'Notify me' }).click();
+  await expect(landingUpdates.locator('[data-report-signup-status]')).toHaveText('Subscription will activate on the published site.');
+
   await page.goto(`${recordPath}?view=contribute&question=privacy`);
   const suggestion = page.locator('form[name="coexistence-record-suggestions"]');
   const updates = page.locator('form[name="coexistence-record-question-updates"]');
