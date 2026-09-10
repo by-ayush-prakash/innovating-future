@@ -199,7 +199,7 @@
         "claimId": "E18-C03",
         "personId": "E18",
         "state": "perspective",
-        "speaker": "Nicholas Nadeau",
+        "speaker": "Nick Nadeau",
         "segment": "Roboticist and AI founder",
         "contribution": "Expert-specific AI, provenance, privacy, and human judgment",
         "timestamp": "6:18",
@@ -1285,7 +1285,7 @@
         "claimId": "E18-C04",
         "personId": "E18",
         "state": "perspective",
-        "speaker": "Nicholas Nadeau",
+        "speaker": "Nick Nadeau",
         "segment": "Roboticist and AI founder",
         "contribution": "Expert-specific AI, provenance, privacy, and human judgment",
         "timestamp": "6:18",
@@ -1689,7 +1689,7 @@
       "contribution": "Creative authorship, human agency, medicine, future work, corporate innovation and AI companions"
     },
     {
-      "name": "Nicholas Nadeau",
+      "name": "Nick Nadeau",
       "role": "Roboticist and AI founder",
       "contribution": "Expert-specific AI, provenance, privacy, and human judgment"
     },

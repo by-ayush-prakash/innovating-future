@@ -18,7 +18,7 @@ const featuredSpeakerProfiles = [
   { name: "Cole Wyeth", role: "Theoretical computer scientist" },
   { name: "Viviane Clay", role: "Cognitive computing researcher" },
   { name: "Risto Miikkulainen", role: "Computer scientist" },
-  { name: "Nicholas Nadeau", role: "Roboticist and AI founder" },
+  { name: "Nick Nadeau", role: "Roboticist and AI founder" },
 ];
 
 const seedQuestions = [

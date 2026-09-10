@@ -33,11 +33,11 @@ test('Follow, profiles, Compare, About, and browser Back restore the correct vie
   await expect(page).toHaveURL(/view=follow/);
   await expect(page.locator('[data-people-view]')).toBeVisible();
 
-  const nicholas = page.locator('[data-open-person="nicholas-nadeau"]');
-  await expect(nicholas).toBeVisible();
-  await nicholas.click();
-  await expect(page).toHaveURL(/person=nicholas-nadeau/);
-  await expect(page.locator('[data-person-view="nicholas-nadeau"]')).toBeVisible();
+  const nick = page.locator('[data-open-person="nick-nadeau"]');
+  await expect(nick).toBeVisible();
+  await nick.click();
+  await expect(page).toHaveURL(/person=nick-nadeau/);
+  await expect(page.locator('[data-person-view="nick-nadeau"]')).toBeVisible();
 
   await page.goBack();
   await expect(page.locator('[data-people-view]')).toBeVisible();
