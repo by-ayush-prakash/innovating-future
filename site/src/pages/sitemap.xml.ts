@@ -1,12 +1,13 @@
 import type { APIRoute } from "astro";
 
-// Derived from the pages directory, so it cannot drift when a route is added
-// or renamed. Add nothing here by hand.
+// Derived from the pages directory. Non-indexable pages and redirect-only
+// compatibility routes are excluded explicitly.
 const files = Object.keys(import.meta.glob("./**/*.astro"));
+const excluded = new Set(["404", "contact/thanks", "work/ai-native-generation", "work/ai-native-generation/prototype"]);
 
 const routes = files
   .map((f) => f.replace(/^\.\//, "").replace(/\.astro$/, ""))
-  .filter((r) => r !== "404" && r !== "contact/thanks")
+  .filter((r) => !excluded.has(r))
   .map((r) => r.replace(/\/index$/, ""))
   .map((r) => (r === "index" ? "" : r))
   .sort();

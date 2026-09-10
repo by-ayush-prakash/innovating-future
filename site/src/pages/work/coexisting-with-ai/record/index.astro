@@ -20,7 +20,7 @@ const archiveStages = [
 ---
 <Base
   title="The Co-Existence Record"
-  description="The Co-Existence Record is a living, source-linked atlas from Co-Existing with AI, built from conversations on The Ayush Prakash Podcast."
+  description="The Co-Existence Record is a living public record of source-linked conversations about AI from The Ayush Prakash Podcast."
   ctaHeading="Help make AI understandable."
   ctaBody="CIF is looking for partners and funders who want expert knowledge to reach the public. Support can help expand the archive, verify sources, improve accessibility and keep the Record free."
   ctaLabel="Partner with CIF"
@@ -36,7 +36,7 @@ const archiveStages = [
       <figure class="report-art report-art--right"><img src="/images/ai-light-field.jpg" alt="Blue illuminated lines suggesting a digital network" /></figure>
     </div>
 
-    <a class="report-enter" href="/work/coexisting-with-ai/atlas/explore/" aria-label="Explore the Co-Existence Record">
+    <a class="report-enter" href="/work/coexisting-with-ai/record/explore/" aria-label="Explore the Co-Existence Record">
       <span class="report-enter-label">Explore the Record</span>
       <span class="report-enter-arrow" aria-hidden="true">→</span>
     </a>
@@ -48,7 +48,7 @@ const archiveStages = [
         <h3>Big questions about AI, made understandable.</h3>
         <div class="body">
           <p>Researchers, scientists, educators, philosophers, policymakers and builders have explored AI on <a class="podcast-link" href="/podcast">The Ayush Prakash Podcast</a>. Their ideas matter, but they are spread across long episodes and often expressed in specialist language.</p>
-          <p>CIF is turning those conversations into a free, interactive atlas for anyone. Start with a question, read a clear explanation, compare perspectives and follow any idea back to its source. No technical background or institutional access required.</p>
+          <p>CIF is turning those conversations into a free, interactive public record. Start with a question, read a clear explanation, compare perspectives and follow any idea back to its source. No technical background or institutional access required.</p>
         </div>
       </div>
       <div class="goal-dedication">
@@ -150,13 +150,14 @@ const archiveStages = [
         <h3>Follow the Co-Existence Record as it grows.</h3>
         <div class="updates-body">
           <p>Leave your email to hear when new questions, sources, and perspectives are added to the Record. Signing up is optional and never affects access.</p>
-          <form class="report-signup" name="ai-atlas-updates" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-report-signup>
-            <input type="hidden" name="form-name" value="ai-atlas-updates" />
+          <form class="report-signup" name="coexistence-record-updates" method="POST" action="/work/coexisting-with-ai/record/?submitted=updates" data-netlify="true" data-netlify-honeypot="bot-field" data-report-signup>
+            <input type="hidden" name="form-name" value="coexistence-record-updates" />
             <p class="report-honeypot" aria-hidden="true"><label>Do not fill this out<input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
             <label><span>Email address</span><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="Email address" required /></label>
             <button type="submit">Notify me</button>
             <p data-report-signup-status aria-live="polite"></p>
           </form>
+          <p class="updates-privacy">Updates are sent manually when the Record changes. Your email is used only for these updates, and you can request removal through CIF’s contact page.</p>
         </div>
       </div>
     </div>
@@ -183,7 +184,7 @@ const archiveStages = [
     .report-aaron-note:hover .report-aaron-tooltip,.report-aaron-note:focus-within .report-aaron-tooltip,.report-aaron-note[open] .report-aaron-tooltip{opacity:1;visibility:visible;transform:translateY(-50%)}
     .goal-dedication .report-aaron-tooltip{right:auto;left:0;top:calc(100% + 14px);transform:translateY(8px)}.goal-dedication .report-aaron-note:hover .report-aaron-tooltip,.goal-dedication .report-aaron-note:focus-within .report-aaron-tooltip,.goal-dedication .report-aaron-note[open] .report-aaron-tooltip{transform:translateY(0)}
     @keyframes report-stack-in{from{opacity:0;transform:translateY(34px) rotate(0deg) scale(.92)}}
-    @keyframes report-copy-in{from{opacity:0;transform:translateY(22px)}}
+    @keyframes report-copy-in{from{transform:translateY(22px)}}
     .archive-explorer{--archive-active:#ffe1d8}
     .archive-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.5vw,22px);margin-bottom:clamp(18px,2vw,28px)}
     .archive-tab{display:flex;flex-direction:column;min-width:0;min-height:250px;padding:22px;border:1px solid rgba(23,23,25,.1);border-radius:22px;color:#171719;font-family:var(--sans);text-align:left;cursor:pointer;appearance:none;transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
@@ -201,7 +202,7 @@ const archiveStages = [
     .goal-dedication-principles li{counter-increment:commitment;display:grid;grid-template-columns:40px minmax(0,1fr);align-items:start;gap:0;padding:20px 0;border-bottom:1px solid rgba(23,23,25,.25);font-family:var(--sans)}.goal-dedication-principles li:last-child{border-bottom:0}.goal-dedication-principles li::before{content:"0" counter(commitment);margin-top:5px;color:#77767c;font:500 10px/1 var(--mono)}
     .goal-dedication-principles li>div{display:grid;grid-template-columns:minmax(180px,.36fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:start}.goal-dedication-principles li b{display:block;font-size:clamp(14px,1.15vw,17px);font-weight:600;line-height:1.25}.goal-dedication-principles li p{max-width:88ch;margin:0;color:#515056;font-size:13px;line-height:1.45}
     #voices{padding-bottom:0}#voices .nrow:last-child{border-bottom:0}
-    .report-updates{padding:0}.updates-panel{display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,1fr);gap:clamp(48px,9vw,150px);align-items:start;padding:clamp(48px,6vw,82px) 0;border-top:1px solid var(--hair)}.updates-panel h3{margin:0}.updates-body{width:100%;max-width:760px}.updates-body>p{width:100%;max-width:64ch;margin:4px 0 0}
+    .report-updates{padding:0}.updates-panel{display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,1fr);gap:clamp(48px,9vw,150px);align-items:start;padding:clamp(48px,6vw,82px) 0;border-top:1px solid var(--hair)}.updates-panel h3{margin:0}.updates-body{width:100%;max-width:760px}.updates-body>p{width:100%;max-width:64ch;margin:4px 0 0}.updates-body>.updates-privacy{margin-top:14px;color:#67666b;font:400 12px/1.45 var(--sans)}
     @media(max-height:780px) and (min-width:721px){.report-hero{padding-top:34px;padding-bottom:28px}.report-art-stack{width:480px;margin-bottom:48px}.report-hero h1{margin-bottom:28px;font-size:54px}.report-enter{min-height:50px}}
     @media(max-width:900px){.report-hero h1{max-width:14ch;white-space:normal}.archive-tabs{grid-template-columns:repeat(2,1fr)}.archive-tab{min-height:210px}.archive-detail{grid-template-columns:1fr;gap:30px}.archive-detail h4{max-width:13ch}.updates-panel{grid-template-columns:1fr}.updates-panel{gap:32px}.goal-dedication .report-aaron-tooltip{right:0;left:auto;top:calc(100% + 14px);transform:translateY(8px)}.goal-dedication .report-aaron-note:hover .report-aaron-tooltip,.goal-dedication .report-aaron-note:focus-within .report-aaron-tooltip,.goal-dedication .report-aaron-note[open] .report-aaron-tooltip{transform:translateY(0)}}
     @media(max-width:720px){.report-hero{min-height:calc(100svh - 72px);padding:58px 16px 46px}.report-hero h1{max-width:12ch;margin-bottom:40px;font-size:clamp(42px,12vw,56px)}.report-art-stack{width:min(430px,94vw);margin-bottom:52px}.report-enter{width:min(280px,100%)}.report-signup{grid-template-columns:1fr}.report-signup button{width:100%}}
@@ -224,7 +225,7 @@ const archiveStages = [
       if (signupStatus) signupStatus.textContent = '';
       try {
         if (!['localhost', '127.0.0.1'].includes(location.hostname)) {
-          const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'ai-atlas-updates', email }).toString() });
+          const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ 'form-name': 'coexistence-record-updates', email }).toString() });
           if (!response.ok) throw new Error('Subscription failed');
           signup.reset();
           if (signupStatus) signupStatus.textContent = 'You’re subscribed.';

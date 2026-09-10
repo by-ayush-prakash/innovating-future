@@ -337,6 +337,7 @@ type CorpusQuestionId = keyof typeof corpus.questions;
 export const questions = featuredQuestions.map((question) => {
   const featuredEvidence = new Set(question.evidence.map((item) => `${item.speaker}|${item.timestamp}`));
   const additionalPositions = corpus.questions[question.id as CorpusQuestionId]
+    .filter((item) => item.sourceAvailable && Boolean(item.video))
     .filter((item) => !featuredEvidence.has(`${item.speaker}|${item.timestamp}`));
 
   return {

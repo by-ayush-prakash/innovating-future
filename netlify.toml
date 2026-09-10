@@ -8,6 +8,18 @@
 
 # Routes that changed in the rebuild. 301 so search engines move the ranking.
 [[redirects]]
+  from = "/work/coexisting-with-ai/atlas"
+  to = "/work/coexisting-with-ai/record"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/work/coexisting-with-ai/atlas/*"
+  to = "/work/coexisting-with-ai/record/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/ventures/portfolio"
   to = "/work"
   status = 301

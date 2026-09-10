@@ -207,8 +207,8 @@
         "evidenceType": "Expertise argument",
         "confidence": "Certain",
         "context": "Nadeau describes knowledge that remains outside public training data. Limit: Unpublished judgment can be biased, inconsistent or unsupported.",
-        "video": "",
-        "sourceAvailable": false,
+        "video": "https://www.youtube.com/watch?v=vuXOCgi8uIo&t=378s",
+        "sourceAvailable": true,
         "transcript": "Nadeau describes knowledge that remains outside public training data."
       },
       {
@@ -1293,8 +1293,8 @@
         "evidenceType": "Consent and provenance prescription",
         "confidence": "Certain",
         "context": "He argues generic imitation lacks authorization and traceability. Limit: Permission does not guarantee accuracy, safety or appropriate delegation.",
-        "video": "",
-        "sourceAvailable": false,
+        "video": "https://www.youtube.com/watch?v=vuXOCgi8uIo&t=378s",
+        "sourceAvailable": true,
         "transcript": "He argues generic imitation lacks authorization and traceability."
       },
       {
