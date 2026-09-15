@@ -8,7 +8,8 @@ import {
 } from './record-perspective';
 type Entry = { key: string; mode: ContextMode };
 type Stage = 'perspectives' | 'reading' | 'reflection' | 'connections';
-type State = { v: 1; root: string; entries: Entry[]; cursor?: { key: string; stage: Stage }; visited?: { key: string; stage: Stage }[] };
+type Visit = { key: string; stage: Stage; action?: 'another' };
+type State = { v: 1; root: string; entries: Entry[]; cursor?: Visit; visited?: Visit[] };
 export function initRecordJourney() {
   const root = document.querySelector<HTMLElement>('[data-prototype]');
   const data = document.querySelector('#record-journey-data');
@@ -111,13 +112,13 @@ export function initRecordJourney() {
     perspectives: 'Choose a perspective',
     reading: 'Read the perspective',
     reflection: 'Reflect',
-    connections: 'Choose what comes next',
+    connections: 'Explore connected ideas',
   };
   const makeJourneySteps = (
-    visits: { key: string; stage: Stage }[],
+    visits: Visit[],
     currentLabel: string,
-    isCurrent: (visit: { key: string; stage: Stage }) => boolean,
-    openVisit: (visit: { key: string; stage: Stage }) => void,
+    isCurrent: (visit: Visit) => boolean,
+    openVisit: (visit: Visit) => void,
   ) => {
     const steps = el('details', '', 'journey-screen-steps') as HTMLDetailsElement;
     steps.style.setProperty('--journey-open-width', `${112 + (visits.length + 2) * 30}px`);
@@ -145,7 +146,7 @@ export function initRecordJourney() {
     visits.forEach((visit) => {
       const button = el('button'); button.type = 'button';
       const story = byKey.get(visit.key);
-      const label = story && visit.stage === 'perspectives' ? story.question : story && visit.stage === 'reading' ? story.source.speaker : stageLabels[visit.stage] + (story ? ` · ${story.source.speaker}` : '');
+      const label = visit.action === 'another' ? 'Hear another perspective' : story && visit.stage === 'perspectives' ? story.question : story && visit.stage === 'reading' ? story.source.speaker : stageLabels[visit.stage];
       button.setAttribute('aria-label', label);
       button.append(el('span', label, 'journey-destination'));
       button.disabled = isCurrent(visit);
@@ -186,7 +187,7 @@ export function initRecordJourney() {
     } catch {}
   };
   let stageTransition = 0;
-  const showStage = async (key: string, stage: Stage, direction = 1, persist = true) => {
+  const showStage = async (key: string, stage: Stage, direction = 1, persist = true, action?: Visit['action']) => {
     const state = states.get(activeRoot);
     if (!state) return;
     cancelJourneyMotion();
@@ -220,7 +221,7 @@ export function initRecordJourney() {
       outgoing.cancel();
       if (transitionId !== stageTransition) return;
     }
-    state.cursor = { key, stage };
+    state.cursor = { key, stage, action };
     view.dataset.journeyStage = stage;
     view.querySelectorAll<HTMLElement>('.journey-history > section').forEach((chapter) => {
       chapter.hidden = stage === 'perspectives' || chapter.dataset.journeyQuestion !== questionId(key);
@@ -235,15 +236,15 @@ export function initRecordJourney() {
     bar.classList.remove('journey-entry-nav');
     bar.setAttribute('aria-label', 'Journey navigation');
     const visits = state.visited ||= [{ key: state.entries[0].key, stage: 'perspectives' }];
-    const visitIndex = visits.findIndex(visit => visit.stage === stage && (stage === 'perspectives' ? questionId(visit.key) === questionId(key) : visit.key === key));
-    if (visitIndex === -1) visits.push({ key, stage });
-    const isCurrentVisit = (visit: { key: string; stage: Stage }) =>
-      visit.stage === stage && (stage === 'perspectives' ? questionId(visit.key) === questionId(key) : visit.key === key);
+    const visitIndex = visits.findIndex(visit => visit.stage === stage && visit.action === action && (stage === 'perspectives' && !action ? questionId(visit.key) === questionId(key) : visit.key === key));
+    if (visitIndex === -1) visits.push({ key, stage, action });
+    const isCurrentVisit = (visit: Visit) =>
+      visit.stage === stage && visit.action === action && (stage === 'perspectives' && !action ? questionId(visit.key) === questionId(key) : visit.key === key);
     const steps = makeJourneySteps(
       visits,
       stageLabels[stage],
       isCurrentVisit,
-      (visit) => showStage(visit.key, visit.stage, -1),
+      (visit) => { select(activeRoot, visit.key, true); void showStage(visit.key, visit.stage, -1, true, visit.action); },
     );
     bar.replaceChildren(nav, steps);
     let screenPicker = view.querySelector<HTMLElement>('.journey-screen-picker:not(.initial-perspective-picker)');
@@ -251,13 +252,13 @@ export function initRecordJourney() {
     screenPicker.hidden = stage !== 'perspectives';
     if (stage === 'perspectives') {
       const cards = el('div', '', 'onward-previews');
-      featured.filter(story => questionId(story.key) === questionId(key)).forEach(story => cards.append(makeCard(story, () => select(activeRoot, story.key, false))));
+      featured.filter(story => questionId(story.key) === questionId(key) && (action !== 'another' || story.source.speaker !== byKey.get(key)!.source.speaker)).forEach(story => cards.append(makeCard(story, () => select(activeRoot, story.key, false))));
       const intro = el('header', '', 'perspective-intro');
       intro.append(el('h2', byKey.get(key)!.question), el('p', 'Different people notice different things. Choose an idea to explore, then follow it back to the conversation.'));
       screenPicker.replaceChildren(intro, cards);
     }
     if (stage === 'reading') {
-      const readingHeading = view.querySelector<HTMLElement>('.journey-history > section:not([hidden]) .reading-heading');
+      const readingHeading = view.querySelector<HTMLElement>('.journey-history > section:not([hidden]) .record-perspective:not([hidden]) .reading-heading');
       if (readingHeading) {
         let continuation = readingHeading.querySelector<HTMLElement>('.reading-next-steps');
         if (!continuation) {
@@ -271,7 +272,7 @@ export function initRecordJourney() {
         reflect.onclick = () => showStage(key, 'reflection');
         const others = el('button', 'Hear another perspective', 'reading-another');
         others.type = 'button';
-        others.onclick = () => showStage(key, 'perspectives');
+        others.onclick = () => showStage(key, 'perspectives', 1, true, 'another');
         const connected = el('button', 'Explore connected ideas', 'reading-connected');
         connected.type = 'button';
         connected.onclick = () => showStage(key, 'connections');
@@ -606,7 +607,7 @@ export function initRecordJourney() {
     });
     updateNav();
     const cursor = state.cursor;
-    if (cursor) showStage(cursor.key, cursor.stage, 1, false);
+    if (cursor) showStage(cursor.key, cursor.stage, 1, false, cursor.action);
   };
   const select = (id: string, key: string, append: boolean) => {
     if (!byKey.has(key)) return;
@@ -721,10 +722,10 @@ export function initRecordJourney() {
       }
       if (questionId(entries[0].key) !== value.root) return null;
       const cursorStory = byKey.get(value.cursor?.key) || byEditorial.get(value.cursor?.key);
-      const cursor = cursorStory && entries.some(e => e.key === cursorStory.key) && ['perspectives','reading','reflection','connections'].includes(value.cursor?.stage) ? { key: cursorStory.key, stage: value.cursor.stage } : { key: entries.at(-1)!.key, stage: 'reading' as Stage };
-      const visited = Array.isArray(value.visited) ? value.visited.flatMap((visit: {key:string;stage:Stage}) => {
+      const cursor = cursorStory && entries.some(e => e.key === cursorStory.key) && ['perspectives','reading','reflection','connections'].includes(value.cursor?.stage) ? { key: cursorStory.key, stage: value.cursor.stage, action: value.cursor.action === 'another' ? 'another' as const : undefined } : { key: entries.at(-1)!.key, stage: 'reading' as Stage };
+      const visited = Array.isArray(value.visited) ? value.visited.flatMap((visit: Visit) => {
         const story = byKey.get(visit.key) || byEditorial.get(visit.key);
-        return story && entries.some(e => e.key === story.key) && ['perspectives','reading','reflection','connections'].includes(visit.stage) ? [{key:story.key,stage:visit.stage}] : [];
+        return story && ['perspectives','reading','reflection','connections'].includes(visit.stage) ? [{key:story.key,stage:visit.stage,action:visit.action === 'another' ? 'another' as const : undefined}] : [];
       }) : undefined;
       return { v: 1, root: value.root, entries, cursor, visited };
     } catch {
@@ -785,7 +786,7 @@ export function initRecordJourney() {
         if (!id || !viewFor(id)) return;
         root.classList.remove('show-welcome'); welcome.hidden = true;
         root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)?.click();
-        if (state && visit.key) showStage(visit.key, visit.stage, -1);
+        if (state && visit.key) { select(id, visit.key, true); void showStage(visit.key, visit.stage, -1, true, visit.action); }
         else showQuestionPicker(id);
       },
     );
