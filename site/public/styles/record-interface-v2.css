@@ -1761,3 +1761,6 @@ body #main .prototype.show-welcome .welcome-card-action{animation:record-idea-ar
 @keyframes record-idea-copy{from{opacity:0;transform:translateY(14px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:translateY(0);clip-path:inset(0)}}
 @keyframes record-idea-arrow{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
 @media(prefers-reduced-motion:reduce){body #main .prototype.show-welcome :is(.welcome-card,.question-card-copy h2,.welcome-card-action,.question-concept-art svg path,.question-concept-art svg ellipse,.question-concept-art svg circle){animation:none!important}}
+
+/* Screen headings receive focus for announcements, without a control outline. */
+body #main .prototype .initial-perspective-picker h2[tabindex="-1"]:focus{outline:none!important}
