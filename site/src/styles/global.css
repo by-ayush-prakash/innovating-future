@@ -8,6 +8,7 @@
    ============================================================ */
 
 :root{
+  --record-button-background:linear-gradient(110deg,#171719 0%,#171719 22%,#5a3fbd 38%,#a92e1d 54%,#08756d 70%,#171719 86%,#171719 100%);
   /* ground */
   --bg:#FFFFFF;
   --ink:#111111;
@@ -479,7 +480,7 @@ a[href^="/work/coexisting-with-ai/record/"].btn{
   overflow:hidden;
   border:0;
   border-radius:9999px;
-  background:linear-gradient(110deg,#171719 0%,#171719 22%,#5a3fbd 38%,#a92e1d 54%,#08756d 70%,#171719 86%,#171719 100%);
+  background:var(--record-button-background);
   background-size:320% 100%;
   background-position:0 50%;
   color:#fff;
