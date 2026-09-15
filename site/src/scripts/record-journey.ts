@@ -145,7 +145,7 @@ export function initRecordJourney() {
     visits.forEach((visit) => {
       const button = el('button'); button.type = 'button';
       const story = byKey.get(visit.key);
-      const label = visit.stage === 'perspectives' && story ? story.question : stageLabels[visit.stage] + (story ? ` · ${story.source.speaker}` : '');
+      const label = story && visit.stage === 'perspectives' ? story.question : story && visit.stage === 'reading' ? story.source.speaker : stageLabels[visit.stage] + (story ? ` · ${story.source.speaker}` : '');
       button.setAttribute('aria-label', label);
       button.append(el('span', label, 'journey-destination'));
       button.disabled = isCurrent(visit);
