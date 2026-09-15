@@ -880,84 +880,54 @@ export function initRecordJourney() {
     const id = new URL(card.href).searchParams.get('question')!;
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const animations: Animation[] = [];
-    let transitionCard: HTMLElement | null = null;
-    let transitionGhost: HTMLElement | null = null;
     try {
       if (!reducedMotion) {
-        const rect = card.getBoundingClientRect();
-        const cardStyle = getComputedStyle(card);
-        transitionCard = document.createElement('div');
-        transitionCard.classList.add('record-card-transition');
-        transitionCard.setAttribute('aria-hidden', 'true');
-        Object.assign(transitionCard.style, {
-          top: `${rect.top}px`,
-          left: `${rect.left}px`,
-          width: `${rect.width}px`,
-          height: `${rect.height}px`,
-          borderRadius: cardStyle.borderRadius,
-          backgroundColor: cardStyle.backgroundColor,
+        // Turn the chosen idea over, then unfold the two-column question page.
+        const turn = card.animate([
+          {opacity:1, transform:'perspective(1200px) rotateY(0deg)', transformOrigin:'0% 50%'},
+          {opacity:.8, transform:'perspective(1200px) rotateY(-55deg)', transformOrigin:'0% 50%', offset:.65},
+          {opacity:0, transform:'perspective(1200px) rotateY(-92deg)', transformOrigin:'0% 50%'},
+        ], {duration:440,easing:'cubic-bezier(.55,0,.3,1)',fill:'forwards'});
+        animations.push(turn);
+        welcome.querySelectorAll<HTMLElement>('.welcome-card,.welcome-intro').forEach(other => {
+          if (other === card) return;
+          animations.push(other.animate([{opacity:1},{opacity:0,transform:'translateY(12px)'}],{duration:280,easing:'ease-in',fill:'forwards'}));
         });
-        transitionGhost = card.cloneNode(true) as HTMLElement;
-        transitionGhost.classList.add('record-card-ghost');
-        transitionGhost.setAttribute('aria-hidden', 'true');
-        transitionGhost.removeAttribute('href');
-        Object.assign(transitionGhost.style, {
-          top: `${rect.top}px`,
-          left: `${rect.left}px`,
-          width: `${rect.width}px`,
-          height: `${rect.height}px`,
-          borderRadius: cardStyle.borderRadius,
-        });
-        root.append(transitionCard, transitionGhost);
-        const outgoing = transitionCard.animate(
-          [
-            { top: `${rect.top}px`, left: `${rect.left}px`, width: `${rect.width}px`, height: `${rect.height}px`, borderRadius: cardStyle.borderRadius },
-            { top: '0px', left: '0px', width: '100vw', height: '100dvh', borderRadius: '0px' },
-          ],
-          { duration: 620, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'forwards' },
-        );
-        const ghostExit = transitionGhost.animate(
-          [
-            { opacity: 1, transform: 'scale(1)' },
-            { opacity: 0, transform: 'scale(.985)' },
-          ],
-          { duration: 240, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' },
-        );
-        animations.push(ghostExit);
-        animations.push(outgoing);
-        await outgoing.finished.catch(() => {});
+        await turn.finished.catch(() => {});
       }
       if (openingTransition !== stageTransition) return;
       root.classList.remove('show-welcome');
       welcome.hidden = true;
       root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)?.click();
-      showQuestionPicker(id);
+      const existing = states.get(id);
+      if (existing?.entries[0]) {
+        activeRoot = id;
+        await showStage(existing.entries[0].key, 'perspectives', 1, false);
+      } else showQuestionPicker(id);
       const questionUrl = new URL(location.href);
       questionUrl.searchParams.set('choose', '1');
       history.replaceState(history.state, '', questionUrl);
-      const picker = viewFor(id)?.querySelector<HTMLElement>('.initial-perspective-picker');
+      const picker = viewFor(id)?.querySelector<HTMLElement>('.journey-screen-picker:not([hidden])');
       const heading = picker?.querySelector<HTMLElement>('h2');
       heading?.setAttribute('tabindex', '-1');
       heading?.focus({preventScroll:true});
       window.scrollTo({top:0,behavior:'instant'});
-      if (!reducedMotion && transitionCard) {
-        await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
-        const reveal = transitionCard.animate(
-          [{ top: '0px' }, { top: `-${innerHeight}px` }],
-          { duration: 420, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'forwards' },
-        );
-        const destination = picker?.animate(
-          [{ transform: 'translateY(14px)' }, { transform: 'translateY(0)' }],
-          { duration: 500, easing: 'cubic-bezier(.16,1,.3,1)' },
-        );
-        animations.push(reveal);
-        if (destination) animations.push(destination);
-        await reveal.finished.catch(() => {});
+      if (!reducedMotion && picker) {
+        const intro = picker.querySelector<HTMLElement>('.perspective-intro');
+        if (intro) animations.push(intro.animate([
+          {opacity:0,transform:'perspective(1200px) rotateY(18deg) translateX(-28px)',transformOrigin:'100% 50%'},
+          {opacity:1,transform:'perspective(1200px) rotateY(0deg) translateX(0)',transformOrigin:'100% 50%'},
+        ],{duration:650,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'}));
+        picker.querySelectorAll<HTMLElement>('.onward-preview').forEach((perspective,index) => {
+          animations.push(perspective.animate([
+            {opacity:0,transform:'translateX(36px)',clipPath:'inset(0 0 0 100%)'},
+            {opacity:1,transform:'translateX(0)',clipPath:'inset(0)'},
+          ],{duration:580,delay:index*90,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'}));
+        });
+        await Promise.all(animations.map(animation => animation.finished.catch(() => {})));
       }
     } finally {
       animations.forEach(animation => animation.cancel());
-      transitionCard?.remove();
-      transitionGhost?.remove();
       openingQuestion = false;
     }
   });
