@@ -145,7 +145,7 @@ export function initRecordJourney() {
     visits.forEach((visit) => {
       const button = el('button'); button.type = 'button';
       const story = byKey.get(visit.key);
-      const label = stageLabels[visit.stage] + (visit.stage !== 'perspectives' && story ? ` · ${story.source.speaker}` : '');
+      const label = visit.stage === 'perspectives' && story ? story.question : stageLabels[visit.stage] + (story ? ` · ${story.source.speaker}` : '');
       button.setAttribute('aria-label', label);
       button.append(el('span', label, 'journey-destination'));
       button.disabled = isCurrent(visit);
@@ -776,7 +776,7 @@ export function initRecordJourney() {
     const id = state?.root || lastQuestion;
     let bar = welcome.querySelector<HTMLElement>('.welcome-journey-nav');
     if (!bar) { bar = el('nav', '', 'journey-screen-nav welcome-journey-nav'); bar.setAttribute('aria-label', 'Your journey'); welcome.prepend(bar); }
-    const visits = state?.visited?.length ? state.visited : id ? [{key:state?.entries[0]?.key || '',stage:'perspectives' as Stage}] : [];
+    const visits = state?.visited?.length ? state.visited : id ? [{key:state?.entries[0]?.key || featured.find(story => questionId(story.key) === id)?.key || '',stage:'perspectives' as Stage}] : [];
     const steps = makeJourneySteps(
       visits,
       'Explore',
