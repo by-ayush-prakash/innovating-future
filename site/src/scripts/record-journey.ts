@@ -1,46 +1,66 @@
-import { initRecordMotion } from './record-motion';
-import { createReflection, type ReflectionOption } from './record-reflection';
+import { createReflection, type ReflectionOption } from "./record-reflection";
 import {
   createPerspective,
   node as el,
   type Perspective,
   type ContextMode,
-} from './record-perspective';
+} from "./record-perspective";
 type Entry = { key: string; mode: ContextMode };
-type Stage = 'perspectives' | 'reading' | 'reflection' | 'connections';
-type Visit = { key: string; stage: Stage; action?: 'another' };
-type State = { v: 1; root: string; entries: Entry[]; cursor?: Visit; visited?: Visit[] };
+type Stage = "perspectives" | "reading" | "reflection" | "connections";
+type Visit = { key: string; stage: Stage; action?: "another" };
+type State = {
+  v: 1;
+  root: string;
+  entries: Entry[];
+  cursor?: Visit;
+  visited?: Visit[];
+};
 export function initRecordJourney() {
-  const root = document.querySelector<HTMLElement>('[data-prototype]');
-  const data = document.querySelector('#record-journey-data');
+  const root = document.querySelector<HTMLElement>("[data-prototype]");
+  const data = document.querySelector("#record-journey-data");
   if (!root || !data) return;
-  initRecordMotion(root);
-  const stories: Perspective[] = JSON.parse(data.textContent || '[]');
+  const stories: Perspective[] = JSON.parse(data.textContent || "[]");
   const landingParams = new URLSearchParams(location.search);
-  const isWelcome = !['question','view','journey','evidence','person','compare'].some(key => landingParams.has(key));
-  const welcome = root.querySelector<HTMLElement>('.explore-welcome');
+  const isWelcome = ![
+    "question",
+    "view",
+    "journey",
+    "evidence",
+    "person",
+    "compare",
+  ].some((key) => landingParams.has(key));
+  const welcome = root.querySelector<HTMLElement>(".explore-welcome");
   if (isWelcome && welcome) {
-    root.classList.add('show-welcome');
+    root.classList.add("show-welcome");
     welcome.hidden = false;
-
   }
 
   const featured = stories.filter((s) => s.standfirst);
-  const welcomeGrid = welcome?.querySelector('.welcome-card-grid');
-  const existingQuestions = new Set(Array.from(welcomeGrid?.querySelectorAll<HTMLAnchorElement>('.welcome-card') || [], card => new URL(card.href).searchParams.get('question')));
-  featured.forEach(story => {
-    const id = story.key.split(':')[0];
+  const welcomeGrid = welcome?.querySelector(".welcome-card-grid");
+  const existingQuestions = new Set(
+    Array.from(
+      welcomeGrid?.querySelectorAll<HTMLAnchorElement>(".welcome-card") || [],
+      (card) => new URL(card.href).searchParams.get("question"),
+    ),
+  );
+  featured.forEach((story) => {
+    const id = story.key.split(":")[0];
     if (!welcomeGrid || existingQuestions.has(id)) return;
     existingQuestions.add(id);
-    const card = el('a', '', `welcome-card welcome-card--${id}`) as HTMLAnchorElement;
+    const card = el(
+      "a",
+      "",
+      `welcome-card welcome-card--${id}`,
+    ) as HTMLAnchorElement;
     card.href = `?question=${encodeURIComponent(id)}&choose=1`;
-    const art = el('div', '', 'question-concept-art');
-    art.setAttribute('aria-hidden', 'true');
-    art.innerHTML = '<svg viewBox="0 0 160 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle pathLength="1" cx="48" cy="55" r="20"/><circle pathLength="1" cx="112" cy="30" r="12"/><circle pathLength="1" cx="112" cy="80" r="12"/><path pathLength="1" d="M68 50l32-16M68 61l32 15M112 42v26"/></svg>';
-    const copy = el('div', '', 'question-card-copy');
-    const arrow = el('span', '→', 'welcome-card-action');
-    arrow.setAttribute('aria-hidden', 'true');
-    copy.append(el('h2', story.question), arrow);
+    const art = el("div", "", "question-concept-art");
+    art.setAttribute("aria-hidden", "true");
+    art.innerHTML =
+      '<svg viewBox="0 0 160 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle pathLength="1" cx="48" cy="55" r="20"/><circle pathLength="1" cx="112" cy="30" r="12"/><circle pathLength="1" cx="112" cy="80" r="12"/><path pathLength="1" d="M68 50l32-16M68 61l32 15M112 42v26"/></svg>';
+    const copy = el("div", "", "question-card-copy");
+    const arrow = el("span", "→", "welcome-card-action");
+    arrow.setAttribute("aria-hidden", "true");
+    copy.append(el("h2", story.question), arrow);
     card.append(art, copy);
     welcomeGrid.append(card);
   });
@@ -49,70 +69,106 @@ export function initRecordJourney() {
   const states = new Map<string, State>();
   const panels = new Map<string, ReturnType<typeof createPerspective>>();
   let restoring = false;
-  let activeRoot = 'understanding';
-  const questionId = (key: string) => key.split(':')[0];
+  let activeRoot = "understanding";
+  const questionId = (key: string) => key.split(":")[0];
   const viewFor = (id: string) =>
-    root.querySelector<HTMLElement>(`.question-view[data-view="${CSS.escape(id)}"]`)!;
+    root.querySelector<HTMLElement>(
+      `.question-view[data-view="${CSS.escape(id)}"]`,
+    )!;
   let viewportLockFrame = 0;
   const syncViewportLock = () => {
     cancelAnimationFrame(viewportLockFrame);
     viewportLockFrame = requestAnimationFrame(() => {
       const view = viewFor(activeRoot);
-      const panel = view?.querySelector<HTMLElement>('.record-perspective:not([hidden]) .reading-panel');
-      const expanded = !!view?.querySelector('.reading-context-slot:not([hidden]),.reading-recording:not([hidden])');
-      const topbarHeight = root.querySelector<HTMLElement>('.topbar')?.getBoundingClientRect().height || 0;
-      const fits = !!panel && panel.scrollHeight + topbarHeight + 36 <= innerHeight;
-      root.classList.toggle('reading-viewport-locked', view?.dataset.journeyStage === 'reading' && !expanded && innerWidth > 900 && fits);
-      if (root.classList.contains('reading-viewport-locked')) window.scrollTo({top:0,behavior:'instant'});
+      const panel = view?.querySelector<HTMLElement>(
+        ".record-perspective:not([hidden]) .reading-panel",
+      );
+      const expanded = !!view?.querySelector(
+        ".reading-context-slot:not([hidden]),.reading-recording:not([hidden])",
+      );
+      const topbarHeight =
+        root.querySelector<HTMLElement>(".topbar")?.getBoundingClientRect()
+          .height || 0;
+      const fits =
+        !!panel && panel.scrollHeight + topbarHeight + 36 <= innerHeight;
+      root.classList.toggle(
+        "reading-viewport-locked",
+        view?.dataset.journeyStage === "reading" &&
+          !expanded &&
+          innerWidth > 900 &&
+          fits,
+      );
+      if (root.classList.contains("reading-viewport-locked"))
+        window.scrollTo({ top: 0, behavior: "instant" });
     });
   };
   initJourneyScroll(root);
-  root.classList.add('journey-horizontal');
+  root.classList.add("journey-horizontal");
   // Size the perspective list from its actual position below the header.
   let pickerFrame = 0;
   const sizePerspectiveLists = () => {
     cancelAnimationFrame(pickerFrame);
     pickerFrame = requestAnimationFrame(() => {
-      root.querySelectorAll<HTMLElement>('.journey-screen-picker').forEach(picker => {
-        if (!picker.getClientRects().length) return;
-        const available = Math.max(180, innerHeight - picker.getBoundingClientRect().top - 24);
-        const value = `${available}px`;
-        if (picker.style.getPropertyValue('--picker-height') !== value) picker.style.setProperty('--picker-height', value);
-        const list = picker.querySelector<HTMLElement>('.onward-previews');
-        if (list) { list.tabIndex = 0; list.setAttribute('aria-label', 'Perspectives'); list.setAttribute('role', 'region'); }
-      });
+      root
+        .querySelectorAll<HTMLElement>(
+          ".question-view:not([hidden]) .journey-screen-picker:not([hidden])",
+        )
+        .forEach((picker) => {
+          if (!picker.getClientRects().length) return;
+          const available = Math.max(
+            180,
+            innerHeight - picker.getBoundingClientRect().top - 24,
+          );
+          const value = `${available}px`;
+          if (picker.style.getPropertyValue("--picker-height") !== value)
+            picker.style.setProperty("--picker-height", value);
+          const list = picker.querySelector<HTMLElement>(".onward-previews");
+          if (list) {
+            list.tabIndex = 0;
+            list.setAttribute("aria-label", "Perspectives");
+            list.setAttribute("role", "region");
+          }
+        });
     });
   };
   const pickerObserver = new MutationObserver(sizePerspectiveLists);
-  pickerObserver.observe(root, {subtree:true,childList:true,attributes:true,attributeFilter:['hidden','class','data-journey-stage']});
-  window.addEventListener('resize', () => { sizePerspectiveLists(); syncViewportLock(); });
+  pickerObserver.observe(root, {
+    subtree: true,
+    childList: true,
+    attributes: true,
+    attributeFilter: ["hidden", "data-journey-stage"],
+  });
+  window.addEventListener("resize", () => {
+    sizePerspectiveLists();
+    syncViewportLock();
+  });
 
-  const nav = el('details', '', 'journey-revisit');
-  nav.append(el('summary', 'History'));
-  const list = el('nav');
-  list.setAttribute('aria-label', 'Questions in your journey');
+  const nav = el("details", "", "journey-revisit");
+  nav.append(el("summary", "History"));
+  const list = el("nav");
+  list.setAttribute("aria-label", "Questions in your journey");
   nav.append(list);
   root.append(nav);
   nav.hidden = true;
   document.addEventListener(
-    'click',
+    "click",
     (event) => {
       if (nav.open && !nav.contains(event.target as Node)) nav.open = false;
     },
     true,
   );
-  nav.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && nav.open) {
+  nav.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.open) {
       event.stopPropagation();
       nav.open = false;
-      nav.querySelector('summary')?.focus({ preventScroll: true });
+      nav.querySelector("summary")?.focus({ preventScroll: true });
     }
   });
   const stageLabels: Record<Stage, string> = {
-    perspectives: 'Choose a perspective',
-    reading: 'Read the perspective',
-    reflection: 'Reflect',
-    connections: 'Explore connected ideas',
+    perspectives: "Choose a perspective",
+    reading: "Read the perspective",
+    reflection: "Reflect",
+    connections: "Explore connected ideas",
   };
   const makeJourneySteps = (
     visits: Visit[],
@@ -120,195 +176,320 @@ export function initRecordJourney() {
     isCurrent: (visit: Visit) => boolean,
     openVisit: (visit: Visit) => void,
   ) => {
-    const steps = el('details', '', 'journey-screen-steps') as HTMLDetailsElement;
-    steps.style.setProperty('--journey-open-width', `${112 + (visits.length + 2) * 30}px`);
-    const summary = el('summary');
-    summary.setAttribute('aria-label', `Open journey. Current screen: ${currentLabel}`);
-    summary.append(el('span', 'My Journey', 'journey-pill-label'));
-    summary.append(el('span', '', 'journey-stage-dot'));
+    const steps = el(
+      "details",
+      "",
+      "journey-screen-steps",
+    ) as HTMLDetailsElement;
+    steps.style.setProperty(
+      "--journey-open-width",
+      `${112 + (visits.length + 2) * 30}px`,
+    );
+    const summary = el("summary");
+    summary.setAttribute(
+      "aria-label",
+      `Open journey. Current screen: ${currentLabel}`,
+    );
+    summary.append(el("span", "My Journey", "journey-pill-label"));
+    summary.append(el("span", "", "journey-stage-dot"));
     steps.append(summary);
-    steps.addEventListener('toggle', () => {
-      summary.setAttribute('aria-label', `${steps.open ? 'Close' : 'Open'} journey. Current screen: ${currentLabel}`);
+    steps.addEventListener("toggle", () => {
+      summary.setAttribute(
+        "aria-label",
+        `${steps.open ? "Close" : "Open"} journey. Current screen: ${currentLabel}`,
+      );
     });
-    steps.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && steps.open) {
+    steps.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && steps.open) {
         steps.open = false;
         summary.focus({ preventScroll: true });
       }
     });
-    const track = el('div', '', 'journey-dot-track');
-    const home = el('button'); home.type = 'button';
-    home.setAttribute('aria-label', 'Start your journey');
-    if (currentLabel === 'Explore') home.setAttribute('aria-current', 'step');
-    home.append(el('span', 'Start your journey', 'journey-destination'));
-    home.onclick = () => { steps.open = false; history.pushState({}, '', location.pathname); returnToWelcome(); };
+    const track = el("div", "", "journey-dot-track");
+    const home = el("button");
+    home.type = "button";
+    home.setAttribute("aria-label", "Start your journey");
+    if (currentLabel === "Explore") home.setAttribute("aria-current", "step");
+    home.append(el("span", "Start your journey", "journey-destination"));
+    home.onclick = () => {
+      steps.open = false;
+      history.pushState({}, "", location.pathname);
+      returnToWelcome();
+    };
     track.append(home);
     visits.forEach((visit) => {
-      const button = el('button'); button.type = 'button';
+      const button = el("button");
+      button.type = "button";
       const story = byKey.get(visit.key);
-      const label = visit.action === 'another' ? 'Hear another perspective' : story && visit.stage === 'perspectives' ? story.question : story && visit.stage === 'reading' ? story.source.speaker : stageLabels[visit.stage];
-      button.setAttribute('aria-label', label);
-      button.append(el('span', label, 'journey-destination'));
+      const label =
+        visit.action === "another"
+          ? "See another perspective"
+          : story && visit.stage === "perspectives"
+            ? story.question
+            : story && visit.stage === "reading"
+              ? story.source.speaker
+              : stageLabels[visit.stage];
+      button.setAttribute("aria-label", label);
+      button.append(el("span", label, "journey-destination"));
       button.disabled = isCurrent(visit);
-      if (isCurrent(visit)) button.setAttribute('aria-current', 'step');
-      button.onclick = () => { steps.open = false; openVisit(visit); };
+      if (isCurrent(visit)) button.setAttribute("aria-current", "step");
+      button.onclick = () => {
+        steps.open = false;
+        openVisit(visit);
+      };
       track.append(button);
     });
     steps.append(track);
     return steps;
   };
-  document.addEventListener('pointerdown', (event) => {
-    root.querySelectorAll<HTMLDetailsElement>('.journey-screen-steps[open]').forEach((steps) => {
-      if (!steps.contains(event.target as Node)) steps.open = false;
-    });
-  }, true);
+  document.addEventListener(
+    "pointerdown",
+    (event) => {
+      root
+        .querySelectorAll<HTMLDetailsElement>(".journey-screen-steps[open]")
+        .forEach((steps) => {
+          if (!steps.contains(event.target as Node)) steps.open = false;
+        });
+    },
+    true,
+  );
   const save = (replace = false) => {
-    if (restoring || root.dataset.restoringNavigation === 'true') return;
+    if (restoring || root.dataset.restoringNavigation === "true") return;
     const state = states.get(activeRoot);
     if (!state) return;
     const url = new URL(location.href);
-    url.searchParams.set('view', 'explore');
-    url.searchParams.set('question', activeRoot);
-    url.searchParams.delete('evidence');
+    url.searchParams.set("view", "explore");
+    url.searchParams.set("question", activeRoot);
+    url.searchParams.delete("evidence");
     url.searchParams.set(
-      'journey',
+      "journey",
       JSON.stringify({
         ...state,
-        entries: state.entries.map((e) => ({ ...e, key: byKey.get(e.key)!.editorialKey })),
+        entries: state.entries.map((e) => ({
+          ...e,
+          key: byKey.get(e.key)!.editorialKey,
+        })),
       }),
     );
-    history[replace ? 'replaceState' : 'pushState'](
-      { ...history.state, journeyScroll: scrollY },
-      '',
-      url,
-    );
+    history[
+      replace || url.href === location.href ? "replaceState" : "pushState"
+    ]({ ...history.state, journeyScroll: scrollY }, "", url);
     try {
-      sessionStorage.setItem('cif-explore-journey-v1', JSON.stringify(state));
+      sessionStorage.setItem("cif-explore-journey-v1", JSON.stringify(state));
     } catch {}
   };
   let stageTransition = 0;
-  const showStage = async (key: string, stage: Stage, direction = 1, persist = true, action?: Visit['action']) => {
+  const showStage = async (
+    key: string,
+    stage: Stage,
+    direction = 1,
+    persist = true,
+    action?: Visit["action"],
+  ) => {
     const state = states.get(activeRoot);
     if (!state) return;
     cancelJourneyMotion();
     const view = viewFor(activeRoot);
     if (!view || !byKey.has(key)) return;
-    root.classList.remove('show-welcome', 'show-question-index', 'reading-viewport-locked');
+    root.classList.remove("show-welcome", "reading-viewport-locked");
     if (welcome) welcome.hidden = true;
     if (view.hidden) {
-      root.dataset.restoringNavigation = 'true';
-      root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(activeRoot)}"]`)?.click();
+      root.dataset.restoringNavigation = "true";
+      root
+        .querySelector<HTMLButtonElement>(
+          `[data-question="${CSS.escape(activeRoot)}"]`,
+        )
+        ?.click();
       delete root.dataset.restoringNavigation;
     }
-    const transitionId = ++stageTransition;
+    ++stageTransition;
     const currentStage = view.dataset.journeyStage as Stage | undefined;
-    const currentTarget = currentStage === 'perspectives'
-      ? view.querySelector<HTMLElement>('.journey-screen-picker:not(.initial-perspective-picker)')
-      : currentStage
-        ? view.querySelector<HTMLElement>(`.journey-history > section:not([hidden]) ${currentStage === 'reading' ? '.record-perspective:not([hidden])' : currentStage === 'reflection' ? '.journey-reflection' : '.reflection-next'}`)
-        : null;
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (persist && currentStage && currentStage !== 'perspectives' && currentStage !== stage && currentTarget && !reducedMotion) {
-      currentTarget.getAnimations().forEach(animation => animation.cancel());
-      const outgoing = currentTarget.animate(
-        [
-          { opacity: 1, transform: 'translateX(0)' },
-          { opacity: .28, transform: `translateX(${-direction * 34}px)` },
-        ],
-        { duration: 300, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' },
-      );
-      await outgoing.finished.catch(() => {});
-      outgoing.cancel();
-      if (transitionId !== stageTransition) return;
-    }
+    const reducedMotion = matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     state.cursor = { key, stage, action };
     view.dataset.journeyStage = stage;
-    view.querySelectorAll<HTMLElement>('.journey-history > section').forEach((chapter) => {
-      chapter.hidden = stage === 'perspectives' || chapter.dataset.journeyQuestion !== questionId(key);
-      const picker = chapter.querySelector<HTMLElement>('.journey-siblings');
-      if (picker) picker.hidden = true;
-    });
+    view
+      .querySelectorAll<HTMLElement>(".journey-history > section")
+      .forEach((chapter) => {
+        chapter.hidden =
+          stage === "perspectives" ||
+          chapter.dataset.journeyQuestion !== questionId(key);
+        const picker = chapter.querySelector<HTMLElement>(".journey-siblings");
+        if (picker) picker.hidden = true;
+      });
     for (const [panelKey, panel] of panels) {
-      if (panelKey !== `${activeRoot}|${key}` || stage !== 'reading') panel.stop();
+      if (panelKey !== `${activeRoot}|${key}` || stage !== "reading")
+        panel.stop();
     }
-    let bar = view.querySelector<HTMLElement>('.journey-screen-nav');
-    if (!bar) { bar = el('nav', '', 'journey-screen-nav'); view.prepend(bar); }
-    bar.classList.remove('journey-entry-nav');
-    bar.setAttribute('aria-label', 'Journey navigation');
-    const visits = state.visited ||= [{ key: state.entries[0].key, stage: 'perspectives' }];
-    const visitIndex = visits.findIndex(visit => visit.stage === stage && visit.action === action && (stage === 'perspectives' && !action ? questionId(visit.key) === questionId(key) : visit.key === key));
+    let bar = view.querySelector<HTMLElement>(".journey-screen-nav");
+    if (!bar) {
+      bar = el("nav", "", "journey-screen-nav");
+      view.prepend(bar);
+    }
+    bar.classList.remove("journey-entry-nav");
+    bar.setAttribute("aria-label", "Journey navigation");
+    const visits = (state.visited ||= [
+      { key: state.entries[0].key, stage: "perspectives" },
+    ]);
+    const visitIndex = visits.findIndex(
+      (visit) =>
+        visit.stage === stage &&
+        visit.action === action &&
+        (stage === "perspectives" && !action
+          ? questionId(visit.key) === questionId(key)
+          : visit.key === key),
+    );
     if (visitIndex === -1) visits.push({ key, stage, action });
     const isCurrentVisit = (visit: Visit) =>
-      visit.stage === stage && visit.action === action && (stage === 'perspectives' && !action ? questionId(visit.key) === questionId(key) : visit.key === key);
+      visit.stage === stage &&
+      visit.action === action &&
+      (stage === "perspectives" && !action
+        ? questionId(visit.key) === questionId(key)
+        : visit.key === key);
     const steps = makeJourneySteps(
       visits,
       stageLabels[stage],
       isCurrentVisit,
-      (visit) => { select(activeRoot, visit.key, true); void showStage(visit.key, visit.stage, -1, true, visit.action); },
+      (visit) => {
+        select(activeRoot, visit.key, true);
+        void showStage(visit.key, visit.stage, -1, true, visit.action);
+      },
     );
     bar.replaceChildren(nav, steps);
-    let screenPicker = view.querySelector<HTMLElement>('.journey-screen-picker:not(.initial-perspective-picker)');
-    if (!screenPicker) { screenPicker = el('section', '', 'journey-screen-picker'); bar.after(screenPicker); }
-    screenPicker.hidden = stage !== 'perspectives';
-    if (stage === 'perspectives') {
-      const cards = el('div', '', 'onward-previews');
-      featured.filter(story => questionId(story.key) === questionId(key) && (action !== 'another' || story.source.speaker !== byKey.get(key)!.source.speaker)).forEach(story => cards.append(makeCard(story, () => select(activeRoot, story.key, false))));
-      const intro = el('header', '', 'perspective-intro');
-      intro.append(el('h2', byKey.get(key)!.question), el('p', 'Different people notice different things. Choose an idea to explore, then follow it back to the conversation.'));
+    let screenPicker = view.querySelector<HTMLElement>(
+      ".journey-screen-picker:not(.initial-perspective-picker)",
+    );
+    if (!screenPicker) {
+      screenPicker = el("section", "", "journey-screen-picker");
+      bar.after(screenPicker);
+    }
+    screenPicker.hidden = stage !== "perspectives";
+    if (stage === "perspectives") {
+      const cards = el("div", "", "onward-previews");
+      featured
+        .filter(
+          (story) =>
+            questionId(story.key) === questionId(key) &&
+            (action !== "another" ||
+              story.source.speaker !== byKey.get(key)!.source.speaker),
+        )
+        .forEach((story) =>
+          cards.append(
+            makeCard(story, () => select(activeRoot, story.key, false)),
+          ),
+        );
+      const intro = el("header", "", "perspective-intro");
+      intro.append(
+        el("h2", byKey.get(key)!.question),
+        el(
+          "p",
+          "Different people notice different things. Choose an idea to explore, then follow it back to the conversation.",
+        ),
+      );
       screenPicker.replaceChildren(intro, cards);
     }
-    if (stage === 'reading') {
-      const readingHeading = view.querySelector<HTMLElement>('.journey-history > section:not([hidden]) .record-perspective:not([hidden]) .reading-heading');
+    if (stage === "reading") {
+      const readingHeading = view.querySelector<HTMLElement>(
+        ".journey-history > section:not([hidden]) .record-perspective:not([hidden]) .reading-heading",
+      );
       if (readingHeading) {
-        let continuation = readingHeading.querySelector<HTMLElement>('.reading-next-steps');
+        let continuation = readingHeading.querySelector<HTMLElement>(
+          ".reading-next-steps",
+        );
         if (!continuation) {
-          continuation = el('nav', '', 'reading-next-steps');
-          continuation.setAttribute('aria-label', 'Continue exploring this perspective');
+          continuation = el("nav", "", "reading-next-steps");
+          continuation.setAttribute(
+            "aria-label",
+            "Continue exploring this perspective",
+          );
           readingHeading.append(continuation);
         }
-        const hasReflection = !!view.querySelector('.journey-history > section:not([hidden]) .journey-reflection');
-        const reflect = el('button', 'Reflect on this', 'reading-reflect');
-        reflect.type = 'button';
-        reflect.onclick = () => showStage(key, 'reflection');
-        const others = el('button', 'Hear another perspective', 'reading-another');
-        others.type = 'button';
-        others.onclick = () => showStage(key, 'perspectives', 1, true, 'another');
-        const connected = el('button', 'Explore connected ideas', 'reading-connected');
-        connected.type = 'button';
-        connected.onclick = () => showStage(key, 'connections');
-        continuation.replaceChildren(...(hasReflection ? [reflect, others, connected] : [others, connected]));
+        const hasReflection = !!view.querySelector(
+          ".journey-history > section:not([hidden]) .journey-reflection",
+        );
+        const reflect = el("button", "Reflect on this", "reading-reflect");
+        reflect.type = "button";
+        reflect.onclick = () => showStage(key, "reflection");
+        const others = el(
+          "button",
+          "See another perspective",
+          "reading-another",
+        );
+        others.type = "button";
+        others.onclick = () =>
+          showStage(key, "perspectives", 1, true, "another");
+        const connected = el(
+          "button",
+          "Explore connected ideas",
+          "reading-connected",
+        );
+        connected.type = "button";
+        connected.onclick = () => showStage(key, "connections");
+        continuation.replaceChildren(
+          ...(hasReflection
+            ? [reflect, others, connected]
+            : [others, connected]),
+        );
       }
     }
-    let forward = view.querySelector<HTMLButtonElement>('.journey-screen-forward');
-    if (!forward) { forward = el('button', '', 'journey-screen-forward'); forward.type = 'button'; view.append(forward); }
-    forward.hidden = stage !== 'reflection';
-    forward.textContent = 'Explore next →';
-    forward.onclick = () => showStage(key, stage === 'reading' ? 'reflection' : 'connections');
+    let forward = view.querySelector<HTMLButtonElement>(
+      ".journey-screen-forward",
+    );
+    if (!forward) {
+      forward = el("button", "", "journey-screen-forward");
+      forward.type = "button";
+      view.append(forward);
+    }
+    forward.hidden = true;
+    forward.textContent = "Explore next →";
+    forward.onclick = () =>
+      showStage(key, stage === "reading" ? "reflection" : "connections");
     // Keep a single active screen, with natural vertical reading inside that screen.
-    const target = stage === 'perspectives' ? view.querySelector<HTMLElement>('.journey-screen-picker:not(.initial-perspective-picker)') :
-      view.querySelector<HTMLElement>(`.journey-history > section:not([hidden]) ${stage === 'reading' ? '.record-perspective:not([hidden])' : stage === 'reflection' ? '.journey-reflection' : '.reflection-next'}`);
+    const target =
+      stage === "perspectives"
+        ? view.querySelector<HTMLElement>(
+            ".journey-screen-picker:not(.initial-perspective-picker)",
+          )
+        : view.querySelector<HTMLElement>(
+            `.journey-history > section:not([hidden]) ${stage === "reading" ? ".record-perspective:not([hidden])" : stage === "reflection" ? ".journey-reflection" : ".reflection-next"}`,
+          );
     if (target) {
       target.tabIndex = -1;
       target.focus({ preventScroll: true });
-      target.getAnimations().forEach(animation => animation.cancel());
-      if (!reducedMotion)
+      target.getAnimations().forEach((animation) => animation.cancel());
+      if (
+        persist &&
+        !restoring &&
+        direction > 0 &&
+        currentStage !== stage &&
+        !reducedMotion
+      )
         target.animate(
           [
-            { opacity: .2, transform: `translateX(${direction * 42}px)` },
-            { opacity: 1, transform: 'translateX(0)' },
+            { opacity: 0.2, transform: `translateX(${direction * 42}px)` },
+            { opacity: 1, transform: "translateX(0)" },
           ],
-          { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)' },
+          { duration: 160, easing: "cubic-bezier(.16,1,.3,1)" },
         );
     }
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: "instant" });
     syncViewportLock();
     if (persist) save();
   };
   const reveal = (target: HTMLElement) => {
-    const chapter = target.closest<HTMLElement>('[data-journey-question]');
+    const chapter = target.closest<HTMLElement>("[data-journey-question]");
     const state = states.get(activeRoot);
-    const entry = state?.entries.find(e => questionId(e.key) === chapter?.dataset.journeyQuestion);
-    if (entry) showStage(entry.key, target.classList.contains('reflection-next') ? 'connections' : 'reading');
+    const entry = state?.entries.find(
+      (e) => questionId(e.key) === chapter?.dataset.journeyQuestion,
+    );
+    if (entry)
+      showStage(
+        entry.key,
+        target.classList.contains("reflection-next")
+          ? "connections"
+          : "reading",
+      );
   };
   const updateNav = () => {
     list.replaceChildren();
@@ -317,10 +498,13 @@ export function initRecordJourney() {
     if (!state) return;
     state.entries.forEach((entry) => {
       const story = byKey.get(entry.key)!;
-      const button = el('button');
-      button.type = 'button';
-      button.append(el('strong', story.question), el('span', story.source.speaker));
-      button.addEventListener('click', () => {
+      const button = el("button");
+      button.type = "button";
+      button.append(
+        el("strong", story.question),
+        el("span", story.source.speaker),
+      );
+      button.addEventListener("click", () => {
         nav.open = false;
         const panel = panels.get(`${activeRoot}|${entry.key}`);
         if (panel) reveal(panel.element);
@@ -337,63 +521,66 @@ export function initRecordJourney() {
     }
     syncViewportLock();
   };
-  const makeCard = (story: Perspective, onClick: () => void, explanation = '') => {
-    const item = el('article', '', 'onward-preview');
-    const heading = el('div', '', 'onward-card-heading');
-    heading.append(el('h4', story.title));
-    const speaker = el('div', '', 'onward-speaker');
-    const speakerCopy = el('span', '', 'onward-speaker-copy');
+  const makeCard = (
+    story: Perspective,
+    onClick: () => void,
+    explanation = "",
+  ) => {
+    const item = el("article", "", "onward-preview");
+    const heading = el("div", "", "onward-card-heading");
+    heading.append(el("h4", story.title));
+    const speaker = el("div", "", "onward-speaker");
+    const speakerCopy = el("span", "", "onward-speaker-copy");
     speakerCopy.append(
-      el('strong', story.source.speaker),
-      el('span', story.source.role || 'Contributor to the Record', 'onward-speaker-role'),
+      el("strong", story.source.speaker),
+      el(
+        "span",
+        story.source.role || "Contributor to the Record",
+        "onward-speaker-role",
+      ),
     );
     speaker.append(
       el(
-        'span',
+        "span",
         story.source.speaker
           .split(/\s+/)
           .map((w) => w[0])
           .slice(0, 2)
-          .join(''),
-        'onward-avatar',
+          .join(""),
+        "onward-avatar",
       ),
       speakerCopy,
     );
-    const action = el('button', '', 'onward-source');
-    action.type = 'button';
+    const action = el("button", "", "onward-source");
+    action.type = "button";
     action.dataset.question = questionId(story.key);
     action.dataset.journeyKey = story.key;
-    action.setAttribute('aria-label', `Read ${story.source.speaker}’s perspective`);
-    action.append(el('span', 'Read this perspective'), el('span', '→', 'onward-arrow'));
-    let opening = false;
-    action.addEventListener('click', async () => {
-      if (opening) return;
-      opening = true;
-      const screen = item.closest<HTMLElement>('.journey-screen-picker');
-      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      try {
-        if (screen && !reducedMotion) {
-          const animation = screen.animate(
-            [
-              { opacity: 1, transform: 'translateX(0)' },
-              { opacity: .28, transform: 'translateX(-34px)' },
-            ],
-            { duration: 300, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' },
-          );
-          await animation.finished.catch(() => {});
-        }
-        onClick();
-      } finally {
-        screen?.getAnimations().forEach(animation => animation.cancel());
-        opening = false;
-      }
+    action.setAttribute(
+      "aria-label",
+      `Read ${story.source.speaker}’s perspective`,
+    );
+    action.append(
+      el("span", "Read this perspective"),
+      el("span", "→", "onward-arrow"),
+    );
+    action.addEventListener("click", onClick);
+    item.addEventListener("click", (e) => {
+      if (!(e.target as Element).closest("button")) action.click();
     });
-    item.addEventListener('click', (e) => {
-      if (!(e.target as Element).closest('button')) action.click();
-    });
-    item.append(heading, speaker, el('p', story.standfirst, 'onward-description'));
-    if (explanation) item.append(el('p', explanation, 'onward-relation'));
+    item.append(
+      heading,
+      speaker,
+      el("p", story.standfirst, "onward-description"),
+    );
+    if (explanation) item.append(el("p", explanation, "onward-relation"));
     item.append(action);
+    if (explanation) {
+      const topic = story.key.split(":")[0];
+      const copy = el("div", "", "connected-copy");
+      copy.append(...Array.from(item.children));
+      item.append(copy);
+      item.dataset.connectedTopic = topic;
+    }
     return item;
   };
   const renderConnections = (
@@ -407,8 +594,10 @@ export function initRecordJourney() {
     const links = story.related
       .map((link) => ({ ...link, story: byEditorial.get(link.key) }))
       .filter((link) => link.story && !visited.has(questionId(link.story.key)));
-    const related = el('section', '', 'journey-connection');
-    const recommended = preferred ? byEditorial.get(preferred.target) : undefined;
+    const related = el("section", "", "journey-connection");
+    const recommended = preferred
+      ? byEditorial.get(preferred.target)
+      : undefined;
     const alreadyVisited =
       recommended &&
       (states.get(state.root) || state).entries.some(
@@ -416,16 +605,16 @@ export function initRecordJourney() {
       );
     related.append(
       el(
-        'h3',
+        "h3",
         recommended
-          ? 'Follow your question'
+          ? "Follow your question"
           : links.length
-            ? 'Keep exploring'
-            : 'Choose another question',
+            ? "Keep exploring"
+            : "Choose another question",
       ),
     );
     if (recommended) {
-      const preview = el('div', '', 'onward-previews');
+      const preview = el("div", "", "onward-previews");
       const card = makeCard(
         recommended,
         () => select(state.root, recommended.key, true),
@@ -434,49 +623,67 @@ export function initRecordJourney() {
       if (alreadyVisited) {
         related.append(
           el(
-            'p',
-            'This question is already in your journey. You can explore this perspective there.',
-            'reflection-revisit',
+            "p",
+            "This question is already in your journey. You can explore this perspective there.",
+            "reflection-revisit",
           ),
         );
       }
       preview.append(card);
       related.append(preview);
     } else if (links.length) {
-      const preview = el('div', '', 'onward-previews');
+      const preview = el("div", "", "onward-previews");
       for (const link of links.slice(0, 3)) {
         const next = link.story!;
-        preview.append(makeCard(next, () => select(state.root, next.key, true), link.explanation));
+        preview.append(
+          makeCard(
+            next,
+            () => select(state.root, next.key, true),
+            link.explanation,
+          ),
+        );
       }
       related.append(
-        el('p', 'Connections between these passages are suggested by CIF.', 'connection-credit'),
+        el(
+          "p",
+          "Connections between these passages are suggested by CIF.",
+          "connection-credit",
+        ),
         preview,
       );
     } else {
       related.append(
         el(
-          'p',
-          'The direct connections from this perspective are already in your journey. There are other questions to explore.',
+          "p",
+          "The direct connections from this perspective are already in your journey. There are other questions to explore.",
         ),
       );
     }
-    const browse = el('details', '', 'journey-browse');
+    const browse = el("details", "", "journey-browse");
     browse.append(
-      el('summary', recommended || links.length ? 'Explore other questions' : 'Browse questions'),
+      el(
+        "summary",
+        recommended || links.length
+          ? "Explore other questions"
+          : "Browse questions",
+      ),
     );
-    const choices = el('div', '', 'journey-question-choices');
+    const choices = el("div", "", "journey-question-choices");
     const ids = [...new Set(featured.map((s) => questionId(s.key)))];
     for (const id of ids) {
       const candidate = featured.find((s) => questionId(s.key) === id)!;
-      const button = el('button', candidate.question);
-      button.type = 'button';
+      const button = el("button", candidate.question);
+      button.type = "button";
       if (visited.has(id)) {
-        button.append(el('span', 'Revisit'));
-        button.addEventListener('click', () => {
+        button.append(el("span", "Revisit"));
+        button.addEventListener("click", () => {
           const entry = state.entries.find((e) => questionId(e.key) === id)!;
           reveal(panels.get(`${state.root}|${entry.key}`)!.element);
         });
-      } else button.addEventListener('click', () => select(state.root, candidate.key, true));
+      } else
+        button.addEventListener("click", () =>
+          select(state.root, candidate.key, true),
+        );
       choices.append(button);
     }
     browse.append(choices);
@@ -484,9 +691,13 @@ export function initRecordJourney() {
     related.append(browse);
     container.append(related);
   };
-  const renderContinuation = (container: HTMLElement, story: Perspective, state: State) => {
+  const renderContinuation = (
+    container: HTMLElement,
+    story: Perspective,
+    state: State,
+  ) => {
     container.replaceChildren();
-    const next = el('div', '', 'reflection-next');
+    const next = el("div", "", "reflection-next");
     const reflection = createReflection(
       state.root,
       story.editorialKey,
@@ -503,12 +714,16 @@ export function initRecordJourney() {
   const render = (state: State) => {
     const view = viewFor(state.root);
     if (!view) return;
-    view.querySelector<HTMLElement>('.journey-history')?.removeAttribute('hidden');
-    view.classList.add('views-revealed');
-    view.dispatchEvent(new Event('reveal-perspectives'));
-    let historyNode = view.querySelector<HTMLElement>(':scope > .journey-history');
+    view
+      .querySelector<HTMLElement>(".journey-history")
+      ?.removeAttribute("hidden");
+    view.classList.add("views-revealed");
+    view.dispatchEvent(new Event("reveal-perspectives"));
+    let historyNode = view.querySelector<HTMLElement>(
+      ":scope > .journey-history",
+    );
     if (!historyNode) {
-      historyNode = el('div', '', 'journey-history');
+      historyNode = el("div", "", "journey-history");
       view.append(historyNode);
     }
     state.entries.forEach((entry, index) => {
@@ -518,28 +733,31 @@ export function initRecordJourney() {
         (n) => (n as HTMLElement).dataset.journeyQuestion === id,
       ) as HTMLElement | undefined;
       if (!chapter) {
-        chapter = el('section', '', index === 0 ? 'source-section open' : 'journey-chapter');
+        chapter = el(
+          "section",
+          "",
+          index === 0 ? "source-section open" : "journey-chapter",
+        );
         chapter.dataset.journeyQuestion = id;
         historyNode!.append(chapter);
-        if (!restoring && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          chapter.classList.add('journey-arriving-line');
-          chapter.addEventListener(
-            'animationend',
-            () => chapter!.classList.remove('journey-arriving-line'),
-            { once: true },
-          );
-        }
-        const change = el('button', '↑ Change perspective', 'reading-change');
-        change.type = 'button';
-        change.addEventListener('click', () => {
-          const picker = chapter!.querySelector<HTMLElement>('.journey-siblings');
+        const change = el("button", "↑ Change perspective", "reading-change");
+        change.type = "button";
+        change.addEventListener("click", () => {
+          const picker =
+            chapter!.querySelector<HTMLElement>(".journey-siblings");
           if (picker) {
-            showStage(states.get(state.root)!.entries.find(e => questionId(e.key) === id)!.key, 'perspectives', -1);
+            showStage(
+              states
+                .get(state.root)!
+                .entries.find((e) => questionId(e.key) === id)!.key,
+              "perspectives",
+              -1,
+            );
             return;
           }
         });
         chapter.append(change);
-        const picker = el('div', '', 'journey-siblings onward-previews');
+        const picker = el("div", "", "journey-siblings onward-previews");
         picker.hidden = true;
         featured
           .filter((s) => questionId(s.key) === id)
@@ -556,18 +774,12 @@ export function initRecordJourney() {
       chapter.hidden = false;
       let panel = panels.get(`${state.root}|${entry.key}`);
       if (!panel) {
-        panel = createPerspective(story, (mode) => modeChanged(state.root, entry.key, mode));
-        panel.element.classList.add('journey-branch-source');
+        panel = createPerspective(story, (mode) =>
+          modeChanged(state.root, entry.key, mode),
+        );
+        panel.element.classList.add("journey-branch-source");
         panels.set(`${state.root}|${entry.key}`, panel);
         chapter.append(panel.element);
-        if (!restoring && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          panel.element.classList.add('journey-arriving');
-          panel.element.addEventListener(
-            'animationend',
-            () => panel!.element.classList.remove('journey-arriving'),
-            { once: true },
-          );
-        }
       }
       for (const [key, other] of panels) {
         if (
@@ -581,12 +793,15 @@ export function initRecordJourney() {
       }
       if (
         panel.getMode() !== entry.mode ||
-        (entry.mode === 'listen' && !panel.element.querySelector('iframe,audio'))
+        (entry.mode === "listen" &&
+          !panel.element.querySelector("iframe,audio"))
       )
         panel.setMode(entry.mode, false);
-      let continuations = chapter.querySelector<HTMLElement>(':scope > .journey-continuations');
+      let continuations = chapter.querySelector<HTMLElement>(
+        ":scope > .journey-continuations",
+      );
       if (!continuations) {
-        continuations = el('div', '', 'journey-continuations');
+        continuations = el("div", "", "journey-continuations");
         chapter.append(continuations);
       }
       chapter.insertBefore(panel.element, continuations);
@@ -626,62 +841,88 @@ export function initRecordJourney() {
     }
     if (existing) {
       existing.key = key;
-      existing.mode = 'closed';
-    } else if (append || !state.entries.length) state.entries.push({ key, mode: 'closed' });
+      existing.mode = "closed";
+    } else if (append || !state.entries.length)
+      state.entries.push({ key, mode: "closed" });
     else return;
-    state.cursor = { key, stage: 'reading' };
+    state.cursor = { key, stage: "reading" };
     render(state);
     save();
     if (!restoring) reveal(panels.get(`${id}|${key}`)!.element);
   };
   const showQuestionPicker = (id: string) => {
-    root.classList.remove('reading-viewport-locked');
-    root.classList.remove('show-question-index');
-    try { sessionStorage.setItem('cif-last-question', id); } catch {}
+    root.classList.remove("reading-viewport-locked");
+    try {
+      sessionStorage.setItem("cif-last-question", id);
+    } catch {}
     const view = viewFor(id);
     if (!view || view.dataset.journeyStage) return;
-    view.classList.add('selection-editorial');
-    let picker = view.querySelector<HTMLElement>('.initial-perspective-picker');
+    view.classList.add("selection-editorial");
+    let picker = view.querySelector<HTMLElement>(".initial-perspective-picker");
     if (!picker) {
-      picker = el('section', '', 'journey-screen-picker initial-perspective-picker');
-      const intro = el('header', '', 'perspective-intro');
-      intro.append(el('h2', featured.find(story => questionId(story.key) === id)!.question), el('p', 'Different people notice different things. Choose an idea to explore, then follow it back to the conversation.'));
-      const cards = el('div', '', 'onward-previews');
-      featured.filter(story => questionId(story.key) === id).forEach(story => cards.append(makeCard(story, () => select(id, story.key, false))));
+      picker = el(
+        "section",
+        "",
+        "journey-screen-picker initial-perspective-picker",
+      );
+      const intro = el("header", "", "perspective-intro");
+      intro.append(
+        el(
+          "h2",
+          featured.find((story) => questionId(story.key) === id)!.question,
+        ),
+        el(
+          "p",
+          "Different people notice different things. Choose an idea to explore, then follow it back to the conversation.",
+        ),
+      );
+      const cards = el("div", "", "onward-previews");
+      featured
+        .filter((story) => questionId(story.key) === id)
+        .forEach((story) =>
+          cards.append(makeCard(story, () => select(id, story.key, false))),
+        );
       picker.append(intro, cards);
       view.prepend(picker);
     }
-    let bar = view.querySelector<HTMLElement>('.journey-screen-nav');
+    let bar = view.querySelector<HTMLElement>(".journey-screen-nav");
     if (!bar) {
-      bar = el('nav', '', 'journey-screen-nav journey-entry-nav');
-      bar.setAttribute('aria-label', 'Journey navigation');
+      bar = el("nav", "", "journey-screen-nav journey-entry-nav");
+      bar.setAttribute("aria-label", "Journey navigation");
       const steps = makeJourneySteps(
-        [{ key: featured.find(story => questionId(story.key) === id)!.key, stage: 'perspectives' }],
+        [
+          {
+            key: featured.find((story) => questionId(story.key) === id)!.key,
+            stage: "perspectives",
+          },
+        ],
         stageLabels.perspectives,
-        (visit) => visit.stage === 'perspectives',
+        (visit) => visit.stage === "perspectives",
         () => {},
       );
       bar.append(steps);
       view.prepend(bar);
     }
   };
-  root.addEventListener('record:source', (event) => {
+  root.addEventListener("record:source", (event) => {
     const key = (event as CustomEvent<string>).detail;
     if (!byKey.has(key)) return;
     const id = questionId(key);
     const view = viewFor(id);
     if (view.hidden) {
-      root.dataset.restoringNavigation = 'true';
-      root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)?.click();
+      root.dataset.restoringNavigation = "true";
+      root
+        .querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)
+        ?.click();
       delete root.dataset.restoringNavigation;
     }
     select(id, key, false);
   });
-  root.addEventListener('record:leave', () => {
+  root.addEventListener("record:leave", () => {
     for (const panel of panels.values()) panel.stop();
   });
-  root.addEventListener('record:question', (event) => {
-    if (restoring || root.dataset.restoringNavigation === 'true') return;
+  root.addEventListener("record:question", (event) => {
+    if (restoring || root.dataset.restoringNavigation === "true") return;
     activeRoot = (event as CustomEvent<string>).detail;
     const state = states.get(activeRoot);
     if (state) {
@@ -689,15 +930,15 @@ export function initRecordJourney() {
       save(true);
     } else {
       const url = new URL(location.href);
-      url.searchParams.delete('journey');
-      history.replaceState({ ...history.state }, '', url);
+      url.searchParams.delete("journey");
+      history.replaceState({ ...history.state }, "", url);
     }
     updateNav();
     showQuestionPicker(activeRoot);
   });
   const parse = (raw: string | null): State | null => {
     try {
-      const value = JSON.parse(raw || 'null');
+      const value = JSON.parse(raw || "null");
       if (
         value?.v !== 1 ||
         !viewFor(value.root) ||
@@ -713,7 +954,7 @@ export function initRecordJourney() {
         const e = { ...rawEntry, key: story?.key };
         if (
           !byKey.has(e.key) ||
-          !['closed', 'read', 'listen'].includes(e.mode) ||
+          !["closed", "read", "listen"].includes(e.mode) ||
           seen.has(questionId(e.key))
         )
           return null;
@@ -721,12 +962,43 @@ export function initRecordJourney() {
         entries.push({ key: e.key, mode: e.mode });
       }
       if (questionId(entries[0].key) !== value.root) return null;
-      const cursorStory = byKey.get(value.cursor?.key) || byEditorial.get(value.cursor?.key);
-      const cursor = cursorStory && entries.some(e => e.key === cursorStory.key) && ['perspectives','reading','reflection','connections'].includes(value.cursor?.stage) ? { key: cursorStory.key, stage: value.cursor.stage, action: value.cursor.action === 'another' ? 'another' as const : undefined } : { key: entries.at(-1)!.key, stage: 'reading' as Stage };
-      const visited = Array.isArray(value.visited) ? value.visited.flatMap((visit: Visit) => {
-        const story = byKey.get(visit.key) || byEditorial.get(visit.key);
-        return story && ['perspectives','reading','reflection','connections'].includes(visit.stage) ? [{key:story.key,stage:visit.stage,action:visit.action === 'another' ? 'another' as const : undefined}] : [];
-      }) : undefined;
+      const cursorStory =
+        byKey.get(value.cursor?.key) || byEditorial.get(value.cursor?.key);
+      const cursor =
+        cursorStory &&
+        entries.some((e) => e.key === cursorStory.key) &&
+        ["perspectives", "reading", "reflection", "connections"].includes(
+          value.cursor?.stage,
+        )
+          ? {
+              key: cursorStory.key,
+              stage: value.cursor.stage,
+              action:
+                value.cursor.action === "another"
+                  ? ("another" as const)
+                  : undefined,
+            }
+          : { key: entries.at(-1)!.key, stage: "reading" as Stage };
+      const visited = Array.isArray(value.visited)
+        ? value.visited.flatMap((visit: Visit) => {
+            const story = byKey.get(visit.key) || byEditorial.get(visit.key);
+            return story &&
+              ["perspectives", "reading", "reflection", "connections"].includes(
+                visit.stage,
+              )
+              ? [
+                  {
+                    key: story.key,
+                    stage: visit.stage,
+                    action:
+                      visit.action === "another"
+                        ? ("another" as const)
+                        : undefined,
+                  },
+                ]
+              : [];
+          })
+        : undefined;
       return { v: 1, root: value.root, entries, cursor, visited };
     } catch {
       return null;
@@ -734,18 +1006,49 @@ export function initRecordJourney() {
   };
   const restore = (initial = false) => {
     const params = new URLSearchParams(location.search);
-    if (params.get('view') && params.get('view') !== 'explore') return;
-    let state = parse(params.get('journey'));
-    if (initial && !state && !params.has('journey') && !params.has('question'))
+    if (
+      (params.get("view") && params.get("view") !== "explore") ||
+      params.has("person") ||
+      params.has("compare")
+    )
+      return;
+    let state = parse(params.get("journey"));
+    if (initial && !state && !params.has("journey") && !params.has("question"))
       try {
-        state = parse(sessionStorage.getItem('cif-explore-journey-v1'));
+        state = parse(sessionStorage.getItem("cif-explore-journey-v1"));
       } catch {}
+    if (!state && params.has("evidence")) {
+      const story = byKey.get(params.get("evidence") || "");
+      if (story) {
+        activeRoot = questionId(story.key);
+        root.dataset.restoringNavigation = "true";
+        root
+          .querySelector<HTMLButtonElement>(
+            `[data-question="${CSS.escape(activeRoot)}"]`,
+          )
+          ?.click();
+        delete root.dataset.restoringNavigation;
+        restoring = true;
+        select(activeRoot, story.key, false);
+        restoring = false;
+        save(true);
+        return;
+      }
+    }
     if (!state) {
       if (!initial) {
         for (const p of panels.values()) p.stop();
-        root.querySelectorAll<HTMLElement>('.journey-history').forEach((n) => (n.hidden = true));
+        root
+          .querySelectorAll<HTMLElement>(".journey-history")
+          .forEach((n) => (n.hidden = true));
         nav.hidden = true;
-        root.querySelectorAll<HTMLElement>('[data-journey-stage]').forEach(v => { delete v.dataset.journeyStage; v.querySelector('.journey-screen-nav')?.remove(); v.querySelector('.journey-screen-forward')?.remove(); });
+        root
+          .querySelectorAll<HTMLElement>("[data-journey-stage]")
+          .forEach((v) => {
+            delete v.dataset.journeyStage;
+            v.querySelector(".journey-screen-nav")?.remove();
+            v.querySelector(".journey-screen-forward")?.remove();
+          });
       }
       return;
     }
@@ -754,8 +1057,12 @@ export function initRecordJourney() {
     for (const p of panels.values()) p.stop();
     activeRoot = state.root;
     states.set(state.root, state);
-    root.dataset.restoringNavigation = 'true';
-    root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(state.root)}"]`)?.click();
+    root.dataset.restoringNavigation = "true";
+    root
+      .querySelector<HTMLButtonElement>(
+        `[data-question="${CSS.escape(state.root)}"]`,
+      )
+      ?.click();
     render(state);
     delete root.dataset.restoringNavigation;
     restoring = false;
@@ -766,28 +1073,53 @@ export function initRecordJourney() {
     let state = states.get(activeRoot);
     let lastQuestion: string | null = null;
     try {
-      lastQuestion = sessionStorage.getItem('cif-last-question');
+      lastQuestion = sessionStorage.getItem("cif-last-question");
       if (!state) {
-        const saved = parse(sessionStorage.getItem('cif-explore-journey-v1'));
+        const saved = parse(sessionStorage.getItem("cif-explore-journey-v1"));
         if (saved && (!lastQuestion || saved.root === lastQuestion)) {
-          state = saved; activeRoot = saved.root; states.set(saved.root, saved);
+          state = saved;
+          activeRoot = saved.root;
+          states.set(saved.root, saved);
         }
       }
     } catch {}
     const id = state?.root || lastQuestion;
-    let bar = welcome.querySelector<HTMLElement>('.welcome-journey-nav');
-    if (!bar) { bar = el('nav', '', 'journey-screen-nav welcome-journey-nav'); bar.setAttribute('aria-label', 'Your journey'); welcome.prepend(bar); }
-    const visits = state?.visited?.length ? state.visited : id ? [{key:state?.entries[0]?.key || featured.find(story => questionId(story.key) === id)?.key || '',stage:'perspectives' as Stage}] : [];
+    let bar = welcome.querySelector<HTMLElement>(".welcome-journey-nav");
+    if (!bar) {
+      bar = el("nav", "", "journey-screen-nav welcome-journey-nav");
+      bar.setAttribute("aria-label", "Your journey");
+      welcome.prepend(bar);
+    }
+    const visits = state?.visited?.length
+      ? state.visited
+      : id
+        ? [
+            {
+              key:
+                state?.entries[0]?.key ||
+                featured.find((story) => questionId(story.key) === id)?.key ||
+                "",
+              stage: "perspectives" as Stage,
+            },
+          ]
+        : [];
     const steps = makeJourneySteps(
       visits,
-      'Explore',
+      "Explore",
       () => false,
       (visit) => {
         if (!id || !viewFor(id)) return;
-        root.classList.remove('show-welcome'); welcome.hidden = true;
-        root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)?.click();
-        if (state && visit.key) { select(id, visit.key, true); void showStage(visit.key, visit.stage, -1, true, visit.action); }
-        else showQuestionPicker(id);
+        root.classList.remove("show-welcome");
+        welcome.hidden = true;
+        root
+          .querySelector<HTMLButtonElement>(
+            `[data-question="${CSS.escape(id)}"]`,
+          )
+          ?.click();
+        if (state && visit.key) {
+          select(id, visit.key, true);
+          void showStage(visit.key, visit.stage, -1, true, visit.action);
+        } else showQuestionPicker(id);
       },
     );
     bar.replaceChildren(steps);
@@ -795,98 +1127,205 @@ export function initRecordJourney() {
   const returnToWelcome = () => {
     ++stageTransition;
     cancelJourneyMotion();
-    root.querySelectorAll('.record-card-transition,.record-card-ghost').forEach(overlay => overlay.remove());
-    welcome?.getAnimations().forEach(animation => animation.cancel());
+    welcome?.getAnimations().forEach((animation) => animation.cancel());
     for (const panel of panels.values()) panel.stop();
-    root.classList.add('show-welcome');
-    root.classList.remove('reading-viewport-locked');
-    root.classList.remove('show-question-index');
+    root.classList.add("show-welcome");
+    root.classList.remove("reading-viewport-locked");
     if (welcome) welcome.hidden = false;
     renderWelcomeHistory();
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
-  root.addEventListener('record:return-to-welcome', () => {
-    history.pushState({}, '', location.pathname);
+  root.addEventListener("record:return-to-welcome", () => {
+    history.pushState({}, "", location.pathname);
     returnToWelcome();
   });
-  root.querySelectorAll('[data-show-about], [data-open-contribution]').forEach(button => button.addEventListener('click', () => {
-    root.classList.remove('show-welcome');
-    if (welcome) welcome.hidden = true;
-  }));
+  root
+    .querySelectorAll(
+      "[data-show-people], [data-show-compare], [data-show-about], [data-open-contribution]",
+    )
+    .forEach((button) =>
+      button.addEventListener("click", () => {
+        root.classList.remove("show-welcome");
+        if (welcome) welcome.hidden = true;
+      }),
+    );
   let openingQuestion = false;
-  welcome?.addEventListener('click', async (event) => {
-    const card = (event.target as Element).closest<HTMLAnchorElement>('.welcome-card');
-    if (!card || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  welcome?.addEventListener("click", async (event) => {
+    const card = (event.target as Element).closest<HTMLAnchorElement>(
+      ".welcome-card",
+    );
+    if (
+      !card ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
     event.preventDefault();
     if (openingQuestion) return;
     openingQuestion = true;
     const openingTransition = ++stageTransition;
-    const id = new URL(card.href).searchParams.get('question')!;
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const id = new URL(card.href).searchParams.get("question")!;
+    const reducedMotion = matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const animations: Animation[] = [];
     try {
       if (!reducedMotion) {
         // Turn the chosen idea over, then unfold the two-column question page.
-        const turn = card.animate([
-          {opacity:1, transform:'perspective(1200px) rotateY(0deg)', transformOrigin:'0% 50%'},
-          {opacity:.8, transform:'perspective(1200px) rotateY(-55deg)', transformOrigin:'0% 50%', offset:.65},
-          {opacity:0, transform:'perspective(1200px) rotateY(-92deg)', transformOrigin:'0% 50%'},
-        ], {duration:440,easing:'cubic-bezier(.55,0,.3,1)',fill:'forwards'});
+        const turn = card.animate(
+          [
+            {
+              opacity: 1,
+              transform: "perspective(1200px) rotateY(0deg)",
+              transformOrigin: "0% 50%",
+            },
+            {
+              opacity: 0.8,
+              transform: "perspective(1200px) rotateY(-55deg)",
+              transformOrigin: "0% 50%",
+              offset: 0.65,
+            },
+            {
+              opacity: 0,
+              transform: "perspective(1200px) rotateY(-92deg)",
+              transformOrigin: "0% 50%",
+            },
+          ],
+          {
+            duration: 180,
+            easing: "cubic-bezier(.55,0,.3,1)",
+            fill: "forwards",
+          },
+        );
         animations.push(turn);
-        welcome.querySelectorAll<HTMLElement>('.welcome-card,.welcome-intro').forEach(other => {
-          if (other === card) return;
-          animations.push(other.animate([{opacity:1},{opacity:0,transform:'translateY(12px)'}],{duration:280,easing:'ease-in',fill:'forwards'}));
-        });
+        welcome
+          .querySelectorAll<HTMLElement>(".welcome-card,.welcome-intro")
+          .forEach((other) => {
+            if (other === card) return;
+            animations.push(
+              other.animate(
+                [{ opacity: 1 }, { opacity: 0, transform: "translateY(12px)" }],
+                { duration: 120, easing: "ease-in", fill: "forwards" },
+              ),
+            );
+          });
         await turn.finished.catch(() => {});
       }
       if (openingTransition !== stageTransition) return;
-      root.classList.remove('show-welcome');
+      root.classList.remove("show-welcome");
       welcome.hidden = true;
-      root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)?.click();
+      root
+        .querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)
+        ?.click();
       const existing = states.get(id);
       if (existing?.entries[0]) {
         activeRoot = id;
-        await showStage(existing.entries[0].key, 'perspectives', 1, false);
+        await showStage(existing.entries[0].key, "perspectives", 1, false);
       } else showQuestionPicker(id);
       const questionUrl = new URL(location.href);
-      questionUrl.searchParams.set('choose', '1');
-      history.replaceState(history.state, '', questionUrl);
-      const picker = viewFor(id)?.querySelector<HTMLElement>('.journey-screen-picker:not([hidden])');
-      const heading = picker?.querySelector<HTMLElement>('h2');
-      heading?.setAttribute('tabindex', '-1');
-      heading?.focus({preventScroll:true});
-      window.scrollTo({top:0,behavior:'instant'});
+      questionUrl.searchParams.set("choose", "1");
+      history.replaceState(history.state, "", questionUrl);
+      const picker = viewFor(id)?.querySelector<HTMLElement>(
+        ".journey-screen-picker:not([hidden])",
+      );
+      const heading = picker?.querySelector<HTMLElement>("h2");
+      heading?.setAttribute("tabindex", "-1");
+      heading?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: "instant" });
       if (!reducedMotion && picker) {
-        const intro = picker.querySelector<HTMLElement>('.perspective-intro');
-        if (intro) animations.push(intro.animate([
-          {opacity:0,transform:'perspective(1200px) rotateY(18deg) translateX(-28px)',transformOrigin:'100% 50%'},
-          {opacity:1,transform:'perspective(1200px) rotateY(0deg) translateX(0)',transformOrigin:'100% 50%'},
-        ],{duration:650,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'}));
-        picker.querySelectorAll<HTMLElement>('.onward-preview').forEach((perspective,index) => {
-          animations.push(perspective.animate([
-            {opacity:0,transform:'translateX(36px)',clipPath:'inset(0 0 0 100%)'},
-            {opacity:1,transform:'translateX(0)',clipPath:'inset(0)'},
-          ],{duration:580,delay:index*90,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'}));
-        });
-        await Promise.all(animations.map(animation => animation.finished.catch(() => {})));
+        const intro = picker.querySelector<HTMLElement>(".perspective-intro");
+        if (intro)
+          animations.push(
+            intro.animate(
+              [
+                {
+                  opacity: 0,
+                  transform:
+                    "perspective(1200px) rotateY(18deg) translateX(-28px)",
+                  transformOrigin: "100% 50%",
+                },
+                {
+                  opacity: 1,
+                  transform: "perspective(1200px) rotateY(0deg) translateX(0)",
+                  transformOrigin: "100% 50%",
+                },
+              ],
+              {
+                duration: 220,
+                easing: "cubic-bezier(.22,1,.36,1)",
+                fill: "both",
+              },
+            ),
+          );
+        picker
+          .querySelectorAll<HTMLElement>(".onward-preview")
+          .forEach((perspective, index) => {
+            animations.push(
+              perspective.animate(
+                [
+                  {
+                    opacity: 0,
+                    transform: "translateX(36px)",
+                    clipPath: "inset(0 0 0 100%)",
+                  },
+                  {
+                    opacity: 1,
+                    transform: "translateX(0)",
+                    clipPath: "inset(0)",
+                  },
+                ],
+                {
+                  duration: 180,
+                  delay: index * 35,
+                  easing: "cubic-bezier(.22,1,.36,1)",
+                  fill: "both",
+                },
+              ),
+            );
+          });
+        await Promise.all(
+          animations.map((animation) => animation.finished.catch(() => {})),
+        );
       }
     } finally {
-      animations.forEach(animation => animation.cancel());
+      animations.forEach((animation) => animation.cancel());
       openingQuestion = false;
     }
   });
-  window.addEventListener('popstate', () => setTimeout(() => {
-    if (!location.search) { returnToWelcome(); return; }
-    root.classList.remove('show-welcome');
+  window.addEventListener("popstate", () => {
+    if (!location.search) {
+      returnToWelcome();
+      return;
+    }
+    const params = new URLSearchParams(location.search);
+    if (
+      (params.get("view") && params.get("view") !== "explore") ||
+      params.has("person") ||
+      params.has("compare")
+    )
+      return;
+    root.classList.remove("show-welcome");
     if (welcome) welcome.hidden = true;
+    const id = params.get("question") || "understanding";
+    root.dataset.restoringNavigation = "true";
+    root
+      .querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)
+      ?.click();
+    delete root.dataset.restoringNavigation;
     restore(false);
-    showQuestionPicker(new URLSearchParams(location.search).get('question') || 'understanding');
-  }, 0));
+    showQuestionPicker(id);
+  });
   if (isWelcome) renderWelcomeHistory();
-  if (!isWelcome) setTimeout(() => {
-    restore(true);
-    showQuestionPicker(new URLSearchParams(location.search).get('question') || 'understanding');
-  }, 0);
+  if (!isWelcome)
+    setTimeout(() => {
+      restore(true);
+      showQuestionPicker(
+        new URLSearchParams(location.search).get("question") || "understanding",
+      );
+    }, 0);
 }
 let scrollFrame = 0;
 export function cancelJourneyMotion() {
@@ -895,35 +1334,29 @@ export function cancelJourneyMotion() {
 }
 function glideTo(top: number) {
   cancelJourneyMotion();
-  const from = window.scrollY;
   const destination = Math.max(
     0,
     Math.min(top, document.documentElement.scrollHeight - innerHeight),
   );
-  const distance = destination - from;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.scrollTo({ top: destination, behavior: 'instant' });
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.scrollTo({ top: destination, behavior: "instant" });
     return;
   }
-  const duration = Math.min(1000, Math.max(480, 480 + Math.abs(distance) * 0.22));
-  const started = performance.now();
-  const frame = (now: number) => {
-    const t = Math.min(1, (now - started) / duration);
-    const eased = t * t * t * (t * (t * 6 - 15) + 10);
-    window.scrollTo({ top: from + distance * eased, behavior: 'instant' });
-    scrollFrame = t < 1 ? requestAnimationFrame(frame) : 0;
-  };
-  scrollFrame = requestAnimationFrame(frame);
+  window.scrollTo({ top: destination, behavior: "instant" });
 }
 export function scrollToRecordSection(target: HTMLElement) {
-  const header = document.querySelector('.prototype .topbar')?.getBoundingClientRect().height || 78;
+  const header =
+    document.querySelector(".prototype .topbar")?.getBoundingClientRect()
+      .height || 78;
   glideTo(window.scrollY + target.getBoundingClientRect().top - header - 16);
 }
 function initJourneyScroll(root: HTMLElement) {
   // Manual input always owns scrolling; buttons alone initiate a glide.
-  window.addEventListener('wheel', cancelJourneyMotion, { passive: true });
-  window.addEventListener('touchstart', cancelJourneyMotion, { passive: true });
-  window.addEventListener('pointerdown', cancelJourneyMotion, { passive: true });
-  window.addEventListener('keydown', cancelJourneyMotion);
-  root.classList.add('journey-stepped-scroll');
+  window.addEventListener("wheel", cancelJourneyMotion, { passive: true });
+  window.addEventListener("touchstart", cancelJourneyMotion, { passive: true });
+  window.addEventListener("pointerdown", cancelJourneyMotion, {
+    passive: true,
+  });
+  window.addEventListener("keydown", cancelJourneyMotion);
+  root.classList.add("journey-stepped-scroll");
 }

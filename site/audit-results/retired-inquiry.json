@@ -1,0 +1,202 @@
+[
+  {
+    "question": "understanding",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "understanding",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "understanding",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "understanding",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "evidence",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "evidence",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "evidence",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "evidence",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "learning",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "learning",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "learning",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "learning",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "work",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "work",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "work",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "work",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "creativity",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "creativity",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "creativity",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "creativity",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "relationships",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "relationships",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "relationships",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "relationships",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "wellbeing",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "wellbeing",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "wellbeing",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "wellbeing",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "judgment",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "judgment",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "judgment",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "judgment",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "privacy",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "privacy",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "privacy",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "privacy",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "governance",
+    "stage": "perspectives",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "governance",
+    "stage": "reading",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "governance",
+    "stage": "reflection",
+    "visibleLegacyControls": []
+  },
+  {
+    "question": "governance",
+    "stage": "connections",
+    "visibleLegacyControls": []
+  }
+]

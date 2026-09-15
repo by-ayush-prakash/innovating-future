@@ -1,0 +1,143 @@
+{
+  "measuredAt": "2026-09-15T15:27:29.342Z",
+  "results": [
+    {
+      "origin": "http://127.0.0.1:4404",
+      "sample": 0,
+      "status": 200,
+      "entry": {
+        "ttfb": 4.199999928474426,
+        "domReady": 147.89999997615814,
+        "transferBytes": 29439,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 192
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 192
+          }
+        ]
+      },
+      "openMs": 150.04929100000004,
+      "backMs": 39.60895900000003,
+      "errors": []
+    },
+    {
+      "origin": "http://127.0.0.1:4404",
+      "sample": 1,
+      "status": 200,
+      "entry": {
+        "ttfb": 0.8999999761581421,
+        "domReady": 132.70000004768372,
+        "transferBytes": 29439,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 172
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 172
+          }
+        ]
+      },
+      "openMs": 146.70966700000008,
+      "backMs": 39.13629199999991,
+      "errors": []
+    },
+    {
+      "origin": "http://127.0.0.1:4404",
+      "sample": 2,
+      "status": 200,
+      "entry": {
+        "ttfb": 1.2999999523162842,
+        "domReady": 156,
+        "transferBytes": 29439,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 184
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 184
+          }
+        ]
+      },
+      "openMs": 142.915708,
+      "backMs": 35.94812500000012,
+      "errors": []
+    },
+    {
+      "origin": "https://innovatingfuture.com",
+      "sample": 0,
+      "status": 200,
+      "entry": {
+        "ttfb": 605.5,
+        "domReady": 819.1999999284744,
+        "transferBytes": 8220,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 852
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 852
+          }
+        ]
+      },
+      "openMs": 1611.7522079999999,
+      "backMs": 84.50416599999971,
+      "errors": []
+    },
+    {
+      "origin": "https://innovatingfuture.com",
+      "sample": 1,
+      "status": 200,
+      "entry": {
+        "ttfb": 687.6000000238419,
+        "domReady": 823.6000000238419,
+        "transferBytes": 8226,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 856
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 856
+          }
+        ]
+      },
+      "openMs": 1339.6453330000004,
+      "backMs": 80.95420800000011,
+      "errors": []
+    },
+    {
+      "origin": "https://innovatingfuture.com",
+      "sample": 2,
+      "status": 200,
+      "entry": {
+        "ttfb": 166.39999997615814,
+        "domReady": 306.7000000476837,
+        "transferBytes": 8146,
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 340
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 340
+          }
+        ]
+      },
+      "openMs": 1347.2732080000005,
+      "backMs": 71.1174579999988,
+      "errors": []
+    }
+  ]
+}

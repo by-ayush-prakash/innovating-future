@@ -3,7 +3,7 @@ import { stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 
-const root = new URL('../dist/', import.meta.url).pathname;
+const root = process.env.BUILD_ROOT || new URL('../dist/', import.meta.url).pathname;
 const mime = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',

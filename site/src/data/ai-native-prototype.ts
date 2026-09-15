@@ -166,7 +166,7 @@ const seedQuestions = [
 
 const evidenceFromSeed = (questionId: string, indexes: number[]) => {
   const question = seedQuestions.find((item) => item.id === questionId);
-  return indexes.map((index) => question?.evidence[index]).filter(Boolean);
+  return indexes.map((index) => question?.evidence[index]).filter((item) => item !== undefined);
 };
 
 const featuredQuestions = [

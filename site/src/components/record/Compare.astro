@@ -1,0 +1,153 @@
+---
+import type { recordViewModel } from "../../data/record-view-model";
+interface Props {
+  model: typeof recordViewModel;
+}
+const { model }: Props = Astro.props;
+const {
+  displayPersonName,
+  atlasContributors,
+  comparisonDefaults,
+  questions,
+} = model;
+---
+
+<article class="comparison-view record-page comparison-calm" data-comparison-view hidden>
+  <header class="comparison-head record-hero">
+    <div>
+      <h1>Put two perspectives side by side.</h1>
+      <span>
+        Choose any two people to see where their views align, diverge, or leave
+        questions open. Every position links back to the original interview.
+      </span>
+    </div>
+
+  </header>
+  <details
+    open
+    class="compare-question-strip"
+    aria-label="Choose a question to compare"
+  >
+    <summary><span class="compare-step-label">Question</span><strong data-compare-question-label>Choose a question to compare</strong><span aria-hidden="true">⌄</span></summary>
+    <nav>
+      {questions.map((question, index) => (
+        <button
+          class="compare-question-choice"
+          type="button"
+          data-compare-question={question.id}
+          style={`--question-color:${question.color};--question-soft:${question.softColor}`}
+          aria-pressed="false"
+        >
+          <span>{question.number}</span>
+          {question.question}
+        </button>
+      ))}
+    </nav>
+  </details>
+  <section class="person-pickers" aria-label="Choose interviewees to compare">
+    <div class="person-picker person-picker--a" data-person-picker="a">
+      <button type="button" data-person-toggle="a" aria-expanded="false" aria-label="Choose the person in the left comparison column">
+        <span class="person-role">
+          <i>A</i>
+        </span>
+        <b data-person-name="a">{displayPersonName(comparisonDefaults[0])}</b>
+        <i class="person-chevron">
+          <span>Change person</span>⌄
+        </i>
+      </button>
+      <div class="person-menu" data-person-menu="a" hidden>
+        {atlasContributors.map(({ name, displayRole }) => (
+          <button
+            class:list={{ active: name === comparisonDefaults[0] }}
+            type="button"
+            data-person-choice="a"
+            data-person-value={name}
+          >
+            <span>
+              <b>{displayPersonName(name)}</b>
+              <small>{displayRole}</small>
+            </span>
+            <i>{name === comparisonDefaults[0] ? "●" : ""}</i>
+          </button>
+        ))}
+      </div>
+    </div>
+    <div class="versus" aria-hidden="true">
+      <b>↔</b>
+    </div>
+    <div class="person-picker person-picker--b" data-person-picker="b">
+      <button type="button" data-person-toggle="b" aria-expanded="false" aria-label="Choose the person in the right comparison column">
+        <span class="person-role">
+          <i>B</i>
+        </span>
+        <b data-person-name="b">{displayPersonName(comparisonDefaults[1])}</b>
+        <i class="person-chevron">
+          <span>Change person</span>⌄
+        </i>
+      </button>
+      <div class="person-menu" data-person-menu="b" hidden>
+        {atlasContributors.map(({ name, displayRole }) => (
+          <button
+            class:list={{ active: name === comparisonDefaults[1] }}
+            type="button"
+            data-person-choice="b"
+            data-person-value={name}
+          >
+            <span>
+              <b>{displayPersonName(name)}</b>
+              <small>{displayRole}</small>
+            </span>
+            <i>{name === comparisonDefaults[1] ? "●" : ""}</i>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+  <div class="comparison-rows">
+    {questions.map((question, questionIndex) => (
+      <section
+        class="comparison-row"
+        data-compare-row={question.id}
+        style={`--question-color:${question.color};--question-soft:${question.softColor}`}
+        hidden={questionIndex !== 0}
+      >
+        <header>
+          <span>{question.number}</span>
+          <h2>{question.question}</h2>
+        </header>
+        {(["a", "b"] as const).map((side, sideIndex) => (
+          <div
+            class={`comparison-side comparison-side--${side}`}
+            data-compare-side={side}
+          >
+            {question.evidence.map((item) => (
+              <button
+                type="button"
+                class="position-card comparison-position-card"
+                data-position
+                data-speaker={item.speaker}
+                data-compare-source={item.video}
+                data-source-speaker={displayPersonName(item.speaker)}
+                data-source-time={item.timestamp}
+                hidden={item.speaker !== comparisonDefaults[sideIndex]}
+              >
+                <p>{item.claim}</p>
+                <em class="comparison-state">
+                  {item.state === "agreement"
+                    ? "Supports"
+                    : item.state === "disagreement"
+                      ? "Challenges"
+                      : "Adds uncertainty"}
+                </em>
+                <footer>
+                  <b>{displayPersonName(item.speaker)}</b>
+                  <span>Listen at {item.timestamp} →</span>
+                </footer>
+              </button>
+            ))}
+          </div>
+        ))}
+      </section>
+    ))}
+  </div>
+</article>

@@ -1,0 +1,59 @@
+---
+import type { recordViewModel } from "../../data/record-view-model";
+interface Props {
+  model: typeof recordViewModel;
+}
+const { model }: Props = Astro.props;
+const { displayPersonName, contributorGroups } = model;
+---
+
+<article class="people-view record-page" data-people-view hidden>
+  <header class="people-page-head record-hero">
+    <div>
+      <h1>Follow a person.</h1>
+      <p>
+        Trace one person’s positions through the Record and return to the
+        original conversations.
+      </p>
+    </div>
+
+  </header>
+  <div class="people-directory" data-people-directory>
+    {contributorGroups.map((group) => (
+      <section
+        class={`people-group people-group--${group.category}`}
+        data-people-group={group.category}
+      >
+        <header>
+          <div>
+            <h2>{group.label}</h2>
+            <p data-people-group-count>{group.people.length} people</p>
+          </div>
+        </header>
+        <div>
+          {group.people.map((person) => (
+            <button
+              class={`people-card people-card--${person.sourceCategory}`}
+              type="button"
+              data-open-person={person.slug}
+              data-person-questions={person.contributions
+                .map((item) => item.questionId)
+                .join(" ")}
+            >
+              <span>{person.initials}</span>
+              <div>
+                <h3>{displayPersonName(person.name)}</h3>
+                <p>
+                  {person.contributions.length} positions ·{" "}
+                  {person.questionCount}{" "}
+                  {person.questionCount === 1 ? "question" : "questions"}
+                </p>
+              </div>
+              <i aria-hidden="true">→</i>
+            </button>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</article>

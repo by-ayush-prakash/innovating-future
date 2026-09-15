@@ -1,0 +1,85 @@
+---
+import Mark from "../Mark.astro";
+import type { recordViewModel } from "../../data/record-view-model";
+interface Props {
+  model: typeof recordViewModel;
+}
+const { model }: Props = Astro.props;
+---
+
+<header class="topbar">
+  <a
+    class="record-brand"
+    href="/"
+    aria-label="Center for Innovating the Future, home"
+  >
+    <Mark>
+      Center for
+      <br />
+      Innovating the Future
+    </Mark>
+  </a>
+  <nav class="atlas-nav" aria-label="Record navigation">
+    <button class="atlas-tab active" type="button" data-header-questions>
+      <span class="atlas-tab-label">Explore</span>
+    </button>
+    <button class="atlas-tab atlas-follow" type="button" data-show-people>
+      <span class="atlas-tab-label">Follow</span>
+    </button>
+    <button class="atlas-tab compare-launch" type="button" data-show-compare>
+      <span class="atlas-tab-label" data-compare-label>
+        Compare
+      </span>
+    </button>
+    <button class="atlas-tab" type="button" data-show-about>
+      <span class="atlas-tab-label">About</span>
+    </button>
+    <button
+      class="atlas-tab atlas-contribute"
+      type="button"
+      data-open-contribution
+    >
+      <span class="atlas-tab-label">Contribute</span>
+    </button>
+  </nav>
+</header>
+
+<dialog
+  class="site-exit-dialog"
+  data-site-exit-dialog
+  aria-labelledby="site-exit-title"
+  aria-describedby="site-exit-description"
+>
+  <form method="dialog">
+    <button
+      class="site-exit-close"
+      type="submit"
+      value="cancel"
+      aria-label="Close confirmation"
+    >
+      ×
+    </button>
+    <h2 id="site-exit-title">Visit the CIF website?</h2>
+    <p id="site-exit-description">
+      You’re leaving the Record to visit the main CIF website.
+    </p>
+    <div>
+      <button class="site-exit-stay" type="submit" value="cancel" autofocus>
+        Stay in the Record
+      </button>
+      <a class="site-exit-confirm" href="/">
+        Go to CIF <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </form>
+</dialog>
+
+<script is:inline>
+  if (new URLSearchParams(location.search).has("question"))
+    document.documentElement.classList.add("record-question-restoring");
+</script>
+<style is:global>
+  .record-question-restoring [data-prototype] .workgrid {
+    visibility: hidden !important;
+  }
+</style>

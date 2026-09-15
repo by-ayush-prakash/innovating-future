@@ -1,7 +1,33 @@
-import {test,expect} from '@playwright/test';
-for(const width of [1280,390])test(`all questions remain reachable without duplication at ${width}`,async({page})=>{
- await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/work/coexisting-with-ai/record/explore/?question=understanding');await page.getByRole('button',{name:'Let’s explore'}).click();await page.locator('[data-view="understanding"] .explore-position-row').first().click();
- const view=page.locator('[data-view="understanding"]');const title=await view.locator('.reading-title').first().textContent();
- for(let count=1;count<10;count++){const last=view.locator('.journey-continuations:not([hidden])').last();const browse=last.locator('.journey-browse');if(!await browse.evaluate(n=>n.hasAttribute('open')))await browse.locator('summary').click();await browse.locator('.journey-question-choices>button').filter({hasNotText:'Revisit'}).first().click();await expect(view.locator('.journey-history>section:not([hidden])')).toHaveCount(count+1);const ids=await view.locator('.journey-history>section:not([hidden])').evaluateAll(ns=>ns.map(n=>(n as HTMLElement).dataset.journeyQuestion));expect(new Set(ids).size).toBe(count+1);await expect(view.locator('.reading-title').first()).toHaveText(title!);}
- await expect(page.getByText('You’ve reached the end of this path')).toHaveCount(0);await expect(view.locator('.journey-continuations:not([hidden])').last().locator('.journey-question-choices>button')).toHaveCount(10);
-});
+import { test, expect } from "@playwright/test";
+import {
+  recordPath,
+  picker,
+  reader,
+  openQuestion,
+  readPerson,
+  contextMode,
+  reflect,
+  continueReflection,
+  noOverflow,
+} from "./record-helpers";
+for (const width of [1280, 390])
+  test(`all questions remain reachable and unique at ${width}`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(recordPath);
+    await expect(page.locator(".welcome-card")).toHaveCount(10);
+    const ids = await page
+      .locator(".welcome-card")
+      .evaluateAll((ns) =>
+        ns.map((n) =>
+          new URL((n as HTMLAnchorElement).href).searchParams.get("question"),
+        ),
+      );
+    expect(new Set(ids).size).toBe(10);
+    for (const id of ids) {
+      await openQuestion(page, id!);
+      await expect(page.locator(picker + " .onward-source")).toHaveCount(3);
+      await noOverflow(page);
+    }
+  });

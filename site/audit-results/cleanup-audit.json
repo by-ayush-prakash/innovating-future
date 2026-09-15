@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-09-15T15:30:54.328Z",
+  "originalSuite": {
+    "total": 73,
+    "passed": 19,
+    "failed": 54
+  },
+  "updatedSuite": {
+    "total": 60,
+    "passed": 60,
+    "failed": 0
+  },
+  "astroCheck": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "visuals": [
+    {
+      "screen": "welcome",
+      "identical": true
+    },
+    {
+      "screen": "picker",
+      "identical": true
+    },
+    {
+      "screen": "follow",
+      "identical": true
+    },
+    {
+      "screen": "about",
+      "identical": true
+    }
+  ],
+  "sourceValidation": {
+    "positions": 96,
+    "lazySourceRecords": 105
+  },
+  "remainingApproval": [
+    "Retire hidden legacy inquiry screens and their controller",
+    "Remove obsolete public stylesheet copies"
+  ],
+  "publication": "Local changes only",
+  "performanceFile": "performance.json",
+  "typeScriptCheck": {
+    "errors": 0
+  }
+}

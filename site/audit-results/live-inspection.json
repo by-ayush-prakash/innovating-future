@@ -1,0 +1,54 @@
+{
+  "measuredAt": "2026-09-15T15:18:07.000Z",
+  "measurements": [
+    {
+      "url": "https://innovatingfuture.com/work/coexisting-with-ai/record/",
+      "ttfb": 407.5,
+      "domReady": 619.7999999523163,
+      "transferBytes": 8164,
+      "paints": [
+        {
+          "name": "first-paint",
+          "ms": 668
+        },
+        {
+          "name": "first-contentful-paint",
+          "ms": 668
+        }
+      ],
+      "welcomeVisible": false,
+      "bodyText": "Skip to content\nCenter for\nInnovating the Future\nWhat We Do\nResources\nAbout Us\nWork with the Center\nExplore how people co-exist with AI.\nAccess the Record\n→\nBig questions about AI, made understandable.\n\nResearchers, scientists, educators, philosophers, policymakers and builders have explored AI on The Ayush Prakash Podcast. Their ideas matter, but they are spread across long episodes and often expressed in specialist language.\n\nCIF is turning those conversations into a free, interactive public record. Start with a question, read a clear explanation, compare perspectives and follow any idea back to its source. No technical background or institutional access required.\n\nIn memory of Aaron Swartz\ni\nKnowledge should be accessible to everyone.\n\nAaron Swartz’s belief that knowledge should be open shapes how this project is built. Institutions may help fund, host, or extend the work. Access remains public.\n\nNo paywall\n\nNo purchase or subscription.\n\nNo institutional gate\n\nNo university, employer, funder, partner, or professional affiliation.\n\nNo required email\n\nNo registration. Email is only for optional updates.\n\nInspectable sources\n\nEvery explanation links to its transcript, timestamp, and context.\n\nOpen to critique\n\nCIF welcomes disagreement in public or private. Critiques grounded in clear reasoning and relevant evidence will be reviewed. Corrections will be made when warranted, and",
+      "styles": [
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap",
+        "https://innovatingfuture.com/_astro/SiteImage.6oZibaGS.css",
+        "https://innovatingfuture.com/_astro/index.CBZpt1Yc.css"
+      ]
+    },
+    {
+      "url": "https://innovatingfuture.com/work/coexisting-with-ai/record/explore/",
+      "ttfb": 374.3000000715256,
+      "domReady": 679.3000000715256,
+      "transferBytes": 193149,
+      "paints": [
+        {
+          "name": "first-paint",
+          "ms": 704
+        },
+        {
+          "name": "first-contentful-paint",
+          "ms": 704
+        }
+      ],
+      "welcomeVisible": true,
+      "bodyText": "Skip to content\nMy Journey\nThe Co-Existence Record by\nCIF\nExplore the\nworld of {AI}\n\nExplore different perspectives and decide what you\n think.\n\nWhen should we trust an AI answer?\n→\nIs AI helping you learn?\n→\nDoes AI actually understand us?\n→\nWhat should we keep doing ourselves?\n→\nWhat happens to work when AI gets better?\n→\nWhat should remain human in creative work?\n→\nHow is technology changing our relationships?\n→\nWhat does AI do to mental health and attention?\n→\nWho controls our data?\n→\nWho decides where AI gets used?\n→\nCenter for\nInnovating the Future\nExplore\nFollow\nCompare\nAbout\nContribute",
+      "styles": [
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap",
+        "https://innovatingfuture.com/styles/record-interface-v2.css?v=editorial-reading-43",
+        "https://innovatingfuture.com/_astro/SiteImage.6oZibaGS.css",
+        "https://innovatingfuture.com/_astro/explore.DL2DbM3u.css",
+        "https://innovatingfuture.com/styles/record-overrides.css?v=question-collection-2"
+      ]
+    }
+  ],
+  "errors": []
+}

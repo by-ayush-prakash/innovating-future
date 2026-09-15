@@ -9,15 +9,21 @@
     "check:record": "node scripts/validate-record-corpus.mjs",
     "preview": "astro preview",
     "test": "npm run test:functional",
-    "test:functional": "npm run build && playwright test",
-    "optimize:images": "node scripts/optimize-images.mjs"
+    "test:functional": "npm run check:types && npm run build && playwright test",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "test:audit": "npm run build && playwright test --config playwright.audit.config.ts",
+    "check:types": "astro check && tsc --noEmit"
   },
   "dependencies": {
     "astro": "7.3.2"
   },
   "devDependencies": {
+    "@astrojs/check": "0.9.10",
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
-    "sharp": "^0.35.4"
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "1.0.0",
+    "sharp": "^0.35.4",
+    "typescript": "6.0.3"
   }
 }

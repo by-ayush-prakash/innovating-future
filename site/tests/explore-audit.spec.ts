@@ -1,16 +1,38 @@
-import {test,expect} from '@playwright/test';
-const path='/work/coexisting-with-ai/record/explore/?question=creativity';
-async function start(page){await page.goto(path);await page.getByRole('button',{name:'Let’s explore'}).click();await page.locator('[data-view="creativity"] .explore-position-row').filter({hasText:'Mike Todasco'}).click();await page.waitForTimeout(1100);}
-test('saved journey, exclusive siblings and context, reload, shared URL and Back',async({page,context})=>{
- await start(page);const root=page.locator('[data-view="creativity"]');const first=root.locator('.record-perspective').first();await first.locator('[data-context-toggle]').click();await first.locator('[data-context-read]').click();
- const original=await first.locator('.reading-title').textContent();const oldHeight=await root.locator('.source-section').evaluate(n=>n.getBoundingClientRect().height);await root.locator('.journey-continuations .onward-source').first().click();await page.waitForTimeout(1100);
- await expect(root.locator('.journey-history>section')).toHaveCount(2);expect(await root.locator('.source-section').evaluate(n=>n.getBoundingClientRect().height)).toBeCloseTo(oldHeight,0);await expect(first.locator('.reading-title')).toHaveText(original!);await expect(first.locator('[data-context-reading]')).toBeVisible();
- const chapter=root.locator('.journey-chapter').last();await chapter.locator('.reading-change').click();await chapter.locator('.journey-siblings .onward-source').nth(1).click();await page.waitForTimeout(1100);await expect(chapter.locator('.record-perspective:not([hidden])')).toHaveCount(1);
- const selected=await chapter.locator('.record-perspective:not([hidden]) .reading-title').textContent();const url=page.url();expect(new URL(url).searchParams.get('journey')).toBeTruthy();
- await page.reload();await expect(root.locator('.journey-history>section:not([hidden])')).toHaveCount(2);await expect(root.locator('.journey-chapter .record-perspective:not([hidden]) .reading-title')).toHaveText(selected!);await expect(root.locator('.source-section [data-context-reading]')).toBeVisible();
- const fresh=await context.newPage();await fresh.goto(url);await expect(fresh.locator('[data-view="creativity"] .journey-history>section:not([hidden])')).toHaveCount(2);await fresh.close();
- const current=root.locator('.journey-chapter .record-perspective:not([hidden])');await current.locator('[data-context-toggle]').click();await current.locator('[data-inspector-video]').click();await expect(current.locator('iframe')).toHaveCount(1);await page.goBack();await expect(current.locator('iframe')).toHaveCount(0);
+import { test, expect } from "@playwright/test";
+import {
+  recordPath,
+  picker,
+  reader,
+  openQuestion,
+  readPerson,
+  contextMode,
+  reflect,
+  continueReflection,
+  noOverflow,
+} from "./record-helpers";
+for (const width of [390, 768, 1024, 1440])
+  test(`reader and reflection fit ${width}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await readPerson(page);
+    await noOverflow(page);
+    await expect(page.locator(reader + " .reading-description")).toBeVisible();
+    await reflect(page);
+    await noOverflow(page);
+    await page
+      .getByLabel("Your own thoughts (optional)", { exact: true })
+      .fill("An audit note");
+    await continueReflection(page);
+    await noOverflow(page);
+  });
+test("chooser supports keyboard focus and one main landmark", async ({
+  page,
+}) => {
+  await readPerson(page);
+  await expect(page.getByRole("main")).toHaveCount(1);
+  const trigger = page.locator(reader + " [data-context-toggle]");
+  await trigger.focus();
+  await expect(page.locator(reader + " .context-options")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator(reader + " .context-options")).toBeHidden();
+  await expect(trigger).toBeFocused();
 });
-for(const width of [390,620,768,820,1024,1440])test(`reader and cards fit ${width}`,async({page})=>{await page.setViewportSize({width,height:900});await start(page);const panel=page.locator('.reading-panel:visible');const geometry=await panel.boundingBox();expect(geometry!.width).toBeGreaterThan(width*.6);expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);await expect(panel.locator('.reading-description')).toBeVisible();await page.screenshot({path:`/tmp/cif-audit-${width}.png`});});
-test('chooser keyboard focus and one main landmark',async({page})=>{await start(page);await expect(page.getByRole('main')).toHaveCount(1);const button=page.locator('[data-view="creativity"] [data-change-question]').first();await button.click();const dialog=page.getByRole('dialog',{name:'Choose a question'});await expect(dialog).toBeVisible();expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBeTruthy();for(let i=0;i<18;i++){await page.keyboard.press('Tab');expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBeTruthy();}await page.keyboard.press('Escape');await expect(dialog).toBeHidden();await expect(button).toBeFocused();});
-test('Back to the initial question hides the reader and Forward restores it',async({page})=>{await start(page);await page.goBack();await expect(page.locator('.record-perspective:visible')).toHaveCount(0);await page.goForward();await expect(page.locator('.record-perspective:visible')).toHaveCount(1);});

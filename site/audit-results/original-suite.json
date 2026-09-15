@@ -1,0 +1,223 @@
+{
+  "total": 73,
+  "passed": 19,
+  "failed": 54,
+  "failures": [
+    {
+      "test": "record-reflection-answers--5b298-e-the-explored-path-at-1440",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-entry-question-entr-215e7-esh-use-one-screen-learning",
+      "error": "# Error details\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator:  locator('.explore-welcome')\nExpected: visible\nReceived: hidden\nTimeout:  2000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.explore-welcome') with timeout 2000ms\n  - waiting for locator('.explore-welcome')\n    21 \u00d7 locator resolved to <section class=\"explore-welcome\" data-astro-cid-kxmyj2ct=\"\" aria-labelledby=\"welcome-title\">\u2026</section>\n       - unexpected value \"hidden\"\n\n```\n\n```yaml\n- link \"Skip to content\":\n  - /url: \"#main\"\n- main:\n  - 'region \"Explore the world of { AI }\"':\n    - navigation \"Your journey\":\n      - group: My Journey\n    - text: The Co-Existence Record by CIF\n    - 'heading \"Explore the world of { AI }\" [level=1]':\n      - text: Explore the world of\n      - emphasis: \"{ AI }\"\n    - paragraph: Explore different perspectives and decide what you think.\n    - link \"When should we trust an AI answer?\":\n      - /url: \"?question=evidence&choose=1\"\n      - heading \"When should we trust an AI answer?\" [level=2]\n    - link \"Is AI helping you learn?\":\n      - /url: \"?question=learning&choose=1\"\n      - heading \"Is AI helping you learn?\" [level=2]\n    - link \"Does AI actually understand us?\":\n    "
+    },
+    {
+      "test": "record-source-content-Pame-93329-ble-and-scrollable-at-390px",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "divider-progress-divider-p-31a92--scroll-and-reverses-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "divider-progress-divider-p-14eff-scroll-and-reverses-at-1280",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "journey-scroll-scroll-foll-4e85c-long-passages-stay-readable",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-entry-question-entr-07573-esh-use-one-screen-evidence",
+      "error": "# Error details\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator:  locator('.explore-welcome')\nExpected: visible\nReceived: hidden\nTimeout:  2000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.explore-welcome') with timeout 2000ms\n  - waiting for locator('.explore-welcome')\n    20 \u00d7 locator resolved to <section class=\"explore-welcome\" data-astro-cid-kxmyj2ct=\"\" aria-labelledby=\"welcome-title\">\u2026</section>\n       - unexpected value \"hidden\"\n\n```\n\n```yaml\n- link \"Skip to content\":\n  - /url: \"#main\"\n- main:\n  - 'region \"Explore the world of { AI }\"':\n    - navigation \"Your journey\":\n      - group: My Journey\n    - text: The Co-Existence Record by CIF\n    - 'heading \"Explore the world of { AI }\" [level=1]':\n      - text: Explore the world of\n      - emphasis: \"{ AI }\"\n    - paragraph: Explore different perspectives and decide what you think.\n    - link \"When should we trust an AI answer?\":\n      - /url: \"?question=evidence&choose=1\"\n      - heading \"When should we trust an AI answer?\" [level=2]\n    - link \"Is AI helping you learn?\":\n      - /url: \"?question=learning&choose=1\"\n      - heading \"Is AI helping you learn?\" [level=2]\n    - link \"Does AI actually understand us?\":\n    "
+    },
+    {
+      "test": "journey-no-loops-all-quest-f3da2-without-duplication-at-1280",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "context-modes-context-swit-5a2c4-out-moving-controls-at-1280",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "context-consistency-contex-ddb87-s-throughout-journey-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "journey-no-loops-all-quest-624bb--without-duplication-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-reflection-private--ab695-bsent-from-a-shared-journey",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-source-content-Pame-b6a88-le-and-scrollable-at-1280px",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "context-consistency-contex-bf07f--throughout-journey-at-1280",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "editorial-reading-source-s-da83f-adable-and-continued-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-Explore-reveals-vie-0ab68-lection-only-when-requested",
+      "error": "# Error details\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('[data-view=\"understanding\"]').locator('[data-reveal-views]')\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('[data-view=\"understanding\"]').locator('[data-reveal-views]') with timeout 2000ms\n  - waiting for locator('[data-view=\"understanding\"]').locator('[data-reveal-views]')\n\n```\n\n```yaml\n- link \"Skip to content\":\n  - /url: \"#main\"\n- main:\n  - link \"Center for Innovating the Future, home\":\n    - /url: /\n    - text: Center for Innovating the Future\n  - navigation \"Record navigation\":\n    - button \"Explore\"\n    - button \"Follow\"\n    - button \"Compare\"\n    - button \"About\"\n    - button \"Contribute\"\n  - article:\n    - navigation \"Journey navigation\":\n      - group: My Journey\n    - heading \"Does AI actually understand us?\" [level=2]\n    - paragraph: Different people notice different things. Choose an idea to explore, then follow it back to the conversation.\n    - region \"Perspectives\":\n      - article:\n        - heading \"A human-sounding reply can make us imagine a person\" [level=4]\n        - strong: Karl Friston\n        - text: Theoretical neur"
+    },
+    {
+      "test": "record-Follow-profiles-Com-691b9-ck-restore-the-correct-view",
+      "error": "# Error details\n\n```\nError: expect(received).toBeLessThan(expected)\n\nExpected: < 2\nReceived:   54\n```\n\n"
+    },
+    {
+      "test": "explore-audit-reader-and-cards-fit-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-entry-question-entr-07787-esh-use-one-screen-judgment",
+      "error": "# Error details\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator:  locator('.explore-welcome')\nExpected: visible\nReceived: hidden\nTimeout:  2000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.explore-welcome') with timeout 2000ms\n  - waiting for locator('.explore-welcome')\n    20 \u00d7 locator resolved to <section class=\"explore-welcome\" data-astro-cid-kxmyj2ct=\"\" aria-labelledby=\"welcome-title\">\u2026</section>\n       - unexpected value \"hidden\"\n\n```\n\n```yaml\n- link \"Skip to content\":\n  - /url: \"#main\"\n- main:\n  - 'region \"Explore the world of { AI }\"':\n    - navigation \"Your journey\":\n      - group: My Journey\n    - text: The Co-Existence Record by CIF\n    - 'heading \"Explore the world of { AI }\" [level=1]':\n      - text: Explore the world of\n      - emphasis: \"{ AI }\"\n    - paragraph: Explore different perspectives and decide what you think.\n    - link \"When should we trust an AI answer?\":\n      - /url: \"?question=evidence&choose=1\"\n      - heading \"When should we trust an AI answer?\" [level=2]\n    - link \"Is AI helping you learn?\":\n      - /url: \"?question=learning&choose=1\"\n      - heading \"Is AI helping you learn?\" [level=2]\n    - link \"Does AI actually understand us?\":\n    "
+    },
+    {
+      "test": "record-question-heroes-kee-c5061-roved-question-only-opening",
+      "error": "# Error details\n\n```\nError: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[data-view] > .public-question-intro')\nExpected: 10\nReceived: 0\nTimeout:  2000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[data-view] > .public-question-intro') with timeout 2000ms\n  - waiting for locator('[data-view] > .public-question-intro')\n    21 \u00d7 locator resolved to 0 elements\n       - unexpected value \"0\"\n\n```\n\n"
+    },
+    {
+      "test": "record-reflection-skip-lea-c75fa-e-and-keyboard-choices-work",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "explore-audit-Back-to-the--3f34d-der-and-Forward-restores-it",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-reflection-answers--0b185-ve-the-explored-path-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "explore-audit-reader-and-cards-fit-820",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-section-dots-follow-jumps-and-manual-scrolling",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore', exact: true })\n\n```\n\n"
+    },
+    {
+      "test": "explore-audit-reader-and-cards-fit-620",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "context-modes-context-swit-c6f41-hout-moving-controls-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "editorial-reading-source-s-5acc5-dable-and-continued-at-1440",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-mobile-question-switching-and-Follow-remain-usable",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for locator('[data-view=\"understanding\"] [data-change-question]:visible')\n\n```\n\n"
+    },
+    {
+      "test": "record-source-content-ever-2daff-s-supplied-transcript-words",
+      "error": "# Error details\n\n```\nError: expect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 107\n\n- Array []\n+ Array [\n+   \"understanding:Karl Friston:04:47: source mismatch\",\n+   \"understanding:Viviane Clay:02:07: source mismatch\",\n+   \"understanding:Cole Wyeth:03:49: source mismatch\",\n+   \"understanding:Cole Wyeth:07:54: source mismatch\",\n+   \"understanding:Rob Eleveld:21:12: source mismatch\",\n+   \"understanding:Mike Todasco:21:55: source mismatch\",\n+   \"understanding:Karl Friston:19:40: source mismatch\",\n+   \"understanding:Viviane Clay:0:20: source mismatch\",\n+   \"understanding:Risto Miikkulainen:9:34: source mismatch\",\n+   \"understanding:Samir Chopra:14:38: source mismatch\",\n+   \"understanding:Dinidh O'Brien:4:43: source mismatch\",\n+   \"understanding:Alex Hern\u00e1ndez-Garc\u00eda:36:36: source mismatch\",\n+   \"understanding:Alistair Alexander:56:38: source mismatch\",\n+   \"understanding:Giles Crouch:47:10: source mismatch\",\n+   \"understanding:Chris Hood:13:07: source mismatch\",\n+   \"evidence:Maya Ackerman:10:40: source mismatch\",\n+   \"evidence:Nick Nadeau:06:18: source mismatch\",\n+   \"evidence:Pamela Gay:15:02: source mismatch\",\n+   \"evidence:Matthew Guzdial:8:56: sou"
+    },
+    {
+      "test": "record-question-panel-anim-51140-upports-immediate-reopening",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for locator('.question-view:visible [data-change-question]')\n\n```\n\n"
+    },
+    {
+      "test": "record-the-public-Record-scrolls-as-a-document",
+      "error": "# Error details\n\n```\nError: expect(received).toBeGreaterThan(expected)\n\nExpected: > 900\nReceived:   900\n```\n\n"
+    },
+    {
+      "test": "context-modes-continued-journey-context-also-replaces-modes",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "editorial-reading-all-feat-8e9dd-nd-matching-source-metadata",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "explore-audit-saved-journe-8667a--reload-shared-URL-and-Back",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-horizontal-focused-journey-retains-history-at-1440",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'What do you think?' })\n\n```\n\n"
+    },
+    {
+      "test": "record-reflection-data-can-be-exported-and-reset-locally",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for locator('[data-view=\"understanding\"] [data-reveal-reflection]')\n\n```\n\n"
+    },
+    {
+      "test": "record-question-search-fil-328e1-y-clears-and-opens-a-result",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for locator('[data-view=\"understanding\"] [data-change-question]:visible')\n\n```\n\n"
+    },
+    {
+      "test": "record-the-in-page-compari-2a912-on-opens-Compare-at-the-top",
+      "error": "# Error details\n\n```\nError: expect(received).toBeGreaterThan(expected)\n\nExpected: > 100\nReceived:   0\n\nCall Log:\n- Timeout 2000ms exceeded while waiting on the predicate\n```\n\n"
+    },
+    {
+      "test": "record-horizontal-focused-journey-retains-history-at-820",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'What do you think?' })\n\n```\n\n"
+    },
+    {
+      "test": "record-entry-question-entr-ce75f-se-one-screen-understanding",
+      "error": "# Error details\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator:  locator('.explore-welcome')\nExpected: visible\nReceived: hidden\nTimeout:  2000ms\n\nCall log:\n  - Expect \"toBeVisible\" locator('.explore-welcome') with timeout 2000ms\n  - waiting for locator('.explore-welcome')\n    21 \u00d7 locator resolved to <section class=\"explore-welcome\" data-astro-cid-kxmyj2ct=\"\" aria-labelledby=\"welcome-title\">\u2026</section>\n       - unexpected value \"hidden\"\n\n```\n\n```yaml\n- link \"Skip to content\":\n  - /url: \"#main\"\n- main:\n  - 'region \"Explore the world of { AI }\"':\n    - navigation \"Your journey\":\n      - group: My Journey\n    - text: The Co-Existence Record by CIF\n    - 'heading \"Explore the world of { AI }\" [level=1]':\n      - text: Explore the world of\n      - emphasis: \"{ AI }\"\n    - paragraph: Explore different perspectives and decide what you think.\n    - link \"When should we trust an AI answer?\":\n      - /url: \"?question=evidence&choose=1\"\n      - heading \"When should we trust an AI answer?\" [level=2]\n    - link \"Is AI helping you learn?\":\n      - /url: \"?question=learning&choose=1\"\n      - heading \"Is AI helping you learn?\" [level=2]\n    - link \"Does AI actually understand us?\":\n    "
+    },
+    {
+      "test": "explore-audit-reader-and-cards-fit-768",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "explore-audit-chooser-keyboard-focus-and-one-main-landmark",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "cards-rail-cards-and-current-section-at-1280",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-refresh-never-rende-e5ee0-y-even-before-scripts-start",
+      "error": "# Error details\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('[data-view=\"understanding\"] [data-reveal-views]')\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('[data-view=\"understanding\"] [data-reveal-views]') with timeout 2000ms\n  - waiting for locator('[data-view=\"understanding\"] [data-reveal-views]')\n\n```\n\n```yaml\n- link \"Skip to content\":\n  - /url: \"#main\"\n- main:\n  - link \"Center for Innovating the Future, home\":\n    - /url: /\n    - text: Center for Innovating the Future\n  - navigation \"Record navigation\":\n    - button \"Explore\"\n    - button \"Follow\"\n    - button \"Compare\"\n    - button \"About\"\n    - button \"Contribute\"\n  - article\n```\n\n"
+    },
+    {
+      "test": "record-every-published-pos-8ff8f-es-open-at-the-cited-moment",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for locator('[data-context-toggle]')\n\n```\n\n"
+    },
+    {
+      "test": "cards-rail-cards-and-current-section-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "question-switch-question-c-9311b-tay-with-the-cards-at-390px",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "question-switch-question-c-5357d-ay-with-the-cards-at-1280px",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "explore-audit-reader-and-cards-fit-1440",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "explore-audit-reader-and-cards-fit-1024",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Let\u2019s explore' })\n\n```\n\n"
+    },
+    {
+      "test": "record-horizontal-focused-journey-retains-history-at-390",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'What do you think?' })\n\n```\n\n"
+    },
+    {
+      "test": "record-source-panels-have--7b56b--and-Back-closes-the-source",
+      "error": "# Error details\n\n```\nError: expect(locator).toBeVisible() failed\n\nLocator: locator('[data-view=\"evidence\"] [data-open-direct]:visible').first()\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('[data-view=\"evidence\"] [data-open-direct]:visible').first() with timeout 2000ms\n  - waiting for locator('[data-view=\"evidence\"] [data-open-direct]:visible').first()\n\n```\n\n```yaml\n- link \"Skip to content\":\n  - /url: \"#main\"\n- main:\n  - link \"Center for Innovating the Future, home\":\n    - /url: /\n    - text: Center for Innovating the Future\n  - navigation \"Record navigation\":\n    - button \"Explore\"\n    - button \"Follow\"\n    - button \"Compare\"\n    - button \"About\"\n    - button \"Contribute\"\n  - article:\n    - navigation \"Journey navigation\":\n      - group: My Journey\n    - heading \"When should we trust an AI answer?\" [level=2]\n    - paragraph: Different people notice different things. Choose an idea to explore, then follow it back to the conversation.\n    - region \"Perspectives\":\n      - article:\n        - heading \"The hardest mistakes to catch are in subjects you do not know\" [level=4]\n        - strong: Maya Ackerman\n        - text: Compu"
+    },
+    {
+      "test": "question-switch-changing-a-62875-rting-preserves-the-opening",
+      "error": "# Error details\n\n```\nTest timeout of 8000ms exceeded.\n```\n\n```\nError: locator.click: Test timeout of 8000ms exceeded.\nCall log:\n  - waiting for locator('.question-view:not([hidden]) [data-change-question]')\n\n```\n\n"
+    }
+  ]
+}

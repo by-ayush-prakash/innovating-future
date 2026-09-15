@@ -1,0 +1,125 @@
+---
+import { recordViewModel } from "../../data/record-view-model";
+import Welcome from "./Welcome.astro";
+import Header from "./Header.astro";
+import Questions from "./Questions.astro";
+import People from "./People.astro";
+import Person from "./Person.astro";
+import Compare from "./Compare.astro";
+import Contribute from "./Contribute.astro";
+import About from "./About.astro";
+const { initialQuestion, questions } = recordViewModel;
+---
+
+<div class="prototype" data-prototype data-mode="understand">
+  <Welcome model={recordViewModel} />
+  <section class="workspace" data-app data-journey-started="true">
+    <svg
+      class="eco-app-scene"
+      viewBox="0 0 1400 900"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path class="eco-glass" d="M-120 260Q270-120 620 120T1520 40" />
+      <path
+        class="eco-vine"
+        d="M4 120c120 65 18 150 112 222s-28 155 90 220M1390 155c-100 72-5 145-108 215s22 160-105 240"
+      />
+      <g class="eco-solar" transform="translate(1040 76) rotate(7)">
+        <rect width="230" height="80" rx="7" />
+        <path d="M46 0v80M92 0v80M138 0v80M184 0v80M0 27h230M0 54h230" />
+      </g>
+    </svg>
+    <Header model={recordViewModel} />
+    <div class="workgrid">
+      <div class="evidence-canvas">
+        <div
+          class="question-selector question-heading-selector"
+          data-heading-selector
+        >
+          <button
+            class="current-question"
+            type="button"
+            data-question-toggle
+            aria-expanded="false"
+          >
+            <b data-current-question>{initialQuestion.question}</b>
+            <em aria-hidden="true">
+              <span>Choose another question</span>
+              <i>⌄</i>
+            </em>
+          </button>
+          <button
+            class="question-panel-backdrop"
+            type="button"
+            data-question-backdrop
+            hidden
+            aria-label="Close question chooser"
+          ></button>
+          <div
+            class="question-panel"
+            id="atlas-question-panel"
+            data-question-panel
+            hidden
+          >
+            <div class="rail-head">
+              <p>Choose a question</p>
+              <button
+                type="button"
+                data-close-menu
+                aria-label="Close questions"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </div>
+            <div class="search-shell">
+              <label class="global-search">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="6"></circle>
+                  <path d="m16 16 4 4"></path>
+                </svg>
+                <input
+                  type="search"
+                  placeholder="Search questions, people, or ideas"
+                  data-search
+                  autocomplete="off"
+                />
+              </label>
+              <div class="search-results" data-search-results hidden></div>
+            </div>
+            <nav aria-label="Research questions">
+              {questions.map((q, i) => (
+                <button
+                  class:list={["question-tab", { active: i === 0 }]}
+                  type="button"
+                  data-question={q.id}
+                  data-question-color={q.color}
+                  style={`--question-color:${q.color};--question-soft:${q.softColor}`}
+                  aria-pressed={i === 0 ? "true" : "false"}
+                >
+                  <span>{q.number}</span>
+                  <div>
+                    <b>{q.question}</b>
+                  </div>
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </i>
+                </button>
+              ))}
+            </nav>
+          </div>
+        </div>
+        <Questions model={recordViewModel} />
+        <People model={recordViewModel} />
+        <Person model={recordViewModel} />
+        <Compare model={recordViewModel} />
+        <Contribute model={recordViewModel} />
+        <About model={recordViewModel} />
+      </div>
+    </div>
+  </section>
+</div>

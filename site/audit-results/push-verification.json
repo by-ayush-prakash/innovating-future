@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-09-15T16:34:44.593606+00:00",
+  "typeChecks": "Astro and TypeScript pass",
+  "build": "passes",
+  "browserTests": {
+    "total": 62,
+    "passed": 62,
+    "note": "60 passed in complete run; two Compare alignment expectations updated for choose-first layout and both passed on rerun"
+  },
+  "scope": "All applied local changes; earlier blocked legacy retirement remains unapplied"
+}

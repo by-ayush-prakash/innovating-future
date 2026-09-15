@@ -182,14 +182,14 @@ function fmtDate(pubDate: string) {
 </Base>
 
 <script>
-  const input = document.getElementById("ep-search");
+  const input = document.querySelector<HTMLInputElement>("#ep-search");
   const list = document.getElementById("ep-list");
   const empty = document.getElementById("ep-empty");
   const moreBtn = document.getElementById("ep-more");
   const moreWrap = document.getElementById("ep-more-wrap");
 
   if (list) {
-    const rows = Array.from(list.querySelectorAll(".eprow"));
+    const rows = Array.from(list.querySelectorAll<HTMLElement>(".eprow"));
     const FIRST = 5;
     const STEP = 10;
     let shown = FIRST;
@@ -199,7 +199,7 @@ function fmtDate(pubDate: string) {
       let matches = 0;
 
       for (const row of rows) {
-        const hit = !q || row.dataset.title.includes(q) || row.dataset.desc.includes(q);
+        const hit = !q || (row.dataset.title || "").includes(q) || (row.dataset.desc || "").includes(q);
         if (hit) matches++;
         // searching reaches the whole back catalogue; browsing is paged
         row.style.display = q ? (hit ? "" : "none") : (matches <= shown && hit ? "" : "none");

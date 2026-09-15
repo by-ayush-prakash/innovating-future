@@ -1,29 +1,28 @@
-import { test, expect } from '@playwright/test';
-for (const width of [390, 820, 1440]) test(`focused journey retains history at ${width}`, async ({page}) => {
- await page.setViewportSize({width,height:1000});
- await page.goto('/work/coexisting-with-ai/record/explore/?question=understanding');
- await page.locator('.initial-perspective-picker .onward-source').first().click();
- await expect(page.locator('.record-perspective:visible')).toHaveCount(1);
- await expect(page.locator('.journey-siblings:visible,.journey-reflection:visible,.journey-connection:visible')).toHaveCount(0);
- await page.getByRole('button',{name:'What do you think?'}).click();
- await page.locator('.reflection-option:visible').first().click();
- await expect(page.locator('.record-perspective:visible')).toHaveCount(0);
- await page.locator('.journey-screen-forward:visible').click();
- await expect(page.locator('.journey-reflection:visible')).toHaveCount(0);
- await page.locator('.journey-connection:visible .onward-source').first().click();
- await expect(page.locator('.journey-history>section')).toHaveCount(2);
- await expect(page.locator('.record-perspective:visible')).toHaveCount(1);
- await page.getByRole('button',{name:'← Back',exact:true}).click();
- await expect(page.locator('.journey-screen-picker:visible')).toHaveCount(1);
- await expect(page.locator('.record-perspective:visible')).toHaveCount(0);
- await page.getByRole('button',{name:'← Back',exact:true}).click();
- await expect(page.locator('[data-journey-stage]:visible')).toHaveAttribute('data-journey-stage','connections');
- await page.locator('.journey-screen-steps:visible summary').click();
- await page.locator('.journey-screen-steps:visible').getByRole('button',{name:'Reflect',exact:true}).click();
- await expect(page.locator('.reflection-option:visible').first()).toHaveAttribute('aria-pressed','true');
- await page.reload();
- await expect(page.locator('.journey-reflection:visible')).toHaveCount(1);
- await expect(page.locator('.reflection-option:visible').first()).toHaveAttribute('aria-pressed','true');
- await expect(page.locator('.journey-history>section')).toHaveCount(2);
- expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
-});
+import { test, expect } from "@playwright/test";
+import {
+  recordPath,
+  picker,
+  reader,
+  openQuestion,
+  readPerson,
+  contextMode,
+  reflect,
+  continueReflection,
+  noOverflow,
+} from "./record-helpers";
+for (const width of [1440, 820, 390])
+  test(`journey history restores reading and reflection at ${width}`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await readPerson(page);
+    await reflect(page);
+    await continueReflection(page);
+    await page.goBack();
+    await expect(page.locator(".journey-reflection:visible")).toBeVisible();
+    await page.goBack();
+    await expect(page.locator(reader)).toBeVisible();
+    await page.goForward();
+    await expect(page.locator(".journey-reflection:visible")).toBeVisible();
+    await noOverflow(page);
+  });

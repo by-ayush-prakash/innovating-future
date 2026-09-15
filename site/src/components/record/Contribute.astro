@@ -1,0 +1,232 @@
+---
+import type { recordViewModel } from "../../data/record-view-model";
+interface Props {
+  model: typeof recordViewModel;
+}
+const { model }: Props = Astro.props;
+const { initialQuestion, questions } = model;
+---
+
+<article class="contribution-view record-page" data-contribution-view hidden>
+  <header class="contribution-page-head record-hero">
+    <div>
+      <h1>Expand the Record.</h1>
+      <p>
+        Bring forward a source, correction, or perspective the Record is
+        missing.
+      </p>
+    </div>
+  </header>
+  <div class="contribution-page-body">
+    <nav class="contribution-choices" aria-label="Choose a way to contribute">
+      <button
+        class="active"
+        type="button"
+        data-contribution-choice="suggest"
+        aria-pressed="true"
+      >
+        <span>01</span>
+        <span>
+          <b>Suggest a perspective</b>
+          <small>Suggest a source, correction, or view.</small>
+        </span>
+        <i aria-hidden="true">→</i>
+      </button>
+      <button
+        type="button"
+        data-contribution-choice="follow"
+        aria-pressed="false"
+      >
+        <span>02</span>
+        <span>
+          <b>Follow this question</b>
+          <small>Get updates when this question changes.</small>
+        </span>
+        <i aria-hidden="true">→</i>
+      </button>
+    </nav>
+    <div class="contribution-stage">
+      <section class="contribution-panel" data-contribution-panel="suggest">
+        <header>
+          <h2>What should we reconsider?</h2>
+          <p>One concrete addition is enough. Links and source details help.</p>
+        </header>
+        <form
+          name="coexistence-record-suggestions"
+          method="POST"
+          action="/work/coexisting-with-ai/record/explore/?submitted=suggestion"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          data-contribution-form
+        >
+          <input
+            type="hidden"
+            name="form-name"
+            value="coexistence-record-suggestions"
+          />
+          <p class="contribution-honeypot" aria-hidden="true">
+            <label>
+              Do not fill this out
+              <input name="bot-field" tabindex="-1" autocomplete="off" />
+            </label>
+          </p>
+          <input
+            type="hidden"
+            name="question"
+            value="General contribution"
+            data-suggestion-question
+          />
+          <label class="contribution-select-field">
+            <span>
+              Related question <small>Optional</small>
+            </span>
+            <span class="contribution-select-control">
+              <select
+                name="question-id"
+                data-suggestion-question-select
+                style="appearance:none!important;-webkit-appearance:none!important;border:0!important;border-bottom:1px solid #aeb8b1!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;padding:13px 48px 13px 0!important"
+              >
+                <option value="">General contribution</option>
+                {questions.map((question) => (
+                  <option value={question.id}>{question.question}</option>
+                ))}
+              </select>
+              <i aria-hidden="true">⌄</i>
+            </span>
+          </label>
+          <fieldset>
+            <legend>What are we missing?</legend>
+            <div class="contribution-types">
+              {[
+                "Person",
+                "Argument",
+                "Source",
+                "Correction",
+                "Missing viewpoint",
+              ].map((type) => (
+                <label>
+                  <input type="radio" name="type" value={type} required />
+                  <span>{type}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <label class="contribution-suggestion">
+            <span>Your suggestion</span>
+            <textarea
+              name="suggestion"
+              rows="6"
+              placeholder="Tell us what should be added or reconsidered."
+              required
+            ></textarea>
+          </label>
+          <label class="contribution-email">
+            <span>
+              Email <small>Optional, if you want a reply</small>
+            </span>
+            <input
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+          </label>
+          <p class="contribution-privacy">
+            Your suggestion is sent to CIF for review. It is never published
+            automatically.
+          </p>
+          <p
+            class="contribution-status"
+            data-contribution-status
+            aria-live="polite"
+          ></p>
+          <button type="submit">
+            Send suggestion <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </section>
+      <section
+        class="contribution-panel"
+        data-contribution-panel="follow"
+        hidden
+      >
+        <header>
+          <h2>Keep this question in view.</h2>
+          <p>
+            Join the update list for new interviews, evidence, or corrections
+            connected to this question.
+          </p>
+        </header>
+        <form
+          name="coexistence-record-question-updates"
+          method="POST"
+          action="/work/coexisting-with-ai/record/explore/?submitted=updates"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          data-contribution-form
+        >
+          <input
+            type="hidden"
+            name="form-name"
+            value="coexistence-record-question-updates"
+          />
+          <p class="contribution-honeypot" aria-hidden="true">
+            <label>
+              Do not fill this out
+              <input name="bot-field" tabindex="-1" autocomplete="off" />
+            </label>
+          </p>
+          <input
+            type="hidden"
+            name="question"
+            value={initialQuestion.question}
+            data-contribution-question
+          />
+          <label class="contribution-select-field">
+            <span>Question to follow</span>
+            <span class="contribution-select-control">
+              <select
+                name="question-id"
+                data-contribution-question-id
+                required
+                style="appearance:none!important;-webkit-appearance:none!important;border:0!important;border-bottom:1px solid #aeb8b1!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;padding:13px 48px 13px 0!important"
+              >
+                {questions.map((question) => (
+                  <option
+                    value={question.id}
+                    selected={question.id === initialQuestion.id}
+                  >
+                    {question.question}
+                  </option>
+                ))}
+              </select>
+              <i aria-hidden="true">⌄</i>
+            </span>
+          </label>
+          <label>
+            <span>Email address</span>
+            <input
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+              required
+            />
+          </label>
+          <p class="contribution-privacy">
+            Updates are sent manually when the Record changes. You can request
+            removal through CIF’s contact page.
+          </p>
+          <p
+            class="contribution-status"
+            data-contribution-status
+            aria-live="polite"
+          ></p>
+          <button type="submit">
+            Follow this question <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+</article>

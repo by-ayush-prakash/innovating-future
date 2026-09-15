@@ -1,0 +1,612 @@
+---
+import type { recordViewModel } from "../../data/record-view-model";
+interface Props {
+  model: typeof recordViewModel;
+}
+const { model }: Props = Astro.props;
+const {
+  laneLabels,
+  displayPersonName,
+  personInitialsFor,
+  publicReading,
+  reflectionChoices,
+  learningGuides,
+  questions,
+} = model;
+---
+
+{questions.map((q, i) => {
+  const reading = publicReading[q.id as keyof typeof publicReading];
+  const guide = learningGuides[q.id as keyof typeof learningGuides];
+  const choices = reflectionChoices[q.id as keyof typeof reflectionChoices];
+  return (
+    <article
+      class="question-view record-page"
+      data-view={q.id}
+      data-question-color={q.color}
+      style={`--question-color:${q.color};--question-soft:${q.softColor}`}
+      hidden={i !== 0}
+    >
+      <section
+        class="explore-starters"
+        aria-label={`Starting positions on ${q.question}`}
+      >
+        <header>
+          <p class="positions-invitation">
+            Choose a perspective. Follow it to the source.
+          </p>
+        </header>
+        <div class="explore-position-list">
+          {reading.cards.map((card) => {
+            const evidenceIndex =
+              "evidenceIndex" in card ? card.evidenceIndex : undefined;
+            const evidence =
+              typeof evidenceIndex === "number"
+                ? q.evidence[evidenceIndex]
+                : undefined;
+            if (!evidence) return null;
+            return (
+              <button
+                class={`explore-position-row explore-position-row--${evidence.state}`}
+                type="button"
+                data-open-evidence-key={`${q.id}:${evidence.speaker}:${evidence.timestamp}`}
+                data-open-direct
+                data-explore-position-state={evidence.state}
+                aria-pressed="false"
+              >
+                <span class="perspective-speaker">
+                  <span class="perspective-speaker-initials" aria-hidden="true">
+                    {personInitialsFor(evidence.speaker)}
+                  </span>
+                  <b>{displayPersonName(evidence.speaker)}</b>
+                </span>
+                <span>
+                  <strong>{card.title}</strong>
+                  <p>{card.body}</p>
+                </span>
+                <span>
+                  Read the source{" "}
+                  <i aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </i>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+      <section class="explore-question-context">
+        <h2>{guide.headline}</h2>
+        <p>{guide.intro}</p>
+      </section>
+      <nav
+        class="explore-lenses"
+        aria-label={`Explore the positions on ${q.question}`}
+      >
+        <button
+          type="button"
+          data-explore-lens="agreement"
+          aria-pressed="false"
+        >
+          Shared ground
+        </button>
+        <button
+          class="active"
+          type="button"
+          data-explore-lens="disagreement"
+          aria-pressed="true"
+        >
+          Where views split
+        </button>
+        <button
+          type="button"
+          data-explore-lens="uncertainty"
+          aria-pressed="false"
+        >
+          Still unresolved
+        </button>
+      </nav>
+      <section class="explore-focus" aria-live="polite">
+        <div>
+          <h2 data-explore-focus-title>Where the positions divide</h2>
+          <p data-explore-focus-copy>{guide.tension}</p>
+        </div>
+        <button type="button" data-explore-show-lens>
+          See these positions <span aria-hidden="true">↓</span>
+        </button>
+      </section>
+      <section
+        class="public-position-grid"
+        aria-label={`Ways people approach ${q.question}`}
+      >
+        {reading.cards.map((card) => {
+          const evidenceIndex =
+            "evidenceIndex" in card ? card.evidenceIndex : undefined;
+          const evidence =
+            typeof evidenceIndex === "number"
+              ? q.evidence[evidenceIndex]
+              : undefined;
+          return evidence ? (
+            <button
+              class="public-position-card"
+              type="button"
+              data-public-position
+              data-open-evidence-key={`${q.id}:${evidence.speaker}:${evidence.timestamp}`}
+              aria-pressed="false"
+            >
+              <h2>{card.title}</h2>
+              <p>{card.body}</p>
+              <span aria-hidden="true">→</span>
+            </button>
+          ) : (
+            <button
+              class="public-position-card"
+              type="button"
+              data-public-position
+              data-see-evidence
+              aria-pressed="false"
+            >
+              <h2>{card.title}</h2>
+              <p>{card.body}</p>
+              <span aria-hidden="true">→</span>
+            </button>
+          );
+        })}
+      </section>
+      <section class="explore-compare">
+        <p>
+          <strong>Compare positions</strong>
+          <span>
+            Choose any two people and inspect where their claims align, diverge,
+            or remain unresolved.
+          </span>
+        </p>
+        <button type="button" data-explore-compare>
+          Open comparison <span aria-hidden="true">→</span>
+        </button>
+      </section>
+      <section class="explore-reflection">
+        <header>
+          <h2>After exploring</h2>
+          <p>
+            Record a provisional view, test it, and name what remains
+            unresolved.
+          </p>
+        </header>
+        <div>
+          <details open data-reflection-stance>
+            <summary>
+              <b data-reflection-stance-title>
+                Which position is closest to yours?
+              </b>
+              <span aria-hidden="true">＋</span>
+            </summary>
+            <article class="stance-builder">
+              <div>
+                {choices.map((choice) => (
+                  <button type="button" data-stance={choice.value}>
+                    {choice.label}
+                  </button>
+                ))}
+              </div>
+              <p data-stance-feedback>
+                Choose a provisional position. You can revise it as you examine
+                stronger evidence.
+              </p>
+            </article>
+          </details>
+          <details data-reflection-evidence>
+            <summary>
+              <b data-adaptive-evidence-title>
+                What evidence could change your mind?
+              </b>
+              <span aria-hidden="true">＋</span>
+            </summary>
+            <article class="explore-evidence-test">
+              <p data-adaptive-evidence data-default-evidence={q.nextEvidence}>
+                {q.nextEvidence}
+              </p>
+              <div>
+                <button type="button" data-evidence-response="yes">
+                  Yes
+                </button>
+                <button type="button" data-evidence-response="partly">
+                  Partly
+                </button>
+                <button type="button" data-evidence-response="no">
+                  No
+                </button>
+              </div>
+            </article>
+          </details>
+          <details data-reflection-question>
+            <summary>
+              <b>What question comes next?</b>
+              <span aria-hidden="true">＋</span>
+            </summary>
+            <label class="explore-next-question">
+              <span data-adaptive-question-label>Your next question</span>
+              <input
+                type="text"
+                data-own-question={q.id}
+                placeholder="What would you investigate next?"
+              />
+            </label>
+          </details>
+        </div>
+        <footer class="reflection-data-controls">
+          <p>
+            Your reflections stay in this browser and are never sent to CIF.
+          </p>
+          <div>
+            <button type="button" data-share-question={q.id}>
+              Copy question link
+            </button>
+            <button type="button" data-export-reflections>
+              Export reflections
+            </button>
+            <button type="button" data-reset-reflection={q.id}>
+              Reset this question
+            </button>
+          </div>
+        </footer>
+      </section>
+      <section class="learning-guide">
+        <header>
+          <h2>{guide.headline}</h2>
+          <p>{guide.intro}</p>
+        </header>
+        <div class="concept-grid">
+          {guide.concepts.map((concept, index) => (
+            <article>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{concept.term}</h3>
+              <p>{concept.meaning}</p>
+              <div>
+                <b>What this does not establish</b>
+                <small>{concept.boundary}</small>
+              </div>
+            </article>
+          ))}
+        </div>
+        <footer>
+          <p>{guide.tension}</p>
+        </footer>
+      </section>
+      <section class="map">
+        <header>
+          <div>
+            <span data-map-title data-default-title={guide.mapTitle}>
+              {guide.mapTitle}
+            </span>
+            <small
+              data-map-description
+              data-default-description={guide.mapDescription}
+            >
+              {guide.mapDescription}
+            </small>
+          </div>
+          <button class="map-reset" type="button" data-map-reset hidden>
+            All perspectives <span aria-hidden="true">↖</span>
+          </button>
+        </header>
+        {q.evidence.length ? (
+          <>
+            <div class="lanes">
+              {(["agreement", "disagreement", "uncertainty"] as const).map(
+                (state) => (
+                  <section class={`lane lane--${state}`}>
+                    <div class="lane-name">
+                      <i></i>
+                      <b>{laneLabels[state]}</b>
+                    </div>
+                    {q.evidence
+                      .filter((item) => item.state === state)
+                      .map((item) => (
+                        <button
+                          class="evidence-card"
+                          type="button"
+                          data-evidence
+                          data-evidence-key={`${q.id}:${item.speaker}:${item.timestamp}`}
+                          data-state={item.state}
+                          data-speaker={item.speaker}
+                          data-segment={item.segment}
+                          data-timestamp={item.timestamp}
+                          data-claim={item.claim}
+                          data-context={item.context}
+                          data-video={item.video}
+                        >
+                          <header>
+                            <span>{displayPersonName(item.speaker)}</span>
+                            <small>{item.segment}</small>
+                          </header>
+                          <h3>{item.claim}</h3>
+                          <div class="evidence-card-context">
+                            <p>{item.context}</p>
+                          </div>
+                          <footer>
+                            <em>{item.timestamp}</em>
+                            <b>
+                              Explore claim <span aria-hidden="true">→</span>
+                            </b>
+                          </footer>
+                        </button>
+                      ))}
+                  </section>
+                ),
+              )}
+            </div>
+            <div hidden>
+              {q.evidence
+                .filter((item) => item.state === "perspective")
+                .map((item) => (
+                  <button
+                    type="button"
+                    data-evidence
+                    data-evidence-key={`${q.id}:${item.speaker}:${item.timestamp}`}
+                    data-state={item.state}
+                    data-speaker={item.speaker}
+                    data-segment={item.segment}
+                    data-timestamp={item.timestamp}
+                    data-claim={item.claim}
+                    data-context={item.context}
+                    data-video={item.video}
+                  ></button>
+                ))}
+            </div>
+          </>
+        ) : (
+          <div class="empty">
+            <h2>No source records match this question.</h2>
+          </div>
+        )}
+      </section>
+      <button class="quiet-contribution" type="button" data-open-contribution>
+        Add a missing view <span aria-hidden="true">→</span>
+      </button>
+      <section class="reasoning-path">
+        <div class="reasoning-body">
+          <header>
+            <div>
+              <h2>Build your position.</h2>
+              <p>
+                Use four checks to turn what you explored into a view you can
+                explain, test, and revise.
+              </p>
+            </div>
+          </header>
+          <ol
+            class="reflection-progress"
+            aria-label="Position-building progress"
+          >
+            <li data-reflection-progress="challenge">
+              <span>01</span>
+              <b>Test a claim</b>
+              <i>Choose one</i>
+            </li>
+            <li data-reflection-progress="evidence">
+              <span>02</span>
+              <b>Set the evidence bar</b>
+              <i>Answer</i>
+            </li>
+            <li data-reflection-progress="stance">
+              <span>03</span>
+              <b>Take a position</b>
+              <i>Choose</i>
+            </li>
+            <li data-reflection-progress="question">
+              <span>04</span>
+              <b>Ask what comes next</b>
+              <i>Write</i>
+            </li>
+          </ol>
+
+          <section
+            class="reflection-stage reflection-stage--challenge"
+            data-reflection-stage="challenge"
+          >
+            <header>
+              <span>01</span>
+              <div>
+                <h3>Choose one test for the claims you read.</h3>
+                <p>
+                  Open a test to reveal the question it asks of the evidence.
+                </p>
+              </div>
+              <b data-stage-status="challenge">Choose one</b>
+            </header>
+            <div class="reasoning-steps">
+              {q.watchFor.map((item, index) => (
+                <button
+                  type="button"
+                  data-reasoning-step
+                  data-challenge-index={index}
+                  aria-expanded="false"
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <b>{item}</b>
+                    <p>
+                      {guide.prompts[index] ||
+                        "What would you need to know before deciding?"}
+                    </p>
+                  </div>
+                  <i aria-hidden="true">＋</i>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <div class="reflection-grid">
+            <section
+              class="reflection-stage reflection-stage--evidence"
+              data-reflection-stage="evidence"
+            >
+              <header>
+                <span>02</span>
+                <div>
+                  <h3>Would this evidence change your view?</h3>
+                  <p>
+                    Use the proposed test as a threshold, then decide how much
+                    it would matter.
+                  </p>
+                </div>
+                <b data-stage-status="evidence">Answer</b>
+              </header>
+              <article class="evidence-threshold">
+                <p>{q.nextEvidence}</p>
+              </article>
+              <div
+                class="evidence-response"
+                role="group"
+                aria-label="Would this evidence change your view?"
+              >
+                <button type="button" data-evidence-response="yes">
+                  Yes
+                </button>
+                <button type="button" data-evidence-response="partly">
+                  Partly
+                </button>
+                <button type="button" data-evidence-response="no">
+                  No
+                </button>
+              </div>
+            </section>
+
+            <section
+              class="reflection-stage reflection-stage--stance"
+              data-reflection-stage="stance"
+            >
+              <header>
+                <span>03</span>
+                <div>
+                  <h3>Where do you stand now?</h3>
+                  <p>
+                    Record your current position. It can change as you open
+                    stronger evidence.
+                  </p>
+                </div>
+                <b data-stage-status="stance">Choose</b>
+              </header>
+              <article class="stance-builder">
+                <div>
+                  <button type="button" data-stance="lean">
+                    I lean this way
+                  </button>
+                  <button type="button" data-stance="different">
+                    I see it differently
+                  </button>
+                  <button type="button" data-stance="more">
+                    I need more evidence
+                  </button>
+                </div>
+                <p data-stance-feedback>
+                  Choose the answer that best reflects your position after
+                  reading the evidence.
+                </p>
+              </article>
+            </section>
+          </div>
+
+          <section
+            class="reflection-stage reflection-stage--question"
+            data-reflection-stage="question"
+          >
+            <header>
+              <span>04</span>
+              <div>
+                <h3>What should be investigated next?</h3>
+                <p>
+                  A useful next question names the uncertainty that remains.
+                </p>
+              </div>
+              <b data-stage-status="question">Write</b>
+            </header>
+            <label class="own-question">
+              <span>Your next question</span>
+              <input
+                type="text"
+                data-own-question={q.id}
+                placeholder="What would you investigate next?"
+              />
+            </label>
+          </section>
+
+          <section class="inquiry-trail" data-inquiry-trail={q.id}>
+            <header>
+              <div>
+                <h3>Your position so far.</h3>
+                <p>
+                  This summary updates as you examine sources and revise your
+                  answers.
+                </p>
+              </div>
+              <div class="trail-actions">
+                <div class="trail-progress">
+                  <b data-trail-progress>
+                    0 of {q.evidence.length} positions opened
+                  </b>
+                  <span aria-hidden="true">
+                    <i data-trail-meter></i>
+                  </span>
+                </div>
+                <div class="trail-data-actions">
+                  <button type="button" data-share-question={q.id}>
+                    Copy question link
+                  </button>
+                  <button type="button" data-export-reflections>
+                    Export reflections
+                  </button>
+                  <button type="button" data-reset-reflection={q.id}>
+                    Reset this question
+                  </button>
+                </div>
+              </div>
+            </header>
+            <p class="trail-privacy">
+              Your reflections are saved only in this browser. They are never
+              sent to CIF. Export a copy or reset them at any time.
+            </p>
+            <div class="trail-summary">
+              <article>
+                <small>Claim test</small>
+                <strong data-trail-test>Not chosen</strong>
+              </article>
+              <article>
+                <small>Evidence threshold</small>
+                <strong data-trail-threshold>Not answered</strong>
+              </article>
+              <article>
+                <small>Current position</small>
+                <strong data-trail-current>Undecided</strong>
+                <span>
+                  Started: <i data-trail-start>Undecided</i>
+                </span>
+              </article>
+              <article>
+                <small>Sources examined</small>
+                <strong data-trail-opened>Nothing yet</strong>
+              </article>
+              <article class="trail-summary-question">
+                <small>Next question</small>
+                <strong data-trail-question>Not written yet</strong>
+              </article>
+            </div>
+            <div class="trail-next">
+              <div>
+                <p data-trail-recommendation>
+                  Open a position to begin testing the answer.
+                </p>
+              </div>
+              <button type="button" data-trail-next>
+                Show me <span>→</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </article>
+  );
+})}

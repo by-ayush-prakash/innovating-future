@@ -1,5 +1,4 @@
 ---
-import SiteImage from '../../../../components/SiteImage.astro';
 import Base from "../../../../layouts/Base.astro";
 
 const voices = [
@@ -31,11 +30,7 @@ const archiveStages = [
   <section class="report-hero" aria-labelledby="report-title">
     <h1 id="report-title">Explore how people co-exist with AI.</h1>
 
-    <div class="report-art-stack" aria-label="Three views of artificial intelligence">
-      <figure class="report-art report-art--left"><SiteImage src="/images/ai-everyday-use.jpg" alt="A person using an AI writing prompt on a phone" /></figure>
-      <figure class="report-art report-art--center"><SiteImage src="/images/ai-brain-artwork.png" alt="A sculptural brain, the letters AI and a cursor on a tiled background" /></figure>
-      <figure class="report-art report-art--right"><SiteImage src="/images/ai-light-field.jpg" alt="Blue illuminated lines suggesting a digital network" /></figure>
-    </div>
+
 
     <a class="report-enter" href="/work/coexisting-with-ai/record/explore/" aria-label="Access the Co-Existence Record">
       <span class="report-enter-label">Access the Record</span>
@@ -250,48 +245,6 @@ const archiveStages = [
 
     const archiveExplorer = document.querySelector<HTMLElement>('[data-archive-explorer]');
 
-    const recordEntry = document.querySelector<HTMLAnchorElement>('.report-enter');
-    let enteringRecord = false;
-    let entryHeroAnimation: Animation | undefined;
-    const resetRecordEntry = () => {
-      enteringRecord = false;
-      document.querySelectorAll('.record-entry-launch').forEach((overlay) => overlay.remove());
-      entryHeroAnimation?.cancel();
-      entryHeroAnimation = undefined;
-    };
-    // Browser history restores the DOM, including completed animation layers.
-    addEventListener('pagehide', resetRecordEntry);
-    addEventListener('pageshow', (event) => {
-      resetRecordEntry();
-      if (event.persisted) {
-        try { sessionStorage.removeItem('cif-record-entry'); } catch {}
-      }
-    });
-    recordEntry?.addEventListener('click', async (event) => {
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || enteringRecord) return;
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      event.preventDefault();
-      enteringRecord = true;
-      const rect = recordEntry.getBoundingClientRect();
-      const launch = document.createElement('div');
-      launch.className = 'record-entry-launch';
-      launch.setAttribute('aria-hidden', 'true');
-      Object.assign(launch.style, {position:'fixed',zIndex:'10000',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden',background:'#000',color:'#fff',pointerEvents:'none',top:`${rect.top}px`,left:`${rect.left}px`,width:`${rect.width}px`,height:`${rect.height}px`,borderRadius:`${rect.height / 2}px`});
-      launch.innerHTML = '<span>The Co-Existence Record</span>';
-      const launchName = launch.querySelector<HTMLElement>('span');
-      if (launchName) Object.assign(launchName.style,{font:'500 clamp(18px,2.2vw,30px)/1 "Helvetica Neue",Arial,sans-serif',letterSpacing:'-.025em',whiteSpace:'nowrap'});
-      document.body.append(launch);
-      try { sessionStorage.setItem('cif-record-entry', '1'); } catch {}
-      launch.classList.add('is-expanding');
-      launchName?.animate([{opacity:0,transform:'translateY(12px)',offset:0},{opacity:0,transform:'translateY(12px)',offset:.28},{opacity:1,transform:'translateY(0)',offset:1}],{duration:620,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});
-      const animation = launch.animate([
-        {top:`${rect.top}px`,left:`${rect.left}px`,width:`${rect.width}px`,height:`${rect.height}px`,borderRadius:`${rect.height / 2}px`},
-        {top:'0px',left:'0px',width:'100vw',height:'100dvh',borderRadius:'0px'}
-      ], {duration:760,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});
-      entryHeroAnimation = document.querySelector('.report-hero')?.animate([{opacity:1,transform:'scale(1)'},{opacity:.35,transform:'scale(.985)'}],{duration:520,easing:'ease-out',fill:'forwards'});
-      await animation.finished.catch(() => {});
-      if (enteringRecord) location.assign(recordEntry.href);
-    });
     const archiveTabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-archive-tab]'));
     const archivePanels = Array.from(document.querySelectorAll<HTMLElement>('[data-archive-panel]'));
     const activateArchiveStage = (index: number, moveFocus = false) => {

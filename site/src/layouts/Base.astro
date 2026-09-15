@@ -96,6 +96,13 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
             });
           }, { threshold: .08, rootMargin: '0px 0px -8% 0px' });
 
+          addEventListener('pagehide', () => {
+            observer.disconnect();
+            items.forEach(item => item.classList.add('is-visible'));
+          }, {once:true});
+          addEventListener('pageshow', event => {
+            if (event.persisted) items.forEach(item => item.classList.add('is-visible'));
+          });
           requestAnimationFrame(() => items.forEach((item) => observer.observe(item)));
         })();
       </script>

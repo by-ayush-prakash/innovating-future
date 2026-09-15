@@ -47,8 +47,8 @@ const appearances = [
       <div class="alt">
         {properties.map((p, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
-            <div class:list={["afig", p.fit === "contain" && "afig--art", p.panel === "mantic" && "mantic-panel"]}>
-              {p.panel === "mantic" ? (
+            <div class:list={["afig", "fit" in p && p.fit === "contain" && "afig--art", "panel" in p && p.panel === "mantic" && "mantic-panel"]}>
+              {"panel" in p && p.panel === "mantic" ? (
                 <div class="mantic-panel__inner" aria-hidden="true">
                   <span class="mantic-panel__kicker">Mantic Publishing</span>
                   <span class="mantic-panel__monogram">M</span>

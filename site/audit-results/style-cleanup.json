@@ -1,0 +1,18 @@
+[
+  {
+    "file": "src/styles/record-explore.css",
+    "beforeBytes": 178059,
+    "afterBytes": 178059,
+    "removedRules": 0,
+    "prunedSelectors": 0,
+    "duplicates": 0
+  },
+  {
+    "file": "src/styles/record-interface.css",
+    "beforeBytes": 240205,
+    "afterBytes": 240205,
+    "removedRules": 0,
+    "prunedSelectors": 0,
+    "duplicates": 0
+  }
+]

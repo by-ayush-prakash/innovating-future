@@ -1,0 +1,14 @@
+[
+  {
+    "file": "src/styles/record-interface.css",
+    "removedDeclarations": 109,
+    "beforeBytes": 211655,
+    "afterBytes": 208543
+  },
+  {
+    "file": "src/styles/record-explore.css",
+    "removedDeclarations": 903,
+    "beforeBytes": 192804,
+    "afterBytes": 165471
+  }
+]
