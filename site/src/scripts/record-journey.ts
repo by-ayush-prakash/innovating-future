@@ -799,7 +799,7 @@ export function initRecordJourney() {
       questionIndex.setAttribute('aria-labelledby', 'journey-question-index-title');
       const header = el('header');
       const eyebrow = el('p', 'The Co-Existence Record by CIF');
-      const title = el('h1', 'What do you want to explore?');
+      const title = el('h1', 'Follow your curiosity.');
       title.id = 'journey-question-index-title';
       header.append(eyebrow, title, el('p', 'Choose a question, then explore how different people answer it.'));
       const grid = el('div', '', 'journey-question-grid');
@@ -811,8 +811,15 @@ export function initRecordJourney() {
         const source = root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`);
         const card = el('button', '', `journey-question-card journey-question-card--${id}`);
         card.type = 'button';
-        const number = source?.querySelector(':scope > span')?.textContent?.trim() || String(seen.size).padStart(2, '0');
-        card.append(el('span', number), el('strong', story.question), el('i', '→'));
+        const art = welcome?.querySelector(`.welcome-card--${CSS.escape(id)} .question-concept-art`)?.cloneNode(true) as HTMLElement | undefined;
+        if (art) card.append(art);
+        else {
+          const mark = el('div', '', 'question-concept-art');
+          mark.setAttribute('aria-hidden', 'true');
+          mark.innerHTML = '<svg viewBox="0 0 160 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="48" cy="55" r="20"/><circle cx="112" cy="30" r="12"/><circle cx="112" cy="80" r="12"/><path d="M68 50l32-16M68 61l32 15M112 42v26"/></svg>';
+          card.append(mark);
+        }
+        card.append(el('strong', story.question), el('i', '→'));
         card.onclick = () => {
           root.classList.remove('show-question-index');
           questionIndex!.hidden = true;
