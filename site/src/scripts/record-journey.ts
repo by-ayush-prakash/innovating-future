@@ -122,20 +122,22 @@ export function initRecordJourney() {
     const home = el('button'); home.type = 'button';
     home.setAttribute('aria-label', 'Explore introduction');
     if (currentLabel === 'Explore') home.setAttribute('aria-current', 'step');
-    home.append(el('span', '', 'journey-stage-dot'));
+    home.append(el('span', 'Explore introduction', 'journey-destination'));
     home.onclick = () => { steps.open = false; history.pushState({}, '', location.pathname); returnToWelcome(); };
     track.append(home);
     const questions = el('button'); questions.type = 'button';
     questions.setAttribute('aria-label', 'Browse all questions');
     if (currentLabel === 'Questions') questions.setAttribute('aria-current', 'step');
-    questions.append(el('span', '', 'journey-stage-dot'));
+    questions.append(el('span', 'All questions', 'journey-destination'));
     questions.onclick = () => { steps.open = false; showQuestionIndex(); };
     track.append(questions);
     visits.forEach((visit) => {
       const button = el('button'); button.type = 'button';
-      const label = stageLabels[visit.stage];
+      const story = byKey.get(visit.key);
+      const label = stageLabels[visit.stage] + (visit.stage !== 'perspectives' && story ? ` · ${story.source.speaker}` : '');
       button.setAttribute('aria-label', label);
-      button.append(el('span', '', 'journey-stage-dot'));
+      button.append(el('span', label, 'journey-destination'));
+      button.disabled = isCurrent(visit);
       if (isCurrent(visit)) button.setAttribute('aria-current', 'step');
       button.onclick = () => { steps.open = false; openVisit(visit); };
       track.append(button);
@@ -174,13 +176,19 @@ export function initRecordJourney() {
   };
   let stageTransition = 0;
   const showStage = async (key: string, stage: Stage, direction = 1, persist = true) => {
-    root.classList.remove('show-question-index');
-    if (questionIndex) questionIndex.hidden = true;
-    root.classList.remove('reading-viewport-locked');
     const state = states.get(activeRoot);
     if (!state) return;
     cancelJourneyMotion();
     const view = viewFor(activeRoot);
+    if (!view || !byKey.has(key)) return;
+    root.classList.remove('show-welcome', 'show-question-index', 'reading-viewport-locked');
+    if (welcome) welcome.hidden = true;
+    if (questionIndex) questionIndex.hidden = true;
+    if (view.hidden) {
+      root.dataset.restoringNavigation = 'true';
+      root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(activeRoot)}"]`)?.click();
+      delete root.dataset.restoringNavigation;
+    }
     const transitionId = ++stageTransition;
     const currentStage = view.dataset.journeyStage as Stage | undefined;
     const currentTarget = currentStage === 'perspectives'
@@ -775,6 +783,9 @@ export function initRecordJourney() {
     bar.replaceChildren(steps);
   };
   const returnToWelcome = () => {
+    ++stageTransition;
+    cancelJourneyMotion();
+    root.querySelectorAll('.record-card-transition,.record-card-ghost').forEach(overlay => overlay.remove());
     welcome?.getAnimations().forEach(animation => animation.cancel());
     for (const panel of panels.values()) panel.stop();
     root.classList.add('show-welcome');
@@ -790,6 +801,8 @@ export function initRecordJourney() {
     returnToWelcome();
   });
   const showQuestionIndex = () => {
+    ++stageTransition;
+    cancelJourneyMotion();
     for (const panel of panels.values()) panel.stop();
     root.classList.remove('show-welcome');
     root.classList.remove('reading-viewport-locked');
@@ -846,7 +859,7 @@ export function initRecordJourney() {
       journey.setAttribute('aria-label', 'Your journey');
       questionIndex.prepend(journey);
     }
-    journey.replaceChildren(makeJourneySteps([], 'Questions', () => false, () => {}));
+    journey.replaceChildren(makeJourneySteps(states.get(activeRoot)?.visited || [], 'Questions', () => false, visit => { void showStage(visit.key, visit.stage, -1); }));
     root.classList.add('show-question-index');
     questionIndex.hidden = false;
     questionIndex.querySelector<HTMLElement>('h1')?.focus({preventScroll:true});
@@ -863,6 +876,7 @@ export function initRecordJourney() {
     event.preventDefault();
     if (openingQuestion) return;
     openingQuestion = true;
+    const openingTransition = ++stageTransition;
     const id = new URL(card.href).searchParams.get('question')!;
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const animations: Animation[] = [];
@@ -913,6 +927,7 @@ export function initRecordJourney() {
         animations.push(outgoing);
         await outgoing.finished.catch(() => {});
       }
+      if (openingTransition !== stageTransition) return;
       root.classList.remove('show-welcome');
       welcome.hidden = true;
       root.querySelector<HTMLButtonElement>(`[data-question="${CSS.escape(id)}"]`)?.click();
