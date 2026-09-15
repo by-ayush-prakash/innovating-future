@@ -1764,3 +1764,12 @@ body #main .prototype.show-welcome .welcome-card-action{animation:record-idea-ar
 
 /* Screen headings receive focus for announcements, without a control outline. */
 body #main .prototype .initial-perspective-picker h2[tabindex="-1"]:focus{outline:none!important}
+
+body #main .prototype.journey-horizontal .reading-next-steps{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:32px;max-width:100%}
+body #main .prototype.journey-horizontal .reading-next-steps>button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border:1px solid #101d35;border-radius:999px;background:transparent;color:#101d35;font:500 14px/1.3 var(--sans);cursor:pointer;box-shadow:none;transition:background 180ms ease,transform 180ms ease}
+body #main .prototype.journey-horizontal .reading-next-steps>.reading-reflect{background:#101d35;color:white}
+body #main .prototype.journey-horizontal .reading-next-steps>.reading-connected{min-height:32px;padding:4px 0;border:0;border-radius:0;text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--red)}
+body #main .prototype.journey-horizontal .reading-next-steps>button:hover{transform:translateY(-2px);background:var(--blue-soft)}
+body #main .prototype.journey-horizontal .reading-next-steps>.reading-reflect:hover{background:#26364c}
+body #main .prototype.journey-horizontal .reading-next-steps>button:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){body #main .prototype.journey-horizontal .reading-next-steps>button{transition:none;transform:none}}

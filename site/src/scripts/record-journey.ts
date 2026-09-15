@@ -238,6 +238,28 @@ export function initRecordJourney() {
       intro.append(el('h2', byKey.get(key)!.question), el('p', 'Different people notice different things. Choose an idea to explore, then follow it back to the conversation.'));
       screenPicker.replaceChildren(intro, cards);
     }
+    if (stage === 'reading') {
+      const readingHeading = view.querySelector<HTMLElement>('.journey-history > section:not([hidden]) .reading-heading');
+      if (readingHeading) {
+        let continuation = readingHeading.querySelector<HTMLElement>('.reading-next-steps');
+        if (!continuation) {
+          continuation = el('nav', '', 'reading-next-steps');
+          continuation.setAttribute('aria-label', 'Continue exploring this perspective');
+          readingHeading.append(continuation);
+        }
+        const hasReflection = !!view.querySelector('.journey-history > section:not([hidden]) .journey-reflection');
+        const reflect = el('button', 'Reflect on this →', 'reading-reflect');
+        reflect.type = 'button';
+        reflect.onclick = () => showStage(key, 'reflection');
+        const others = el('button', 'Hear another perspective →', 'reading-another');
+        others.type = 'button';
+        others.onclick = () => showStage(key, 'perspectives');
+        const connected = el('button', 'Explore connected ideas →', 'reading-connected');
+        connected.type = 'button';
+        connected.onclick = () => showStage(key, 'connections');
+        continuation.replaceChildren(...(hasReflection ? [reflect, others, connected] : [others, connected]));
+      }
+    }
     let forward = view.querySelector<HTMLButtonElement>('.journey-screen-forward');
     if (!forward) { forward = el('button', '', 'journey-screen-forward'); forward.type = 'button'; view.append(forward); }
     forward.hidden = stage !== 'reflection';
