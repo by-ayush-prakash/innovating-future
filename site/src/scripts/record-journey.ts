@@ -137,9 +137,9 @@ export function initRecordJourney() {
     });
     const track = el('div', '', 'journey-dot-track');
     const home = el('button'); home.type = 'button';
-    home.setAttribute('aria-label', 'Explore questions');
+    home.setAttribute('aria-label', 'Start your journey');
     if (currentLabel === 'Explore') home.setAttribute('aria-current', 'step');
-    home.append(el('span', 'Explore questions', 'journey-destination'));
+    home.append(el('span', 'Start your journey', 'journey-destination'));
     home.onclick = () => { steps.open = false; history.pushState({}, '', location.pathname); returnToWelcome(); };
     track.append(home);
     visits.forEach((visit) => {
