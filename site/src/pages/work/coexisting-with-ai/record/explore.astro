@@ -306,6 +306,17 @@ const journeyContent = questions.flatMap(q => q.evidence.map((item, index) => {
     <div class="record-entry-curtain" aria-hidden="true"><span>The Co-Existence Record</span></div>
     <script is:inline>
       (()=>{
+        const resetEntryCurtain=()=>{
+          document.querySelector('.record-entry-curtain')?.remove();
+          document.documentElement.classList.remove('record-entering','record-entry-reveal');
+        };
+        addEventListener('pagehide',resetEntryCurtain);
+        addEventListener('pageshow',(event)=>{
+          if(event.persisted){
+            resetEntryCurtain();
+            try{sessionStorage.removeItem('cif-record-entry')}catch{}
+          }
+        });
         if(!document.documentElement.classList.contains('record-entering'))return;
         const begin=()=>{
           const curtain=document.querySelector('.record-entry-curtain');
@@ -314,7 +325,7 @@ const journeyContent = questions.flatMap(q => q.evidence.map((item, index) => {
           document.documentElement.classList.add('record-entry-reveal');
           curtain.querySelector('span')?.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-16px)'}],{duration:280,delay:90,easing:'ease-in',fill:'forwards'});
           const lift=curtain.animate([{transform:'translateY(0)',borderRadius:'0'},{transform:'translateY(-105%)',borderRadius:'0 0 48% 48%'}],{duration:920,delay:230,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});
-          lift.finished.finally(()=>{curtain.remove();document.documentElement.classList.remove('record-entering','record-entry-reveal')});
+          lift.finished.then(resetEntryCurtain,resetEntryCurtain);
         };
         if(document.readyState==='loading')addEventListener('DOMContentLoaded',()=>requestAnimationFrame(()=>requestAnimationFrame(begin)),{once:true});else requestAnimationFrame(()=>requestAnimationFrame(begin));
       })();
