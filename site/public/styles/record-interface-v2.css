@@ -1803,3 +1803,7 @@ body #main .prototype.journey-horizontal .journey-screen-steps .journey-dot-trac
 body #main .prototype.journey-horizontal .journey-screen-steps .journey-destination{display:block!important;position:static!important;opacity:1!important;transform:none!important;white-space:normal!important}
 
 body #main .prototype.journey-horizontal .journey-screen-steps .journey-dot-track>button:disabled{opacity:1!important;cursor:default}
+
+/* One Explore question collection; only its right-hand grid scrolls. */
+body #main .prototype.show-welcome .welcome-card-grid{overflow-y:auto;overscroll-behavior:contain;grid-template-rows:none;grid-auto-rows:calc((100% - 20px)/2);align-content:start}
+@media(max-width:760px){body #main .prototype.show-welcome .welcome-card-grid{grid-auto-rows:calc((100% - 12px)/2)}}
