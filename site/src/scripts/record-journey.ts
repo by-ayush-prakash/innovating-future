@@ -248,13 +248,13 @@ export function initRecordJourney() {
           readingHeading.append(continuation);
         }
         const hasReflection = !!view.querySelector('.journey-history > section:not([hidden]) .journey-reflection');
-        const reflect = el('button', 'Reflect on this →', 'reading-reflect');
+        const reflect = el('button', 'Reflect on this', 'reading-reflect');
         reflect.type = 'button';
         reflect.onclick = () => showStage(key, 'reflection');
-        const others = el('button', 'Hear another perspective →', 'reading-another');
+        const others = el('button', 'Hear another perspective', 'reading-another');
         others.type = 'button';
         others.onclick = () => showStage(key, 'perspectives');
-        const connected = el('button', 'Explore connected ideas →', 'reading-connected');
+        const connected = el('button', 'Explore connected ideas', 'reading-connected');
         connected.type = 'button';
         connected.onclick = () => showStage(key, 'connections');
         continuation.replaceChildren(...(hasReflection ? [reflect, others, connected] : [others, connected]));
