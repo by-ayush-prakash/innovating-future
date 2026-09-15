@@ -1177,8 +1177,8 @@ body #main .prototype.journey-horizontal .journey-screen-picker .onward-speaker{
 body #main .prototype.journey-horizontal .journey-screen-picker .onward-speaker-copy{display:flex;flex-direction:column;gap:2px}
 body #main .prototype.journey-horizontal .journey-screen-picker .onward-speaker-role{color:#657168;font:400 12px/1.35 var(--sans)}
 body #main .prototype.journey-horizontal .journey-screen-picker .onward-source{grid-column:2;grid-row:3;border:0!important;padding:0!important;margin:0!important;display:flex!important;gap:14px!important;align-items:center;white-space:nowrap;font-size:13px!important}
-body #main .prototype.journey-horizontal .journey-screen-picker .onward-source>span:first-child{font-size:0}
-body #main .prototype.journey-horizontal .journey-screen-picker .onward-source>span:first-child::after{content:'Go deeper';font-size:13px;font-weight:600}
+body #main .prototype.journey-horizontal .journey-screen-picker .onward-source>span:first-child{display:flex;align-items:center;height:34px;font-size:0;line-height:1}
+body #main .prototype.journey-horizontal .journey-screen-picker .onward-source>span:first-child::after{content:'Go deeper';display:block;font-size:13px;line-height:1;font-weight:600;translate:0 1px}
 body #main .prototype.journey-horizontal .journey-screen-picker .onward-arrow{position:relative;width:34px!important;height:34px!important;background:transparent!important;border:1px solid #9aaba0!important;box-shadow:none!important;font-size:0!important;line-height:0!important}
 body #main .prototype.journey-horizontal .journey-screen-picker .onward-arrow::before{content:'';position:absolute;left:50%;top:50%;width:15px;border-top:1.5px solid currentColor;transform:translate(-50%,-50%)}
 body #main .prototype.journey-horizontal .journey-screen-picker .onward-arrow::after{content:'';position:absolute;left:calc(50% + 5px);top:50%;width:6px;height:6px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:translate(-50%,-50%) rotate(45deg)}
