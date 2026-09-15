@@ -1768,7 +1768,6 @@ body #main .prototype .initial-perspective-picker h2[tabindex="-1"]:focus{outlin
 /* Continuation belongs to the editorial column, with a shared visual rhythm. */
 body #main .prototype.journey-horizontal .reading-next-steps{display:grid;gap:0;width:min(100%,390px);margin-top:32px;padding-top:2px;background:var(--grad) top left/100% 2px no-repeat}
 body #main .prototype.journey-horizontal .reading-next-steps>button{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:48px;padding:13px 0;border:0;border-bottom:1px solid #dce1de;border-radius:0;background:transparent;color:#101d35;text-align:left;font:500 15px/1.4 var(--sans);cursor:pointer;box-shadow:none;transition:color 180ms ease}
-body #main .prototype.journey-horizontal .reading-next-steps>.reading-reflect{font-weight:600}
 body #main .prototype.journey-horizontal .reading-next-steps>button::after{content:'→';display:block;flex:0 0 24px;font:400 24px/1 var(--sans);text-align:center;translate:0 -2px;transition:translate 180ms ease}
 body #main .prototype.journey-horizontal .reading-next-steps>button:hover{color:var(--red)}
 body #main .prototype.journey-horizontal .reading-next-steps>button:hover::after{translate:4px -2px}
