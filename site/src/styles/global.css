@@ -38,7 +38,7 @@
   --red-ink:#9F251D;
   --amber-ink:#6A5000;
   --teal-ink:#1F538F;
-  --grad:linear-gradient(to right,var(--red) 0 33.333%,var(--blue) 33.333% 66.666%,var(--yellow) 66.666% 100%);
+  --grad:linear-gradient(to right,#DE3A11,#C67E16,#1C6E63);
 
   /* Unica-class neo-grotesque. Helvetica Neue ships on every Mac and
      is the closest match; Inter is the web fallback. */
@@ -340,7 +340,7 @@ section[id],header[id],.band[id],.sec[id]{scroll-margin-top:var(--chrome)}
 .prow .t{font-size:clamp(22px,2.2vw,30px);line-height:1.22;letter-spacing:-.01em}
 .prow p{color:var(--mut);max-width:62ch}
 .prow .ar{justify-self:end;opacity:0;transform:translateX(-6px);transition:.18s;align-self:center}
-a.prow:hover{background:var(--off)}
+a.prow:hover,a.prow:focus-visible{background:var(--blue-soft)}
 a.prow:hover .ar{opacity:.55;transform:none}
 @media(max-width:900px){
   .prow{grid-template-columns:1fr;gap:10px}
@@ -946,5 +946,10 @@ footer.site .fcol a:hover{color:#fff}
 .latest-news .ncard h4{font-weight:400;line-height:1.18;letter-spacing:-.025em}
 .latest-news .ncard .mut{color:var(--mut)}
 .latest-news .news-category{align-self:flex-start;display:inline-block;padding:8px 14px;border:1px solid var(--ink);border-radius:999px;font:400 13px/1.2 var(--sans);color:var(--ink)}
-.latest-news .ncard .go{margin-top:auto;padding-top:14px}
-.latest-news .news-date{margin-top:28px;color:var(--ink);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.latest-news .news-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:auto;padding-top:20px;border-top:1px solid var(--hair)}
+.latest-news .news-footer--undated{justify-content:flex-end}
+.latest-news .ncard .news-footer .go{margin:0;padding:0;font-size:14px;white-space:nowrap}
+.latest-news .news-date{margin:0;color:var(--ink);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+
+.shead .go{align-items:center;line-height:1.2}
+.shead .go svg{position:relative;top:1px;display:block}
