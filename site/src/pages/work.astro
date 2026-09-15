@@ -1,4 +1,5 @@
 ---
+import SiteImage from '../components/SiteImage.astro';
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
 import Arrow from "../components/Arrow.astro";
@@ -57,7 +58,7 @@ const appearances = [
                   <span class="mantic-panel__place">Toronto · Montreal / Independent Press</span>
                 </div>
               ) : (
-                <img class="rn" src={p.photo} alt={p.alt} loading="lazy" />
+                <SiteImage class="rn" src={p.photo} alt={p.alt} loading="lazy" />
               )}
             </div>
             <div>
@@ -75,7 +76,7 @@ const appearances = [
     <div class="wrap">
       <div class="g2">
         <a class="ncard" href="/work/coexisting-with-ai/record/">
-          <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
+          <div class="im"><SiteImage class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd bd--lg">
             <h4 style="font-size:clamp(24px,2.6vw,32px)">The Co-Existence Record</h4>
             <p class="sm mut">A source-linked public record for exploring questions, evidence, and perspectives about AI.</p>
@@ -83,7 +84,7 @@ const appearances = [
           </div>
         </a>
         <a class="ncard ncard--d" href="/senate-2017">
-          <div class="im"><img class="rn" src="/images/senate-02.jpg" alt="" loading="lazy" /></div>
+          <div class="im"><SiteImage class="rn" src="/images/senate-02.jpg" alt="" loading="lazy" /></div>
           <div class="bd bd--lg">
             <h4 style="font-size:clamp(24px,2.6vw,32px)">CIF Before the Senate</h4>
             <p class="sm mut">The Center gave evidence in 2017. Nine years on, every claim it made that day is graded in public, with sources. Three held. Three failed.</p>

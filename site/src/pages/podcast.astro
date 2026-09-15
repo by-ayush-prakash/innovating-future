@@ -1,7 +1,7 @@
 ---
+import SiteImage from '../components/SiteImage.astro';
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
-import Field from "../components/Field.astro";
 import Arrow from "../components/Arrow.astro";
 import { PODCAST, ORG } from "../config";
 import { getFeed } from "../lib/feed";
@@ -13,12 +13,23 @@ const cover = PODCAST.cover;
 
 const APPLE = "https://podcasts.apple.com/ca/podcast/ayush-prakash-podcast/id1557703631";
 const SPOTIFY = "https://open.spotify.com/show/1ILhje5HSua1FEOlTyFAhG";
+const SUBSCRIBE_LINKS = [
+  { label: "YouTube", href: PODCAST.url, icon: "youtube" },
+  { label: "Spotify", href: SPOTIFY, icon: "spotify" },
+  { label: "Apple Podcasts", href: APPLE, icon: "apple-podcasts" },
+];
 
 // Feed descriptions carry a tail of promo links. Keep the human part.
 function blurb(text: string) {
   if (!text) return "";
-  const cut = text.split(/Connect with|Podcast Info:|https?:\/\//)[0].trim();
-  return cut.length > 260 ? cut.slice(0, 257).trimEnd() + "\u2026" : cut;
+  const cut = text
+    .split(/Connect with|Podcast Info:|https?:\/\//)[0]
+    .replace(/([.!?])(?=[A-Z])/g, "$1 ")
+    .replace(/\s+/g, " ")
+    .trim();
+  const completeSentence = cut.match(/^(.{80,340}?[.!?])(?:\s|$)/)?.[1];
+  if (completeSentence) return completeSentence;
+  return cut.length > 300 ? cut.slice(0, 297).trimEnd() + "\u2026" : cut;
 }
 
 function fmtDate(pubDate: string) {
@@ -27,28 +38,19 @@ function fmtDate(pubDate: string) {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-// Sourced from the Center's own published bio and the feed. Extend as the
-// roster grows; the band reads straight from this list.
-const guests = [
-  { n: "Avi Loeb", r: "Astrophysicist, Harvard" },
-  { n: "Karl Friston", r: "Neuroscientist, University College London" },
-  { n: "Sheldon Solomon", r: "Psychologist, Skidmore College" },
-  { n: "Nidhi Hegde", r: "Computing science, University of Alberta" },
-];
-
 ---
 <Base
   title="Podcast"
   description="The Ayush Prakash Podcast: long-form conversations on the technologies reshaping how we think."
   ctaHeading="Follow the show."
   ctaBody="New conversations publish on YouTube, Spotify, and Apple Podcasts."
-  ctaLabel="Subscribe on YouTube"
-  ctaHref={PODCAST.url}
+  ctaLabel="Subscribe"
+  ctaLinks={SUBSCRIBE_LINKS}
   ctaField="dark-red"
 >
   <PageHead id="pd">
     Conversations on the technologies reshaping how we think.
-    <div slot="aside" class="cov"><img src={cover} alt={`${PODCAST.name} cover art`} /></div>
+    <div slot="aside" class="cov"><SiteImage src={cover} alt={`${PODCAST.name} cover art`} /></div>
     <p slot="lede" class="lede">
       {PODCAST.blurb} Hosted by Ayush Prakash, Director of the Center.
     </p>
@@ -82,18 +84,40 @@ const guests = [
     <>
       <section class="sec" id="latest">
         <div class="wrap">
-          <div class="shead"><h3>Latest episode</h3></div>
           {latest && (
-            <div>
-              <div class="arow" style="align-items:start;padding-top:clamp(28px,3.4vw,44px)">
-                <div>
-                  <h4 style="font-size:clamp(24px,2.8vw,34px);line-height:1.22">{latest.title}</h4>
-                  <p class="mono" style="margin-top:12px">{fmtDate(latest.pubDate)}</p>
-                  {latest.audio && <audio controls preload="none" src={latest.audio} style="margin-top:26px;width:100%;max-width:520px"></audio>}
-                </div>
-                {latest.description && <p class="mut">{blurb(latest.description)}</p>}
+            <article class="latest-feature">
+              <div class="latest-feature__art">
+                <span class="latest-feature__shape latest-feature__shape--circle" aria-hidden="true"></span>
+                <span class="latest-feature__shape latest-feature__shape--square" aria-hidden="true"></span>
+                <SiteImage src={latest.image || cover} alt={`${latest.title} episode artwork`} />
+                <span class="latest-feature__number">Episode {episodes.length}</span>
               </div>
-            </div>
+              <div class="latest-feature__copy">
+                <div class="latest-feature__meta">
+                  <span>Latest episode</span>
+                  <time datetime={new Date(latest.pubDate).toISOString()}>{fmtDate(latest.pubDate)}</time>
+                </div>
+                <h2>{latest.title}</h2>
+                {latest.description && <p class="latest-feature__blurb">{blurb(latest.description)}</p>}
+                {latest.audio && (
+                  <div class="latest-player" data-audio-player>
+                    <audio class="latest-player__native" controls preload="metadata" src={latest.audio} data-audio></audio>
+                    <div class="latest-player__custom">
+                      <button type="button" class="latest-player__toggle" aria-label="Play latest episode" data-audio-toggle>
+                        <span aria-hidden="true"></span>
+                      </button>
+                      <div class="latest-player__timeline">
+                        <input type="range" min="0" max="100" step="0.1" value="0" aria-label="Episode progress" data-audio-range />
+                        <div class="latest-player__times" aria-live="off">
+                          <span data-audio-current>0:00</span>
+                          <span data-audio-duration>0:00</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </article>
           )}
         </div>
       </section>
@@ -108,7 +132,7 @@ const guests = [
             {rest.map((ep, i) => (
               <a class="eprow" href={ep.audio || PODCAST.url} target="_blank" rel="noopener noreferrer"
                  data-title={ep.title.toLowerCase()} data-desc={ep.description.toLowerCase()}>
-                <span class="epcov"><img src={cover} alt="" loading="lazy" /></span>
+                <span class="epcov"><SiteImage src={cover} alt="" loading="lazy" /></span>
                 <span class="epn">{String(rest.length - i).padStart(3, "0")}</span>
                 <span>
                   <span class="ept">{ep.title}</span>
@@ -120,37 +144,14 @@ const guests = [
           </div>
           <p id="ep-empty" style="display:none;padding:40px 0;color:var(--mut)">No episodes match that search.</p>
           <div id="ep-more-wrap" class="epmore">
-            <button id="ep-more" class="btn btn--gh" style="background:#fff" type="button">Load more</button>
-            <span id="ep-left" class="cnt"></span>
+            <button id="ep-more" class="epmore__button" type="button" aria-label="Load more episodes">
+              <span aria-hidden="true">+</span>
+            </button>
           </div>
         </div>
       </section>
     </>
   )}
-
-  <section class="band band--dim" id="guests">
-    <div class="rnw"><Field v="dark-slate" id="pg" w={2400} h={900} /></div>
-    <div class="wrap">
-      <h3 style="max-width:20ch">Researchers, critics, and builders.</h3>
-      <p>
-        The show books people who have spent years on a question and are willing to be pushed on
-        the answer. Conversations run as long as they need to, because the interesting part is
-        rarely in the first twenty minutes.
-      </p>
-      <div class="pts" style="grid-template-columns:repeat(4,1fr)">
-        {guests.map((g) => (
-          <div class="pt">
-            <h4>{g.n}</h4>
-            <p>{g.r}</p>
-          </div>
-        ))}
-      </div>
-      <p class="mono" style="margin-top:clamp(28px,3vw,40px);color:rgba(255,255,255,.5)">
-        {episodes.length > 0 ? episodes.length : "160+"} conversations since 2021, published in full
-      </p>
-    </div>
-  </section>
-
 
   <section class="sec" id="authors">
     <div class="wrap">
@@ -186,7 +187,6 @@ const guests = [
   const empty = document.getElementById("ep-empty");
   const moreBtn = document.getElementById("ep-more");
   const moreWrap = document.getElementById("ep-more-wrap");
-  const left = document.getElementById("ep-left");
 
   if (list) {
     const rows = Array.from(list.querySelectorAll(".eprow"));
@@ -205,14 +205,62 @@ const guests = [
         row.style.display = q ? (hit ? "" : "none") : (matches <= shown && hit ? "" : "none");
       }
 
+      rows.forEach((row) => row.classList.remove("is-visible-last"));
+      const visibleRows = rows.filter((row) => row.style.display !== "none");
+      visibleRows.at(-1)?.classList.add("is-visible-last");
+
       if (empty) empty.style.display = matches === 0 ? "block" : "none";
       const remaining = rows.length - shown;
       if (moreWrap) moreWrap.style.display = !q && remaining > 0 ? "flex" : "none";
-      if (left) left.textContent = remaining > 0 ? `${remaining} more` : "";
     }
 
     if (moreBtn) moreBtn.addEventListener("click", () => { shown += STEP; draw(); });
     if (input) input.addEventListener("input", draw);
     draw();
   }
+
+  document.querySelectorAll<HTMLElement>("[data-audio-player]").forEach((player) => {
+    const audio = player.querySelector<HTMLAudioElement>("[data-audio]");
+    const toggle = player.querySelector<HTMLButtonElement>("[data-audio-toggle]");
+    const range = player.querySelector<HTMLInputElement>("[data-audio-range]");
+    const current = player.querySelector<HTMLElement>("[data-audio-current]");
+    const duration = player.querySelector<HTMLElement>("[data-audio-duration]");
+    if (!audio || !toggle || !range || !current || !duration) return;
+
+    const formatTime = (seconds: number) => {
+      if (!Number.isFinite(seconds)) return "0:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
+      return `${mins}:${secs}`;
+    };
+
+    const render = () => {
+      const progressValue = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      range.value = String(progressValue);
+      range.style.setProperty("--audio-progress", `${progressValue}%`);
+      current.textContent = formatTime(audio.currentTime);
+      duration.textContent = formatTime(audio.duration);
+      player.classList.toggle("is-playing", !audio.paused);
+      toggle.setAttribute("aria-label", audio.paused ? "Play latest episode" : "Pause latest episode");
+    };
+
+    player.classList.add("is-ready");
+    audio.addEventListener("loadedmetadata", render);
+    audio.addEventListener("timeupdate", render);
+    audio.addEventListener("play", render);
+    audio.addEventListener("pause", render);
+    audio.addEventListener("ended", render);
+    toggle.addEventListener("click", async () => {
+      if (audio.paused) {
+        try { await audio.play(); } catch { /* Browser or network blocked playback. */ }
+      } else {
+        audio.pause();
+      }
+    });
+    range.addEventListener("input", () => {
+      if (audio.duration) audio.currentTime = (Number(range.value) / 100) * audio.duration;
+      render();
+    });
+    render();
+  });
 </script>

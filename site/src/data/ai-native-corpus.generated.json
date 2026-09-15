@@ -12,10 +12,12 @@
         "claim": "Superhuman performance on a narrow task such as chess does not imply broad or human-level general intelligence.",
         "evidenceType": "Conceptual argument",
         "confidence": "Certain",
-        "context": "Uses arithmetic and chess systems to separate capability from generality. Limit: Definitions, assumptions, boundary conditions and alternative explanations require external testing.",
         "video": "https://www.youtube.com/watch?v=rt7rBdIES7A&t=474s",
         "sourceAvailable": true,
-        "transcript": "Uses arithmetic and chess systems to separate capability from generality."
+        "editorialNotes": {
+          "context": "Uses arithmetic and chess systems to separate capability from generality. Limit: Definitions, assumptions, boundary conditions and alternative explanations require external testing.",
+          "sourceNote": "Uses arithmetic and chess systems to separate capability from generality."
+        }
       },
       {
         "claimId": "E24-C21",
@@ -28,10 +30,12 @@
         "claim": "Generative AI produces responses through learned pattern matching across training material rather than transparent human-like understanding.",
         "evidenceType": "Conceptual argument",
         "confidence": "Certain",
-        "context": "The speaker describes a model mapping patterns from chats and books to a current conversation. Limit: Pattern prediction can support complex internal representations, and the interview does not define understanding or establish what the system lacks.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/90094532/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-7-6%2F384355707-44100-2-e815da60226bc.mp3?t=1272s",
         "sourceAvailable": true,
-        "transcript": "The speaker describes a model mapping patterns from chats and books to a current conversation."
+        "editorialNotes": {
+          "context": "The speaker describes a model mapping patterns from chats and books to a current conversation. Limit: Pattern prediction can support complex internal representations, and the interview does not define understanding or establish what the system lacks.",
+          "sourceNote": "The speaker describes a model mapping patterns from chats and books to a current conversation."
+        }
       },
       {
         "claimId": "E28-C11",
@@ -44,10 +48,12 @@
         "claim": "Current large language models generate probabilistic output without their own agency or a reliable ability to distinguish fact from fiction.",
         "evidenceType": "Technical explanation",
         "confidence": "Certain",
-        "context": "Positions models between the extremes of a perfect magical system and a useless one, emphasizing fabrication and probabilistic generation. Limit: The absence of intrinsic fact recognition does not prevent systems from using retrieval, tools or verification procedures to improve factual accuracy.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/103294594/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-4-27%2F401113752-44100-2-12362ca7e57be.mp3?t=1315s",
         "sourceAvailable": true,
-        "transcript": "Positions models between the extremes of a perfect magical system and a useless one, emphasizing fabrication and probabilistic generation."
+        "editorialNotes": {
+          "context": "Positions models between the extremes of a perfect magical system and a useless one, emphasizing fabrication and probabilistic generation. Limit: The absence of intrinsic fact recognition does not prevent systems from using retrieval, tools or verification procedures to improve factual accuracy.",
+          "sourceNote": "Positions models between the extremes of a perfect magical system and a useless one, emphasizing fabrication and probabilistic generation."
+        }
       },
       {
         "claimId": "E31-C06",
@@ -60,10 +66,12 @@
         "claim": "Conscious selfhood can be understood as a hypothesis the brain uses to explain sensory experience, and that hypothesis can change or disappear.",
         "evidenceType": "Philosophical and clinical interpretation",
         "confidence": "Qualified",
-        "context": "Karl distinguishes agency from awareness of agency and refers to depersonalization, derealization, psychopathology and non-dual states. Limit: Selfhood has competing philosophical, phenomenological, social and neuroscientific accounts, and altered experience does not by itself establish a single mechanism.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/97236112/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-18%2F393309085-44100-2-97953b9d9d817.mp3?t=1180s",
         "sourceAvailable": true,
-        "transcript": "Karl distinguishes agency from awareness of agency and refers to depersonalization, derealization, psychopathology and non-dual states."
+        "editorialNotes": {
+          "context": "Karl distinguishes agency from awareness of agency and refers to depersonalization, derealization, psychopathology and non-dual states. Limit: Selfhood has competing philosophical, phenomenological, social and neuroscientific accounts, and altered experience does not by itself establish a single mechanism.",
+          "sourceNote": "Karl distinguishes agency from awareness of agency and refers to depersonalization, derealization, psychopathology and non-dual states."
+        }
       },
       {
         "claimId": "E16-C01",
@@ -76,10 +84,12 @@
         "claim": "Intelligence evolved to support movement, survival and purposeful interaction with the environment.",
         "evidenceType": "Theoretical interpretation",
         "confidence": "Certain",
-        "context": "Viviane links early intelligent systems with the need to find food, navigate and survive. Limit: Competing theories, implementation limits and empirical boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=aQmazrukbMk&t=20s",
         "sourceAvailable": true,
-        "transcript": "Viviane links early intelligent systems with the need to find food, navigate and survive."
+        "editorialNotes": {
+          "context": "Viviane links early intelligent systems with the need to find food, navigate and survive. Limit: Competing theories, implementation limits and empirical boundary conditions require external testing.",
+          "sourceNote": "Viviane links early intelligent systems with the need to find food, navigate and survive."
+        }
       },
       {
         "claimId": "E17-C03",
@@ -92,10 +102,12 @@
         "claim": "Intelligence involves perceiving, deciding and actively manipulating an environment to improve survival and prosperity.",
         "evidenceType": "Definition",
         "confidence": "Qualified",
-        "context": "Uses humans, dolphins, apes, tools and environmental interaction as examples. Limit: Alternative mechanisms, objective choices and deployment conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=Y6BRlL-Rn-M&t=574s",
         "sourceAvailable": true,
-        "transcript": "Uses humans, dolphins, apes, tools and environmental interaction as examples."
+        "editorialNotes": {
+          "context": "Uses humans, dolphins, apes, tools and environmental interaction as examples. Limit: Alternative mechanisms, objective choices and deployment conditions require external testing.",
+          "sourceNote": "Uses humans, dolphins, apes, tools and environmental interaction as examples."
+        }
       },
       {
         "claimId": "E25-C08",
@@ -108,10 +120,12 @@
         "claim": "Public debate often confuses systems that perform intelligent tasks, systems intended to model cognition and artificial persons capable of consciousness or moral judgment.",
         "evidenceType": "Conceptual taxonomy",
         "confidence": "Certain",
-        "context": "Comparison among planetary robots, ChatGPT, subjective experience and moral understanding. Limit: These categories can overlap, and the boundaries depend on contested definitions of intelligence, agency and personhood.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/74343411/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-7-7%2F342199680-44100-2-62bd9329034b4.mp3?t=878s",
         "sourceAvailable": true,
-        "transcript": "Comparison among planetary robots, ChatGPT, subjective experience and moral understanding."
+        "editorialNotes": {
+          "context": "Comparison among planetary robots, ChatGPT, subjective experience and moral understanding. Limit: These categories can overlap, and the boundaries depend on contested definitions of intelligence, agency and personhood.",
+          "sourceNote": "Comparison among planetary robots, ChatGPT, subjective experience and moral understanding."
+        }
       },
       {
         "claimId": "E30-C02",
@@ -124,10 +138,12 @@
         "claim": "Current AI systems are complex algorithms that do not independently set goals or possess general autonomous intelligence.",
         "evidenceType": "Capability definition",
         "confidence": "Certain",
-        "context": "Dinidh contrasts present systems with a hypothetical system that thinks for itself and establishes its own objectives. Limit: Researchers disagree about which properties are required for intelligence and whether goal-setting must be fully independent.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/72737283/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-5-28%2F337218446-44100-2-295653237436c.mp3?t=283s",
         "sourceAvailable": true,
-        "transcript": "Dinidh contrasts present systems with a hypothetical system that thinks for itself and establishes its own objectives."
+        "editorialNotes": {
+          "context": "Dinidh contrasts present systems with a hypothetical system that thinks for itself and establishes its own objectives. Limit: Researchers disagree about which properties are required for intelligence and whether goal-setting must be fully independent.",
+          "sourceNote": "Dinidh contrasts present systems with a hypothetical system that thinks for itself and establishes its own objectives."
+        }
       },
       {
         "claimId": "E06-C09",
@@ -140,10 +156,12 @@
         "claim": "He questions definitions of intelligence centred on task completion and control, proposing that ecological balance and relations with other organisms should also be considered.",
         "evidenceType": "None offered",
         "confidence": "Qualified",
-        "context": "Conceptual proposal; no operational metric or experiment establishes a ranking of machine, plant or animal intelligence. Limit: Different definitions may serve distinct research purposes without being interchangeable.",
         "video": "https://www.youtube.com/watch?v=0zTkZpQf6sw&t=2196s",
         "sourceAvailable": true,
-        "transcript": "Conceptual proposal; no operational metric or experiment establishes a ranking of machine, plant or animal intelligence."
+        "editorialNotes": {
+          "context": "Conceptual proposal; no operational metric or experiment establishes a ranking of machine, plant or animal intelligence. Limit: Different definitions may serve distinct research purposes without being interchangeable.",
+          "sourceNote": "Conceptual proposal; no operational metric or experiment establishes a ranking of machine, plant or animal intelligence."
+        }
       },
       {
         "claimId": "E07-C10",
@@ -156,10 +174,12 @@
         "claim": "He argues that intelligence is embodied and relational and cannot be fully captured as digitised task performance.",
         "evidenceType": "None offered",
         "confidence": "Certain",
-        "context": "Conceptual account using interpersonal dependence and embodiment; no discriminating experiment. Limit: Alternative theories may explain aspects of cognition computationally; definitions and scope require specification.",
         "video": "https://www.youtube.com/watch?v=ghkNjl1Nlac&t=3398s",
         "sourceAvailable": true,
-        "transcript": "Conceptual account using interpersonal dependence and embodiment; no discriminating experiment."
+        "editorialNotes": {
+          "context": "Conceptual account using interpersonal dependence and embodiment; no discriminating experiment. Limit: Alternative theories may explain aspects of cognition computationally; definitions and scope require specification.",
+          "sourceNote": "Conceptual account using interpersonal dependence and embodiment; no discriminating experiment."
+        }
       },
       {
         "claimId": "E19-C09",
@@ -172,10 +192,12 @@
         "claim": "Large language models can reorganize existing knowledge but do not think, reason or originate ideas in the human sense.",
         "evidenceType": "None offered",
         "confidence": "Certain",
-        "context": "The speaker offers a functional interpretation and personal tool use; no definition or test of thinking, reasoning or originality is supplied. Limit: Other participants may use behavioral or functional definitions under which some model outputs count as reasoning or novelty.",
         "video": "https://www.youtube.com/watch?v=C5gMglnWfPk&t=2830s",
         "sourceAvailable": true,
-        "transcript": "The speaker offers a functional interpretation and personal tool use; no definition or test of thinking, reasoning or originality is supplied."
+        "editorialNotes": {
+          "context": "The speaker offers a functional interpretation and personal tool use; no definition or test of thinking, reasoning or originality is supplied. Limit: Other participants may use behavioral or functional definitions under which some model outputs count as reasoning or novelty.",
+          "sourceNote": "The speaker offers a functional interpretation and personal tool use; no definition or test of thinking, reasoning or originality is supplied."
+        }
       },
       {
         "claimId": "E23-C06",
@@ -188,10 +210,12 @@
         "claim": "No one currently knows whether or when AI will become sentient or autonomous, and confident timelines exceed the evidence offered in the interview.",
         "evidenceType": "None offered",
         "confidence": "Explicitly uncertain",
-        "context": "The speaker ranges from tomorrow to never, while personally estimating ten years to never. Limit: Researchers can still define intermediate capabilities and make conditional forecasts without resolving sentience.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/101230750/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-3-13%2F398322515-44100-2-3f8b256f84364.mp3?t=787s",
         "sourceAvailable": true,
-        "transcript": "The speaker ranges from tomorrow to never, while personally estimating ten years to never."
+        "editorialNotes": {
+          "context": "The speaker ranges from tomorrow to never, while personally estimating ten years to never. Limit: Researchers can still define intermediate capabilities and make conditional forecasts without resolving sentience.",
+          "sourceNote": "The speaker ranges from tomorrow to never, while personally estimating ten years to never."
+        }
       }
     ],
     "evidence": [
@@ -206,10 +230,12 @@
         "claim": "Public writing alone does not capture an expert’s unpublished knowledge, voice or position on contested questions.",
         "evidenceType": "Expertise argument",
         "confidence": "Certain",
-        "context": "Nadeau describes knowledge that remains outside public training data. Limit: Unpublished judgment can be biased, inconsistent or unsupported.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/124743103/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-26%2F430559606-44100-2-3450758c00d8c.mp3?t=378s",
         "sourceAvailable": true,
-        "transcript": "Nadeau describes knowledge that remains outside public training data."
+        "editorialNotes": {
+          "context": "Nadeau describes knowledge that remains outside public training data. Limit: Unpublished judgment can be biased, inconsistent or unsupported.",
+          "sourceNote": "Nadeau describes knowledge that remains outside public training data."
+        }
       },
       {
         "claimId": "E20-C05",
@@ -222,10 +248,12 @@
         "claim": "Generative language models predict plausible text from mixed-quality prior material and can create a false sense of understanding without distinguishing current fact from fiction or error.",
         "evidenceType": "None offered",
         "confidence": "Certain",
-        "context": "Conceptual account using exoplanet explainers as an example; no model test or source audit is supplied. Limit: Retrieval, source citation, tool use and current training methods can improve factual performance on defined tasks.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/98884609/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-1-23%2F395360760-44100-2-361e00a93b491.mp3?t=902s",
         "sourceAvailable": true,
-        "transcript": "Conceptual account using exoplanet explainers as an example; no model test or source audit is supplied."
+        "editorialNotes": {
+          "context": "Conceptual account using exoplanet explainers as an example; no model test or source audit is supplied. Limit: Retrieval, source citation, tool use and current training methods can improve factual performance on defined tasks.",
+          "sourceNote": "Conceptual account using exoplanet explainers as an example; no model test or source audit is supplied."
+        }
       },
       {
         "claimId": "E04-C01",
@@ -238,10 +266,12 @@
         "claim": "People and businesses should avoid becoming reliant on current generative AI tools because their prices may rise as subsidies disappear.",
         "evidenceType": "None offered",
         "confidence": "Qualified",
-        "context": "Cost argument; no audited provider costs supplied. Limit: Cheaper inference and competition might sustain affordable access.",
         "video": "https://www.youtube.com/watch?v=htpmlaFfp1Q&t=536s",
         "sourceAvailable": true,
-        "transcript": "Cost argument; no audited provider costs supplied."
+        "editorialNotes": {
+          "context": "Cost argument; no audited provider costs supplied. Limit: Cheaper inference and competition might sustain affordable access.",
+          "sourceNote": "Cost argument; no audited provider costs supplied."
+        }
       },
       {
         "claimId": "E13-C06",
@@ -254,10 +284,12 @@
         "claim": "Society tolerates human mistakes more readily than machine mistakes, making rare AI failures a major adoption barrier.",
         "evidenceType": "Expert interpretation",
         "confidence": "Qualified",
-        "context": "Uses driverless vehicles and radiology as examples without comparative risk-perception data. Limit: Timelines, feasibility, tradeoffs and alternative policy responses require external testing.",
         "video": "https://www.youtube.com/watch?v=gqAAk7aok-w&t=582s",
         "sourceAvailable": true,
-        "transcript": "Uses driverless vehicles and radiology as examples without comparative risk-perception data."
+        "editorialNotes": {
+          "context": "Uses driverless vehicles and radiology as examples without comparative risk-perception data. Limit: Timelines, feasibility, tradeoffs and alternative policy responses require external testing.",
+          "sourceNote": "Uses driverless vehicles and radiology as examples without comparative risk-perception data."
+        }
       },
       {
         "claimId": "E15-C08",
@@ -270,10 +302,12 @@
         "claim": "Investment in transformers is driven by impressive public utility, repeated scaling gains and uncertainty about where improvement will stop.",
         "evidenceType": "Industry interpretation",
         "confidence": "Qualified",
-        "context": "Cole connects adoption, enthusiasm and scaling-law expectations without financial evidence. Limit: Definitions, assumptions, boundary conditions and alternative explanations require external testing.",
         "video": "https://www.youtube.com/watch?v=rt7rBdIES7A&t=1237s",
         "sourceAvailable": true,
-        "transcript": "Cole connects adoption, enthusiasm and scaling-law expectations without financial evidence."
+        "editorialNotes": {
+          "context": "Cole connects adoption, enthusiasm and scaling-law expectations without financial evidence. Limit: Definitions, assumptions, boundary conditions and alternative explanations require external testing.",
+          "sourceNote": "Cole connects adoption, enthusiasm and scaling-law expectations without financial evidence."
+        }
       },
       {
         "claimId": "E28-C05",
@@ -286,10 +320,12 @@
         "claim": "Public attitudes toward AI differ across countries, partly because culture and previous experiences with technology shape trust.",
         "evidenceType": "Cross-country observation",
         "confidence": "Qualified",
-        "context": "Contrasts attitudes attributed to the United States, France and Germany with Brazil and Mexico, and connects American distrust to social media. Limit: Country-level attitudes vary within populations and across applications, and the interview offers no survey source or causal test.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/103294594/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-4-27%2F401113752-44100-2-12362ca7e57be.mp3?t=564s",
         "sourceAvailable": true,
-        "transcript": "Contrasts attitudes attributed to the United States, France and Germany with Brazil and Mexico, and connects American distrust to social media."
+        "editorialNotes": {
+          "context": "Contrasts attitudes attributed to the United States, France and Germany with Brazil and Mexico, and connects American distrust to social media. Limit: Country-level attitudes vary within populations and across applications, and the interview offers no survey source or causal test.",
+          "sourceNote": "Contrasts attitudes attributed to the United States, France and Germany with Brazil and Mexico, and connects American distrust to social media."
+        }
       }
     ],
     "learning": [
@@ -304,10 +340,12 @@
         "claim": "Healthy cognition requires continued intake of novelty alongside stored patterns and error correction.",
         "evidenceType": "Expert interpretation",
         "confidence": "Certain",
-        "context": "Uses a simplified hemispheric account of learning and prediction. Limit: Alternative mechanisms and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=OpYXpriEriQ&t=811s",
         "sourceAvailable": true,
-        "transcript": "Uses a simplified hemispheric account of learning and prediction."
+        "editorialNotes": {
+          "context": "Uses a simplified hemispheric account of learning and prediction. Limit: Alternative mechanisms and boundary conditions require external testing.",
+          "sourceNote": "Uses a simplified hemispheric account of learning and prediction."
+        }
       },
       {
         "claimId": "E01-C08",
@@ -320,10 +358,12 @@
         "claim": "Generative AI can replace productive struggle in research and writing, creating dependence and weakening independent thought.",
         "evidenceType": "Educational and cognitive hypothesis",
         "confidence": "Qualified",
-        "context": "Sieber describes concerns about students relying on devices to think. Limit: AI can support learning when tasks require explanation, revision and independent verification.",
         "video": "https://www.youtube.com/watch?v=sE9Qz27uib4&t=1427s",
         "sourceAvailable": true,
-        "transcript": "Sieber describes concerns about students relying on devices to think."
+        "editorialNotes": {
+          "context": "Sieber describes concerns about students relying on devices to think. Limit: AI can support learning when tasks require explanation, revision and independent verification.",
+          "sourceNote": "Sieber describes concerns about students relying on devices to think."
+        }
       },
       {
         "claimId": "E27-C13",
@@ -336,10 +376,12 @@
         "claim": "Internet and AI access can reduce educational inequality by giving more families immediate access to knowledge and study support.",
         "evidenceType": "Equity argument",
         "confidence": "Certain",
-        "context": "Uses a personal example of generating literature questions to help a child prepare for an exam. Limit: Device access, connectivity, literacy, system quality, language, disability and home support continue to shape educational opportunity.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/104634408/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-5-25%2F402803003-44100-2-336bddb167b48.mp3?t=1908s",
         "sourceAvailable": true,
-        "transcript": "Uses a personal example of generating literature questions to help a child prepare for an exam."
+        "editorialNotes": {
+          "context": "Uses a personal example of generating literature questions to help a child prepare for an exam. Limit: Device access, connectivity, literacy, system quality, language, disability and home support continue to shape educational opportunity.",
+          "sourceNote": "Uses a personal example of generating literature questions to help a child prepare for an exam."
+        }
       },
       {
         "claimId": "E34-C06",
@@ -352,10 +394,12 @@
         "claim": "AI can expand opportunity while also weakening personal development when people use it to bypass learning and communication work.",
         "evidenceType": "Conceptual argument and observation",
         "confidence": "Certain",
-        "context": "Jamie contrasts AI as a useful tool with using generated papers and emails in place of developing skills and perspective. Limit: AI assistance can scaffold learning, improve feedback and free time for higher-order work when used deliberately.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/76677175/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-9-2%2F349446991-44100-2-b423f8291f99f.mp3?t=685s",
         "sourceAvailable": true,
-        "transcript": "Jamie contrasts AI as a useful tool with using generated papers and emails in place of developing skills and perspective."
+        "editorialNotes": {
+          "context": "Jamie contrasts AI as a useful tool with using generated papers and emails in place of developing skills and perspective. Limit: AI assistance can scaffold learning, improve feedback and free time for higher-order work when used deliberately.",
+          "sourceNote": "Jamie contrasts AI as a useful tool with using generated papers and emails in place of developing skills and perspective."
+        }
       },
       {
         "claimId": "E39-C05",
@@ -368,10 +412,12 @@
         "claim": "Teenagers learn through manageable mistakes, while removing every obstacle can leave them less prepared for independent life.",
         "evidenceType": "Developmental and parenting argument",
         "confidence": "Qualified",
-        "context": "Dr. Anbar contrasts micromanaging and bulldozer parenting with supported trial and error. Limit: Some mistakes carry serious or irreversible risk, and parental protection remains necessary.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/107220582/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-22%2F406119970-44100-2-f22c7bdd47192.mp3?t=253s",
         "sourceAvailable": true,
-        "transcript": "Dr. Anbar contrasts micromanaging and bulldozer parenting with supported trial and error."
+        "editorialNotes": {
+          "context": "Dr. Anbar contrasts micromanaging and bulldozer parenting with supported trial and error. Limit: Some mistakes carry serious or irreversible risk, and parental protection remains necessary.",
+          "sourceNote": "Dr. Anbar contrasts micromanaging and bulldozer parenting with supported trial and error."
+        }
       },
       {
         "claimId": "E03-C10",
@@ -384,10 +430,12 @@
         "claim": "ChatGPT may expose existing problems in higher education, including workload, cost and weak alignment between assignments and learning goals.",
         "evidenceType": "Educational interpretation",
         "confidence": "Qualified",
-        "context": "McKelvey resists treating student AI use as an isolated moral failure. Limit: AI use can create new integrity and learning problems even in well-designed courses.",
         "video": "https://www.youtube.com/watch?v=PdG7w4zgMVU&t=1501s",
         "sourceAvailable": true,
-        "transcript": "McKelvey resists treating student AI use as an isolated moral failure."
+        "editorialNotes": {
+          "context": "McKelvey resists treating student AI use as an isolated moral failure. Limit: AI use can create new integrity and learning problems even in well-designed courses.",
+          "sourceNote": "McKelvey resists treating student AI use as an isolated moral failure."
+        }
       },
       {
         "claimId": "E09-C07",
@@ -400,10 +448,12 @@
         "claim": "Students who believe ChatGPT is smarter than they are may weaken their own creative development.",
         "evidenceType": "Anecdote",
         "confidence": "Qualified",
-        "context": "One classroom example and professional judgment. Limit: Alternative mechanisms and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=1oL9UL4e_Es&t=713s",
         "sourceAvailable": true,
-        "transcript": "One classroom example and professional judgment."
+        "editorialNotes": {
+          "context": "One classroom example and professional judgment. Limit: Alternative mechanisms and boundary conditions require external testing.",
+          "sourceNote": "One classroom example and professional judgment."
+        }
       },
       {
         "claimId": "E16-C18",
@@ -416,10 +466,12 @@
         "claim": "Young people can learn fast-moving technical subjects effectively by building small projects and using online resources as needed.",
         "evidenceType": "Practice recommendation",
         "confidence": "Certain",
-        "context": "Viviane contrasts project-based learning with reading several textbooks before starting. Limit: Competing theories, implementation limits and empirical boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=aQmazrukbMk&t=2686s",
         "sourceAvailable": true,
-        "transcript": "Viviane contrasts project-based learning with reading several textbooks before starting."
+        "editorialNotes": {
+          "context": "Viviane contrasts project-based learning with reading several textbooks before starting. Limit: Competing theories, implementation limits and empirical boundary conditions require external testing.",
+          "sourceNote": "Viviane contrasts project-based learning with reading several textbooks before starting."
+        }
       },
       {
         "claimId": "E20-C01",
@@ -432,10 +484,12 @@
         "claim": "The central early risk of personal computing was unequal access to tools that improved writing, communication and educational performance.",
         "evidenceType": "None offered",
         "confidence": "Qualified",
-        "context": "Historical interpretation supported by the speaker's university experience; no access or outcome data are cited. Limit: Access gaps were one concern among several and the effects of computer access varied by task, institution and user.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/98884609/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-1-23%2F395360760-44100-2-361e00a93b491.mp3?t=66s",
         "sourceAvailable": true,
-        "transcript": "Historical interpretation supported by the speaker's university experience; no access or outcome data are cited."
+        "editorialNotes": {
+          "context": "Historical interpretation supported by the speaker's university experience; no access or outcome data are cited. Limit: Access gaps were one concern among several and the effects of computer access varied by task, institution and user.",
+          "sourceNote": "Historical interpretation supported by the speaker's university experience; no access or outcome data are cited."
+        }
       },
       {
         "claimId": "E27-C09",
@@ -448,10 +502,12 @@
         "claim": "Decentralized school governance, teacher preparation and standardized-test incentives will make educational adaptation to AI slow.",
         "evidenceType": "Institutional analysis",
         "confidence": "Certain",
-        "context": "Cites the number of United States school districts, teacher-training timelines and current accountability incentives. Limit: Adoption speed varies across districts, states, schools and practices, and centralized systems can also adapt slowly.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/104634408/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-5-25%2F402803003-44100-2-336bddb167b48.mp3?t=1581s",
         "sourceAvailable": true,
-        "transcript": "Cites the number of United States school districts, teacher-training timelines and current accountability incentives."
+        "editorialNotes": {
+          "context": "Cites the number of United States school districts, teacher-training timelines and current accountability incentives. Limit: Adoption speed varies across districts, states, schools and practices, and centralized systems can also adapt slowly.",
+          "sourceNote": "Cites the number of United States school districts, teacher-training timelines and current accountability incentives."
+        }
       }
     ],
     "work": [
@@ -466,10 +522,12 @@
         "claim": "Enterprises are actively reconsidering hiring, associate programs, training and how to use AI without weakening employee development.",
         "evidenceType": "Expert interpretation",
         "confidence": "Certain",
-        "context": "Reported from enterprise conversations without named organizations or a representative sample. Limit: Alternative mechanisms, sector differences and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=ZoJLiYRp3Fc&t=1263s",
         "sourceAvailable": true,
-        "transcript": "Reported from enterprise conversations without named organizations or a representative sample."
+        "editorialNotes": {
+          "context": "Reported from enterprise conversations without named organizations or a representative sample. Limit: Alternative mechanisms, sector differences and boundary conditions require external testing.",
+          "sourceNote": "Reported from enterprise conversations without named organizations or a representative sample."
+        }
       },
       {
         "claimId": "E20-C08",
@@ -482,10 +540,12 @@
         "claim": "When algorithms screen applications and applicants use AI to produce them, human judgment and distinctive personal information can disappear from hiring.",
         "evidenceType": "None offered",
         "confidence": "Certain",
-        "context": "General account of resume and cover-letter screening; no organization, system or hiring outcome is documented. Limit: Structured screening can reduce some human inconsistencies, and human review can remain part of the process.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/98884609/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-1-23%2F395360760-44100-2-361e00a93b491.mp3?t=1600s",
         "sourceAvailable": true,
-        "transcript": "General account of resume and cover-letter screening; no organization, system or hiring outcome is documented."
+        "editorialNotes": {
+          "context": "General account of resume and cover-letter screening; no organization, system or hiring outcome is documented. Limit: Structured screening can reduce some human inconsistencies, and human review can remain part of the process.",
+          "sourceNote": "General account of resume and cover-letter screening; no organization, system or hiring outcome is documented."
+        }
       },
       {
         "claimId": "E29-C19",
@@ -498,10 +558,12 @@
         "claim": "Workers who refuse to engage with AI will struggle relative to colleagues who use it to work faster and more effectively.",
         "evidenceType": "Workforce forecast",
         "confidence": "Certain",
-        "context": "Juliette compares AI adoption with earlier transitions from pencils to pens, word processors and computers. Limit: Benefits vary by task and system, while forced adoption can introduce errors, surveillance, deskilling and unequal access.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/87275010/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-4-27%2F378929311-44100-2-66cef3f6be607.mp3?t=2625s",
         "sourceAvailable": true,
-        "transcript": "Juliette compares AI adoption with earlier transitions from pencils to pens, word processors and computers."
+        "editorialNotes": {
+          "context": "Juliette compares AI adoption with earlier transitions from pencils to pens, word processors and computers. Limit: Benefits vary by task and system, while forced adoption can introduce errors, surveillance, deskilling and unequal access.",
+          "sourceNote": "Juliette compares AI adoption with earlier transitions from pencils to pens, word processors and computers."
+        }
       },
       {
         "claimId": "E26-C02",
@@ -514,10 +576,12 @@
         "claim": "Young workers can improve their resilience to automation by developing a valuable transferable skill and using early roles as steps toward more desirable work.",
         "evidenceType": "Anecdote",
         "confidence": "Certain",
-        "context": "Career account from technical writing through sales, product, marketing and company leadership. Limit: Individual skill development cannot remove structural displacement, unequal access or declining demand for some occupations.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/73750628/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-6-23%2F340369856-44100-2-291edfcb91a0f.mp3?t=194s",
         "sourceAvailable": true,
-        "transcript": "Career account from technical writing through sales, product, marketing and company leadership."
+        "editorialNotes": {
+          "context": "Career account from technical writing through sales, product, marketing and company leadership. Limit: Individual skill development cannot remove structural displacement, unequal access or declining demand for some occupations.",
+          "sourceNote": "Career account from technical writing through sales, product, marketing and company leadership."
+        }
       },
       {
         "claimId": "E12-C11",
@@ -530,10 +594,12 @@
         "claim": "Conflict will grow where AI causes job loss, reduces opportunity or devalues skills, especially for people entering the workforce.",
         "evidenceType": "Forecast",
         "confidence": "Qualified",
-        "context": "Reasoned forecast based on displacement and adaptation pressures; no labor-market estimates are offered. Limit: Alternative mechanisms, sector differences and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=ZoJLiYRp3Fc&t=2176s",
         "sourceAvailable": true,
-        "transcript": "Reasoned forecast based on displacement and adaptation pressures; no labor-market estimates are offered."
+        "editorialNotes": {
+          "context": "Reasoned forecast based on displacement and adaptation pressures; no labor-market estimates are offered. Limit: Alternative mechanisms, sector differences and boundary conditions require external testing.",
+          "sourceNote": "Reasoned forecast based on displacement and adaptation pressures; no labor-market estimates are offered."
+        }
       },
       {
         "claimId": "E13-C02",
@@ -546,10 +612,12 @@
         "claim": "California should adopt universal basic income in response to AI automation and use technology policy to renew social and economic progress.",
         "evidenceType": "Policy proposal",
         "confidence": "Certain",
-        "context": "Campaign position stated during the interview; no legislative mechanism or fiscal model is supplied. Limit: Timelines, feasibility, tradeoffs and alternative policy responses require external testing.",
         "video": "https://www.youtube.com/watch?v=gqAAk7aok-w&t=81s",
         "sourceAvailable": true,
-        "transcript": "Campaign position stated during the interview; no legislative mechanism or fiscal model is supplied."
+        "editorialNotes": {
+          "context": "Campaign position stated during the interview; no legislative mechanism or fiscal model is supplied. Limit: Timelines, feasibility, tradeoffs and alternative policy responses require external testing.",
+          "sourceNote": "Campaign position stated during the interview; no legislative mechanism or fiscal model is supplied."
+        }
       },
       {
         "claimId": "E14-C13",
@@ -562,10 +630,12 @@
         "claim": "Economic privilege makes reflective transformation easier, while poverty and success can each obstruct it in different ways.",
         "evidenceType": "Expert interpretation",
         "confidence": "Qualified",
-        "context": "The speaker explicitly acknowledges his privilege and reasons from personal experience. Limit: Alternative mechanisms, material constraints and institutional boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=g67HOHUZYkA&t=3327s",
         "sourceAvailable": true,
-        "transcript": "The speaker explicitly acknowledges his privilege and reasons from personal experience."
+        "editorialNotes": {
+          "context": "The speaker explicitly acknowledges his privilege and reasons from personal experience. Limit: Alternative mechanisms, material constraints and institutional boundary conditions require external testing.",
+          "sourceNote": "The speaker explicitly acknowledges his privilege and reasons from personal experience."
+        }
       },
       {
         "claimId": "E29-C18",
@@ -578,10 +648,12 @@
         "claim": "AI-assisted coding lowers the barrier to building software, but commercial value still depends on solving a sufficiently important problem.",
         "evidenceType": "Entrepreneurial assessment",
         "confidence": "Certain",
-        "context": "Juliette separates faster code generation from demand, differentiation and the work of defining a product architecture. Limit: Lower development costs can still change competition, experimentation and who can enter a market even when many products fail.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/87275010/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-4-27%2F378929311-44100-2-66cef3f6be607.mp3?t=2314s",
         "sourceAvailable": true,
-        "transcript": "Juliette separates faster code generation from demand, differentiation and the work of defining a product architecture."
+        "editorialNotes": {
+          "context": "Juliette separates faster code generation from demand, differentiation and the work of defining a product architecture. Limit: Lower development costs can still change competition, experimentation and who can enter a market even when many products fail.",
+          "sourceNote": "Juliette separates faster code generation from demand, differentiation and the work of defining a product architecture."
+        }
       }
     ],
     "creativity": [
@@ -596,10 +668,12 @@
         "claim": "Creativity consists of novelty plus value.",
         "evidenceType": "Definition",
         "confidence": "Certain",
-        "context": "A standard field definition is asserted without a named source. Limit: Alternative mechanisms and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=1oL9UL4e_Es&t=0s",
         "sourceAvailable": true,
-        "transcript": "A standard field definition is asserted without a named source."
+        "editorialNotes": {
+          "context": "A standard field definition is asserted without a named source. Limit: Alternative mechanisms and boundary conditions require external testing.",
+          "sourceNote": "A standard field definition is asserted without a named source."
+        }
       },
       {
         "claimId": "E28-C01",
@@ -612,10 +686,12 @@
         "claim": "An AI writing partner can regularly produce useful ideas that surprise an experienced human writer and improve stalled passages.",
         "evidenceType": "Professional anecdote",
         "confidence": "Certain",
-        "context": "The speaker describes daily use of Claude to generate alternatives when a draft is not working. Limit: Surprise and perceived improvement are subjective and do not establish originality, accuracy or consistent writing quality.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/103294594/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-4-27%2F401113752-44100-2-12362ca7e57be.mp3?t=4s",
         "sourceAvailable": true,
-        "transcript": "The speaker describes daily use of Claude to generate alternatives when a draft is not working."
+        "editorialNotes": {
+          "context": "The speaker describes daily use of Claude to generate alternatives when a draft is not working. Limit: Surprise and perceived improvement are subjective and do not establish originality, accuracy or consistent writing quality.",
+          "sourceNote": "The speaker describes daily use of Claude to generate alternatives when a draft is not working."
+        }
       },
       {
         "claimId": "E38-C17",
@@ -628,10 +704,12 @@
         "claim": "Outsourcing writing to generative AI can remove part of the practice through which people develop and test their thinking.",
         "evidenceType": "Educational and conceptual argument",
         "confidence": "Certain",
-        "context": "She argues that writing is a cognitive process and that students still need to perform it themselves. Limit: AI can support feedback, accessibility, research, and revision when the learner remains responsible for the reasoning.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/79328750/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-10-29%2F357754667-44100-2-43cb9796d35a3.mp3?t=2985s",
         "sourceAvailable": true,
-        "transcript": "She argues that writing is a cognitive process and that students still need to perform it themselves."
+        "editorialNotes": {
+          "context": "She argues that writing is a cognitive process and that students still need to perform it themselves. Limit: AI can support feedback, accessibility, research, and revision when the learner remains responsible for the reasoning.",
+          "sourceNote": "She argues that writing is a cognitive process and that students still need to perform it themselves."
+        }
       },
       {
         "claimId": "E41-C13",
@@ -644,10 +722,12 @@
         "claim": "Replacing human writing with AI risks displacing an intrinsically human practice of making art and meaning.",
         "evidenceType": "Normative claim about AI and creativity",
         "confidence": "Qualified",
-        "context": "Nick distinguishes the value of the creative act from the surface quality of an output. Limit: AI tools can also assist human creation, widen participation or change the practice without eliminating it.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/121026681/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-5%2F425543730-44100-2-00a3fda56cd5e.mp3?t=1313s",
         "sourceAvailable": true,
-        "transcript": "Nick distinguishes the value of the creative act from the surface quality of an output."
+        "editorialNotes": {
+          "context": "Nick distinguishes the value of the creative act from the surface quality of an output. Limit: AI tools can also assist human creation, widen participation or change the practice without eliminating it.",
+          "sourceNote": "Nick distinguishes the value of the creative act from the surface quality of an output."
+        }
       },
       {
         "claimId": "E06-C04",
@@ -660,10 +740,12 @@
         "claim": "This Climate Does Not Exist uses generated local imagery with the aim of reducing psychological distance from climate impacts.",
         "evidenceType": "Anecdote",
         "confidence": "Qualified",
-        "context": "Named project and first-person contribution. Public sources confirm the project and his involvement; this segment gives no measured change in behaviour or beliefs. Limit: Personalised imagery could affect people differently or be mistaken for a forecast.",
         "video": "https://www.youtube.com/watch?v=0zTkZpQf6sw&t=1167s",
         "sourceAvailable": true,
-        "transcript": "Named project and first-person contribution. Public sources confirm the project and his involvement; this segment gives no measured change in behaviour or beliefs."
+        "editorialNotes": {
+          "context": "Named project and first-person contribution. Public sources confirm the project and his involvement; this segment gives no measured change in behaviour or beliefs. Limit: Personalised imagery could affect people differently or be mistaken for a forecast.",
+          "sourceNote": "Named project and first-person contribution. Public sources confirm the project and his involvement; this segment gives no measured change in behaviour or beliefs."
+        }
       },
       {
         "claimId": "E19-C04",
@@ -676,10 +758,12 @@
         "claim": "Digital media can transmit cultural outputs while omitting the embodied experience and context needed to understand how they were produced.",
         "evidenceType": "None offered",
         "confidence": "Certain",
-        "context": "Uses Bourdieu's habitus and a food-culture example to contrast remote viewing with lived participation. Limit: Remote media can provide meaningful context and can become the first step toward deeper cultural contact.",
         "video": "https://www.youtube.com/watch?v=C5gMglnWfPk&t=1072s",
         "sourceAvailable": true,
-        "transcript": "Uses Bourdieu's habitus and a food-culture example to contrast remote viewing with lived participation."
+        "editorialNotes": {
+          "context": "Uses Bourdieu's habitus and a food-culture example to contrast remote viewing with lived participation. Limit: Remote media can provide meaningful context and can become the first step toward deeper cultural contact.",
+          "sourceNote": "Uses Bourdieu's habitus and a food-culture example to contrast remote viewing with lived participation."
+        }
       },
       {
         "claimId": "E09-C08",
@@ -692,10 +776,12 @@
         "claim": "Creative-AI harms involve both unauthorized training data and systems intentionally designed to replace human artists.",
         "evidenceType": "Expert interpretation",
         "confidence": "Certain",
-        "context": "Separates data governance from labour-market intent. Limit: Alternative mechanisms and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=1oL9UL4e_Es&t=939s",
         "sourceAvailable": true,
-        "transcript": "Separates data governance from labour-market intent."
+        "editorialNotes": {
+          "context": "Separates data governance from labour-market intent. Limit: Alternative mechanisms and boundary conditions require external testing.",
+          "sourceNote": "Separates data governance from labour-market intent."
+        }
       }
     ],
     "relationships": [
@@ -710,10 +796,12 @@
         "claim": "People may disclose quickly to chatbots because they expect less judgment than in a human relationship.",
         "evidenceType": "Expert interpretation",
         "confidence": "Qualified",
-        "context": "Applies therapeutic rapport reasoning to human-machine disclosure. Limit: Alternative explanations and clinical boundary conditions require testing.",
         "video": "https://www.youtube.com/watch?v=Ko3oTTZfNKw&t=822s",
         "sourceAvailable": true,
-        "transcript": "Applies therapeutic rapport reasoning to human-machine disclosure."
+        "editorialNotes": {
+          "context": "Applies therapeutic rapport reasoning to human-machine disclosure. Limit: Alternative explanations and clinical boundary conditions require testing.",
+          "sourceNote": "Applies therapeutic rapport reasoning to human-machine disclosure."
+        }
       },
       {
         "claimId": "E14-C02",
@@ -726,10 +814,12 @@
         "claim": "As machines become more intelligent, humans must become wiser by relying on embodiment, relationships, nature and emotion.",
         "evidenceType": "Conceptual argument",
         "confidence": "Certain",
-        "context": "The one-sentence thesis of the speaker’s book; unique human qualities are asserted rather than experimentally compared. Limit: Alternative mechanisms, material constraints and institutional boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=g67HOHUZYkA&t=11s",
         "sourceAvailable": true,
-        "transcript": "The one-sentence thesis of the speaker’s book; unique human qualities are asserted rather than experimentally compared."
+        "editorialNotes": {
+          "context": "The one-sentence thesis of the speaker’s book; unique human qualities are asserted rather than experimentally compared. Limit: Alternative mechanisms, material constraints and institutional boundary conditions require external testing.",
+          "sourceNote": "The one-sentence thesis of the speaker’s book; unique human qualities are asserted rather than experimentally compared."
+        }
       },
       {
         "claimId": "E21-C12",
@@ -742,10 +832,12 @@
         "claim": "Social media can reduce isolation for people who lack local peers and can help dispersed individuals build grassroots movements.",
         "evidenceType": "Conceptual argument",
         "confidence": "Certain",
-        "context": "Examples include queer people finding community and climate activists organizing collective action. Limit: Online communities can also expose vulnerable users to harassment, exploitation and harmful norms.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/78040278/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-10-1%2F353708669-44100-2-d8ccaec69bdab.mp3?t=2297s",
         "sourceAvailable": true,
-        "transcript": "Examples include queer people finding community and climate activists organizing collective action."
+        "editorialNotes": {
+          "context": "Examples include queer people finding community and climate activists organizing collective action. Limit: Online communities can also expose vulnerable users to harassment, exploitation and harmful norms.",
+          "sourceNote": "Examples include queer people finding community and climate activists organizing collective action."
+        }
       },
       {
         "claimId": "E22-C11",
@@ -758,10 +850,12 @@
         "claim": "Parents can reduce fear of harming their children by accepting limited control, hearing criticism and repairing mistakes openly.",
         "evidenceType": "Anecdote",
         "confidence": "Certain",
-        "context": "Personal account grounded in the speaker's difficult upbringing and conversations with his children. Limit: Some parental actions cause lasting harm, and acceptance of limited control cannot excuse neglect or abuse.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/83766216/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-2-8%2F370233842-44100-2-71bccf4c18f3.mp3?t=2309s",
         "sourceAvailable": true,
-        "transcript": "Personal account grounded in the speaker's difficult upbringing and conversations with his children."
+        "editorialNotes": {
+          "context": "Personal account grounded in the speaker's difficult upbringing and conversations with his children. Limit: Some parental actions cause lasting harm, and acceptance of limited control cannot excuse neglect or abuse.",
+          "sourceNote": "Personal account grounded in the speaker's difficult upbringing and conversations with his children."
+        }
       },
       {
         "claimId": "E31-C18",
@@ -774,10 +868,12 @@
         "claim": "Human curiosity about other people, together with empathy and shared sense-making, supports the persistence of society.",
         "evidenceType": "Philosophical inference",
         "confidence": "Qualified",
-        "context": "Karl grounds his hope in curiosity and the social coordination required for enduring collective life. Limit: Curiosity and empathy do not prevent conflict, exploitation or catastrophic collective failure.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/97236112/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-18%2F393309085-44100-2-97953b9d9d817.mp3?t=5433s",
         "sourceAvailable": true,
-        "transcript": "Karl grounds his hope in curiosity and the social coordination required for enduring collective life."
+        "editorialNotes": {
+          "context": "Karl grounds his hope in curiosity and the social coordination required for enduring collective life. Limit: Curiosity and empathy do not prevent conflict, exploitation or catastrophic collective failure.",
+          "sourceNote": "Karl grounds his hope in curiosity and the social coordination required for enduring collective life."
+        }
       },
       {
         "claimId": "E25-C01",
@@ -790,10 +886,12 @@
         "claim": "Social-media feedback can turn users into habitual content producers who begin treating everyday life as material for posts and reactions.",
         "evidenceType": "Anecdote",
         "confidence": "Certain",
-        "context": "First-person account of mentally composing a Facebook post while walking down the street. Limit: One reflective episode does not establish how common, lasting or harmful this change is across users.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/74343411/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-7-7%2F342199680-44100-2-62bd9329034b4.mp3?t=16s",
         "sourceAvailable": true,
-        "transcript": "First-person account of mentally composing a Facebook post while walking down the street."
+        "editorialNotes": {
+          "context": "First-person account of mentally composing a Facebook post while walking down the street. Limit: One reflective episode does not establish how common, lasting or harmful this change is across users.",
+          "sourceNote": "First-person account of mentally composing a Facebook post while walking down the street."
+        }
       },
       {
         "claimId": "E19-C01",
@@ -806,10 +904,12 @@
         "claim": "The internet has shifted from a place people visited to an ambient physical-digital environment embedded throughout culture.",
         "evidenceType": "None offered",
         "confidence": "Certain",
-        "context": "Historical comparison between fixed desktop access and pervasive mobile connectivity; no empirical study is cited. Limit: Pervasiveness varies by geography, access, institution and daily practice, so the claim should not be universalized.",
         "video": "https://www.youtube.com/watch?v=C5gMglnWfPk&t=140s",
         "sourceAvailable": true,
-        "transcript": "Historical comparison between fixed desktop access and pervasive mobile connectivity; no empirical study is cited."
+        "editorialNotes": {
+          "context": "Historical comparison between fixed desktop access and pervasive mobile connectivity; no empirical study is cited. Limit: Pervasiveness varies by geography, access, institution and daily practice, so the claim should not be universalized.",
+          "sourceNote": "Historical comparison between fixed desktop access and pervasive mobile connectivity; no empirical study is cited."
+        }
       },
       {
         "claimId": "E21-C02",
@@ -822,10 +922,12 @@
         "claim": "A sense that conventional advocacy has failed, combined with climate urgency, is pushing some young activists toward more radical action.",
         "evidenceType": "Anecdote",
         "confidence": "Qualified",
-        "context": "Account of climate activists who describe a closing window for action, including one student who paused university to organize full time. Limit: Activist motivations vary, and urgency does not by itself explain tactics or establish their effectiveness.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/78040278/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-10-1%2F353708669-44100-2-d8ccaec69bdab.mp3?t=217s",
         "sourceAvailable": true,
-        "transcript": "Account of climate activists who describe a closing window for action, including one student who paused university to organize full time."
+        "editorialNotes": {
+          "context": "Account of climate activists who describe a closing window for action, including one student who paused university to organize full time. Limit: Activist motivations vary, and urgency does not by itself explain tactics or establish their effectiveness.",
+          "sourceNote": "Account of climate activists who describe a closing window for action, including one student who paused university to organize full time."
+        }
       },
       {
         "claimId": "E33-C01",
@@ -838,10 +940,12 @@
         "claim": "The same social-media product creates different harms for users, businesses and creators because each group enters the platform with different needs and incentives.",
         "evidenceType": "Industry framework",
         "confidence": "Certain",
-        "context": "Julien separates user addiction and bullying, business acquisition pressure, and creator burnout and compensation. Limit: These groups overlap, differ internally and can also receive substantial benefits from the same platform mechanisms.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/101237745/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-3-13%2F398331226-44100-2-e7a27031550b9.mp3?t=16s",
         "sourceAvailable": true,
-        "transcript": "Julien separates user addiction and bullying, business acquisition pressure, and creator burnout and compensation."
+        "editorialNotes": {
+          "context": "Julien separates user addiction and bullying, business acquisition pressure, and creator burnout and compensation. Limit: These groups overlap, differ internally and can also receive substantial benefits from the same platform mechanisms.",
+          "sourceNote": "Julien separates user addiction and bullying, business acquisition pressure, and creator burnout and compensation."
+        }
       },
       {
         "claimId": "E38-C01",
@@ -854,10 +958,12 @@
         "claim": "Dating apps can widen a person’s social, geographic, or religious circle while reducing potential partners to photographs and short profiles.",
         "evidenceType": "Conceptual argument",
         "confidence": "Qualified",
-        "context": "Gwendolyn describes both expanded access and the flattening of people into two-dimensional profiles. Limit: Outcomes depend on platform design, user goals, community norms, and how relationships move offline.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/79328750/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-10-29%2F357754667-44100-2-43cb9796d35a3.mp3?t=10s",
         "sourceAvailable": true,
-        "transcript": "Gwendolyn describes both expanded access and the flattening of people into two-dimensional profiles."
+        "editorialNotes": {
+          "context": "Gwendolyn describes both expanded access and the flattening of people into two-dimensional profiles. Limit: Outcomes depend on platform design, user goals, community norms, and how relationships move offline.",
+          "sourceNote": "Gwendolyn describes both expanded access and the flattening of people into two-dimensional profiles."
+        }
       },
       {
         "claimId": "E22-C06",
@@ -870,10 +976,12 @@
         "claim": "Parents should not use children as instruments for attention, income or personal status because children have independent purposes and interests.",
         "evidenceType": "Conceptual argument",
         "confidence": "Certain",
-        "context": "Normative argument applied to family-influencer content and the broader treatment of people as assets. Limit: Some family content may be consensual, limited and beneficial, although children's capacity to consent remains constrained.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/83766216/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-2-8%2F370233842-44100-2-71bccf4c18f3.mp3?t=1674s",
         "sourceAvailable": true,
-        "transcript": "Normative argument applied to family-influencer content and the broader treatment of people as assets."
+        "editorialNotes": {
+          "context": "Normative argument applied to family-influencer content and the broader treatment of people as assets. Limit: Some family content may be consensual, limited and beneficial, although children's capacity to consent remains constrained.",
+          "sourceNote": "Normative argument applied to family-influencer content and the broader treatment of people as assets."
+        }
       },
       {
         "claimId": "E31-C17",
@@ -886,10 +994,12 @@
         "claim": "Excessive economic and digital connectivity can erode the boundaries that sustain people, communities and institutions.",
         "evidenceType": "Systems analogy and governance argument",
         "confidence": "Qualified",
-        "context": "Karl compares over-connectivity through globalization and social media with cells losing their boundaries in cancer. Limit: Connectivity can also support resilience, knowledge, cooperation and inclusion, and the cancer analogy does not establish social causation.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/97236112/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-18%2F393309085-44100-2-97953b9d9d817.mp3?t=5294s",
         "sourceAvailable": true,
-        "transcript": "Karl compares over-connectivity through globalization and social media with cells losing their boundaries in cancer."
+        "editorialNotes": {
+          "context": "Karl compares over-connectivity through globalization and social media with cells losing their boundaries in cancer. Limit: Connectivity can also support resilience, knowledge, cooperation and inclusion, and the cancer analogy does not establish social causation.",
+          "sourceNote": "Karl compares over-connectivity through globalization and social media with cells losing their boundaries in cancer."
+        }
       }
     ],
     "wellbeing": [
@@ -904,10 +1014,12 @@
         "claim": "Recommendation systems reduce user control and encourage passive consumption that can produce negative psychological effects.",
         "evidenceType": "Causal interpretation",
         "confidence": "Certain",
-        "context": "Julien links limited control over algorithms and recommendation engines with passivity, addiction, negativity and self-consciousness. Limit: User effects vary by person, content, context and platform design, and passive consumption does not establish harm by itself.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/101237745/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-3-13%2F398331226-44100-2-e7a27031550b9.mp3?t=16s",
         "sourceAvailable": true,
-        "transcript": "Julien links limited control over algorithms and recommendation engines with passivity, addiction, negativity and self-consciousness."
+        "editorialNotes": {
+          "context": "Julien links limited control over algorithms and recommendation engines with passivity, addiction, negativity and self-consciousness. Limit: User effects vary by person, content, context and platform design, and passive consumption does not establish harm by itself.",
+          "sourceNote": "Julien links limited control over algorithms and recommendation engines with passivity, addiction, negativity and self-consciousness."
+        }
       },
       {
         "claimId": "E24-C19",
@@ -920,10 +1032,12 @@
         "claim": "Less screen time, time outdoors and sustained book reading can help people rebuild attention and live more deliberately with digital technology.",
         "evidenceType": "Personal prescription",
         "confidence": "Qualified",
-        "context": "Advice to Generation Z grounded in the speaker's reading habits and environmental memories. Limit: Effects depend on the activity, person and context, and screen use can also support learning, work and relationships.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/90094532/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-7-6%2F384355707-44100-2-e815da60226bc.mp3?t=3756s",
         "sourceAvailable": true,
-        "transcript": "Advice to Generation Z grounded in the speaker's reading habits and environmental memories."
+        "editorialNotes": {
+          "context": "Advice to Generation Z grounded in the speaker's reading habits and environmental memories. Limit: Effects depend on the activity, person and context, and screen use can also support learning, work and relationships.",
+          "sourceNote": "Advice to Generation Z grounded in the speaker's reading habits and environmental memories."
+        }
       },
       {
         "claimId": "E37-C19",
@@ -936,10 +1050,12 @@
         "claim": "Digital wellbeing and resilience require repeated practice and early support instead of waiting until technology use or distress reaches crisis level.",
         "evidenceType": "Practical advice",
         "confidence": "Certain",
-        "context": "Ellis compares mental-health maintenance with training before attempting a heavy lift. Limit: Self-care and early action do not replace clinical treatment, structural change, or emergency intervention.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/79334240/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-10-30%2F357770400-44100-2-7f65ecd57de85.mp3?t=2744s",
         "sourceAvailable": true,
-        "transcript": "Ellis compares mental-health maintenance with training before attempting a heavy lift."
+        "editorialNotes": {
+          "context": "Ellis compares mental-health maintenance with training before attempting a heavy lift. Limit: Self-care and early action do not replace clinical treatment, structural change, or emergency intervention.",
+          "sourceNote": "Ellis compares mental-health maintenance with training before attempting a heavy lift."
+        }
       },
       {
         "claimId": "E40-C15",
@@ -952,10 +1068,12 @@
         "claim": "Technology can function as both a megaphone that expands reach and a maze that overwhelms attention and judgment.",
         "evidenceType": "Conceptual framing",
         "confidence": "Certain",
-        "context": "Dr. Zee describes amplification, confusion, rapid change, and divergent uses. Limit: Effects depend on platform design, context, access, and user behaviour.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/104515239/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-5-23%2F402652679-44100-2-1e58bd01ea10d.mp3?t=2169s",
         "sourceAvailable": true,
-        "transcript": "Dr. Zee describes amplification, confusion, rapid change, and divergent uses."
+        "editorialNotes": {
+          "context": "Dr. Zee describes amplification, confusion, rapid change, and divergent uses. Limit: Effects depend on platform design, context, access, and user behaviour.",
+          "sourceNote": "Dr. Zee describes amplification, confusion, rapid change, and divergent uses."
+        }
       },
       {
         "claimId": "E10-C08",
@@ -968,10 +1086,12 @@
         "claim": "Self-development depends on self-awareness, while emotional education often stops before people learn how to regulate and examine emotions.",
         "evidenceType": "Expert interpretation",
         "confidence": "Certain",
-        "context": "Clinical and educational synthesis without curriculum or outcome evidence. Limit: Alternative explanations and clinical boundary conditions require testing.",
         "video": "https://www.youtube.com/watch?v=Ko3oTTZfNKw&t=1354s",
         "sourceAvailable": true,
-        "transcript": "Clinical and educational synthesis without curriculum or outcome evidence."
+        "editorialNotes": {
+          "context": "Clinical and educational synthesis without curriculum or outcome evidence. Limit: Alternative explanations and clinical boundary conditions require testing.",
+          "sourceNote": "Clinical and educational synthesis without curriculum or outcome evidence."
+        }
       },
       {
         "claimId": "E04-C07",
@@ -984,10 +1104,12 @@
         "claim": "His gaming concern centres on children being exploited or groomed within platforms such as Roblox.",
         "evidenceType": "None offered",
         "confidence": "Qualified",
-        "context": "Platform harms asserted; no case records or prevalence data identified in the interview. Limit: Incidence and mitigation effectiveness need independent measurement.",
         "video": "https://www.youtube.com/watch?v=htpmlaFfp1Q&t=1196s",
         "sourceAvailable": true,
-        "transcript": "Platform harms asserted; no case records or prevalence data identified in the interview."
+        "editorialNotes": {
+          "context": "Platform harms asserted; no case records or prevalence data identified in the interview. Limit: Incidence and mitigation effectiveness need independent measurement.",
+          "sourceNote": "Platform harms asserted; no case records or prevalence data identified in the interview."
+        }
       },
       {
         "claimId": "E10-C02",
@@ -1000,10 +1122,12 @@
         "claim": "Some people can become drawn into AI-mediated beliefs and alternate realities in a way that resembles cult dynamics.",
         "evidenceType": "Expert interpretation",
         "confidence": "Certain",
-        "context": "Analogy and emerging observation; no diagnostic criteria or case series. Limit: Alternative explanations and clinical boundary conditions require testing.",
         "video": "https://www.youtube.com/watch?v=Ko3oTTZfNKw&t=98s",
         "sourceAvailable": true,
-        "transcript": "Analogy and emerging observation; no diagnostic criteria or case series."
+        "editorialNotes": {
+          "context": "Analogy and emerging observation; no diagnostic criteria or case series. Limit: Alternative explanations and clinical boundary conditions require testing.",
+          "sourceNote": "Analogy and emerging observation; no diagnostic criteria or case series."
+        }
       },
       {
         "claimId": "E11-C03",
@@ -1016,10 +1140,12 @@
         "claim": "Strong group attachment can turn into righteous anger or violence when identity-defining values feel betrayed.",
         "evidenceType": "Clinical analogy",
         "confidence": "Qualified",
-        "context": "Links social attachment and crimes of passion without population evidence. Limit: Alternative mechanisms and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=OpYXpriEriQ&t=366s",
         "sourceAvailable": true,
-        "transcript": "Links social attachment and crimes of passion without population evidence."
+        "editorialNotes": {
+          "context": "Links social attachment and crimes of passion without population evidence. Limit: Alternative mechanisms and boundary conditions require external testing.",
+          "sourceNote": "Links social attachment and crimes of passion without population evidence."
+        }
       },
       {
         "claimId": "E37-C04",
@@ -1032,10 +1158,12 @@
         "claim": "Social-media notifications and personalized feeds use unpredictable rewards to encourage repeated checking and longer engagement.",
         "evidenceType": "Product-design explanation",
         "confidence": "Certain",
-        "context": "Ellis compares likes, shares, notifications, and feed refreshing with a slot machine’s variable rewards. Limit: Dopamine is not simply a pleasure chemical, and user behaviour also depends on social goals, habits, content, and context.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/79334240/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-10-30%2F357770400-44100-2-7f65ecd57de85.mp3?t=348s",
         "sourceAvailable": true,
-        "transcript": "Ellis compares likes, shares, notifications, and feed refreshing with a slot machine’s variable rewards."
+        "editorialNotes": {
+          "context": "Ellis compares likes, shares, notifications, and feed refreshing with a slot machine’s variable rewards. Limit: Dopamine is not simply a pleasure chemical, and user behaviour also depends on social goals, habits, content, and context.",
+          "sourceNote": "Ellis compares likes, shares, notifications, and feed refreshing with a slot machine’s variable rewards."
+        }
       },
       {
         "claimId": "E42-C10",
@@ -1048,10 +1176,12 @@
         "claim": "Abundant personalized information and devices can increase choice anxiety, individualization and difficulty grounding judgment.",
         "evidenceType": "Technology and cultural interpretation",
         "confidence": "Qualified",
-        "context": "Nikhil connects personal screens, misinformation and fragmented family routines. Limit: Technology can also support connection, access and informed choice, and causal direction is not established here.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/86950820/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-4-20%2F378166822-44100-2-f73aaa1e5367b.mp3?t=1005s",
         "sourceAvailable": true,
-        "transcript": "Nikhil connects personal screens, misinformation and fragmented family routines."
+        "editorialNotes": {
+          "context": "Nikhil connects personal screens, misinformation and fragmented family routines. Limit: Technology can also support connection, access and informed choice, and causal direction is not established here.",
+          "sourceNote": "Nikhil connects personal screens, misinformation and fragmented family routines."
+        }
       }
     ],
     "judgment": [
@@ -1066,10 +1196,12 @@
         "claim": "AI dependence can form when it makes disliked tasks easier and repeated successful outcomes reinforce avoidance of effort.",
         "evidenceType": "Expert interpretation",
         "confidence": "Qualified",
-        "context": "Behavioral account applied especially to schoolwork and credential incentives; no clinical addiction criteria are used. Limit: Alternative mechanisms, sector differences and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=ZoJLiYRp3Fc&t=2375s",
         "sourceAvailable": true,
-        "transcript": "Behavioral account applied especially to schoolwork and credential incentives; no clinical addiction criteria are used."
+        "editorialNotes": {
+          "context": "Behavioral account applied especially to schoolwork and credential incentives; no clinical addiction criteria are used. Limit: Alternative mechanisms, sector differences and boundary conditions require external testing.",
+          "sourceNote": "Behavioral account applied especially to schoolwork and credential incentives; no clinical addiction criteria are used."
+        }
       },
       {
         "claimId": "E42-C04",
@@ -1082,10 +1214,12 @@
         "claim": "Young people must now decide whether AI is a tool that supports thinking or a system on which they are becoming dependent.",
         "evidenceType": "Conceptual argument about AI use",
         "confidence": "Qualified",
-        "context": "Nikhil uses college applications as an example of a generation facing AI boundaries early in life. Limit: Dependence depends on the task, product design, teaching method and user practice.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/86950820/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-4-20%2F378166822-44100-2-f73aaa1e5367b.mp3?t=337s",
         "sourceAvailable": true,
-        "transcript": "Nikhil uses college applications as an example of a generation facing AI boundaries early in life."
+        "editorialNotes": {
+          "context": "Nikhil uses college applications as an example of a generation facing AI boundaries early in life. Limit: Dependence depends on the task, product design, teaching method and user practice.",
+          "sourceNote": "Nikhil uses college applications as an example of a generation facing AI boundaries early in life."
+        }
       },
       {
         "claimId": "E05-C01",
@@ -1098,10 +1232,12 @@
         "claim": "AI should help people implement their values and make decisions, with explanation and auditability supporting human oversight.",
         "evidenceType": "None offered",
         "confidence": "Qualified",
-        "context": "Uses a hypothetical loan decision and counterfactual income change; no evaluated system or outcome supplied. Limit: Explanations can be plausible without faithfully identifying causes.",
         "video": "https://www.youtube.com/watch?v=rZmutohx7qk&t=117s",
         "sourceAvailable": true,
-        "transcript": "Uses a hypothetical loan decision and counterfactual income change; no evaluated system or outcome supplied."
+        "editorialNotes": {
+          "context": "Uses a hypothetical loan decision and counterfactual income change; no evaluated system or outcome supplied. Limit: Explanations can be plausible without faithfully identifying causes.",
+          "sourceNote": "Uses a hypothetical loan decision and counterfactual income change; no evaluated system or outcome supplied."
+        }
       },
       {
         "claimId": "E32-C03",
@@ -1114,10 +1250,12 @@
         "claim": "Alexandra interprets intuition as access to a pure or soul self beyond the ego, rational thought and patterned thought.",
         "evidenceType": "Conceptual account",
         "confidence": "Certain",
-        "context": "She uses the terms pure self, highest self and heart mind instead of superconscious. Limit: The account does not provide a test that distinguishes a separate level of consciousness from subconscious processing, emotion or learned pattern recognition.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/112889715/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-11-19%2F414713209-44100-2-48d6c6dd9835a.mp3?t=276s",
         "sourceAvailable": true,
-        "transcript": "She uses the terms pure self, highest self and heart mind instead of superconscious."
+        "editorialNotes": {
+          "context": "She uses the terms pure self, highest self and heart mind instead of superconscious. Limit: The account does not provide a test that distinguishes a separate level of consciousness from subconscious processing, emotion or learned pattern recognition.",
+          "sourceNote": "She uses the terms pure self, highest self and heart mind instead of superconscious."
+        }
       },
       {
         "claimId": "E07-C08",
@@ -1130,10 +1268,12 @@
         "claim": "He argues that accepting some friction and consciously choosing technology can restore individual agency and change one’s relationship with it.",
         "evidenceType": "Anecdote",
         "confidence": "Qualified",
-        "context": "Describes simplifying his phone and turning off notifications; no controlled behavioural evaluation. Limit: Effects vary by user and context, and individual changes do not establish system-wide impact.",
         "video": "https://www.youtube.com/watch?v=ghkNjl1Nlac&t=2494s",
         "sourceAvailable": true,
-        "transcript": "Describes simplifying his phone and turning off notifications; no controlled behavioural evaluation."
+        "editorialNotes": {
+          "context": "Describes simplifying his phone and turning off notifications; no controlled behavioural evaluation. Limit: Effects vary by user and context, and individual changes do not establish system-wide impact.",
+          "sourceNote": "Describes simplifying his phone and turning off notifications; no controlled behavioural evaluation."
+        }
       },
       {
         "claimId": "E11-C04",
@@ -1146,10 +1286,12 @@
         "claim": "Humility, doubt and willingness to seek exceptions allow people to revise deeply held beliefs.",
         "evidenceType": "Practice recommendation",
         "confidence": "Certain",
-        "context": "Derived from clinical work and cognitive framing. Limit: Alternative mechanisms and boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=OpYXpriEriQ&t=543s",
         "sourceAvailable": true,
-        "transcript": "Derived from clinical work and cognitive framing."
+        "editorialNotes": {
+          "context": "Derived from clinical work and cognitive framing. Limit: Alternative mechanisms and boundary conditions require external testing.",
+          "sourceNote": "Derived from clinical work and cognitive framing."
+        }
       },
       {
         "claimId": "E17-C11",
@@ -1162,10 +1304,12 @@
         "claim": "High-dimensional optimization could extend human decision-making beyond the number of variables people can consciously manage.",
         "evidenceType": "Human-augmentation argument",
         "confidence": "Qualified",
-        "context": "Contrasts limited working memory with optimization over very large search spaces. Limit: Alternative mechanisms, objective choices and deployment conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=Y6BRlL-Rn-M&t=2697s",
         "sourceAvailable": true,
-        "transcript": "Contrasts limited working memory with optimization over very large search spaces."
+        "editorialNotes": {
+          "context": "Contrasts limited working memory with optimization over very large search spaces. Limit: Alternative mechanisms, objective choices and deployment conditions require external testing.",
+          "sourceNote": "Contrasts limited working memory with optimization over very large search spaces."
+        }
       },
       {
         "claimId": "E23-C08",
@@ -1178,10 +1322,12 @@
         "claim": "Treating AI as a superior or saving intelligence can become an unhealthy ideology that encourages people to defer human judgment.",
         "evidenceType": "Conceptual argument",
         "confidence": "Qualified",
-        "context": "Religious and science-fiction analogies, including an attributed AI Jesus installation. Limit: Hope in technology does not necessarily produce deference, and religious metaphors may overstate ordinary optimism.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/101230750/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-3-13%2F398322515-44100-2-3f8b256f84364.mp3?t=1097s",
         "sourceAvailable": true,
-        "transcript": "Religious and science-fiction analogies, including an attributed AI Jesus installation."
+        "editorialNotes": {
+          "context": "Religious and science-fiction analogies, including an attributed AI Jesus installation. Limit: Hope in technology does not necessarily produce deference, and religious metaphors may overstate ordinary optimism.",
+          "sourceNote": "Religious and science-fiction analogies, including an attributed AI Jesus installation."
+        }
       },
       {
         "claimId": "E14-C04",
@@ -1194,10 +1340,12 @@
         "claim": "Disruption can lead through reflection and transformation to the evolution of institutions including family, education, politics, economics and religion.",
         "evidenceType": "Conceptual framework",
         "confidence": "Certain",
-        "context": "A four-stage framework drawn from venture experience and a heroic-journey analogy. Limit: Alternative mechanisms, material constraints and institutional boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=g67HOHUZYkA&t=358s",
         "sourceAvailable": true,
-        "transcript": "A four-stage framework drawn from venture experience and a heroic-journey analogy."
+        "editorialNotes": {
+          "context": "A four-stage framework drawn from venture experience and a heroic-journey analogy. Limit: Alternative mechanisms, material constraints and institutional boundary conditions require external testing.",
+          "sourceNote": "A four-stage framework drawn from venture experience and a heroic-journey analogy."
+        }
       },
       {
         "claimId": "E13-C08",
@@ -1210,10 +1358,12 @@
         "claim": "Transhumanism is a social movement that uses science and technology to radically improve humans and human experience.",
         "evidenceType": "Definition",
         "confidence": "Certain",
-        "context": "Illustrated with assistive exoskeletons, neural implants, cyborg parts and mind uploading. Limit: Timelines, feasibility, tradeoffs and alternative policy responses require external testing.",
         "video": "https://www.youtube.com/watch?v=gqAAk7aok-w&t=971s",
         "sourceAvailable": true,
-        "transcript": "Illustrated with assistive exoskeletons, neural implants, cyborg parts and mind uploading."
+        "editorialNotes": {
+          "context": "Illustrated with assistive exoskeletons, neural implants, cyborg parts and mind uploading. Limit: Timelines, feasibility, tradeoffs and alternative policy responses require external testing.",
+          "sourceNote": "Illustrated with assistive exoskeletons, neural implants, cyborg parts and mind uploading."
+        }
       }
     ],
     "privacy": [
@@ -1228,10 +1378,12 @@
         "claim": "Many people care about data privacy but feel too powerless or dependent on digital services to act on that concern.",
         "evidenceType": "Survey interpretation and professional observation",
         "confidence": "Qualified",
-        "context": "Dinidh contrasts high stated concern with lower rates of ending relationships over company data practices. Limit: The cited surveys require verification, and inaction can reflect cost, access, knowledge or convenience instead of apathy or powerlessness.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/72737283/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-5-28%2F337218446-44100-2-295653237436c.mp3?t=2583s",
         "sourceAvailable": true,
-        "transcript": "Dinidh contrasts high stated concern with lower rates of ending relationships over company data practices."
+        "editorialNotes": {
+          "context": "Dinidh contrasts high stated concern with lower rates of ending relationships over company data practices. Limit: The cited surveys require verification, and inaction can reflect cost, access, knowledge or convenience instead of apathy or powerlessness.",
+          "sourceNote": "Dinidh contrasts high stated concern with lower rates of ending relationships over company data practices."
+        }
       },
       {
         "claimId": "E01-C05",
@@ -1244,10 +1396,12 @@
         "claim": "Privacy can be collective as well as individual, especially when systems classify or expose a community.",
         "evidenceType": "Governance and rights argument",
         "confidence": "Certain",
-        "context": "She contrasts individual consent with community-level interests. Limit: Collective claims can conflict with individual rights and require legitimate representation.",
         "video": "https://www.youtube.com/watch?v=sE9Qz27uib4&t=590s",
         "sourceAvailable": true,
-        "transcript": "She contrasts individual consent with community-level interests."
+        "editorialNotes": {
+          "context": "She contrasts individual consent with community-level interests. Limit: Collective claims can conflict with individual rights and require legitimate representation.",
+          "sourceNote": "She contrasts individual consent with community-level interests."
+        }
       },
       {
         "claimId": "E02-C02",
@@ -1260,10 +1414,12 @@
         "claim": "Privacy includes inferences made about a person, even when the original data is not directly disclosed.",
         "evidenceType": "Technical definition",
         "confidence": "Certain",
-        "context": "Hegde expands privacy beyond direct access to records. Limit: Permissible and harmful inference depend on context, law and consent.",
         "video": "https://www.youtube.com/watch?v=nlnj6hS6QvQ&t=131s",
         "sourceAvailable": true,
-        "transcript": "Hegde expands privacy beyond direct access to records."
+        "editorialNotes": {
+          "context": "Hegde expands privacy beyond direct access to records. Limit: Permissible and harmful inference depend on context, law and consent.",
+          "sourceNote": "Hegde expands privacy beyond direct access to records."
+        }
       },
       {
         "claimId": "E06-C03",
@@ -1276,10 +1432,12 @@
         "claim": "He sees access to and control of large amounts of personal data as central to current technology power and associated harms.",
         "evidenceType": "None offered",
         "confidence": "Qualified",
-        "context": "Broad causal interpretation; no jurisdiction-specific legal analysis or identified harm dataset. Limit: The mechanism and relevant protections differ across data types, systems and jurisdictions.",
         "video": "https://www.youtube.com/watch?v=0zTkZpQf6sw&t=1077s",
         "sourceAvailable": true,
-        "transcript": "Broad causal interpretation; no jurisdiction-specific legal analysis or identified harm dataset."
+        "editorialNotes": {
+          "context": "Broad causal interpretation; no jurisdiction-specific legal analysis or identified harm dataset. Limit: The mechanism and relevant protections differ across data types, systems and jurisdictions.",
+          "sourceNote": "Broad causal interpretation; no jurisdiction-specific legal analysis or identified harm dataset."
+        }
       },
       {
         "claimId": "E18-C04",
@@ -1292,10 +1450,12 @@
         "claim": "Expert-specific AI should be built with permission and tied to an identifiable human source.",
         "evidenceType": "Consent and provenance prescription",
         "confidence": "Certain",
-        "context": "He argues generic imitation lacks authorization and traceability. Limit: Permission does not guarantee accuracy, safety or appropriate delegation.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/124743103/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-26%2F430559606-44100-2-3450758c00d8c.mp3?t=378s",
         "sourceAvailable": true,
-        "transcript": "He argues generic imitation lacks authorization and traceability."
+        "editorialNotes": {
+          "context": "He argues generic imitation lacks authorization and traceability. Limit: Permission does not guarantee accuracy, safety or appropriate delegation.",
+          "sourceNote": "He argues generic imitation lacks authorization and traceability."
+        }
       },
       {
         "claimId": "E24-C09",
@@ -1308,10 +1468,12 @@
         "claim": "A small number of companies can expose billions of connected users to model changes, creating a concentration of power that requires public accountability.",
         "evidenceType": "Conceptual argument",
         "confidence": "Certain",
-        "context": "Claims about the global reach of Meta, Google, Apple and Microsoft. Limit: User reach, model control and exposure to a specific experiment differ across platforms and services.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/90094532/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2024-7-6%2F384355707-44100-2-e815da60226bc.mp3?t=1272s",
         "sourceAvailable": true,
-        "transcript": "Claims about the global reach of Meta, Google, Apple and Microsoft."
+        "editorialNotes": {
+          "context": "Claims about the global reach of Meta, Google, Apple and Microsoft. Limit: User reach, model control and exposure to a specific experiment differ across platforms and services.",
+          "sourceNote": "Claims about the global reach of Meta, Google, Apple and Microsoft."
+        }
       },
       {
         "claimId": "E32-C07",
@@ -1324,10 +1486,12 @@
         "claim": "Fear of unknown capabilities, including AI and claimed intuitive abilities, is partly fear that another person or system could gain power and use private knowledge to cause harm.",
         "evidenceType": "Risk analogy",
         "confidence": "Qualified",
-        "context": "Alexandra compares uncertainty about AI with fear of people who claim unusual perceptual power and frames morality, ethics and consent as safeguards. Limit: AI systems and claimed clairvoyant abilities have different evidence bases, mechanisms and institutional risks, so the analogy cannot establish that their harms or safeguards are equivalent.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/112889715/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-11-19%2F414713209-44100-2-48d6c6dd9835a.mp3?t=831s",
         "sourceAvailable": true,
-        "transcript": "Alexandra compares uncertainty about AI with fear of people who claim unusual perceptual power and frames morality, ethics and consent as safeguards."
+        "editorialNotes": {
+          "context": "Alexandra compares uncertainty about AI with fear of people who claim unusual perceptual power and frames morality, ethics and consent as safeguards. Limit: AI systems and claimed clairvoyant abilities have different evidence bases, mechanisms and institutional risks, so the analogy cannot establish that their harms or safeguards are equivalent.",
+          "sourceNote": "Alexandra compares uncertainty about AI with fear of people who claim unusual perceptual power and frames morality, ethics and consent as safeguards."
+        }
       }
     ],
     "governance": [
@@ -1342,10 +1506,12 @@
         "claim": "Regulation compels behaviour, policy identifies objectives and governance determines who makes and enforces decisions.",
         "evidenceType": "Conceptual definition",
         "confidence": "Certain",
-        "context": "McKelvey offers a three-part vocabulary for institutional power. Limit: The categories overlap in law and practice.",
         "video": "https://www.youtube.com/watch?v=PdG7w4zgMVU&t=102s",
         "sourceAvailable": true,
-        "transcript": "McKelvey offers a three-part vocabulary for institutional power."
+        "editorialNotes": {
+          "context": "McKelvey offers a three-part vocabulary for institutional power. Limit: The categories overlap in law and practice.",
+          "sourceNote": "McKelvey offers a three-part vocabulary for institutional power."
+        }
       },
       {
         "claimId": "E05-C10",
@@ -1358,10 +1524,12 @@
         "claim": "Restrictions on research ideas would be difficult to enforce because ideas can be modified and reused in ways that are hard to detect.",
         "evidenceType": "None offered",
         "confidence": "Qualified",
-        "context": "Analogy to software licensing and informal feasibility reasoning; no legal analysis supplied. Limit: Enforceability depends on the instrument, jurisdiction and protected subject matter.",
         "video": "https://www.youtube.com/watch?v=rZmutohx7qk&t=2341s",
         "sourceAvailable": true,
-        "transcript": "Analogy to software licensing and informal feasibility reasoning; no legal analysis supplied."
+        "editorialNotes": {
+          "context": "Analogy to software licensing and informal feasibility reasoning; no legal analysis supplied. Limit: Enforceability depends on the instrument, jurisdiction and protected subject matter.",
+          "sourceNote": "Analogy to software licensing and informal feasibility reasoning; no legal analysis supplied."
+        }
       },
       {
         "claimId": "E07-C02",
@@ -1374,10 +1542,12 @@
         "claim": "He argues that AI resembles heavy industry because additional use requires ongoing compute and resource inputs, and asserts that scaling creates diseconomies.",
         "evidenceType": "None offered",
         "confidence": "Certain",
-        "context": "Heavy-industry analogy; no task-level cost or efficiency series. Limit: Rising total resource use does not by itself imply rising unit costs or exclude economies of scale.",
         "video": "https://www.youtube.com/watch?v=ghkNjl1Nlac&t=501s",
         "sourceAvailable": true,
-        "transcript": "Heavy-industry analogy; no task-level cost or efficiency series."
+        "editorialNotes": {
+          "context": "Heavy-industry analogy; no task-level cost or efficiency series. Limit: Rising total resource use does not by itself imply rising unit costs or exclude economies of scale.",
+          "sourceNote": "Heavy-industry analogy; no task-level cost or efficiency series."
+        }
       },
       {
         "claimId": "E16-C15",
@@ -1390,10 +1560,12 @@
         "claim": "Open-source research can accelerate development, invite scrutiny and distribute the benefits of a new AI architecture.",
         "evidenceType": "Governance argument",
         "confidence": "Certain",
-        "context": "Viviane cites code contributions, community feedback, transparency and public benefit. Limit: Competing theories, implementation limits and empirical boundary conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=aQmazrukbMk&t=1966s",
         "sourceAvailable": true,
-        "transcript": "Viviane cites code contributions, community feedback, transparency and public benefit."
+        "editorialNotes": {
+          "context": "Viviane cites code contributions, community feedback, transparency and public benefit. Limit: Competing theories, implementation limits and empirical boundary conditions require external testing.",
+          "sourceNote": "Viviane cites code contributions, community feedback, transparency and public benefit."
+        }
       },
       {
         "claimId": "E17-C07",
@@ -1406,10 +1578,12 @@
         "claim": "Evolutionary systems exploit loopholes in objectives and environments, so promising solutions should be tested in simulations before real deployment.",
         "evidenceType": "Safety argument",
         "confidence": "Certain",
-        "context": "Uses the tic-tac-toe memory bomb, robot movement and spacecraft control examples. Limit: Alternative mechanisms, objective choices and deployment conditions require external testing.",
         "video": "https://www.youtube.com/watch?v=Y6BRlL-Rn-M&t=1311s",
         "sourceAvailable": true,
-        "transcript": "Uses the tic-tac-toe memory bomb, robot movement and spacecraft control examples."
+        "editorialNotes": {
+          "context": "Uses the tic-tac-toe memory bomb, robot movement and spacecraft control examples. Limit: Alternative mechanisms, objective choices and deployment conditions require external testing.",
+          "sourceNote": "Uses the tic-tac-toe memory bomb, robot movement and spacecraft control examples."
+        }
       },
       {
         "claimId": "E23-C02",
@@ -1422,10 +1596,12 @@
         "claim": "Primary responsibility for accurate AI claims sits with companies selling the systems, followed by investors, commentators and users who repeat those claims.",
         "evidenceType": "Conceptual argument",
         "confidence": "Certain",
-        "context": "Normative allocation of responsibility based on commercial incentives and social-media promotion. Limit: Responsibility also sits with regulators, procurers, journalists and institutions that set standards or deploy systems.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/101230750/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-3-13%2F398322515-44100-2-3f8b256f84364.mp3?t=211s",
         "sourceAvailable": true,
-        "transcript": "Normative allocation of responsibility based on commercial incentives and social-media promotion."
+        "editorialNotes": {
+          "context": "Normative allocation of responsibility based on commercial incentives and social-media promotion. Limit: Responsibility also sits with regulators, procurers, journalists and institutions that set standards or deploy systems.",
+          "sourceNote": "Normative allocation of responsibility based on commercial incentives and social-media promotion."
+        }
       },
       {
         "claimId": "E26-C03",
@@ -1438,10 +1614,12 @@
         "claim": "AI can support useful medical, vehicle-safety and accessibility applications while also enabling manipulation, discrimination, deepfakes and exploitative design.",
         "evidenceType": "Conceptual comparison",
         "confidence": "Certain",
-        "context": "Contrasts several beneficial uses with advertising, dark-pattern and bias examples. Limit: Each application has distinct evidence, risk and governance requirements, so AI cannot be assessed as one uniform category.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/73750628/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-6-23%2F340369856-44100-2-291edfcb91a0f.mp3?t=387s",
         "sourceAvailable": true,
-        "transcript": "Contrasts several beneficial uses with advertising, dark-pattern and bias examples."
+        "editorialNotes": {
+          "context": "Contrasts several beneficial uses with advertising, dark-pattern and bias examples. Limit: Each application has distinct evidence, risk and governance requirements, so AI cannot be assessed as one uniform category.",
+          "sourceNote": "Contrasts several beneficial uses with advertising, dark-pattern and bias examples."
+        }
       },
       {
         "claimId": "E30-C01",
@@ -1454,10 +1632,12 @@
         "claim": "Technological systems are tools whose social effects depend on how people and institutions choose to use them.",
         "evidenceType": "General principle",
         "confidence": "Certain",
-        "context": "Dinidh compares technology with a hammer that can serve an ordinary purpose or be used as a weapon. Limit: Some technologies create risks through their structure and distribution even without malicious intent.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/72737283/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-5-28%2F337218446-44100-2-295653237436c.mp3?t=137s",
         "sourceAvailable": true,
-        "transcript": "Dinidh compares technology with a hammer that can serve an ordinary purpose or be used as a weapon."
+        "editorialNotes": {
+          "context": "Dinidh compares technology with a hammer that can serve an ordinary purpose or be used as a weapon. Limit: Some technologies create risks through their structure and distribution even without malicious intent.",
+          "sourceNote": "Dinidh compares technology with a hammer that can serve an ordinary purpose or be used as a weapon."
+        }
       },
       {
         "claimId": "E39-C22",
@@ -1470,10 +1650,12 @@
         "claim": "A culture of responsibility asks people to improve conditions within their power while contributing to a civil society.",
         "evidenceType": "Normative and civic argument",
         "confidence": "Qualified",
-        "context": "Dr. Anbar connects responsibility with helping others, gratitude, and spiritual purpose. Limit: Individual action cannot substitute for institutional accountability or remedies for structural harm.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/107220582/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-22%2F406119970-44100-2-f22c7bdd47192.mp3?t=2227s",
         "sourceAvailable": true,
-        "transcript": "Dr. Anbar connects responsibility with helping others, gratitude, and spiritual purpose."
+        "editorialNotes": {
+          "context": "Dr. Anbar connects responsibility with helping others, gratitude, and spiritual purpose. Limit: Individual action cannot substitute for institutional accountability or remedies for structural harm.",
+          "sourceNote": "Dr. Anbar connects responsibility with helping others, gratitude, and spiritual purpose."
+        }
       },
       {
         "claimId": "E40-C11",
@@ -1486,10 +1668,12 @@
         "claim": "Young people are being asked to solve inherited social problems while being excluded from decisions about those problems.",
         "evidenceType": "Political and generational argument",
         "confidence": "Qualified",
-        "context": "She refers to education, government, protest, COVID-era disruption, and institutional dismissal. Limit: Youth participation and exclusion vary across jurisdictions and institutions.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/104515239/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-5-23%2F402652679-44100-2-1e58bd01ea10d.mp3?t=1118s",
         "sourceAvailable": true,
-        "transcript": "She refers to education, government, protest, COVID-era disruption, and institutional dismissal."
+        "editorialNotes": {
+          "context": "She refers to education, government, protest, COVID-era disruption, and institutional dismissal. Limit: Youth participation and exclusion vary across jurisdictions and institutions.",
+          "sourceNote": "She refers to education, government, protest, COVID-era disruption, and institutional dismissal."
+        }
       },
       {
         "claimId": "E41-C03",
@@ -1502,10 +1686,12 @@
         "claim": "Framing every crisis as a problem with a solution can conceal irreversible loss and the limits of control.",
         "evidenceType": "Definition and philosophical argument",
         "confidence": "Certain",
-        "context": "Nick argues that some damage cannot be restored to a previous state. Limit: Acknowledging limits can coexist with mitigation, adaptation and restoration work.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/121026681/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-5%2F425543730-44100-2-00a3fda56cd5e.mp3?t=311s",
         "sourceAvailable": true,
-        "transcript": "Nick argues that some damage cannot be restored to a previous state."
+        "editorialNotes": {
+          "context": "Nick argues that some damage cannot be restored to a previous state. Limit: Acknowledging limits can coexist with mitigation, adaptation and restoration work.",
+          "sourceNote": "Nick argues that some damage cannot be restored to a previous state."
+        }
       },
       {
         "claimId": "E15-C11",
@@ -1518,10 +1704,12 @@
         "claim": "Reward-maximizing agents may seek control of their reward mechanism, so safety research must constrain unintended paths or use alternative goal systems.",
         "evidenceType": "Safety argument",
         "confidence": "Certain",
-        "context": "Cole describes wireheading, limited horizons, causal approaches and text-based principles. Limit: Definitions, assumptions, boundary conditions and alternative explanations require external testing.",
         "video": "https://www.youtube.com/watch?v=rt7rBdIES7A&t=1958s",
         "sourceAvailable": true,
-        "transcript": "Cole describes wireheading, limited horizons, causal approaches and text-based principles."
+        "editorialNotes": {
+          "context": "Cole describes wireheading, limited horizons, causal approaches and text-based principles. Limit: Definitions, assumptions, boundary conditions and alternative explanations require external testing.",
+          "sourceNote": "Cole describes wireheading, limited horizons, causal approaches and text-based principles."
+        }
       },
       {
         "claimId": "E25-C11",
@@ -1534,10 +1722,12 @@
         "claim": "Automated systems already exercise legally consequential powers by driving, entering transactions and approving applications, even without civil rights or personhood.",
         "evidenceType": "Legal argument",
         "confidence": "Certain",
-        "context": "Examples involving autonomous driving, e-commerce contracts, financial trading and visa approval. Limit: Legal systems may treat the human or organization deploying the program as the actor while the software remains an instrument.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/74343411/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-7-7%2F342199680-44100-2-62bd9329034b4.mp3?t=1119s",
         "sourceAvailable": true,
-        "transcript": "Examples involving autonomous driving, e-commerce contracts, financial trading and visa approval."
+        "editorialNotes": {
+          "context": "Examples involving autonomous driving, e-commerce contracts, financial trading and visa approval. Limit: Legal systems may treat the human or organization deploying the program as the actor while the software remains an instrument.",
+          "sourceNote": "Examples involving autonomous driving, e-commerce contracts, financial trading and visa approval."
+        }
       },
       {
         "claimId": "E34-C09",
@@ -1550,10 +1740,12 @@
         "claim": "Concentrated ownership of technology can increase power over young people and narrow the period in which they can shape new systems.",
         "evidenceType": "Power and governance argument",
         "confidence": "Qualified",
-        "context": "Jamie warns that those controlling technology and capital can exercise unprecedented influence. Limit: Power is distributed across governments, firms, users and civil society, and historical comparisons require evidence.",
         "video": "https://anchor.fm/s/4f9f9cb0/podcast/play/76677175/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-9-2%2F349446991-44100-2-b423f8291f99f.mp3?t=1061s",
         "sourceAvailable": true,
-        "transcript": "Jamie warns that those controlling technology and capital can exercise unprecedented influence."
+        "editorialNotes": {
+          "context": "Jamie warns that those controlling technology and capital can exercise unprecedented influence. Limit: Power is distributed across governments, firms, users and civil society, and historical comparisons require evidence.",
+          "sourceNote": "Jamie warns that those controlling technology and capital can exercise unprecedented influence."
+        }
       }
     ]
   },

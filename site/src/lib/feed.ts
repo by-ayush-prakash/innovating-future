@@ -30,7 +30,7 @@ let cache: Promise<{ episodes: Episode[]; fetchFailed: boolean }> | null = null;
 
 async function load() {
   try {
-    const res = await fetch(RSS_URL);
+    const res = await fetch(RSS_URL, { signal: AbortSignal.timeout(8000) });
     if (!res.ok) throw new Error(`RSS fetch failed: ${res.status}`);
     const xml = await res.text();
     const channelImageMatch = xml.match(/<itunes:image href="(.*?)"/);

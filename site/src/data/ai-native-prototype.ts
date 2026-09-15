@@ -1,4 +1,12 @@
 import corpus from "./ai-native-corpus.generated.json";
+import sourceExcerpts from "./record-source-excerpts.generated.json";
+
+const excerptFor = (item: { speaker: string; timestamp: string }) => {
+  const key = `${item.speaker}|${item.timestamp}` as keyof typeof sourceExcerpts;
+  const excerpt = sourceExcerpts[key];
+  if (!excerpt?.transcript) throw new Error(`Missing source transcript: ${key}`);
+  return excerpt.transcript;
+};
 
 const featuredSpeakerProfiles = [
   { name: "Renée Sieber", role: "Geographer and GIS researcher" },
@@ -42,9 +50,7 @@ const seedQuestions = [
         claim: "Human-like output encourages people to infer intelligence and project human qualities onto chatbots.",
         evidenceType: "Conceptual argument",
         confidence: "Qualified",
-        context: "The exchange concerns why fluent systems invite anthropomorphic interpretation. The claim does not establish what users believe across populations.",
         video: "https://www.youtube.com/watch?v=zpO22W294bc&t=287s",
-        transcript: "Ayush Prakash, 03:40: I'm ascribing just a couple more human traits to it where it may be inappropriate. Do you see this? Do you, like, do you see, um, can you understand why potentially younger people, but people in general, would do that? Karl Friston, 04:47: Yeah, no, absolutely. […] So It is, I think, quite natural that the things that engage us are basically things like other people or things like me. And therefore, it's quite natural that people have learned that to sell stuff, you make it behave like me, or like you. […] The very fact it is behaving like, or at least generating content of the kind that I would generate, means that it is desperately easy to start to empathize and to start to project something of the human condition into the source of the content that your artifact is generating.",
       },
       {
         state: "disagreement",
@@ -54,9 +60,7 @@ const seedQuestions = [
         claim: "A world model can represent features, locations, movement, and changes within an environment.",
         evidenceType: "Definition",
         confidence: "Certain",
-        context: "The discussion describes a local world model grounded in movement through an environment. Whether this amounts to understanding remains a separate interpretation.",
         video: "https://www.youtube.com/watch?v=aQmazrukbMk&t=212s",
-        transcript: "Ayush Prakash, 03:29: And their stored map is a world model? Viviane Clay, 03:32: Um, yeah, so it's a model of, uh, that particular environment. Um, I mean, not the entire world, but yeah, you can definitely call it a, a world, world model. Um, that's being learned there. It's basically features at locations. So the— you can use the grid cells, um, to kind of tile space and map out space and figure out how movements of the animal translate to movement in that space. Um, and then you can associate features with those locations and places in space, um, and thereby learn a model of that environment.",
       },
       {
         state: "uncertainty",
@@ -66,9 +70,7 @@ const seedQuestions = [
         claim: "Consciousness, planning, deliberation, and thinking about thinking require separate terms and tests.",
         evidenceType: "Definition",
         confidence: "Certain",
-        context: "The disagreement may partly be linguistic. The archive needs explicit definitions before it can compare claims about intelligence or consciousness.",
         video: "https://www.youtube.com/watch?v=rt7rBdIES7A&t=229s",
-        transcript: "Ayush Prakash, 03:26: I've been struggling with the terminology of artificial intelligence and in the AI industry in general, it seems like people are using things like sentience and consciousness and all of these things very loosely. […] Like, would you update anything or would you kind of like precisely define things differently? Cole Wyeth, 03:49: I think the biggest problems will be that certain terms will be used by different people, just kind of in different ways. […] Yeah, consciousness might actually be sort of the biggest, the kind of most difficult example of this, where when you say consciousness, you might just sort of mean like, oh, it's like it can deliberate and plan and like maybe, maybe additionally you want it to be able to reflect on itself […] Like this kind of, I would call that, I would just call that self-reflection, right? […] I think what people usually mean by conscious is, at least what I mean when I say conscious, it's like, you have some kind of first-person experience, like it feels like something to be you.",
       },
     ],
   },
@@ -92,9 +94,7 @@ const seedQuestions = [
         claim: "Repeated dependence on generative AI may reduce a person’s ability to perform delegated tasks unaided.",
         evidenceType: "Research reference",
         confidence: "Certain",
-        context: "The speaker references cognitive debt without identifying a study in the exchange. The effect may vary by task, experience, and method of use.",
         video: "https://www.youtube.com/watch?v=htpmlaFfp1Q&t=618s",
-        transcript: "Ayush Prakash, 10:10: Is there something else going on, like regardless of the technology about GenAI for humans? Like, is it causing— Go ahead. Matthew Guzdial, 10:18: Sure. I mean, so, you know, there's cognitive debt for sure. There's been a number of findings of that, of repeatedly using the technologies, becoming reliant on these technologies means that you are less sort of able to do the tasks that you are using those technologies for. That's certainly true. […] So I don't recommend becoming reliant on these tools.",
       },
       {
         state: "disagreement",
@@ -104,9 +104,7 @@ const seedQuestions = [
         claim: "Generative AI can support research when users verify its output against reliable sources.",
         evidenceType: "Practice recommendation",
         confidence: "Certain",
-        context: "This position describes a verification workflow. It does not establish the long-term effect of tool use on unaided capability.",
         video: "https://www.youtube.com/watch?v=1oL9UL4e_Es&t=640s",
-        transcript: "Ayush Prakash, 10:10: My generation suffers from this immediately, which is we just use ChatGPT or generative AI, expect it to be this oracle of absolute truth and go about our way. […] But how do we take that step back? Maya Ackerman, 10:40: I think it's great for research. You just have to verify it. It's just a little bit of extra time, right? So if there is a topic that I know very well, then I see a lot of gaps in what it produces, a lot of gaps, which is a problem because that tells me that if I use it for something that I don't know very well, then I'm not even aware of the gaps that are there. […] What I do is I quickly verify, just very, very quick, quick Google search, or I ask it to give me a scientific publication that justifies what it said. […] But yeah, you cannot use it instead of a search engine. It's very, very dangerous. It's just not a good use case.",
       },
       {
         state: "uncertainty",
@@ -116,9 +114,7 @@ const seedQuestions = [
         claim: "Current evidence cannot establish whether generative AI causes psychosis or makes existing vulnerability easier to express.",
         evidenceType: "Evidence limitation",
         confidence: "Explicitly uncertain",
-        context: "The discussion separates correlation, causation, access, and predisposition. CIF cannot turn this interview into a clinical conclusion.",
         video: "https://www.youtube.com/watch?v=Ko3oTTZfNKw&t=248s",
-        transcript: "Ayush Prakash, 03:18: Can it be said that generative AI right now is giving people psychosis? […] Is it like scooping, is it generating psychosis and neurosis in people? Ashleigh Rankin, 04:08: Yeah, that's a hard question because we could say the same when we're looking at like clinical development of mental disorders, right? […] Typically, you know, correlation is not causation. So if we're correlating a higher statistic of people falling into this psychosis, is it because it's available or is it because we're seeing more of it in front of us? […] I think there is some vulnerability that you have to have when you're falling into this for whatever reason […] But I do think because it's so easily accessible, we're going to see higher numbers no matter what. Whether it's causing it or not, that's the hard question to answer.",
       },
     ],
   },
@@ -142,9 +138,7 @@ const seedQuestions = [
         claim: "People affected by an AI system should have a say in the trade-offs built into it.",
         evidenceType: "Governance argument",
         confidence: "Qualified",
-        context: "The exchange contrasts who currently makes technical trade-offs with who should have influence when their data and interests are affected.",
         video: "https://www.youtube.com/watch?v=nlnj6hS6QvQ&t=315s",
-        transcript: "Ayush Prakash, 04:54: Are those trade-offs, are there trade-offs going on here? […] How do you pick and choose who's at the— who's the kind of oracle of truth there to make that model more robust or more private, etc.? Nidhi Hegde, 05:15: And who decides on the trade-off? Well, I mean, technically, practically speaking, it's a person that's designing the model or implementing it or deploying it. But really, it should be. Sort of all of us, you know, we should all sort of have a say in that. You know, if my data is being used for a model, then maybe I should have a say in what trade-off I'm comfortable with. […] In practice, it's really the firm that's deploying this model, or the machine learning scientist who's designing it, who will decide on that trade-off. But, um, you know, generally speaking, philosophically speaking, it really should be all of us that should have a say in that.",
       },
       {
         state: "disagreement",
@@ -154,9 +148,7 @@ const seedQuestions = [
         claim: "Researchers may create the ideas, but companies and governments usually control how those ideas are used.",
         evidenceType: "Professional observation",
         confidence: "Qualified",
-        context: "Taylor describes limited control over the downstream use of fundamental research and places deployment power with institutions.",
         video: "https://www.youtube.com/watch?v=rZmutohx7qk&t=2246s",
-        transcript: "Ayush Prakash, 37:03: It's just about how we're thinking about it, which comes back to you and your community and your research. What is it like holding the power, you know? For those downstream? Matthew E. Taylor, 37:18: I laugh because I often feel powerless. Ayush Prakash, 37:22: Say more about that. Why do you feel powerless? Matthew E. Taylor, 37:26: Because I'm working— most of my work is on fundamental research, which could be used by someone else in 5 to 10 years to be— to do something. […] It really depends on who ends up having, having the power in their hands to use it. So it's going to be the companies and the governments, not the, the independent researcher.",
       },
       {
         state: "uncertainty",
@@ -166,9 +158,7 @@ const seedQuestions = [
         claim: "AI rules can be set by governments or companies; the unresolved question is who gets to decide and who is accountable.",
         evidenceType: "Governance framework",
         confidence: "Qualified",
-        context: "The exchange separates regulation, policy and governance, then asks which institutions should make and enforce decisions about AI systems.",
         video: "https://www.youtube.com/watch?v=PdG7w4zgMVU&t=102s",
-        transcript: "Ayush Prakash, 01:21: When you're talking about policy and these regulations, first of all, what is regulation? […] And then I want to tack on to the question, what does healthy regulation look like? Fenwick McKelvey, 01:42: The first thing I always say is that everything is regulation. What you see on YouTube, even if the government's not deciding it, is a form of regulation. And so really what we're deciding is do we want regulation that we have accountability for, or do we want regulation that we don't? […] Governance, it's like how and who decides what policies impact what regulations. […] Governments could be doing it. Governments can be doing it with companies, with civil society. And that question of who gets to make those decisions, what's governance, what's good governance, it's a big, big question.",
       },
     ],
   },
@@ -184,8 +174,8 @@ const featuredQuestions = [
     id: "understanding",
     number: "01",
     axis: "Mind",
-    color: "#ffcc2f",
-    softColor: "#fff0b5",
+    color: "#d83a2e",
+    softColor: "#ffffff",
     question: "Does AI actually understand us?",
     short: "The interviews use different tests for intelligence, understanding, agency, and consciousness.",
     conclusion: "Fluent output does not settle whether a system understands. The interviews distinguish observable behaviour, internal models, goal-directed action, embodiment, and first-person experience.",
@@ -199,8 +189,8 @@ const featuredQuestions = [
     id: "evidence",
     number: "02",
     axis: "Knowledge",
-    color: "#f2a13a",
-    softColor: "#ffe1b7",
+    color: "#2f6db5",
+    softColor: "#ffffff",
     question: "When should we trust an AI answer?",
     short: "Plausible output, verified knowledge, and justified confidence are different things.",
     conclusion: "The interviews support treating generative output as a claim to check, especially outside a user’s expertise. Trust depends on traceable sources, verification, error costs, and a clear account of what the system cannot establish.",
@@ -214,8 +204,8 @@ const featuredQuestions = [
     id: "learning",
     number: "03",
     axis: "Education",
-    color: "#20c4b6",
-    softColor: "#ccefeb",
+    color: "#f2c230",
+    softColor: "#ffffff",
     question: "How should AI change how we learn?",
     short: "Faster completion can support access while removing the struggle through which skills develop.",
     conclusion: "The interviews point to a design problem, not a single verdict. AI can widen access and support projects, but learning weakens when the system replaces practice, explanation, and independent recall.",
@@ -229,8 +219,8 @@ const featuredQuestions = [
     id: "work",
     number: "04",
     axis: "Work",
-    color: "#ff6542",
-    softColor: "#ffd0c4",
+    color: "#d83a2e",
+    softColor: "#ffffff",
     question: "What happens to work when AI gets better?",
     short: "Automation changes tasks, entry routes, skill value, hiring, and bargaining power at different speeds.",
     conclusion: "The interviews do not support one employment forecast. They point to uneven change across occupations, with immediate pressure on training paths, junior work, hiring signals, and the value of transferable skills.",
@@ -244,8 +234,8 @@ const featuredQuestions = [
     id: "creativity",
     number: "05",
     axis: "Creation",
-    color: "#ff58a0",
-    softColor: "#ffd0e4",
+    color: "#2f6db5",
+    softColor: "#ffffff",
     question: "What should remain human in creative work?",
     short: "The archive separates useful assistance from authorship, practice, permission, and meaning.",
     conclusion: "AI can help generate and revise material, but the interviews raise unresolved questions about consent, attribution, artistic practice, and the human experience through which work acquires meaning.",
@@ -259,8 +249,8 @@ const featuredQuestions = [
     id: "relationships",
     number: "06",
     axis: "Connection",
-    color: "#a98cf4",
-    softColor: "#e4dcff",
+    color: "#f2c230",
+    softColor: "#ffffff",
     question: "How is technology changing our relationships?",
     short: "Digital systems can widen connection while changing how people see, judge, and use one another.",
     conclusion: "The interviews describe both connection and reduction. Platforms can help dispersed people find community, while feeds, profiles, and mediated interaction can turn relationships into content, categories, or transactions.",
@@ -274,8 +264,8 @@ const featuredQuestions = [
     id: "wellbeing",
     number: "07",
     axis: "Wellbeing",
-    color: "#79c85a",
-    softColor: "#d9f0ce",
+    color: "#d83a2e",
+    softColor: "#ffffff",
     question: "What does AI do to mental health and attention?",
     short: "Availability, dependence, persuasive design, vulnerability, and clinical causation must be separated.",
     conclusion: "The interviews identify credible mechanisms of harm and useful practices for resilience, but they do not establish one general clinical effect. Individual vulnerability, product design, frequency of use, and social context matter.",
@@ -289,8 +279,8 @@ const featuredQuestions = [
     id: "judgment",
     number: "08",
     axis: "Agency",
-    color: "#55a8ef",
-    softColor: "#cfe8fa",
+    color: "#2f6db5",
+    softColor: "#ffffff",
     question: "How do we keep human judgment?",
     short: "Assistance can extend judgment, displace it, or make it harder to notice when it has been surrendered.",
     conclusion: "The interviews favour deliberate use, explanation, friction, doubt, and the ability to act without the tool. Human oversight is meaningful only when people retain the knowledge and authority to disagree.",
@@ -304,8 +294,8 @@ const featuredQuestions = [
     id: "privacy",
     number: "09",
     axis: "Data",
-    color: "#d987dd",
-    softColor: "#f1d5f2",
+    color: "#f2c230",
+    softColor: "#ffffff",
     question: "Who controls our data?",
     short: "Privacy includes collection, inference, group exposure, permission, and the power to refuse.",
     conclusion: "The interviews show that privacy cannot be reduced to individual disclosure. Systems infer new information, classify communities, and concentrate power in organizations that people may be unable to avoid or challenge.",
@@ -319,8 +309,8 @@ const featuredQuestions = [
     id: "governance",
     number: "10",
     axis: "Power",
-    color: "#8f7cf2",
-    softColor: "#ded7ff",
+    color: "#d83a2e",
+    softColor: "#ffffff",
     question: "Who decides where AI gets used?",
     short: "Access, deployment authority, safety constraints, public voice, and accountability sit with different actors.",
     conclusion: "The interviews point toward named responsibility, public contestability, and evidence tied to specific deployment decisions. Access to a system does not give affected people meaningful control over it.",
@@ -338,11 +328,13 @@ export const questions = featuredQuestions.map((question) => {
   const featuredEvidence = new Set(question.evidence.map((item) => `${item.speaker}|${item.timestamp}`));
   const additionalPositions = corpus.questions[question.id as CorpusQuestionId]
     .filter((item) => item.sourceAvailable && Boolean(item.video))
-    .filter((item) => !featuredEvidence.has(`${item.speaker}|${item.timestamp}`));
+    .filter((item) => !featuredEvidence.has(`${item.speaker}|${item.timestamp}`))
+    // Only source-backed excerpts enter the public view. Editorial notes stay separate.
+    .map(({ editorialNotes, ...item }) => ({ ...item, context: "", transcript: excerptFor(item) }));
 
   return {
     ...question,
-    evidence: [...question.evidence, ...additionalPositions],
+    evidence: [...question.evidence.map((item) => ({ ...item, context: "", transcript: excerptFor(item) })), ...additionalPositions],
   };
 });
 

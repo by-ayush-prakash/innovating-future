@@ -16,6 +16,7 @@ const {
   ctaLabel,
   ctaHref,
   ctaField,
+  ctaLinks,
 } = Astro.props;
 
 const full = `${ORG.short} | ${title ?? "Home"}`;          // browser tab
@@ -54,12 +55,13 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <slot name="head" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
     {!appShell && <Nav path={path} />}
     <main id="main"><slot /></main>
-    {!appShell && <Footer cta={cta} ctaHeading={ctaHeading} ctaBody={ctaBody} ctaLabel={ctaLabel} ctaHref={ctaHref} ctaField={ctaField} />}
+    {!appShell && <Footer cta={cta} ctaHeading={ctaHeading} ctaBody={ctaBody} ctaLabel={ctaLabel} ctaHref={ctaHref} ctaField={ctaField} ctaLinks={ctaLinks} />}
     {!appShell && (
       <script is:inline>
         (() => {

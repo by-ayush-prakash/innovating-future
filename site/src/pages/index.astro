@@ -1,4 +1,5 @@
 ---
+import SiteImage from '../components/SiteImage.astro';
 import Base from "../layouts/Base.astro";
 import Field from "../components/Field.astro";
 import Arrow from "../components/Arrow.astro";
@@ -78,11 +79,11 @@ const properties = [
 
       <div class="hcards">
         <a class="card" href="/work/coexisting-with-ai/record/">
-          <img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="eager" />
+          <SiteImage class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="eager" />
           <span class="cardlab cardlab--d"><span class="lg">The Co-Existence Record</span></span>
         </a>
         <a class="card" href={SKEPTICISM.page}>
-          <img class="rn" src="/images/coexisting-with-ai.jpg" alt="A head in silhouette opening onto a green field, with a bird on the steps and clouds passing through" loading="eager" />
+          <SiteImage class="rn" src="/images/coexisting-with-ai.jpg" alt="A head in silhouette opening onto a green field, with a bird on the steps and clouds passing through" loading="eager" />
           <span class="cardlab"><span class="lg">Co&#8209;Existing with AI</span></span>
         </a>
       </div>
@@ -97,7 +98,7 @@ const properties = [
       </div>
       <div class="arow arow--podcast">
         <a class="cov" href="/podcast" style="display:block">
-          <img src={PODCAST.cover} alt={`${PODCAST.name} cover art`} />
+          <SiteImage src={PODCAST.cover} alt={`${PODCAST.name} cover art`} />
         </a>
         <div>
           <div class="fconvs">
@@ -179,7 +180,7 @@ const properties = [
       <div class="wall">
         {wall.map((m) => (
           <a class="wl" href={m.u} target="_blank" rel="noopener noreferrer" aria-label={m.n}>
-            <img src={m.logo.src} alt={m.n} width={Math.round(m.logo.width / 3)} height={Math.round(m.logo.height / 3)} loading="lazy" />
+            <SiteImage src={m.logo.src} alt={m.n} width={Math.round(m.logo.width / 3)} height={Math.round(m.logo.height / 3)} loading="lazy" />
           </a>
         ))}
       </div>
@@ -204,39 +205,41 @@ const properties = [
     </div>
   </section>
 
-  <section class="sec sec--t">
+  <section class="sec sec--t latest-news" id="latest-news">
     <div class="wrap">
       <div class="shead">
-        <h3>The latest</h3>
+        <h3>The latest news</h3>
         <a class="go sm" href="/media">See everything <Arrow /></a>
       </div>
       <div class="g3">
         <a class="ncard" href="https://www.themontrealreview.com/Articles/the_infinity_of_the_brain_and_the_void_of_the_machine.php" target="_blank" rel="noopener noreferrer">
           <div class="im im--logo">
-            <img src={logoFor("montreal-review")?.src} alt="The Montr&eacute;al Review" loading="lazy" />
+            <SiteImage src={logoFor("montreal-review")?.src} alt="The Montr&eacute;al Review" loading="lazy" />
           </div>
           <div class="bd">
-            <p class="mono">The Montr&eacute;al Review &middot; Jul 2026</p>
+            <p class="news-category">The Montr&eacute;al Review</p>
             <h4>The Infinity of the Brain and the Void of the Machine</h4>
             <p class="sm mut">Written with Karl Friston. Why prediction in a brain and prediction in a model are not the same operation.</p>
             <span class="go">Read <Arrow /></span>
+            <p class="news-date mono">Jul 2026</p>
           </div>
         </a>
         <a class="ncard" href="https://www.psychologytoday.com/sg/blog/understanding-hypnosis/202511/the-risks-of-ai-and-social-media-for-the-developing-brain" target="_blank" rel="noopener noreferrer">
           <div class="im im--logo is-cool">
-            <img src={logoFor("psychology-today")?.src} alt="Psychology Today" loading="lazy" />
+            <SiteImage src={logoFor("psychology-today")?.src} alt="Psychology Today" loading="lazy" />
           </div>
           <div class="bd">
-            <p class="mono">Psychology Today &middot; Nov 2025</p>
+            <p class="news-category">Psychology Today</p>
             <h4>The Risks of AI and Social Media for the Developing Brain</h4>
             <p class="sm mut">Written with Ran D. Anbar, MD. What the evidence supports about adolescent use, and what it does not.</p>
             <span class="go">Read <Arrow /></span>
+            <p class="news-date mono">Nov 2025</p>
           </div>
         </a>
         <a class="ncard" href="/work/coexisting-with-ai/record/">
-          <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
+          <div class="im"><SiteImage class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd">
-            <p class="mono">Living public record</p>
+            <p class="news-category">Living public record</p>
             <h4>The Co-Existence Record</h4>
             <p class="sm mut">Explore questions about AI through source-linked perspectives from researchers, builders, policymakers, and public thinkers.</p>
             <span class="go">Explore the Record <Arrow /></span>

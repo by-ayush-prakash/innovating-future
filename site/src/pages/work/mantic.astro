@@ -1,4 +1,5 @@
 ---
+import SiteImage from '../../components/SiteImage.astro';
 import Base from "../../layouts/Base.astro";
 import PageHead from "../../components/PageHead.astro";
 import Field from "../../components/Field.astro";
@@ -66,7 +67,7 @@ const gets = [
         {standards.map((s, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
             <div class="afig">{s.photo
-              ? <img class="rn" src={s.photo} alt={s.alt} loading="lazy" />
+              ? <SiteImage class="rn" src={s.photo} alt={s.alt} loading="lazy" />
               : <Field v={s.field} id={`ms${i}`} w={1000} h={750} />}</div>
             <div>
               <h3>{s.h}</h3>
@@ -144,7 +145,7 @@ const gets = [
       <div class="shead"><h3>More from the Center</h3></div>
       <div class="g3">
         <a class="ncard" href="/podcast">
-          <div class="im im--art"><img src="/images/podcast-cover.png" alt="The Ayush Prakash Podcast cover art" loading="lazy" /></div>
+          <div class="im im--art"><SiteImage src="/images/podcast-cover.png" alt="The Ayush Prakash Podcast cover art" loading="lazy" /></div>
           <div class="bd">
             <h4>The Ayush Prakash Podcast</h4>
             <p class="sm mut">Long-form conversations. Where Mantic authors defend the book.</p>
@@ -152,7 +153,7 @@ const gets = [
           </div>
         </a>
         <a class="ncard" href="/work/coexisting-with-ai">
-          <div class="im"><img class="rn" src="/images/coexisting-with-ai.jpg" alt="A head in silhouette opening onto a green field, with a bird on the steps and clouds passing through" loading="lazy" /></div>
+          <div class="im"><SiteImage class="rn" src="/images/coexisting-with-ai.jpg" alt="A head in silhouette opening onto a green field, with a bird on the steps and clouds passing through" loading="lazy" /></div>
           <div class="bd">
             <h4>Co-Existing with AI</h4>
             <p class="sm mut">What changes for people and organizations when the work is done alongside a machine.</p>
@@ -160,7 +161,7 @@ const gets = [
           </div>
         </a>
         <a class="ncard" href="/work/coexisting-with-ai/record/">
-          <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
+          <div class="im"><SiteImage class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd">
             <h4>The Co-Existence Record</h4>
             <p class="sm mut">A source-linked public record for exploring questions, evidence, and perspectives about AI.</p>

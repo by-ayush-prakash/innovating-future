@@ -1,0 +1,162 @@
+{
+  "understanding:Viviane Clay:03:32": {
+    "title": "A shortcut home tells us something words cannot",
+    "standfirst": "A mouse can find a new route because it has learned how places fit together.",
+    "paragraph": "A mouse wanders along a winding route to find food. To get home, it can take a shortcut instead of retracing every turn. Viviane Clay uses this example to explain a world model: an internal map of where things are and how movement changes your position. The animal can use what it has learned in a situation it has not followed step by step before. That gives us a concrete way to think about understanding. When an AI answers a question, what has it learned about the world that would let it handle something new? Clay’s example explains the capacity we are looking for; it does not establish that a chatbot has it.",
+    "segments": [
+      "E16-S007",
+      "E16-S008",
+      "E16-S009",
+      "E16-S010"
+    ]
+  },
+  "understanding:Karl Friston:04:47": {
+    "title": "A human-sounding reply can make us imagine a person",
+    "standfirst": "The feeling that someone understands you can begin with how a machine speaks.",
+    "paragraph": "A chatbot replies in familiar language, responds to your worries, and sounds like someone you could talk to. Karl Friston says it becomes easy to project human qualities onto the source of those words. He compares this tendency with the way people form relationships with pets, while asking where that comparison breaks down. The feeling of connection can be real for the person having it, even while the machine’s own experience remains unresolved. His point makes the question personal: when a response feels caring, how much of that feeling comes from the system, and how much are we bringing to it?"
+  },
+  "understanding:Cole Wyeth:7:54": {
+    "title": "Winning at chess did not require a human mind",
+    "standfirst": "Being brilliant at one task can mislead us about what else a machine can do.",
+    "paragraph": "People once suspected that playing great chess would require a mind capable of much more: strategy, creativity, perhaps even an interest in art. Cole Wyeth recalls that expectation, then points out that it did not hold up. Computers became extraordinary chess players without becoming people. That history matters when a new AI ability takes us by surprise. A machine’s impressive performance is evidence of that performance; we still have to investigate what else it can do. The useful question becomes more precise: which abilities has this system demonstrated, and which are we assuming must come with them?"
+  },
+  "evidence:Maya Ackerman:10:40": {
+    "title": "The hardest mistakes to catch are in subjects you do not know",
+    "standfirst": "Your lack of expertise can make a weak answer feel complete.",
+    "paragraph": "When Maya Ackerman asks AI about a subject she knows well, she notices gaps. When she asks about an unfamiliar subject, she has to consider that similar gaps may be there even though she cannot spot them. That is the trap: the moment we most need help can also be the moment we are least able to judge it. She still uses AI for research, but follows up with a search or a scientific publication that can support the answer. The extra step matters because a readable explanation can make us feel informed before we have checked whether it deserves our trust."
+  },
+  "evidence:Nick Nadeau:6:18": {
+    "title": "An expert’s books do not contain everything they know",
+    "standfirst": "An AI can imitate published words while missing the judgment behind them.",
+    "paragraph": "Nick Nadeau describes working with an expert whose view of a theory differed from the usual textbook account. The expert had never written that disagreement down. It had become an implicit part of how he worked. A system trained only on his published material would have no direct record of it. For Nadeau, this exposes a gap between collecting someone’s words and representing their expertise. Drafts, decisions, and things a person has never thought to explain can matter as much as the polished final text. His company’s approach is one proposed response to that gap, not proof that the gap has been solved."
+  },
+  "evidence:Pamela Gay:15:02": {
+    "title": "A convincing space article can teach you the wrong universe",
+    "standfirst": "Fast, polished writing can mix discoveries with outdated ideas and fiction.",
+    "paragraph": "Pamela Gay describes a job she used to be paid to do: explain subjects such as planets beyond our solar system. A chatbot can now produce that kind of article in moments. Her concern is what happens when the material it draws on mixes early misunderstandings, jokes, fiction, and information that later discoveries overturned. The reader receives a confident explanation without seeing those differences. In her account, saving money on the writer can leave two losses: someone’s work disappears, and the audience comes away with a false sense of understanding. Fluency alone cannot tell the reader whether the science is sound."
+  },
+  "learning:Matthew Guzdial:10:18": {
+    "title": "What happens if the tool you rely on stops being affordable?",
+    "standfirst": "Learning to finish with AI can leave you exposed when access changes.",
+    "paragraph": "Matthew Guzdial connects dependence on AI with a practical worry: the price of using it can change. If you have handed over a task so often that doing it alone becomes difficult, losing cheap access means more than losing a convenience. It can leave you without a skill you still need. He raises this as a reason to be careful about reliance, alongside concerns about what repeated delegation does to ability. His prediction about future costs is uncertain. The question for a learner is useful now: if the tool disappeared tomorrow, how much of today’s work could you still do, explain, or repair yourself?"
+  },
+  "learning:David Alter:13:31": {
+    "title": "A game plan only helps if you can change it",
+    "standfirst": "Being surprised is part of learning, even when certainty feels safer.",
+    "paragraph": "You start a game with a plan. Then the other team does something you did not expect, and your plan stops working. David Alter uses that ordinary situation to explain why learning needs room for uncertainty. Knowing something gives you a starting point; noticing where it fails lets you adjust. He worries about a culture that promises to remove doubt and sees a reason to protect art, music, and play in education: they invite people to try things whose outcomes are not already settled. From this perspective, an instant answer is useful only if it leaves room to notice, question, and change your mind."
+  },
+  "learning:Renée Sieber:23:47": {
+    "title": "Your rough first draft is part of learning",
+    "standfirst": "Polished AI output can make the struggle that builds a skill feel like failure.",
+    "paragraph": "A student looks at an unfinished essay, then at the polished version an AI can produce. Renée Sieber worries that the comparison can make the student feel incapable before they have had a chance to improve. She describes students facing real pressures about work and the future, so the appeal of relief is understandable. But research and writing involve frustration: choosing a direction, finding evidence, and revising an idea that does not work yet. If the tool takes over those steps, the student loses chances to practise them. Her concern is what happens when avoiding that discomfort becomes the normal way to learn."
+  },
+  "work:Shashank Tiwari:21:03": {
+    "title": "Who learns the job when AI does the beginner’s work?",
+    "standfirst": "A company can gain speed while making it harder to develop its next experts.",
+    "paragraph": "Shashank Tiwari describes engineers wondering whether their work is shifting from solving problems themselves to managing AI workflows. Some worry about losing the very abilities that helped them get hired. Inside companies, he also hears questions about hiring new people, running training programmes, and deciding where AI helps staff grow. These are immediate decisions, even while predictions about fully automated organisations remain uncertain. The tension is easy to recognise: a company needs work completed today, but it also needs people who will know what they are doing tomorrow. Training is part of the work that has to survive the change."
+  },
+  "work:Pamela Gay:26:40": {
+    "title": "Your job application may be an algorithm talking to an algorithm",
+    "standfirst": "The effort to get noticed can erase what makes an applicant distinctive.",
+    "paragraph": "You use AI to shape a cover letter around a job posting. The employer uses another system to screen it before a person sees it. Pamela Gay describes the result as algorithms communicating while the humans move further out of view. Yet the employer is trying to find a person with abilities, experience, and judgment to offer. She connects this with a more personal loss: repeatedly assuming the software knows best can weaken confidence in our own capabilities. The problem is not simply how to get through the filter. It is whether the process still allows a person to be recognised."
+  },
+  "work:Juliette Denny:43:45": {
+    "title": "Writing the code is not the same as replacing the business",
+    "standfirst": "Old systems, customers, and decisions move at a different speed from AI output.",
+    "paragraph": "Juliette Denny pushes back on the picture of AI doing everyone’s work while people go to the beach. She points to large organisations that still depend on old computer systems and take a long time to approve, buy, and introduce a new product. Producing code quickly does not remove those responsibilities or decisions. She believes people should learn to use new tools, but doubts that faster output means work simply disappears. It is an argument for separating two questions: how quickly can a tool make something, and how much work remains to make that thing useful in the world?"
+  },
+  "creativity:Alex Hernández-García:19:27": {
+    "title": "A picture of your own street can make a distant risk feel close",
+    "standfirst": "AI-generated images can help people imagine a problem they struggle to picture.",
+    "paragraph": "Alex Hernández-García describes a project where someone enters an address they care about and sees an image of that place affected by flooding. The idea is to bring climate change closer to home, emotionally and geographically. A problem unfolding far away or over many years can be hard to connect with; a familiar street gives the viewer something concrete to recognise. The generated image is an illustration, not a prediction that this exact flood will happen there. Here, the creative purpose is to help a person grasp a difficult idea. The human decisions concern what to show, why it matters, and how honestly to present it."
+  },
+  "creativity:Mike Todasco:0:04": {
+    "title": "A writing partner can surprise you without deciding for you",
+    "standfirst": "The useful moment is finding a possibility you had not seen.",
+    "paragraph": "Mike Todasco describes getting stuck on a passage he knows is not good enough. He brings it to an AI writing tool and asks for alternatives. Sometimes a suggestion makes him think he should have thought of it himself; sometimes it is better than what he expected to produce. The scene is specific: a writer has already recognised a problem and is looking for ways through it. His experience shows why someone might value the exchange. It also keeps the human work visible: recognising what is weak, deciding which suggestion helps, and judging whether the revised passage says what the writer means."
+  },
+  "creativity:Gwendolyn Dolske:49:45": {
+    "title": "An exercise machine cannot do your workout for you",
+    "standfirst": "Writing can be the activity that develops a thought, not just a way to record it.",
+    "paragraph": "Gwendolyn Dolske compares writing with exercise. Equipment can help you work out, but it cannot do the exertion that changes your body on your behalf. She sees a similar issue when AI takes over writing: part of what you hand away is the thinking that happens while you search for words. She contrasts this with a dishwasher, which removes a chore she does not consider central to being human. Her concern is not whether a machine can produce a finished page. It is whether a person still gets to do the activity through which they learn to think something through."
+  },
+  "relationships:Ashleigh Rankin:13:42": {
+    "title": "It can feel easier to tell a chatbot your secrets",
+    "standfirst": "Feeling less judged can make trust arrive before understanding does.",
+    "paragraph": "Ashleigh Rankin explains that a therapist first has to build enough trust for a person to share what is really going on. A chatbot may seem to bypass that discomfort because there is no other human to judge you. That can make opening up feel easier. But when someone asks for advice about a conflict with a partner, the system has only the context they give it. Rankin worries about the leap from feeling safe to treating the answer as completely right. A suggestion might help; the relief of being heard does not mean the system understands everyone involved in your life."
+  },
+  "relationships:Jeff Burningham:0:11": {
+    "title": "The person in front of you is more than your differences",
+    "standfirst": "A feed can emphasise what divides people while a relationship reveals what they share.",
+    "paragraph": "Jeff Burningham begins with the two people having the conversation: different ages, backgrounds, and places of origin, sharing the experience of being human. He worries that the information people receive keeps drawing attention to their differences until those differences become reasons to pull apart. His response is to value the things lived through a body and with other people: relationships, emotions, and time in nature. This is his view of what deserves protection as machines become more capable. The invitation is practical and personal: leave room for knowing someone through an encounter, beyond the categories and arguments a feed presents."
+  },
+  "relationships:Liz Smith:38:17": {
+    "title": "Someone in a small town can discover they are not alone",
+    "standfirst": "Online connection can offer belonging that is missing nearby.",
+    "paragraph": "Liz Smith asks you to picture a queer person in a small town who has no one nearby with a similar experience. Finding people online can change the feeling that there is nobody to talk to. The connection has value because of the person’s situation, not simply because it increases the number of messages they receive. Smith also describes the other possibility: a community can reinforce harmful patterns instead of helping someone through them. Her example makes a broad debate about social media more specific. What matters is the kind of company a person finds, and what that company makes possible in their life."
+  },
+  "wellbeing:Ashleigh Rankin:04:08": {
+    "title": "Easy access changes who can get drawn in",
+    "standfirst": "A rise in distress does not, by itself, tell us what caused it.",
+    "paragraph": "Ashleigh Rankin compares the pull of chatbots with earlier experiences of people becoming absorbed in online games or their phones. She asks whether a widely available tool reaches people who were already vulnerable, makes an existing difficulty worse, or contributes something new. Those possibilities are difficult to separate. Someone looking for an affordable escape during an uncertain period may use the same technology very differently from someone whose life feels stable. Rankin’s account is a set of possibilities, not proof that AI causes a particular mental health condition. The important detail is the relationship between the person, their circumstances, and their use of the tool."
+  },
+  "wellbeing:Julien Belmont:0:16": {
+    "title": "The same feed can exhaust people in different ways",
+    "standfirst": "Watching, selling, and creating bring different pressures inside one platform.",
+    "paragraph": "Julien Belmont separates the people using social media into viewers, businesses, and creators. A viewer can feel carried along by recommendations they cannot control. A business can work hard on a post, see little response, and feel pressure to pay for attention. A creator has to keep producing while also handling the tasks of running a small business. These are different experiences of the same product. His account helps explain why saying that people should simply use it less misses part of the problem: the platform shapes what each person feels they must do to keep up."
+  },
+  "wellbeing:Rob Eleveld:1:02:36": {
+    "title": "A book asks you to stay with one thing",
+    "standfirst": "Attention can be practised away from the next notification.",
+    "paragraph": "Rob Eleveld describes reading as a way to step out of the demand for immediate feedback. A book, whether fiction or nonfiction, asks you to remain with an idea or a story beyond a quick clip. He also makes room for something ordinary: getting outside, walking, or spending time with a dog. These are his suggestions for interrupting a life organised around screens and constant prompts. They are not a treatment claim. The point is to give attention somewhere else to go, and to make sustained concentration something you do on purpose instead of something you expect to recover automatically."
+  },
+  "judgment:Shashank Tiwari:39:35": {
+    "title": "If the grade is the goal, skipping the thinking makes sense",
+    "standfirst": "The reward can teach students to depend on a shortcut.",
+    "paragraph": "Shashank Tiwari starts with the kind of task you want to get over with. If the goal is a grade or a certificate, and AI helps you get it with less effort, using the shortcut can feel perfectly reasonable. Each successful result gives you another reason to do it again. He worries that this repeated reward can turn assistance into dependence, especially while someone is still developing their abilities. The problem reaches beyond a student’s willpower. If a school rewards the finished product while overlooking how it was made, it may encourage the very behaviour it says it wants students to avoid."
+  },
+  "judgment:Nikhil Raval:5:37": {
+    "title": "Young people are being asked to use AI and prove they did not",
+    "standfirst": "Learning to judge a tool is harder when the rules pull in different directions.",
+    "paragraph": "Nikhil Raval describes his son applying to schools that warn applicants against AI-written answers. For a generation surrounded by technology, that creates an uncomfortable situation: a powerful tool is close at hand, while an important institution asks them to demonstrate their own work. Raval places this alongside the pressure of information overload and an uncertain world. He argues that parents and managers need to be more involved in helping young people develop resilience and think over longer periods. His concern is the support people receive while learning when to rely on a tool and when to act for themselves."
+  },
+  "judgment:Matthew E. Taylor:1:57": {
+    "title": "A rejected loan needs an explanation you can act on",
+    "standfirst": "Knowing that a machine said no is not enough.",
+    "paragraph": "Matthew E. Taylor uses a loan decision to make the idea of human oversight concrete. If a system recommends refusing someone, a person should be able to understand why and look back at the decision later. Was the outcome connected to income, or to something it should not have depended on? What could have changed it? For Taylor, a useful explanation lets people examine a decision and apply their values. It does more than make a complicated system sound reassuring. The person using the recommendation needs enough information to question it, and the person affected needs more than an unexplained rejection."
+  },
+  "privacy:Dinidh O'Brien:43:03": {
+    "title": "Caring about privacy does not mean feeling able to leave",
+    "standfirst": "People can dislike data collection and still feel trapped in the services they use.",
+    "paragraph": "Dinidh O’Brien pushes back on the idea that continuing to use a service means someone does not care about privacy. He describes a different feeling: collection and tracking seem so widespread that resisting them can feel pointless. He also recalls his work in digital marketing, where many small traces of a person’s activity could be combined into a detailed profile. One click may seem harmless in isolation; a long history of searches, interests, and connections tells a larger story. His concern is the gap between knowing this happens and feeling that you have a practical way to change your relationship with it.",
+    "segments": [
+      "E30-S035",
+      "E30-S036"
+    ]
+  },
+  "privacy:Renée Sieber:9:50": {
+    "title": "Can you refuse tracking if refusing costs you the job?",
+    "standfirst": "A choice means little when you cannot act on it.",
+    "paragraph": "Renée Sieber gives the example of a worker required to install a tracking app as a condition of employment. The employer can be transparent about what the app does, yet the worker may have no realistic way to say no. She uses this to challenge a version of privacy built entirely around individual consent. She also points to communities that want protection as a group, including Indigenous communities. The question grows beyond whether one person clicked a box: who is exposed, who can refuse, and whose interests disappear when every decision is treated as an individual consumer choice?"
+  },
+  "privacy:Nidhi Hegde:2:11": {
+    "title": "Your movie choices can reveal something you never told an app",
+    "standfirst": "Privacy includes what a system works out about you.",
+    "paragraph": "Nidhi Hegde describes a recommendation system built to suggest movies. The same information might also allow it to infer someone’s political views or sexual orientation. The person did not have to type those details into a profile for them to become exposed. That is why she distinguishes protecting stored data from protecting people against unwanted inferences. Even a service doing the job it was designed for can learn something beyond that job. Her example changes what it means to ask who controls our data: we also have to ask who controls the conclusions drawn from it, and what those conclusions are used for."
+  },
+  "governance:Nidhi Hegde:05:15": {
+    "title": "Someone decides what an AI is allowed to sacrifice",
+    "standfirst": "Accuracy, privacy, fairness, and cost can pull a design in different directions.",
+    "paragraph": "Nidhi Hegde describes the trade-offs that arise when designers try to make a model more private, fairer, or more reliable under changing conditions. A change can affect accuracy or require more computing. The important question is who gets to judge whether that price is worth paying. In practice, she says, the developer or deploying organisation often makes the decision. She argues that people whose data is involved should have a say too. A system’s design therefore contains choices about other people’s interests. Calling it technically better does not tell us whose priorities shaped the improvement."
+  },
+  "governance:Matthew E. Taylor:37:26": {
+    "title": "The person who invents an AI may not decide how it is used",
+    "standfirst": "Research and the power to deploy it can sit in different hands.",
+    "paragraph": "Matthew E. Taylor describes a distance between publishing research and seeing it affect the world. Fundamental work may take years to become an application, and the researcher cannot necessarily know what that application will be. He contrasts this with applied work where a change can be seen much sooner. For the longer path, he points to companies and governments as the actors who may eventually hold the power to use the research. That distinction matters when we ask who is responsible for AI’s direction. The scientist who develops an idea and the institution that puts it into people’s lives may make very different decisions."
+  },
+  "governance:Fenwick McKelvey:01:42": {
+    "title": "Your next recommended video is already a decision about you",
+    "standfirst": "Platforms set rules for behaviour, even when no government is involved.",
+    "paragraph": "Fenwick McKelvey starts with something familiar: a platform automatically recommending another video. Behind that action is a goal, such as increasing engagement, and behind the goal is someone with the authority to choose it. He separates those layers into the mechanism, the policy it serves, and the people who decide. This makes governance easier to see. It is already happening in the design of a feed or the rules of a chatbot. His question is whether the people making those decisions can be held accountable, and who else should have a voice in setting the rules that shape everyone’s experience."
+  }
+}

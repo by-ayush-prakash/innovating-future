@@ -1,4 +1,5 @@
 ---
+import SiteImage from '../components/SiteImage.astro';
 import Base from "../layouts/Base.astro";
 import PageHead from "../components/PageHead.astro";
 import Arrow from "../components/Arrow.astro";
@@ -39,7 +40,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
       <div class="wall">
         {wall.map((m) => (
           <a class="wl" href={m.u} target="_blank" rel="noopener noreferrer" aria-label={m.n}>
-            <img src={m.logo.src} alt={m.n} width={Math.round(m.logo.width / 3)} height={Math.round(m.logo.height / 3)} loading="lazy" />
+            <SiteImage src={m.logo.src} alt={m.n} width={Math.round(m.logo.width / 3)} height={Math.round(m.logo.height / 3)} loading="lazy" />
           </a>
         ))}
       </div>
@@ -53,7 +54,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
         {featured.map((m) => (
           <a class="ncard" href={m.u} target="_blank" rel="noopener noreferrer">
             <div class={m.slug === "psychology-today" ? "im im--logo is-cool" : "im im--logo"}>
-              <img src={m.logo?.src} alt={m.n} loading="lazy" />
+              <SiteImage src={m.logo?.src} alt={m.n} loading="lazy" />
             </div>
             <div class="bd">
               <p class="mono">{m.n} &middot; {m.date}</p>

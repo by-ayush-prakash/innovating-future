@@ -1,0 +1,512 @@
+{
+  "understanding:Viviane Clay:03:32": {
+    "question": "What would you look for before saying an AI understands?",
+    "options": [
+      {
+        "id": "1",
+        "label": "An explanation I can examine",
+        "target": "judgment:Matthew E. Taylor:1:57",
+        "explanation": "You chose explanations. Taylor asks what makes an explanation useful to someone affected by a decision."
+      },
+      {
+        "id": "2",
+        "label": "An ability to handle something unfamiliar",
+        "target": "evidence:Maya Ackerman:10:40",
+        "explanation": "You chose unfamiliar situations. Ackerman asks how we check an answer when we do not know the subject ourselves."
+      }
+    ]
+  },
+  "understanding:Karl Friston:04:47": {
+    "question": "When a chatbot feels understanding, what matters most to you?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Whether I feel safe talking to it",
+        "target": "relationships:Ashleigh Rankin:13:42",
+        "explanation": "You chose feeling safe. Rankin describes why people may find it easier to disclose things to a chatbot."
+      },
+      {
+        "id": "2",
+        "label": "Whether there is someone experiencing the exchange",
+        "target": "relationships:Jeff Burningham:0:11",
+        "explanation": "You chose the experience behind the words. Burningham describes what being present with another person means to him."
+      }
+    ]
+  },
+  "understanding:Cole Wyeth:7:54": {
+    "question": "What would you want to check beyond success at one task?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Whether its next answer is reliable",
+        "target": "evidence:Maya Ackerman:10:40",
+        "explanation": "You chose reliability beyond one success. Ackerman describes the difficulty of spotting mistakes outside your expertise."
+      },
+      {
+        "id": "2",
+        "label": "Whether I can question its decisions",
+        "target": "judgment:Matthew E. Taylor:1:57",
+        "explanation": "You chose questioning decisions. Taylor uses a rejected loan to ask what an actionable explanation would require."
+      }
+    ]
+  },
+  "evidence:Maya Ackerman:10:40": {
+    "question": "What makes checking an unfamiliar answer difficult for you?",
+    "options": [
+      {
+        "id": "1",
+        "label": "I do not know what the source leaves out",
+        "target": "evidence:Nick Nadeau:6:18",
+        "explanation": "You chose missing knowledge. Nadeau describes what published writing can leave out of an expert’s understanding."
+      },
+      {
+        "id": "2",
+        "label": "I do not know why this information reached me",
+        "target": "governance:Fenwick McKelvey:01:42",
+        "explanation": "You chose how information reaches you. McKelvey examines the decisions behind recommendations."
+      }
+    ]
+  },
+  "evidence:Nick Nadeau:6:18": {
+    "question": "What would help you see what an expert’s writing leaves out?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Understanding how people learn through doing",
+        "target": "work:Shashank Tiwari:21:03",
+        "explanation": "You chose learning through doing. Tiwari asks where beginners gain experience when routine work is automated."
+      },
+      {
+        "id": "2",
+        "label": "Knowing more about the system selecting the information",
+        "target": "governance:Fenwick McKelvey:01:42",
+        "explanation": "You chose the selection process. McKelvey describes the goals behind recommendations."
+      }
+    ]
+  },
+  "evidence:Pamela Gay:15:02": {
+    "question": "After a convincing article misleads you, what would you investigate?",
+    "options": [
+      {
+        "id": "1",
+        "label": "How it was recommended to me",
+        "target": "governance:Fenwick McKelvey:01:42",
+        "explanation": "You chose recommendations. McKelvey asks who sets the goals behind the next item in a feed."
+      },
+      {
+        "id": "2",
+        "label": "How an illustration could be mistaken for evidence",
+        "target": "creativity:Alex Hernández-García:19:27",
+        "explanation": "You chose the boundary between illustration and evidence. Hernández-García describes using an imagined local flood to make a risk visible."
+      }
+    ]
+  },
+  "learning:Matthew Guzdial:10:18": {
+    "question": "If an AI tool became unavailable, what would you want to have kept?",
+    "options": [
+      {
+        "id": "1",
+        "label": "The ability to do the work myself",
+        "target": "work:Shashank Tiwari:21:03",
+        "explanation": "You chose independent ability. Tiwari asks how beginners will learn if AI takes over the tasks they once practised."
+      },
+      {
+        "id": "2",
+        "label": "The habit of working through an unfinished idea",
+        "target": "creativity:Gwendolyn Dolske:49:45",
+        "explanation": "You chose the effort of working through an idea. Dolske’s exercise analogy asks what happens when we delegate that effort."
+      }
+    ]
+  },
+  "learning:David Alter:13:31": {
+    "question": "When a plan stops fitting the situation, what do you want to understand?",
+    "options": [
+      {
+        "id": "1",
+        "label": "What matters beyond producing the answer",
+        "target": "work:Juliette Denny:43:45",
+        "explanation": "You chose what surrounds the answer. Denny distinguishes writing code from making a business work."
+      },
+      {
+        "id": "2",
+        "label": "How to examine the reasons behind a decision",
+        "target": "judgment:Matthew E. Taylor:1:57",
+        "explanation": "You chose examining reasons. Taylor asks for an explanation that lets someone question and revisit a decision."
+      }
+    ]
+  },
+  "learning:Renée Sieber:23:47": {
+    "question": "Which part of a first draft would you most want to keep doing?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Finding out what I actually think",
+        "target": "creativity:Gwendolyn Dolske:49:45",
+        "explanation": "You chose discovering your own thinking. Dolske compares developing a capacity with doing the exercise yourself."
+      },
+      {
+        "id": "2",
+        "label": "Deciding which suggestions improve the writing",
+        "target": "creativity:Mike Todasco:0:04",
+        "explanation": "You chose deciding what helps. Todasco describes asking for alternatives while retaining those choices."
+      }
+    ]
+  },
+  "work:Shashank Tiwari:21:03": {
+    "question": "What concerns you most about automating beginner tasks?",
+    "options": [
+      {
+        "id": "1",
+        "label": "How someone demonstrates their own ability",
+        "target": "judgment:Nikhil Raval:5:37",
+        "explanation": "You chose demonstrating ability. Raval describes young people being asked both to use AI and prove independent work."
+      },
+      {
+        "id": "2",
+        "label": "Becoming dependent before learning the skill",
+        "target": "learning:Matthew Guzdial:10:18",
+        "explanation": "You chose dependence before learning. Guzdial asks what happens when a tool people rely on stops being affordable."
+      }
+    ]
+  },
+  "work:Pamela Gay:26:40": {
+    "question": "What would you want when software screens your application?",
+    "options": [
+      {
+        "id": "1",
+        "label": "An explanation I could challenge",
+        "target": "judgment:Matthew E. Taylor:1:57",
+        "explanation": "You chose a chance to challenge the outcome. Taylor’s loan example asks what a useful explanation would allow someone to do."
+      },
+      {
+        "id": "2",
+        "label": "A meaningful choice about participating",
+        "target": "privacy:Renée Sieber:9:50",
+        "explanation": "You chose meaningful choice. Sieber asks whether refusal is possible when access to work is at stake."
+      }
+    ]
+  },
+  "work:Juliette Denny:43:45": {
+    "question": "If AI can produce the code, what would you want to examine next?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Who decides how the system is used",
+        "target": "governance:Matthew E. Taylor:37:26",
+        "explanation": "You chose control over use. Taylor distinguishes inventing a technology from controlling what happens to it."
+      },
+      {
+        "id": "2",
+        "label": "How people learn the work around the code",
+        "target": "work:Shashank Tiwari:21:03",
+        "explanation": "You chose learning the surrounding work. Tiwari asks what happens to that learning when beginner tasks disappear."
+      }
+    ]
+  },
+  "creativity:Alex Hernández-García:19:27": {
+    "question": "What would you need alongside an imagined picture of a local flood?",
+    "options": [
+      {
+        "id": "1",
+        "label": "A clear account of what it can actually show",
+        "target": "evidence:Pamela Gay:15:02",
+        "explanation": "You chose clarity about what the image establishes. Gay describes how convincing media can leave readers with a misleading account."
+      },
+      {
+        "id": "2",
+        "label": "A say in what the system is trying to achieve",
+        "target": "governance:Nidhi Hegde:05:15",
+        "explanation": "You chose a say in its purpose. Hegde asks who chooses the priorities and tradeoffs a system follows."
+      }
+    ]
+  },
+  "creativity:Mike Todasco:0:04": {
+    "question": "When writing with AI, which part are you trying to protect?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Developing my own thinking through the draft",
+        "target": "learning:Renée Sieber:23:47",
+        "explanation": "You chose developing your thinking. Sieber argues that working through a rough draft is part of learning."
+      },
+      {
+        "id": "2",
+        "label": "Choosing among possibilities I had not considered",
+        "target": "learning:David Alter:13:31",
+        "explanation": "You chose choosing among possibilities. Alter describes why a plan must adapt to the circumstances in front of you."
+      }
+    ]
+  },
+  "creativity:Gwendolyn Dolske:49:45": {
+    "question": "Where would you want to practise the effort Dolske describes?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Staying with one idea for longer",
+        "target": "wellbeing:Rob Eleveld:1:02:36",
+        "explanation": "You chose sustained attention. Eleveld describes what staying with a book asks of the reader."
+      },
+      {
+        "id": "2",
+        "label": "Working through a rough piece of writing",
+        "target": "learning:Renée Sieber:23:47",
+        "explanation": "You chose the rough draft. Sieber explains why the unfinished work is part of learning."
+      }
+    ]
+  },
+  "relationships:Ashleigh Rankin:13:42": {
+    "question": "What would you want to understand before confiding in a chatbot?",
+    "options": [
+      {
+        "id": "1",
+        "label": "What makes its language feel caring",
+        "target": "understanding:Karl Friston:04:47",
+        "explanation": "You chose the feeling behind the language. Friston asks how readily we project human qualities onto a reply."
+      },
+      {
+        "id": "2",
+        "label": "What we know about vulnerability and repeated use",
+        "target": "wellbeing:Ashleigh Rankin:04:08",
+        "explanation": "You chose vulnerability and use. Rankin’s other passage keeps the causal question open when the evidence is insufficient."
+      }
+    ]
+  },
+  "relationships:Jeff Burningham:0:11": {
+    "question": "What part of connection would you want to explore further?",
+    "options": [
+      {
+        "id": "1",
+        "label": "The feeling that someone understands me",
+        "target": "understanding:Karl Friston:04:47",
+        "explanation": "You chose feeling understood. Friston asks how familiar language can make a machine feel like a person."
+      },
+      {
+        "id": "2",
+        "label": "The attention I bring to an encounter",
+        "target": "wellbeing:Rob Eleveld:1:02:36",
+        "explanation": "You chose your own attention. Eleveld describes a practice that asks him to stay with one thing."
+      }
+    ]
+  },
+  "relationships:Liz Smith:38:17": {
+    "question": "What would you look at when an online space creates belonging?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Whether using it also becomes exhausting",
+        "target": "wellbeing:Julien Belmont:0:16",
+        "explanation": "You chose the cost of participating. Belmont describes how the same feed can exhaust different people in different ways."
+      },
+      {
+        "id": "2",
+        "label": "Whether people feel able to leave",
+        "target": "privacy:Dinidh O'Brien:43:03",
+        "explanation": "You chose the ability to leave. O’Brien distinguishes caring about privacy from feeling able to stop using a service."
+      }
+    ]
+  },
+  "wellbeing:Ashleigh Rankin:04:08": {
+    "question": "What would help you think about this unresolved causal question?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Knowing how to check claims outside my expertise",
+        "target": "evidence:Maya Ackerman:10:40",
+        "explanation": "You chose checking unfamiliar claims. Ackerman asks how readers can verify answers in subjects they do not know well."
+      },
+      {
+        "id": "2",
+        "label": "Understanding why someone might disclose more to a chatbot",
+        "target": "relationships:Ashleigh Rankin:13:42",
+        "explanation": "You chose disclosure. Rankin describes why a less judgmental interaction may feel easier to enter."
+      }
+    ]
+  },
+  "wellbeing:Julien Belmont:0:16": {
+    "question": "If a feed leaves you exhausted, what would you want to examine?",
+    "options": [
+      {
+        "id": "1",
+        "label": "The decisions shaping what I see next",
+        "target": "governance:Fenwick McKelvey:01:42",
+        "explanation": "You chose the feed’s decisions. McKelvey asks who chooses the goals behind recommendations."
+      },
+      {
+        "id": "2",
+        "label": "Whether I feel free to stop using it",
+        "target": "privacy:Dinidh O'Brien:43:03",
+        "explanation": "You chose the freedom to leave. O’Brien describes the gap between privacy concerns and the ability to walk away."
+      }
+    ]
+  },
+  "wellbeing:Rob Eleveld:1:02:36": {
+    "question": "What would you want to make more room for?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Developing an ability through practice",
+        "target": "creativity:Gwendolyn Dolske:49:45",
+        "explanation": "You chose practice. Dolske uses exercise to ask what happens when a tool takes over the effort."
+      },
+      {
+        "id": "2",
+        "label": "Being present with another person",
+        "target": "relationships:Jeff Burningham:0:11",
+        "explanation": "You chose being present. Burningham describes the value he places on the person in front of him."
+      }
+    ]
+  },
+  "judgment:Shashank Tiwari:39:35": {
+    "question": "What would you want an assignment to make visible?",
+    "options": [
+      {
+        "id": "1",
+        "label": "How the student’s thinking developed",
+        "target": "learning:Renée Sieber:23:47",
+        "explanation": "You chose the development of thinking. Sieber explains why the rough draft matters as part of that process."
+      },
+      {
+        "id": "2",
+        "label": "Which abilities the student can use independently",
+        "target": "learning:Matthew Guzdial:10:18",
+        "explanation": "You chose independent ability. Guzdial asks what happens when a learner can no longer rely on a tool."
+      }
+    ]
+  },
+  "judgment:Nikhil Raval:5:37": {
+    "question": "What would help make expectations around AI use clearer?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Knowing how someone can learn through real work",
+        "target": "work:Shashank Tiwari:21:03",
+        "explanation": "You chose learning through work. Tiwari asks where beginners gain experience as their tasks are automated."
+      },
+      {
+        "id": "2",
+        "label": "Knowing which part of the process develops a skill",
+        "target": "learning:Renée Sieber:23:47",
+        "explanation": "You chose the learning process. Sieber describes what a rough draft contributes beyond the finished answer."
+      }
+    ]
+  },
+  "judgment:Matthew E. Taylor:1:57": {
+    "question": "Would an explanation be enough after an important decision?",
+    "options": [
+      {
+        "id": "1",
+        "label": "I would also want a say in the rules behind it",
+        "target": "governance:Nidhi Hegde:05:15",
+        "explanation": "You chose a say in the rules. Hegde asks who sets a system’s priorities and tradeoffs."
+      },
+      {
+        "id": "2",
+        "label": "I would want to know who controls how it is used",
+        "target": "governance:Matthew E. Taylor:37:26",
+        "explanation": "You chose responsibility for use. Taylor distinguishes inventing a system from controlling its later applications."
+      }
+    ]
+  },
+  "privacy:Dinidh O'Brien:43:03": {
+    "question": "What would make leaving a digital service feel like a real choice?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Being able to refuse without losing access to work",
+        "target": "privacy:Renée Sieber:9:50",
+        "explanation": "You chose the cost of refusal. Sieber makes that problem concrete through workplace tracking."
+      },
+      {
+        "id": "2",
+        "label": "Understanding how the service shapes my behaviour",
+        "target": "governance:Fenwick McKelvey:01:42",
+        "explanation": "You chose how the service shapes use. McKelvey examines the goals behind what a feed recommends."
+      }
+    ]
+  },
+  "privacy:Renée Sieber:9:50": {
+    "question": "When refusing a system could cost someone work, what matters next?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Being able to challenge a decision",
+        "target": "judgment:Matthew E. Taylor:1:57",
+        "explanation": "You chose a way to challenge the outcome. Taylor asks what an explanation would need to let someone examine and contest it."
+      },
+      {
+        "id": "2",
+        "label": "Understanding where automation already controls access",
+        "target": "work:Pamela Gay:26:40",
+        "explanation": "You chose access to work. Gay describes automated systems between job applicants and employers."
+      }
+    ]
+  },
+  "privacy:Nidhi Hegde:2:11": {
+    "question": "If ordinary choices reveal more than you intended, what would you ask?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Who decides how those inferences are used?",
+        "target": "governance:Nidhi Hegde:05:15",
+        "explanation": "You chose who decides. Hegde asks about the values and tradeoffs a system is allowed to follow."
+      },
+      {
+        "id": "2",
+        "label": "Can I realistically stop participating?",
+        "target": "privacy:Dinidh O'Brien:43:03",
+        "explanation": "You chose whether leaving is realistic. O’Brien describes why concern about privacy may coexist with continued use."
+      }
+    ]
+  },
+  "governance:Nidhi Hegde:05:15": {
+    "question": "How would you want people affected by an AI system to have a voice?",
+    "options": [
+      {
+        "id": "1",
+        "label": "They could question a particular decision",
+        "target": "judgment:Matthew E. Taylor:1:57",
+        "explanation": "You chose questioning decisions. Taylor uses a rejected loan to make that possibility concrete."
+      },
+      {
+        "id": "2",
+        "label": "They could examine what a recommendation is trying to achieve",
+        "target": "governance:Fenwick McKelvey:01:42",
+        "explanation": "You chose examining the goal. McKelvey separates a recommendation mechanism from the policy and authority behind it."
+      }
+    ]
+  },
+  "governance:Matthew E. Taylor:37:26": {
+    "question": "If inventors do not control later uses, what would you examine?",
+    "options": [
+      {
+        "id": "1",
+        "label": "Who can challenge the decisions people experience",
+        "target": "judgment:Matthew E. Taylor:1:57",
+        "explanation": "You chose the person affected. Taylor’s loan example asks what an actionable explanation would give them."
+      },
+      {
+        "id": "2",
+        "label": "What choices people really have about participation",
+        "target": "privacy:Renée Sieber:9:50",
+        "explanation": "You chose participation. Sieber asks whether refusal means much when someone’s work depends on accepting a system."
+      }
+    ]
+  },
+  "governance:Fenwick McKelvey:01:42": {
+    "question": "What would you want more control over in a feed?",
+    "options": [
+      {
+        "id": "1",
+        "label": "What participating costs me",
+        "target": "wellbeing:Julien Belmont:0:16",
+        "explanation": "You chose the experience of participating. Belmont describes the different pressures a feed can create for users, businesses, and creators."
+      },
+      {
+        "id": "2",
+        "label": "Whether I can leave without giving something important up",
+        "target": "privacy:Dinidh O'Brien:43:03",
+        "explanation": "You chose the cost of leaving. O’Brien describes why privacy concerns do not always turn into withdrawal."
+      }
+    ]
+  }
+}

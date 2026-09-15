@@ -1,4 +1,5 @@
 ---
+import SiteImage from './SiteImage.astro';
 import Field from "./Field.astro";
 
 /*
@@ -43,7 +44,7 @@ const hasAside = Astro.slots.has("aside");
     ) : (photo || field) && (
       <div class={fit === "contain" ? "bleed bleed--doc" : "bleed"}>
         {photo
-          ? <img class="rn" src={photo} alt={alt} loading="eager" />
+          ? <SiteImage class="rn" src={photo} alt={alt} loading="eager" />
           : <Field v={field} id={id} w={2400} h={914} />}
       </div>
     )}

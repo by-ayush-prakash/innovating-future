@@ -1,4 +1,5 @@
 ---
+import SiteImage from '../../../components/SiteImage.astro';
 import Base from "../../../layouts/Base.astro";
 import PageHead from "../../../components/PageHead.astro";
 import Field from "../../../components/Field.astro";
@@ -85,7 +86,7 @@ const shapes = [
       <div class="alt">
         {holds.map((k, i) => (
           <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
-            <div class="afig"><img class="rn" src={k.photo} alt="" width="1600" height="1200" loading="lazy" /></div>
+            <div class="afig"><SiteImage class="rn" src={k.photo} alt="" width="1600" height="1200" loading="lazy" /></div>
             <div>
               <h3>{k.h}</h3>
               <p>{k.p}</p>
@@ -111,10 +112,10 @@ const shapes = [
 
   <section class="sec" id="record">
     <div class="wrap">
-      <div class="shead"><h3>The record</h3></div>
+      <div class="shead"><h3>The scorecard</h3></div>
       <div class="arow record-feature">
         <div class="afig">
-          <img class="rn" src="/images/senate-02.jpg" alt="The colonnade of a parliamentary building" loading="lazy" />
+          <SiteImage class="rn" src="/images/senate-02.jpg" alt="The colonnade of a parliamentary building" loading="lazy" />
         </div>
         <div>
           <p class="mono">Senate of Canada &middot; 2 February 2017</p>
@@ -141,7 +142,7 @@ const shapes = [
       <div class="shead"><h3>From the program</h3></div>
       <a class="arow session-feature" href="/work/coexisting-with-ai/microsoft-reactor">
         <div class="afig" style="aspect-ratio:16/10">
-          <img class="rn" src="/images/microsoft-reactor.jpg" alt="Microsoft Reactor Toronto at CIBC Square, people arriving for a session" loading="lazy" />
+          <SiteImage class="rn" src="/images/microsoft-reactor.jpg" alt="Microsoft Reactor Toronto at CIBC Square, people arriving for a session" loading="lazy" />
         </div>
         <div>
           <p class="mono">Microsoft Reactor Toronto &middot; 20 February 2025</p>
@@ -190,7 +191,7 @@ const shapes = [
       <div class="shead"><h3>More from the Center</h3></div>
       <div class="g3">
         <a class="ncard" href="/work/coexisting-with-ai/record/">
-          <div class="im"><img class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
+          <div class="im"><SiteImage class="rn" src="/images/first-ai-native-generation.jpg" alt="A model brain on a yellow grid, marked by a cursor and a red dot" loading="lazy" /></div>
           <div class="bd">
             <h4>The Co-Existence Record</h4>
             <p class="sm mut">A source-linked public record for exploring questions, evidence, and perspectives about AI.</p>
@@ -206,7 +207,7 @@ const shapes = [
           </div>
         </a>
         <a class="ncard" href="/podcast">
-          <div class="im im--art"><img src="/images/podcast-cover.png" alt="The Ayush Prakash Podcast cover art" loading="lazy" /></div>
+          <div class="im im--art"><SiteImage src="/images/podcast-cover.png" alt="The Ayush Prakash Podcast cover art" loading="lazy" /></div>
           <div class="bd">
             <h4>The Ayush Prakash Podcast</h4>
             <p class="sm mut">Long-form conversations with researchers, critics, and builders.</p>

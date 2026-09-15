@@ -1,0 +1,292 @@
+{
+  "understanding:Viviane Clay:03:32": [
+    {
+      "key": "judgment:Matthew E. Taylor:1:57",
+      "kind": "Editorial connection",
+      "explanation": "A model of the world may help a system act. Taylor raises a further test: can someone affected by its decision understand and challenge the reason?"
+    }
+  ],
+  "understanding:Karl Friston:04:47": [
+    {
+      "key": "relationships:Ashleigh Rankin:13:42",
+      "kind": "Editorial connection",
+      "explanation": "Friston asks why machine language can feel human. Rankin describes a possible consequence: people may disclose things when a chatbot feels less judgmental."
+    }
+  ],
+  "understanding:Cole Wyeth:7:54": [
+    {
+      "key": "evidence:Maya Ackerman:10:40",
+      "kind": "Editorial connection",
+      "explanation": "Wyeth separates success at one task from broader intelligence. Ackerman shows why a fluent answer still needs checking when the subject is unfamiliar."
+    }
+  ],
+  "evidence:Maya Ackerman:10:40": [
+    {
+      "key": "understanding:Cole Wyeth:7:54",
+      "kind": "Editorial connection",
+      "explanation": "Wyeth separates success at one task from broader intelligence. Ackerman shows why a fluent answer still needs checking when the subject is unfamiliar."
+    },
+    {
+      "key": "wellbeing:Ashleigh Rankin:04:08",
+      "kind": "Editorial connection",
+      "explanation": "Rankin keeps a causal question open when evidence is insufficient. Ackerman gives a practical reason to verify a confident answer when the subject falls outside our expertise."
+    }
+  ],
+  "evidence:Nick Nadeau:6:18": [
+    {
+      "key": "work:Shashank Tiwari:21:03",
+      "kind": "Editorial connection",
+      "explanation": "Nadeau describes knowledge that never makes it into published text. Tiwari asks how beginners learn at work when routine tasks disappear. Both raise a problem for treating documented output as the whole of someone’s expertise."
+    }
+  ],
+  "evidence:Pamela Gay:15:02": [
+    {
+      "key": "governance:Fenwick McKelvey:01:42",
+      "kind": "Editorial connection",
+      "explanation": "Gay describes misleading material encountered online. McKelvey shifts attention to the systems that decide which material people encounter next."
+    },
+    {
+      "key": "creativity:Alex Hernández-García:19:27",
+      "kind": "Editorial connection",
+      "explanation": "Hernández-García uses an imagined local flood to make a risk visible. Gay’s warning about misleading media raises the need to explain what an image or story can actually establish."
+    }
+  ],
+  "learning:Matthew Guzdial:10:18": [
+    {
+      "key": "work:Shashank Tiwari:21:03",
+      "kind": "Editorial connection",
+      "explanation": "Guzdial asks what dependence on a tool could cost learners. Tiwari asks what happens to learning at work when the tool takes over beginner tasks."
+    }
+  ],
+  "learning:David Alter:13:31": [
+    {
+      "key": "work:Juliette Denny:43:45",
+      "kind": "Editorial connection",
+      "explanation": "Alter describes the need to adapt a plan to circumstances. Denny makes a related distinction at work: producing code is only part of making a business function."
+    }
+  ],
+  "learning:Renée Sieber:23:47": [
+    {
+      "key": "creativity:Gwendolyn Dolske:49:45",
+      "kind": "Editorial connection",
+      "explanation": "Sieber treats the rough draft as part of learning. Dolske’s exercise analogy makes the same concern concrete: the effort itself can be what develops a capacity."
+    },
+    {
+      "key": "creativity:Mike Todasco:0:04",
+      "kind": "Editorial connection",
+      "explanation": "Todasco describes using AI as a writing partner. Sieber adds a reason to preserve part of the struggle: a rough draft can be where the writer learns."
+    },
+    {
+      "key": "judgment:Shashank Tiwari:39:35",
+      "kind": "Editorial connection",
+      "explanation": "Tiwari questions assessment that rewards the result alone. Sieber explains why the process of producing a rough draft also matters."
+    }
+  ],
+  "work:Shashank Tiwari:21:03": [
+    {
+      "key": "judgment:Nikhil Raval:5:37",
+      "kind": "Editorial connection",
+      "explanation": "Tiwari asks where beginners will learn. Raval describes the conflicting expectations young people face while trying to show that they can do the work."
+    },
+    {
+      "key": "learning:Matthew Guzdial:10:18",
+      "kind": "Editorial connection",
+      "explanation": "Guzdial asks what dependence on a tool could cost learners. Tiwari asks what happens to learning at work when the tool takes over beginner tasks."
+    }
+  ],
+  "work:Pamela Gay:26:40": [
+    {
+      "key": "privacy:Renée Sieber:9:50",
+      "kind": "Editorial connection",
+      "explanation": "Gay describes automated screening between applicants and employers. Sieber asks how much choice a person really has when refusing a digital system could cost them work."
+    }
+  ],
+  "work:Juliette Denny:43:45": [
+    {
+      "key": "governance:Matthew E. Taylor:37:26",
+      "kind": "Editorial connection",
+      "explanation": "Denny distinguishes a technical task from running a business. Taylor examines another gap: inventing a system does not give its inventor control over later uses."
+    },
+    {
+      "key": "learning:David Alter:13:31",
+      "kind": "Editorial connection",
+      "explanation": "Alter describes the need to adapt a plan to circumstances. Denny makes a related distinction at work: producing code is only part of making a business function."
+    }
+  ],
+  "creativity:Alex Hernández-García:19:27": [
+    {
+      "key": "evidence:Pamela Gay:15:02",
+      "kind": "Editorial connection",
+      "explanation": "Hernández-García uses an imagined local flood to make a risk visible. Gay’s warning about misleading media raises the need to explain what an image or story can actually establish."
+    }
+  ],
+  "creativity:Mike Todasco:0:04": [
+    {
+      "key": "learning:Renée Sieber:23:47",
+      "kind": "Editorial connection",
+      "explanation": "Todasco describes using AI as a writing partner. Sieber adds a reason to preserve part of the struggle: a rough draft can be where the writer learns."
+    }
+  ],
+  "creativity:Gwendolyn Dolske:49:45": [
+    {
+      "key": "wellbeing:Rob Eleveld:1:02:36",
+      "kind": "Editorial connection",
+      "explanation": "Dolske compares thinking with exercise. Eleveld describes sustained reading as a way to practise staying with one thing."
+    },
+    {
+      "key": "learning:Renée Sieber:23:47",
+      "kind": "Editorial connection",
+      "explanation": "Sieber treats the rough draft as part of learning. Dolske’s exercise analogy makes the same concern concrete: the effort itself can be what develops a capacity."
+    }
+  ],
+  "relationships:Ashleigh Rankin:13:42": [
+    {
+      "key": "wellbeing:Ashleigh Rankin:04:08",
+      "kind": "Editorial connection",
+      "explanation": "Rankin describes why disclosure can feel easier with a chatbot. In another passage, she cautions that easy access and vulnerability do not by themselves establish what caused a mental health problem."
+    },
+    {
+      "key": "understanding:Karl Friston:04:47",
+      "kind": "Editorial connection",
+      "explanation": "Friston asks why machine language can feel human. Rankin describes a possible consequence: people may disclose things when a chatbot feels less judgmental."
+    }
+  ],
+  "relationships:Jeff Burningham:0:11": [
+    {
+      "key": "understanding:Karl Friston:04:47",
+      "kind": "Editorial connection",
+      "explanation": "Burningham describes the value of being present with another person. Friston asks what changes when familiar language makes a machine feel like a person."
+    }
+  ],
+  "relationships:Liz Smith:38:17": [
+    {
+      "key": "wellbeing:Julien Belmont:0:16",
+      "kind": "Editorial connection",
+      "explanation": "Smith describes connection that online spaces can make possible. Belmont describes how consuming a feed can also become exhausting, with different effects on different people."
+    }
+  ],
+  "wellbeing:Ashleigh Rankin:04:08": [
+    {
+      "key": "evidence:Maya Ackerman:10:40",
+      "kind": "Editorial connection",
+      "explanation": "Rankin keeps a causal question open when evidence is insufficient. Ackerman gives a practical reason to verify a confident answer when the subject falls outside our expertise."
+    },
+    {
+      "key": "relationships:Ashleigh Rankin:13:42",
+      "kind": "Editorial connection",
+      "explanation": "Rankin describes why disclosure can feel easier with a chatbot. In another passage, she cautions that easy access and vulnerability do not by themselves establish what caused a mental health problem."
+    }
+  ],
+  "wellbeing:Julien Belmont:0:16": [
+    {
+      "key": "governance:Fenwick McKelvey:01:42",
+      "kind": "Editorial connection",
+      "explanation": "Belmont describes the experience of an exhausting feed. McKelvey directs attention to the recommendation decisions shaping what appears in that feed."
+    },
+    {
+      "key": "relationships:Liz Smith:38:17",
+      "kind": "Editorial connection",
+      "explanation": "Smith describes connection that online spaces can make possible. Belmont describes how consuming a feed can also become exhausting, with different effects on different people."
+    }
+  ],
+  "wellbeing:Rob Eleveld:1:02:36": [
+    {
+      "key": "creativity:Gwendolyn Dolske:49:45",
+      "kind": "Editorial connection",
+      "explanation": "Eleveld describes sustained reading as a deliberate practice. Dolske’s exercise analogy asks what happens when we delegate the effort that develops a capacity."
+    }
+  ],
+  "judgment:Shashank Tiwari:39:35": [
+    {
+      "key": "learning:Renée Sieber:23:47",
+      "kind": "Editorial connection",
+      "explanation": "Tiwari questions assessment that rewards the result alone. Sieber explains why the process of producing a rough draft also matters."
+    }
+  ],
+  "judgment:Nikhil Raval:5:37": [
+    {
+      "key": "work:Shashank Tiwari:21:03",
+      "kind": "Editorial connection",
+      "explanation": "Raval describes conflicting demands to use AI and demonstrate independent ability. Tiwari asks where new workers will develop that ability if beginner tasks are automated."
+    }
+  ],
+  "judgment:Matthew E. Taylor:1:57": [
+    {
+      "key": "governance:Nidhi Hegde:05:15",
+      "kind": "Editorial connection",
+      "explanation": "Taylor asks for explanations people can act on. Hegde asks about an earlier decision: who chooses the values and tradeoffs the system follows?"
+    },
+    {
+      "key": "understanding:Viviane Clay:03:32",
+      "kind": "Editorial connection",
+      "explanation": "A model of the world may help a system act. Taylor raises a further test: can someone affected by its decision understand and challenge the reason?"
+    },
+    {
+      "key": "governance:Matthew E. Taylor:37:26",
+      "kind": "Editorial connection",
+      "explanation": "Taylor distinguishes inventing technology from controlling its use. His loan example makes accountability concrete for the person affected by a decision."
+    }
+  ],
+  "privacy:Dinidh O'Brien:43:03": [
+    {
+      "key": "governance:Fenwick McKelvey:01:42",
+      "kind": "Editorial connection",
+      "explanation": "McKelvey describes recommendation systems shaping what people see. O’Brien asks why people may remain in digital services even when they dislike how those services handle their data."
+    }
+  ],
+  "privacy:Renée Sieber:9:50": [
+    {
+      "key": "work:Pamela Gay:26:40",
+      "kind": "Editorial connection",
+      "explanation": "Sieber asks whether people can refuse workplace tracking. Gay describes another point where access to work depends on automated systems: recruitment."
+    }
+  ],
+  "privacy:Nidhi Hegde:2:11": [
+    {
+      "key": "governance:Nidhi Hegde:05:15",
+      "kind": "Editorial connection",
+      "explanation": "Hegde describes how ordinary choices can reveal undisclosed information. Her discussion of values asks who should decide how a system uses information and handles tradeoffs."
+    }
+  ],
+  "governance:Nidhi Hegde:05:15": [
+    {
+      "key": "judgment:Matthew E. Taylor:1:57",
+      "kind": "Editorial connection",
+      "explanation": "Taylor asks for explanations people can act on. Hegde asks about an earlier decision: who chooses the values and tradeoffs the system follows?"
+    },
+    {
+      "key": "privacy:Nidhi Hegde:2:11",
+      "kind": "Editorial connection",
+      "explanation": "Hegde describes how ordinary choices can reveal undisclosed information. Her discussion of values asks who should decide how a system uses information and handles tradeoffs."
+    }
+  ],
+  "governance:Matthew E. Taylor:37:26": [
+    {
+      "key": "judgment:Matthew E. Taylor:1:57",
+      "kind": "Editorial connection",
+      "explanation": "Taylor distinguishes inventing technology from controlling its use. His loan example makes accountability concrete for the person affected by a decision."
+    },
+    {
+      "key": "work:Juliette Denny:43:45",
+      "kind": "Editorial connection",
+      "explanation": "Denny distinguishes a technical task from running a business. Taylor examines another gap: inventing a system does not give its inventor control over later uses."
+    }
+  ],
+  "governance:Fenwick McKelvey:01:42": [
+    {
+      "key": "privacy:Dinidh O'Brien:43:03",
+      "kind": "Editorial connection",
+      "explanation": "McKelvey describes recommendation systems shaping what people see. O’Brien asks why people may remain in digital services even when they dislike how those services handle their data."
+    },
+    {
+      "key": "evidence:Pamela Gay:15:02",
+      "kind": "Editorial connection",
+      "explanation": "Gay describes misleading material encountered online. McKelvey shifts attention to the systems that decide which material people encounter next."
+    },
+    {
+      "key": "wellbeing:Julien Belmont:0:16",
+      "kind": "Editorial connection",
+      "explanation": "Belmont describes the experience of an exhausting feed. McKelvey directs attention to the recommendation decisions shaping what appears in that feed."
+    }
+  ]
+}
