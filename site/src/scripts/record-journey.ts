@@ -133,6 +133,7 @@ export function initRecordJourney() {
             list.tabIndex = 0;
             list.setAttribute("aria-label", "Perspectives");
             list.setAttribute("role", "region");
+
           }
         });
     });

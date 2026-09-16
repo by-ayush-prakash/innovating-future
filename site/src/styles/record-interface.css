@@ -10782,17 +10782,7 @@ body #main .prototype.journey-horizontal:has([data-about-view]:not([hidden])) .w
   -webkit-backdrop-filter:var(--header-blur) !important;
   backdrop-filter:var(--header-blur) !important;
 }
-@media(min-width:901px){
-  body #main .prototype.journey-horizontal .question-view .journey-screen-picker > .onward-previews {
-    scroll-snap-type:y mandatory;
-    scroll-padding-top:12px;
-    padding-top:12px !important;
-  }
-  body #main .prototype.journey-horizontal .journey-screen-picker .onward-preview {
-    scroll-snap-align:start;
-    scroll-margin-top:0;
-  }
-}
+
 body #main .prototype.journey-horizontal > .about-art {
   top:78px !important;
   height:calc(100dvh - 78px) !important;
@@ -10802,4 +10792,27 @@ body #main .prototype.journey-horizontal > .about-art {
     top:112px !important;
     height:calc(100dvh - 112px) !important;
   }
+}
+
+/* Scroll the chooser as a page, without a second clipping box around the list. */
+@media(min-width:901px){
+ body #main .prototype.journey-horizontal .question-view:not([hidden]):has(.journey-screen-picker:not([hidden])) {
+  overflow-y:auto !important; overflow-x:hidden !important; scrollbar-width:thin;
+ }
+ body #main .prototype.journey-horizontal .question-view .journey-screen-picker {
+  height:auto !important; max-height:none !important; overflow:visible !important;
+  grid-template-rows:auto !important; align-items:start !important;
+ }
+ body #main .prototype.journey-horizontal .question-view .journey-screen-picker > .onward-previews {
+  height:auto !important; max-height:none !important; overflow:visible !important;
+  padding:0 12px 32px 4px !important; scroll-snap-type:none;
+ }
+ body #main .prototype.journey-horizontal .question-view .journey-screen-picker > .perspective-intro {
+  position:sticky !important; top:0 !important; align-self:start !important;
+  height:calc(100dvh - 138px); padding-bottom:72px !important;
+ }
+}
+
+body #main .prototype[data-prototype] .workspace[data-app] > .topbar {
+ overflow:hidden !important;
 }
