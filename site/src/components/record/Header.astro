@@ -10,6 +10,7 @@ const { model }: Props = Astro.props;
 <header class="topbar">
   <a
     class="record-brand"
+    data-site-exit-trigger
     href="/"
     aria-label="Center for Innovating the Future, home"
   >
@@ -34,13 +35,6 @@ const { model }: Props = Astro.props;
     <button class="atlas-tab" type="button" data-show-about>
       <span class="atlas-tab-label">About</span>
     </button>
-    <button
-      class="atlas-tab atlas-contribute"
-      type="button"
-      data-open-contribution
-    >
-      <span class="atlas-tab-label">Contribute</span>
-    </button>
   </nav>
 </header>
 
@@ -59,16 +53,16 @@ const { model }: Props = Astro.props;
     >
       ×
     </button>
-    <h2 id="site-exit-title">Visit the CIF website?</h2>
+    <h2 id="site-exit-title">Back to the CIF website?</h2>
     <p id="site-exit-description">
-      You’re leaving the Record to visit the main CIF website.
+      Are you sure? Stay a while.
     </p>
     <div>
       <button class="site-exit-stay" type="submit" value="cancel" autofocus>
         Stay in the Record
       </button>
       <a class="site-exit-confirm" href="/">
-        Go to CIF <span aria-hidden="true">→</span>
+        Go to the website <span aria-hidden="true">→</span>
       </a>
     </div>
   </form>

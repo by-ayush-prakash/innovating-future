@@ -20,16 +20,15 @@ const { displayPersonName, contributorGroups } = model;
   </header>
   <div class="people-directory" data-people-directory>
     {contributorGroups.map((group) => (
-      <section
+      <details
         class={`people-group people-group--${group.category}`}
         data-people-group={group.category}
       >
-        <header>
+        <summary>
           <div>
             <h2>{group.label}</h2>
-            <p data-people-group-count>{group.people.length} people</p>
           </div>
-        </header>
+        </summary>
         <div>
           {group.people.map((person) => (
             <button
@@ -53,7 +52,7 @@ const { displayPersonName, contributorGroups } = model;
             </button>
           ))}
         </div>
-      </section>
+      </details>
     ))}
   </div>
 </article>

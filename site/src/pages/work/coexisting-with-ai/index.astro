@@ -85,7 +85,7 @@ const shapes = [
       <div class="shead"><h3>AI is new. The question is not.</h3></div>
       <div class="alt">
         {holds.map((k, i) => (
-          <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
+          <div class={i % 2 === 1 ? "arow arow--f editorial-row" : "arow editorial-row"}>
             <div class="afig"><SiteImage class="rn" src={k.photo} alt="" width="1600" height="1200" loading="lazy" /></div>
             <div>
               <h3>{k.h}</h3>
@@ -113,13 +113,13 @@ const shapes = [
   <section class="sec" id="record">
     <div class="wrap">
       <div class="shead"><h3>The scorecard</h3></div>
-      <div class="arow record-feature">
+      <div class="arow editorial-row record-feature">
         <div class="afig">
           <SiteImage class="rn" src="/images/senate-02.jpg" alt="The colonnade of a parliamentary building" loading="lazy" />
         </div>
         <div>
           <p class="mono">Senate of Canada &middot; 2 February 2017</p>
-          <h3 style="margin-top:18px;max-width:24ch">We told the Senate Canada needed a robotics strategy. It still does.</h3>
+          <h3 style="margin-top:18px">We told the Senate Canada needed a robotics strategy. It still does.</h3>
           <p style="margin-top:20px">
             Japan had published a New Robot Strategy. China had Made in China 2025. Canada, the
             Center told the committee, had grants. Nine years on it installs 241 industrial robots
@@ -140,7 +140,7 @@ const shapes = [
   <section class="sec" id="sessions">
     <div class="wrap">
       <div class="shead"><h3>From the program</h3></div>
-      <a class="arow session-feature" href="/work/coexisting-with-ai/microsoft-reactor">
+      <a class="arow editorial-row session-feature" href="/work/coexisting-with-ai/microsoft-reactor">
         <div class="afig" style="aspect-ratio:16/10">
           <SiteImage class="rn" src="/images/microsoft-reactor.jpg" alt="Microsoft Reactor Toronto at CIBC Square, people arriving for a session" loading="lazy" />
         </div>
@@ -219,11 +219,9 @@ const shapes = [
   </section>
 
   <style>
-    .record-feature,.session-feature{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(36px,4vw,64px);align-items:center}
     .record-feature h3,.session-feature h3{max-width:none}
     .record-feature p,.session-feature p{max-width:62ch}
     .program-steps .nrow:last-child{border-bottom:0}
     .program-formats .lrow:last-child{border-bottom:0}
-    @media(max-width:1080px){.record-feature,.session-feature{grid-template-columns:1fr;gap:28px}}
   </style>
 </Base>

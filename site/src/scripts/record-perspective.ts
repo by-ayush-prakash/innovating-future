@@ -4,6 +4,7 @@ export type Perspective = {
   key: string;
   editorialKey: string;
   question: string;
+  questionSubtitle?: string;
   title: string;
   summary: string;
   standfirst: string;

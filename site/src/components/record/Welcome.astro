@@ -1,4 +1,5 @@
 ---
+import { recordCardVisual } from "../../data/record-card-visuals";
 import type { recordViewModel } from "../../data/record-view-model";
 interface Props {
   model: typeof recordViewModel;
@@ -7,35 +8,8 @@ const { model }: Props = Astro.props;
 const {} = model;
 ---
 
-<section class="explore-welcome" aria-labelledby="welcome-title" hidden>
+<section class="explore-welcome" aria-label="Choose a question to explore" hidden>
   <div class="welcome-layout">
-    <div class="welcome-intro">
-      <div class="welcome-record-name">
-        The Co-Existence Record by <span class="welcome-record-cif">CIF</span>
-      </div>
-      <h1 id="welcome-title" class="welcome-title-stack">
-        Explore the
-        <br />
-        world of{" "}
-        <em>
-          &#123;<span class="welcome-ai-word">AI</span>&#125;
-        </em>
-      </h1>
-      <p>
-        Explore different perspectives and decide what{" "}
-        <span class="welcome-you">
-          you
-          <svg
-            viewBox="0 0 70 12"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path d="M3 8Q29 1 66 5M12 11Q35 6 58 8" />
-          </svg>
-        </span>{" "}
-        think.
-      </p>
-    </div>
     <div class="welcome-choices">
       <div class="welcome-card-grid">
         {[
@@ -66,91 +40,15 @@ const {} = model;
         ].map((card) => (
           <a
             class={`welcome-card welcome-card--${card.id}`}
+            style={`--card-rest-color:${recordCardVisual(card.id).rest};--card-selected-color:${recordCardVisual(card.id).selected};--card-icon-color:${recordCardVisual(card.id).ink}`}
             href={`?question=${card.id}&choose=1`}
           >
-            <div class="question-concept-art" aria-hidden="true">
-              <svg
-                viewBox="0 0 160 110"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                {card.id === "evidence" && (
-                  <>
-                    <path
-                      pathLength="1"
-                      d="M17 17l88-2 3 56-53 2-20 18 1-18-18-1Z"
-                    />
-                    <path
-                      pathLength="1"
-                      d="M65 37l78 2-2 49-16-1 1 15-20-16-43-1Z"
-                    />
-                    <path
-                      pathLength="1"
-                      d="M31 34l43-1M31 45l29 1M82 55l43 1M82 66h29"
-                    />
-                  </>
-                )}
-                {card.id === "learning" && (
-                  <>
-                    <path
-                      pathLength="1"
-                      d="M18 89l-1-23 35 1 1 23M54 90l-1-44 36-1 1 45M91 90l-1-65 35 1 2 64M12 92l126-1"
-                    />
-                    <path
-                      pathLength="1"
-                      d="M28 49l30-24 26 8 37-24M110 9h13l-2 13"
-                    />
-                    <path pathLength="1" d="M25 74h18M62 54h18M99 35h18" />
-                  </>
-                )}
-                {card.id === "understanding" && (
-                  <>
-                    <ellipse
-                      pathLength="1"
-                      cx="62"
-                      cy="55"
-                      rx="39"
-                      ry="37"
-                      transform="rotate(-12 62 55)"
-                    />
-                    <ellipse
-                      pathLength="1"
-                      cx="98"
-                      cy="55"
-                      rx="39"
-                      ry="37"
-                      transform="rotate(12 98 55)"
-                    />
-                    <path
-                      pathLength="1"
-                      d="M40 30q-16 18-8 36M119 80q17-17 10-35M74 54l5 5 10-12"
-                    />
-                  </>
-                )}
-                {card.id === "judgment" && (
-                  <>
-                    <path
-                      pathLength="1"
-                      d="M78 96l-1-46M77 65L36 41V20M78 52l40-21V13M78 80l45-16 1-15"
-                    />
-                    <circle pathLength="1" cx="36" cy="14" r="8" />
-                    <circle pathLength="1" cx="118" cy="12" r="8" />
-                    <circle pathLength="1" cx="124" cy="43" r="8" />
-                    <path
-                      pathLength="1"
-                      d="M65 99l26-1M113 12l4 4 7-8M30 14h12M121 43h6"
-                    />
-                  </>
-                )}
-              </svg>
-            </div>
+            <div class="question-concept-art" aria-hidden="true" set:html={recordCardVisual(card.id).svg} />
             <div class="question-card-copy">
               <h2>{card.title}</h2>
+              <p class="path-description">{card.copy}</p>
               <span class="welcome-card-action">
-                <span aria-hidden="true">→</span>
+                <svg class="path-action-arrow" viewBox="0 0 24 16" fill="none" aria-hidden="true"><path d="M2 8h19m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
               </span>
             </div>
           </a>

@@ -15,10 +15,9 @@ const {
 <article class="comparison-view record-page comparison-calm" data-comparison-view hidden>
   <header class="comparison-head record-hero">
     <div>
-      <h1>Put two perspectives side by side.</h1>
+      <h1>Compare perspectives.</h1>
       <span>
-        Choose any two people to see where their views align, diverge, or leave
-        questions open. Every position links back to the original interview.
+        Choose a question and two people. Read their positions, then open the original conversations.
       </span>
     </div>
 
@@ -44,6 +43,7 @@ const {
       ))}
     </nav>
   </details>
+  <div class="comparison-workspace">
   <section class="person-pickers" aria-label="Choose interviewees to compare">
     <div class="person-picker person-picker--a" data-person-picker="a">
       <button type="button" data-person-toggle="a" aria-expanded="false" aria-label="Choose the person in the left comparison column">
@@ -52,7 +52,7 @@ const {
         </span>
         <b data-person-name="a">{displayPersonName(comparisonDefaults[0])}</b>
         <i class="person-chevron">
-          <span>Change person</span>⌄
+          <span>Change person</span><span class="person-chevron-icon" aria-hidden="true">⌄</span>
         </i>
       </button>
       <div class="person-menu" data-person-menu="a" hidden>
@@ -82,7 +82,7 @@ const {
         </span>
         <b data-person-name="b">{displayPersonName(comparisonDefaults[1])}</b>
         <i class="person-chevron">
-          <span>Change person</span>⌄
+          <span>Change person</span><span class="person-chevron-icon" aria-hidden="true">⌄</span>
         </i>
       </button>
       <div class="person-menu" data-person-menu="b" hidden>
@@ -121,33 +121,31 @@ const {
             data-compare-side={side}
           >
             {question.evidence.map((item) => (
-              <button
-                type="button"
+              <article
                 class="position-card comparison-position-card"
                 data-position
                 data-speaker={item.speaker}
-                data-compare-source={item.video}
-                data-source-speaker={displayPersonName(item.speaker)}
-                data-source-time={item.timestamp}
                 hidden={item.speaker !== comparisonDefaults[sideIndex]}
               >
                 <p>{item.claim}</p>
-                <em class="comparison-state">
-                  {item.state === "agreement"
-                    ? "Supports"
-                    : item.state === "disagreement"
-                      ? "Challenges"
-                      : "Adds uncertainty"}
-                </em>
                 <footer>
-                  <b>{displayPersonName(item.speaker)}</b>
-                  <span>Listen at {item.timestamp} →</span>
+                  <button type="button" class="compare-listen"
+                    data-compare-source={item.video}
+                    data-source-speaker={displayPersonName(item.speaker)}
+                    data-source-time={item.timestamp}
+                  >Listen at {item.timestamp} →</button>
+                  <button type="button" class="compare-explore"
+                    data-open-evidence-key={`${question.id}:${item.speaker}:${item.timestamp}`}
+                    data-open-direct
+                    aria-label={`Explore ${displayPersonName(item.speaker)}’s perspective in detail`}
+                  >Explore this perspective →</button>
                 </footer>
-              </button>
+              </article>
             ))}
           </div>
         ))}
       </section>
     ))}
+  </div>
   </div>
 </article>

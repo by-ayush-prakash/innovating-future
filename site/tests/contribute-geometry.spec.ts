@@ -1,0 +1,3 @@
+import {test} from '@playwright/test';
+import {recordPath} from './record-helpers';
+test('geometry',async({page})=>{await page.goto(recordPath+'?view=contribute'); console.log(await page.locator('[data-contribution-panel="suggest"] form').evaluate(n=>Array.from(n.children).map(x=>({tag:x.tagName,cls:x.className,h:x.getBoundingClientRect().height,mt:getComputedStyle(x).marginTop,mb:getComputedStyle(x).marginBottom})))); console.log(await page.locator('[data-suggestion-question-select]').evaluate(n=>({style:n.getAttribute('style'),bg:getComputedStyle(n).background,pad:getComputedStyle(n).padding})));});

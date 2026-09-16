@@ -6,13 +6,25 @@ import Questions from "./Questions.astro";
 import People from "./People.astro";
 import Person from "./Person.astro";
 import Compare from "./Compare.astro";
-import Contribute from "./Contribute.astro";
 import About from "./About.astro";
 const { initialQuestion, questions } = recordViewModel;
 ---
 
-<div class="prototype" data-prototype data-mode="understand">
+<div class="prototype journey-horizontal" data-prototype data-mode="understand">
+  <script is:inline>
+    {
+      const params = new URLSearchParams(location.search);
+      const welcome = !['question','view','journey','evidence','person','compare'].some(key => params.has(key));
+      document.currentScript.parentElement.classList.toggle('show-welcome', welcome);
+    }
+  </script>
   <Welcome model={recordViewModel} />
+  <script is:inline>
+    {
+      const root = document.currentScript.parentElement;
+      root.querySelector('.explore-welcome').hidden = !root.classList.contains('show-welcome');
+    }
+  </script>
   <section class="workspace" data-app data-journey-started="true">
     <svg
       class="eco-app-scene"
@@ -117,7 +129,6 @@ const { initialQuestion, questions } = recordViewModel;
         <People model={recordViewModel} />
         <Person model={recordViewModel} />
         <Compare model={recordViewModel} />
-        <Contribute model={recordViewModel} />
         <About model={recordViewModel} />
       </div>
     </div>

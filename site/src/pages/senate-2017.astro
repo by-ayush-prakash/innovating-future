@@ -96,7 +96,7 @@ const tally = {
   ctaBody="Cited by the Brookings Institution and the Foreign Policy Research Institute. Committees, agencies and standards bodies working on robotics, automation or AI policy can write directly."
   ctaField="dark-teal"
 >
-  <PageHead photo="/images/senate-02.jpg" alt="The colonnade of a parliamentary building" id="sn">
+  <PageHead className="senate-head" photo="/images/senate-02.jpg" alt="The colonnade of a parliamentary building" id="sn">
     CIF Before the Senate.
     <p slot="lede" class="lede">
       The Center was called as a witness on what robotics, 3D printing and artificial intelligence
@@ -156,7 +156,7 @@ const tally = {
     </div>
   </section>
 
-  <section class="sec" id="scorecard">
+  <section class="sec sec--b" id="scorecard">
     <div class="wrap">
       <div class="shead">
         <h3>The scorecard</h3>
@@ -206,4 +206,7 @@ const tally = {
       </div>
     </div>
   </section>
+  <style>
+    #scorecard .sc:last-child { border-bottom:0; }
+  </style>
 </Base>

@@ -1,3 +1,4 @@
+import { initRecordInteractions } from "./record-interactions";
 import { initRecordJourney } from "./record-journey";
 import { initRecordNavigation } from "./record-navigation";
 import { initRecordInquiry } from "./record-inquiry";
@@ -9,4 +10,5 @@ export function initRecordApp() {
   initRecordJourney();
   initRecordNavigation();
   initRecordInquiry();
+  initRecordInteractions(root);
 }

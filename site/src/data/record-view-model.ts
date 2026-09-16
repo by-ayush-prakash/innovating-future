@@ -625,7 +625,8 @@ const journeyContent = questions.flatMap((q) =>
         : "Speaker’s argument",
       related: connections[item.editorialKey as keyof typeof connections] || [],
       question: q.question,
-      title: starter?.title || item.claim,
+      questionSubtitle: q.short,
+      title: starter?.title || q.question,
       source: {
         speaker: item.speaker,
         role: profile?.role || "",

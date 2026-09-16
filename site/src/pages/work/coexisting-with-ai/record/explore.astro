@@ -13,6 +13,24 @@ const { journeyContent } = recordViewModel;
   cta={false}
   appShell={true}
 >
+  <Fragment slot="head">
+    <script is:inline>
+      try {
+        if(sessionStorage.getItem('cif-record-entry') === 'reveal') {
+          document.documentElement.classList.add('record-entry-covered');
+          sessionStorage.removeItem('cif-record-entry');
+        }
+      } catch {}
+    </script>
+    <style is:global>
+      html.record-entry-covered { background:#000; }
+      html.record-entry-covered::before { content:''; position:fixed; inset:0; background:#000; z-index:20000; pointer-events:auto; opacity:1; transition:opacity 800ms cubic-bezier(.22,1,.36,1); }
+      html.record-entry-covered::after { content:'The Co-Existence Record'; position:fixed; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font:500 clamp(18px,2.2vw,30px)/1 "Helvetica Neue",Arial,sans-serif; letter-spacing:-.025em; z-index:20001; pointer-events:none; opacity:1; transition:opacity 400ms ease, transform 600ms cubic-bezier(.22,1,.36,1); }
+      html.record-entry-revealing::before { opacity:0; pointer-events:none; }
+      html.record-entry-revealing::after { opacity:0; transform:translateY(-14px); }
+      @media(prefers-reduced-motion:reduce){html.record-entry-covered::before,html.record-entry-covered::after{transition:opacity 180ms linear;transform:none}}
+    </style>
+  </Fragment>
   <RecordInterface />
   <script
     id="record-journey-data"
@@ -22,6 +40,25 @@ const { journeyContent } = recordViewModel;
   <script>
     import { initRecordApp } from "../../../../scripts/record-app";
     initRecordApp();
+    if(document.documentElement.classList.contains('record-entry-covered')) {
+      const reveal = async () => {
+        await Promise.race([document.fonts.ready, new Promise(resolve=>setTimeout(resolve,1200))]);
+        await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+        await new Promise(resolve=>setTimeout(resolve,300));
+        document.documentElement.classList.add('record-entry-revealing');
+        const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const animations: Animation[]=[];
+        if(!reduced) document.querySelectorAll<HTMLElement>('.welcome-card').forEach((card,index)=>{
+          if(index>3) return;
+          animations.push(card.animate([{opacity:0,translate:'0 18px'},{opacity:1,translate:'0 0'}],
+            {duration:650,delay:150+index*70,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'}));
+        });
+        await new Promise(resolve=>setTimeout(resolve,reduced?200:1100));
+        animations.forEach(animation=>animation.cancel());
+        document.documentElement.classList.remove('record-entry-covered','record-entry-revealing');
+      };
+      void reveal();
+    }
   </script>
   <script is:inline>
     // Restore the selected question before deferred application code loads.

@@ -76,6 +76,7 @@ test("public forms have spam traps and preserve submissions for review", async (
   await expect(suggestion.locator('input[name="bot-field"]')).toHaveCount(1);
   await expect(updates.locator('input[name="bot-field"]')).toHaveCount(1);
 
+  await suggestion.locator(".contribution-details summary").click();
   await suggestion
     .locator(".contribution-types label", { hasText: "Source" })
     .click();
@@ -153,6 +154,7 @@ test("Follow, profile, Compare and About preserve browser history", async ({
 }) => {
   await openQuestion(page);
   await page.getByRole("button", { name: "Follow", exact: true }).click();
+  await page.locator('[data-people-group]:has([data-open-person="nick-nadeau"]) > summary').click();
   await page.locator('[data-open-person="nick-nadeau"]').click();
   await expect(page.locator('[data-person-view="nick-nadeau"]')).toBeVisible();
   await page.goBack();

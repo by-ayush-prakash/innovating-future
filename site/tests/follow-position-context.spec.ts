@@ -1,0 +1,20 @@
+import {test,expect} from '@playwright/test';
+import {recordPath} from './record-helpers';
+for(const width of [1470,390]) test(`Follow positions stay with the person and Journey is absent at ${width}`,async({page})=>{
+  await page.setViewportSize({width,height:900});
+  await page.goto(recordPath+'?view=follow');
+  await page.locator('[data-people-group]').first().locator('summary').click();
+  await page.locator('[data-open-person="alex-hernandez-garcia"]').click();
+  const url=page.url();
+  const person=page.locator('[data-person-view="alex-hernandez-garcia"]');
+  await person.locator('.person-position-disclosure > summary').first().click();
+  await expect(page).toHaveURL(url);
+  await expect(person).toBeVisible();
+  await expect(page.locator('.journey-screen-steps:visible')).toHaveCount(0);
+  await expect(page.locator('.record-perspective:visible')).toHaveCount(0);
+  await person.locator('.follow-position-listen:visible').first().click();
+  await expect(page.getByRole('dialog',{name:'Original conversation'})).toContainText('Alex Hernández-García');
+  await page.getByRole('button',{name:'Close recording'}).click();
+  await expect(page).toHaveURL(url);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBeLessThanOrEqual(1);
+});

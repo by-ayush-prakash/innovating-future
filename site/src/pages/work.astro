@@ -46,7 +46,7 @@ const appearances = [
     <div class="wrap">
       <div class="alt">
         {properties.map((p, i) => (
-          <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
+          <div class={i % 2 === 1 ? "arow arow--f editorial-row" : "arow editorial-row"}>
             <div class:list={["afig", "fit" in p && p.fit === "contain" && "afig--art", "panel" in p && p.panel === "mantic" && "mantic-panel"]}>
               {"panel" in p && p.panel === "mantic" ? (
                 <div class="mantic-panel__inner" aria-hidden="true">

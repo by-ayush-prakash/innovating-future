@@ -1,0 +1,27 @@
+import {test,expect} from '@playwright/test';
+test('Access the Record animates and resets on Back',async({page})=>{
+ await page.goto('/work/coexisting-with-ai/record/');
+ await page.locator('.report-hero h1').click();
+ await expect(page.locator('.record-entry-launch')).toBeVisible();
+ await page.waitForTimeout(1000);
+ await expect(page).toHaveURL(/record\/$/);
+ await page.locator('.record-entry-launch').click();
+ await expect(page).toHaveURL(/record\/explore\//);
+ await expect(page.locator('html')).toHaveClass(/record-entry-covered/);
+ await page.screenshot({path:'/private/tmp/cif-entry-covered.png'});
+ await expect(page.locator('html')).toHaveClass(/record-entry-revealing/);
+ await page.waitForTimeout(300);
+ await page.screenshot({path:'/private/tmp/cif-entry-revealing.png'});
+ await expect(page.locator('html')).not.toHaveClass(/record-entry-covered/);
+ await expect(page.locator('.explore-welcome')).toBeVisible();
+ await page.screenshot({path:'/private/tmp/cif-new-image-page.png'});
+ await page.goBack();
+ await expect(page.locator('.record-entry-launch')).toHaveCount(0);
+ await expect(page.locator('.report-enter')).toBeVisible();
+ await page.locator('.report-enter').click();
+ await expect(page.locator('.record-entry-launch')).toBeVisible();
+ await page.waitForTimeout(1000);
+ await expect(page).toHaveURL(/record\/$/);
+ await page.locator('.record-entry-launch').click();
+ await expect(page).toHaveURL(/record\/explore\//);
+});

@@ -1,3 +1,4 @@
+import { recordCardVisual } from "../data/record-card-visuals";
 import { createReflection, type ReflectionOption } from "./record-reflection";
 import {
   createPerspective,
@@ -53,14 +54,20 @@ export function initRecordJourney() {
       `welcome-card welcome-card--${id}`,
     ) as HTMLAnchorElement;
     card.href = `?question=${encodeURIComponent(id)}&choose=1`;
-    const art = el("div", "", "question-concept-art");
+    const visual = recordCardVisual(id);
+    card.style.setProperty("--card-rest-color", visual.rest);
+    card.style.setProperty("--card-selected-color", visual.selected);
+    card.style.setProperty("--card-icon-color", visual.ink);
+    const art = el("div", "", "question-concept-art question-concept-art--additional");
     art.setAttribute("aria-hidden", "true");
-    art.innerHTML =
-      '<svg viewBox="0 0 160 110" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle pathLength="1" cx="48" cy="55" r="20"/><circle pathLength="1" cx="112" cy="30" r="12"/><circle pathLength="1" cx="112" cy="80" r="12"/><path pathLength="1" d="M68 50l32-16M68 61l32 15M112 42v26"/></svg>';
+    art.innerHTML = visual.svg;
     const copy = el("div", "", "question-card-copy");
-    const arrow = el("span", "→", "welcome-card-action");
+    const arrow = el("span", "", "welcome-card-action");
     arrow.setAttribute("aria-hidden", "true");
-    copy.append(el("h2", story.question), arrow);
+    arrow.innerHTML = '<svg class="path-action-arrow" viewBox="0 0 24 16" fill="none" aria-hidden="true"><path d="M2 8h19m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>';
+    copy.append(el("h2", story.question));
+    copy.append(el("p", story.questionSubtitle || story.standfirst, "path-description"));
+    card.append(arrow);
     card.append(art, copy);
     welcomeGrid.append(card);
   });
@@ -95,11 +102,10 @@ export function initRecordJourney() {
         "reading-viewport-locked",
         view?.dataset.journeyStage === "reading" &&
           !expanded &&
+          window.scrollY === 0 &&
           innerWidth > 900 &&
           fits,
       );
-      if (root.classList.contains("reading-viewport-locked"))
-        window.scrollTo({ top: 0, behavior: "instant" });
     });
   };
   initJourneyScroll(root);
@@ -365,6 +371,7 @@ export function initRecordJourney() {
       bar.after(screenPicker);
     }
     screenPicker.hidden = stage !== "perspectives";
+    if (stage === "perspectives") screenPicker.querySelector<HTMLElement>(".onward-previews")?.scrollTo({top:0,behavior:"instant"});
     if (stage === "perspectives") {
       const cards = el("div", "", "onward-previews");
       featured
@@ -473,7 +480,6 @@ export function initRecordJourney() {
           { duration: 160, easing: "cubic-bezier(.16,1,.3,1)" },
         );
     }
-    window.scrollTo({ top: 0, behavior: "instant" });
     syncViewportLock();
     if (persist) save();
   };
@@ -885,6 +891,7 @@ export function initRecordJourney() {
       picker.append(intro, cards);
       view.prepend(picker);
     }
+    picker.querySelector<HTMLElement>(".onward-previews")?.scrollTo({top:0,behavior:"instant"});
     let bar = view.querySelector<HTMLElement>(".journey-screen-nav");
     if (!bar) {
       bar = el("nav", "", "journey-screen-nav journey-entry-nav");
@@ -1124,16 +1131,21 @@ export function initRecordJourney() {
     );
     bar.replaceChildren(steps);
   };
+  let welcomeOpeningAnimations: Animation[] = [];
   const returnToWelcome = () => {
+    welcomeOpeningAnimations.forEach(animation => animation.cancel());
+    welcomeOpeningAnimations = [];
+    openingQuestion = false;
     ++stageTransition;
     cancelJourneyMotion();
     welcome?.getAnimations().forEach((animation) => animation.cancel());
     for (const panel of panels.values()) panel.stop();
     root.classList.add("show-welcome");
     root.classList.remove("reading-viewport-locked");
+    root.querySelectorAll<HTMLElement>("[data-view], [data-people-view], [data-person-view], [data-comparison-view], [data-about-view]")
+      .forEach(view => { view.hidden = true; });
     if (welcome) welcome.hidden = false;
     renderWelcomeHistory();
-    window.scrollTo({ top: 0, behavior: "instant" });
   };
   root.addEventListener("record:return-to-welcome", () => {
     history.pushState({}, "", location.pathname);
@@ -1172,47 +1184,15 @@ export function initRecordJourney() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const animations: Animation[] = [];
+    welcomeOpeningAnimations = animations;
     try {
       if (!reducedMotion) {
-        // Turn the chosen idea over, then unfold the two-column question page.
-        const turn = card.animate(
-          [
-            {
-              opacity: 1,
-              transform: "perspective(1200px) rotateY(0deg)",
-              transformOrigin: "0% 50%",
-            },
-            {
-              opacity: 0.8,
-              transform: "perspective(1200px) rotateY(-55deg)",
-              transformOrigin: "0% 50%",
-              offset: 0.65,
-            },
-            {
-              opacity: 0,
-              transform: "perspective(1200px) rotateY(-92deg)",
-              transformOrigin: "0% 50%",
-            },
-          ],
-          {
-            duration: 180,
-            easing: "cubic-bezier(.55,0,.3,1)",
-            fill: "forwards",
-          },
+        const fade = welcome.animate(
+          [{ opacity: 1 }, { opacity: 0 }],
+          { duration: 260, easing: "ease-in", fill: "forwards" },
         );
-        animations.push(turn);
-        welcome
-          .querySelectorAll<HTMLElement>(".welcome-card,.welcome-intro")
-          .forEach((other) => {
-            if (other === card) return;
-            animations.push(
-              other.animate(
-                [{ opacity: 1 }, { opacity: 0, transform: "translateY(12px)" }],
-                { duration: 120, easing: "ease-in", fill: "forwards" },
-              ),
-            );
-          });
-        await turn.finished.catch(() => {});
+        animations.push(fade);
+        await fade.finished.catch(() => {});
       }
       if (openingTransition !== stageTransition) return;
       root.classList.remove("show-welcome");
@@ -1234,65 +1214,21 @@ export function initRecordJourney() {
       const heading = picker?.querySelector<HTMLElement>("h2");
       heading?.setAttribute("tabindex", "-1");
       heading?.focus({ preventScroll: true });
-      window.scrollTo({ top: 0, behavior: "instant" });
       if (!reducedMotion && picker) {
         const intro = picker.querySelector<HTMLElement>(".perspective-intro");
-        if (intro)
-          animations.push(
-            intro.animate(
-              [
-                {
-                  opacity: 0,
-                  transform:
-                    "perspective(1200px) rotateY(18deg) translateX(-28px)",
-                  transformOrigin: "100% 50%",
-                },
-                {
-                  opacity: 1,
-                  transform: "perspective(1200px) rotateY(0deg) translateX(0)",
-                  transformOrigin: "100% 50%",
-                },
-              ],
-              {
-                duration: 220,
-                easing: "cubic-bezier(.22,1,.36,1)",
-                fill: "both",
-              },
-            ),
-          );
-        picker
-          .querySelectorAll<HTMLElement>(".onward-preview")
-          .forEach((perspective, index) => {
-            animations.push(
-              perspective.animate(
-                [
-                  {
-                    opacity: 0,
-                    transform: "translateX(36px)",
-                    clipPath: "inset(0 0 0 100%)",
-                  },
-                  {
-                    opacity: 1,
-                    transform: "translateX(0)",
-                    clipPath: "inset(0)",
-                  },
-                ],
-                {
-                  duration: 180,
-                  delay: index * 35,
-                  easing: "cubic-bezier(.22,1,.36,1)",
-                  fill: "both",
-                },
-              ),
-            );
-          });
-        await Promise.all(
-          animations.map((animation) => animation.finished.catch(() => {})),
-        );
+        if (intro) animations.push(intro.animate(
+          [{opacity:0,transform:"translateY(10px)"},{opacity:1,transform:"none"}],
+          {duration:480,easing:"cubic-bezier(.22,1,.36,1)",fill:"both"}));
+        picker.querySelectorAll<HTMLElement>(".onward-preview").forEach((perspective,index)=>{
+          animations.push(perspective.animate(
+            [{opacity:0,transform:"translateY(16px)"},{opacity:1,transform:"none"}],
+            {duration:480,delay:80+Math.min(index,5)*65,easing:"cubic-bezier(.22,1,.36,1)",fill:"both"}));
+        });
+        await Promise.all(animations.map(animation=>animation.finished.catch(()=>{})));
       }
     } finally {
       animations.forEach((animation) => animation.cancel());
-      openingQuestion = false;
+      if (welcomeOpeningAnimations === animations) { openingQuestion = false; welcomeOpeningAnimations = []; }
     }
   });
   window.addEventListener("popstate", () => {
@@ -1305,8 +1241,11 @@ export function initRecordJourney() {
       (params.get("view") && params.get("view") !== "explore") ||
       params.has("person") ||
       params.has("compare")
-    )
+    ) {
+      root.classList.remove("show-welcome");
+      if (welcome) welcome.hidden = true;
       return;
+    }
     root.classList.remove("show-welcome");
     if (welcome) welcome.hidden = true;
     const id = params.get("question") || "understanding";

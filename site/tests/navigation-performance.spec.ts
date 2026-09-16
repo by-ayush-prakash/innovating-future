@@ -125,6 +125,7 @@ test("rapid Follow and About cannot be overwritten by late effects", async ({
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(explore);
   await page.getByRole("button", { name: "Follow", exact: true }).click();
+  await page.locator("[data-people-group]:visible > summary").first().click();
   await page.locator("[data-open-person]:visible").first().click();
   await page.getByRole("button", { name: "About", exact: true }).click();
   await expect(page.locator(".about-view")).toBeVisible();
@@ -184,6 +185,7 @@ test("main site pages and lazy search index respond", async ({ request }) => {
 test("Back restores a question after visiting Follow", async ({ page }) => {
   await page.goto(explore + "?question=evidence&choose=1");
   await page.getByRole("button", { name: "Follow", exact: true }).click();
+  await page.locator("[data-people-group]:visible > summary").first().click();
   await expect(
     page.locator("[data-open-person]:visible").first(),
   ).toBeVisible();

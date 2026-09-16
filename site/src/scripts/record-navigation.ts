@@ -1,4 +1,4 @@
-import { scrollToRecordSection, cancelJourneyMotion } from "./record-journey";
+import { cancelJourneyMotion } from "./record-journey";
 export function initRecordNavigation() {
   const root = document.querySelector<HTMLElement>("[data-prototype]");
   let restoringNavigation = false;
@@ -63,15 +63,6 @@ export function initRecordNavigation() {
     });
   });
   const app = root?.querySelector<HTMLElement>("[data-app]");
-  const evidenceCanvas = root?.querySelector<HTMLElement>(".evidence-canvas");
-  const scrollWorkspaceToTop = (behavior: ScrollBehavior = "auto") => {
-    evidenceCanvas?.scrollTo({ top: 0, left: 0, behavior });
-    window.scrollTo({ top: 0, left: 0, behavior });
-    if (behavior === "auto") {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
-  };
   const siteExitDialog = root?.querySelector<HTMLDialogElement>(
     "[data-site-exit-dialog]",
   );
@@ -90,7 +81,7 @@ export function initRecordNavigation() {
     "[data-contribution-view]",
   );
   const contributeLaunch =
-    root?.querySelector<HTMLButtonElement>(".atlas-contribute");
+    root?.querySelector<HTMLButtonElement>(".topbar [data-open-contribution]");
   const followLaunch =
     root?.querySelector<HTMLButtonElement>("[data-show-people]");
   const updateContributionContext = (id: string, label: string) => {
@@ -226,7 +217,17 @@ export function initRecordNavigation() {
       followQuestion.selectedOptions[0]?.textContent || "",
     );
   });
+  root?.querySelectorAll<HTMLFormElement>("[data-contribution-form]").forEach(form => {
+    form.addEventListener("invalid", event => {
+      const target = event.target as HTMLElement;
+      const details = target.closest<HTMLDetailsElement>(".contribution-details");
+      if (details) details.open = true;
+    }, true);
+  });
+  let contributionMotion: Animation | undefined;
   const setContributionPanel = (choice: string) => {
+    const previous = root?.querySelector<HTMLButtonElement>("[data-contribution-choice].active")?.dataset.contributionChoice;
+    contributionMotion?.cancel();
     root
       ?.querySelectorAll<HTMLButtonElement>("[data-contribution-choice]")
       .forEach((button) => {
@@ -238,6 +239,13 @@ export function initRecordNavigation() {
       ?.querySelectorAll<HTMLElement>("[data-contribution-panel]")
       .forEach((panel) => {
         panel.hidden = panel.dataset.contributionPanel !== choice;
+        if (!panel.hidden && previous !== choice && panel.getClientRects().length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          const direction = choice === "follow" ? 1 : -1;
+          contributionMotion = panel.animate([
+            {opacity:0, transform:`translateX(${direction * 18}px)`},
+            {opacity:1, transform:"translateX(0)"},
+          ], {duration:220, easing:"cubic-bezier(.22,.8,.25,1)"});
+        }
       });
   };
   const activeContributionContext = () => {
@@ -261,32 +269,15 @@ export function initRecordNavigation() {
     const { id, label } = activeContributionContext();
     updateContributionContext(id, label);
     setContributionPanel("suggest");
-    closeQuestionPanel();
-    closeInspector();
-    root
-      ?.querySelectorAll<HTMLElement>("[data-view]")
-      .forEach((view) => (view.hidden = true));
-    root
-      ?.querySelectorAll<HTMLElement>("[data-people-view],[data-person-view]")
-      .forEach((view) => (view.hidden = true));
-    if (comparisonView) comparisonView.hidden = true;
-    if (aboutView) aboutView.hidden = true;
+    aboutLaunch?.click();
+    const disclosure = root?.querySelector<HTMLDetailsElement>('[data-about-contribution]');
+    if (disclosure) disclosure.open = true;
     if (contributionView) contributionView.hidden = false;
-    if (headingSelector) headingSelector.hidden = false;
-    contributeLaunch?.classList.add("active");
-    followLaunch?.classList.remove("active");
-    compareLaunch?.classList.remove("active");
-    aboutLaunch?.classList.remove("active");
-    headerQuestions?.classList.remove("active");
-    setNavigationUrl({
-      view: "contribute",
-      question: id || null,
-      person: null,
-      compare: null,
-      evidence: null,
-    });
-    scrollWorkspaceToTop();
+    disclosure?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   };
+  root?.querySelector('[data-about-contribution]')?.addEventListener('toggle', () => {
+    if (contributionView) contributionView.hidden = false;
+  });
   root
     ?.querySelectorAll<HTMLButtonElement>("[data-open-contribution]")
     .forEach((button) => button.addEventListener("click", openContribution));
@@ -664,7 +655,6 @@ export function initRecordNavigation() {
       compare: null,
       evidence: null,
     });
-    scrollWorkspaceToTop();
   };
   const showPerson = (slug: string) => {
     const selected = personViews.find(
@@ -692,7 +682,6 @@ export function initRecordNavigation() {
       compare: null,
       evidence: null,
     });
-    scrollWorkspaceToTop();
   };
   root?.addEventListener("record:follow-person", (event) => {
     const speaker = (event as CustomEvent<string>).detail;
@@ -715,7 +704,6 @@ export function initRecordNavigation() {
     } else if (journeyState.route === "people") {
       showPeopleDirectory(journeyState.question);
     }
-    scrollWorkspaceToTop();
   };
   root
     ?.querySelectorAll<HTMLButtonElement>("[data-journey-question]")
@@ -984,7 +972,6 @@ export function initRecordNavigation() {
             aboutLaunch?.classList.remove("active");
             contributeLaunch?.classList.add("active");
             headerQuestions?.classList.remove("active");
-            scrollWorkspaceToTop();
             return;
           }
           if (questionDestination === "people") {
@@ -1027,8 +1014,6 @@ export function initRecordNavigation() {
               detail: button.dataset.question,
             }),
           );
-          if (root.dataset.restoringNavigation !== "true")
-            scrollWorkspaceToTop();
         };
         if (questionPanel && !questionPanel.hidden)
           transitionQuestion(selectQuestion);
@@ -1076,7 +1061,19 @@ export function initRecordNavigation() {
       const close = document.createElement("button");
       close.type = "button";
       close.className = "comparison-source-close";
-      close.textContent = "×";
+      const closeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      closeIcon.setAttribute("viewBox", "0 0 24 24");
+      closeIcon.setAttribute("width", "20");
+      closeIcon.setAttribute("height", "20");
+      closeIcon.setAttribute("aria-hidden", "true");
+      const closeLines = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      closeLines.setAttribute("d", "M6 6L18 18M18 6L6 18");
+      closeLines.setAttribute("fill", "none");
+      closeLines.setAttribute("stroke", "currentColor");
+      closeLines.setAttribute("stroke-width", "2");
+      closeLines.setAttribute("stroke-linecap", "round");
+      closeIcon.append(closeLines);
+      close.append(closeIcon);
       close.setAttribute("aria-label", "Close recording");
       close.addEventListener("click", () => comparisonSource.close());
       const url = new URL(source);
@@ -1311,7 +1308,6 @@ export function initRecordNavigation() {
       person: null,
       evidence: null,
     });
-    scrollWorkspaceToTop();
   });
   aboutLaunch?.addEventListener("click", () => {
     if (aboutLaunch.classList.contains("active")) return;
@@ -1337,13 +1333,15 @@ export function initRecordNavigation() {
       compare: null,
       evidence: null,
     });
-    scrollWorkspaceToTop();
   });
-  root
-    ?.querySelector<HTMLButtonElement>("[data-about-questions]")
-    ?.addEventListener("click", () => {
+  root?.querySelectorAll<HTMLButtonElement>("[data-about-questions]").forEach(button =>
+    button.addEventListener("click", () => {
+      if (aboutView) aboutView.hidden = true;
+      aboutLaunch?.classList.remove("active");
+      headerQuestions?.classList.add("active");
       root.dispatchEvent(new CustomEvent("record:return-to-welcome"));
-    });
+    }),
+  );
   root
     ?.querySelector<HTMLButtonElement>("[data-contribution-return]")
     ?.addEventListener("click", () => {
@@ -1586,8 +1584,6 @@ export function initRecordNavigation() {
     ) {
       journeyState.route = "landscape";
       root?.querySelector<HTMLButtonElement>("[data-question].active")?.click();
-    } else {
-      scrollWorkspaceToTop("smooth");
     }
   });
   root

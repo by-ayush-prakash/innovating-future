@@ -1,0 +1,21 @@
+import {test,expect} from '@playwright/test';
+test('logo confirms leaving the Record',async({page})=>{
+ await page.goto('/work/coexisting-with-ai/record/explore/');
+ await page.locator('.record-brand').click();
+ const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();
+ await expect(page).toHaveURL(/record\/explore\//);
+ const button=dialog.getByRole('link',{name:'Go to the website'});
+ const before=await button.evaluate(el=>getComputedStyle(el).backgroundPosition);
+ await page.waitForTimeout(900);
+ const after=await button.evaluate(el=>getComputedStyle(el).backgroundPosition);
+ expect(after).not.toBe(before);
+ await page.waitForTimeout(300);
+ await page.screenshot({path:'/private/tmp/cif-logo-warning.png'});
+ await dialog.getByRole('button',{name:'Stay in the Record'}).click();
+ await expect(dialog).not.toBeVisible();
+ await page.locator('.record-brand').click();await page.keyboard.press('Escape');
+ await expect(dialog).not.toBeVisible();
+ await page.locator('.record-brand').click();
+ await dialog.getByRole('link',{name:'Go to the website'}).click();
+ await expect(page).toHaveURL('http://127.0.0.1:4402/');
+});

@@ -1,4 +1,6 @@
 ---
+import SiteImage from "../../../../components/SiteImage.astro";
+import HowRecordWorks from "../../../../components/record/HowRecordWorks.astro";
 import Base from "../../../../layouts/Base.astro";
 
 const voices = [
@@ -10,12 +12,6 @@ const voices = [
   { n: "06", h: "Builders, founders and operators", p: "What changes when AI moves into products, workplaces and essential services." },
 ];
 
-const archiveStages = [
-  { n: "01", h: "Conversation", p: "Question-led, across episodes." },
-  { n: "02", h: "Idea", p: "Agreement, difference and uncertainty." },
-  { n: "03", h: "Context", p: "Transcript, timestamp and surrounding exchange." },
-  { n: "04", h: "Access", p: "Open, correctable and current." },
-];
 
 ---
 <Base
@@ -30,7 +26,11 @@ const archiveStages = [
   <section class="report-hero" aria-labelledby="report-title">
     <h1 id="report-title">Explore how people co-exist with AI.</h1>
 
-
+    <div class="report-art-stack" aria-label="Three views of artificial intelligence">
+      <figure class="report-art report-art--left"><SiteImage src="/images/ai-everyday-use.jpg" alt="A person using an AI writing prompt on a phone" /></figure>
+      <figure class="report-art report-art--center"><SiteImage src="/images/ai-brain-artwork.png" alt="A sculptural brain, the letters AI and a cursor on a tiled background" /></figure>
+      <figure class="report-art report-art--right"><SiteImage src="/images/ai-light-field.jpg" alt="Blue illuminated lines suggesting a digital network" /></figure>
+    </div>
 
     <a class="report-enter" href="/work/coexisting-with-ai/record/explore/" aria-label="Access the Co-Existence Record">
       <span class="report-enter-label">Access the Record</span>
@@ -86,57 +86,7 @@ const archiveStages = [
 
   <section class="sec" id="method">
     <div class="wrap">
-      <div class="shead"><h3>Begin with a question. Follow it to the source.</h3></div>
-      <div class="archive-explorer" data-archive-explorer data-active="0">
-        <div class="archive-tabs" role="tablist" aria-label="How the living source archive works">
-          {archiveStages.map((stage, i) => (
-            <button
-              class={`archive-tab archive-tab--${i + 1}`}
-              type="button"
-              role="tab"
-              id={`archive-tab-${i + 1}`}
-              aria-controls={`archive-panel-${i + 1}`}
-              aria-selected={i === 0 ? "true" : "false"}
-              tabindex={i === 0 ? "0" : "-1"}
-              data-archive-tab={i}
-            >
-              <span class="archive-tab-number">{stage.n}</span>
-              <span class="archive-tab-copy"><b>{stage.h}</b><small>{stage.p}</small></span>
-            </button>
-          ))}
-        </div>
-
-        <div class="archive-stage" aria-live="polite">
-          <article class="archive-detail is-active" role="tabpanel" id="archive-panel-1" aria-labelledby="archive-tab-1" data-archive-panel="0">
-            <h4>Start with a question.</h4>
-            <div>
-              <p>A published episode of <a class="podcast-link" href="/podcast">The Ayush Prakash Podcast</a> enters the source archive. Questions gather relevant passages across conversations, so you do not have to know which guest to search first.</p>
-              <p>The archive reflects the guests currently included. It does not measure public opinion.</p>
-            </div>
-          </article>
-          <article class="archive-detail" role="tabpanel" id="archive-panel-2" aria-labelledby="archive-tab-2" data-archive-panel="1" aria-hidden="true">
-            <h4>Compare the answers.</h4>
-            <div>
-              <p>Each relevant passage stays connected to the speaker and timestamp. The Record shows where ideas meet, where definitions or priorities differ, and what remains unresolved.</p>
-              <p>No single answer is presented as the required view.</p>
-            </div>
-          </article>
-          <article class="archive-detail" role="tabpanel" id="archive-panel-3" aria-labelledby="archive-tab-3" data-archive-panel="2" aria-hidden="true">
-            <h4>Open the source.</h4>
-            <div>
-              <p>Every explanation links back to the transcript, timestamp and surrounding exchange. Unverified claims and missing perspectives stay visible.</p>
-              <p>The summary leads into the record and preserves the context needed to assess it.</p>
-            </div>
-          </article>
-          <article class="archive-detail" role="tabpanel" id="archive-panel-4" aria-labelledby="archive-tab-4" data-archive-panel="3" aria-hidden="true">
-            <h4>Keep the record current.</h4>
-            <div>
-              <p>Guests can request corrections, updates or removal of their transcript. New conversations and source changes appear in a dated change history.</p>
-              <p>CIF compiles and provides access. It does not assign positions to guests or prescribe a position for the public. Read the material, compare perspectives and decide for yourself.</p>
-            </div>
-          </article>
-        </div>
-      </div>
+      <HowRecordWorks />
     </div>
   </section>
 
@@ -160,7 +110,7 @@ const archiveStages = [
   </section>
 
   <style>
-    .report-hero{box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100svh - 92px);padding:clamp(72px,8vh,104px) var(--pad) clamp(60px,7vh,90px);overflow:hidden;background:#fff;color:var(--ink);text-align:center}
+    .report-hero{cursor:pointer;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100svh - 92px);padding:clamp(72px,8vh,104px) var(--pad) clamp(60px,7vh,90px);overflow:hidden;background:#fff;color:var(--ink);text-align:center}
     .report-art-stack{position:relative;flex:0 0 auto;width:min(760px,78vw);height:auto;aspect-ratio:1.86;margin-bottom:clamp(72px,8vh,104px)}
     .report-art{position:absolute;display:block;height:auto;overflow:hidden;border:8px solid #fff;border-radius:28px;background:var(--yellow-soft);box-shadow:0 16px 40px rgba(17,17,17,.14);animation:report-stack-in .86s cubic-bezier(.22,1,.36,1) both}
     .report-art img{display:block;width:100%;height:100%;object-fit:cover}
@@ -192,6 +142,8 @@ const archiveStages = [
     .archive-stage{display:grid;overflow:hidden;border:1px solid rgba(17,17,17,.12);border-radius:28px;background:var(--archive-active);transition:background .2s ease}.archive-explorer[data-active="0"]{--archive-active:var(--red-soft)}.archive-explorer[data-active="1"]{--archive-active:var(--yellow-soft)}.archive-explorer[data-active="2"]{--archive-active:var(--blue-soft)}.archive-explorer[data-active="3"]{--archive-active:var(--paper-hi)}
     .archive-detail{grid-area:1/1;display:grid;grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);gap:clamp(42px,8vw,130px);align-items:center;min-height:330px;padding:clamp(36px,5vw,68px);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}.archive-detail.is-active{opacity:1;visibility:visible;transform:translateY(0)}
     .archive-detail h4{max-width:10ch;margin:0;font:500 clamp(42px,4.4vw,66px)/.98 var(--sans);letter-spacing:-.045em}.archive-detail>div{max-width:660px}.archive-detail p{margin:0;color:#29282d;font-size:clamp(16px,1.3vw,19px);line-height:1.55}.archive-detail p+p{margin-top:22px}
+    #goal .intro h3{grid-column:1/-1;max-width:none;width:100%}
+    #goal .intro .body{grid-column:1/-1;max-width:76ch}
     .intro .body p,.shead>p,.updates-body>p{color:var(--mut);font-size:18px;line-height:1.55}
     .shead>p{max-width:610px;margin:0}
     .goal-dedication{position:relative;margin-top:clamp(42px,5vw,72px);padding:clamp(32px,3.5vw,52px);overflow:visible;border:1px solid rgba(23,23,25,.55);border-radius:28px;background:#fff;color:#171719}.goal-dedication::before{content:"";position:absolute;top:-1px;left:26px;right:26px;height:6px;border-radius:0 0 6px 6px;background:var(--grad)}.goal-dedication-header{display:flex;align-items:center;gap:10px;margin-bottom:clamp(24px,2.5vw,34px);font:600 clamp(14px,1.1vw,16px)/1.2 var(--sans)}.goal-dedication-principles h4{max-width:30ch;margin:0;font:500 clamp(34px,3.5vw,54px)/1.01 var(--sans);letter-spacing:-.04em}.goal-dedication-principles>p{max-width:76ch;margin:18px 0 0;font:400 clamp(16px,1.3vw,19px)/1.5 var(--sans)}
@@ -243,40 +195,83 @@ const archiveStages = [
       });
     });
 
-    const archiveExplorer = document.querySelector<HTMLElement>('[data-archive-explorer]');
-
-    const archiveTabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-archive-tab]'));
-    const archivePanels = Array.from(document.querySelectorAll<HTMLElement>('[data-archive-panel]'));
-    const activateArchiveStage = (index: number, moveFocus = false) => {
-      if (!archiveExplorer || !archiveTabs[index] || !archivePanels[index]) return;
-      archiveExplorer.dataset.active = String(index);
-      archiveTabs.forEach((tab, tabIndex) => {
-        const active = tabIndex === index;
-        tab.setAttribute('aria-selected', String(active));
-        tab.tabIndex = active ? 0 : -1;
-      });
-      archivePanels.forEach((panel, panelIndex) => {
-        const active = panelIndex === index;
-        panel.classList.toggle('is-active', active);
-        panel.setAttribute('aria-hidden', String(!active));
-      });
-      if (moveFocus) archiveTabs[index].focus();
+    document.querySelector('.report-hero')?.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('.report-enter')) return;
+      document.querySelector<HTMLAnchorElement>('.report-enter')?.click();
+    });
+    const recordEntry = document.querySelector<HTMLAnchorElement>('.report-enter');
+    let recordPreload: Promise<void> | undefined;
+    const preloadRecord = () => recordPreload ||= fetch(recordEntry!.href)
+      .then(response => response.text()).then(html => {
+        const page = new DOMParser().parseFromString(html, 'text/html');
+        page.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"], link[rel="modulepreload"]').forEach(source => {
+          const link = document.createElement('link');
+          link.rel = source.rel === 'stylesheet' ? 'preload' : 'modulepreload';
+          if(source.rel === 'stylesheet') link.as = 'style';
+          link.href = new URL(source.getAttribute('href')!, recordEntry!.href).href;
+          document.head.append(link);
+        });
+        page.querySelectorAll<HTMLScriptElement>('script[type="module"][src]').forEach(source => {
+          const link = document.createElement('link'); link.rel = 'modulepreload';
+          link.href = new URL(source.getAttribute('src')!, recordEntry!.href).href;
+          document.head.append(link);
+        });
+      }).catch(()=>{});
+    recordEntry?.addEventListener('pointerenter', preloadRecord, {once:true});
+    recordEntry?.addEventListener('focus', preloadRecord, {once:true});
+    let enteringRecord = false;
+    let entryHeroAnimation: Animation | undefined;
+    const resetRecordEntry = () => {
+      enteringRecord = false;
+      document.querySelectorAll('.record-entry-launch').forEach((overlay) => overlay.remove());
+      entryHeroAnimation?.cancel();
+      entryHeroAnimation = undefined;
     };
-
-    archiveTabs.forEach((tab, index) => {
-      tab.addEventListener('pointerenter', () => activateArchiveStage(index));
-      tab.addEventListener('focus', () => activateArchiveStage(index));
-      tab.addEventListener('click', () => activateArchiveStage(index));
-      tab.addEventListener('keydown', (event) => {
-        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-        event.preventDefault();
-        const nextIndex = event.key === 'Home'
-          ? 0
-          : event.key === 'End'
-            ? archiveTabs.length - 1
-            : (index + (event.key === 'ArrowRight' ? 1 : -1) + archiveTabs.length) % archiveTabs.length;
-        activateArchiveStage(nextIndex, true);
+    // Browser history restores the DOM, including completed animation layers.
+    addEventListener('pagehide', resetRecordEntry);
+    addEventListener('pageshow', (event) => {
+      resetRecordEntry();
+      if (event.persisted) {
+        try { sessionStorage.removeItem('cif-record-entry'); } catch {}
+      }
+    });
+    recordEntry?.addEventListener('click', async (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || enteringRecord) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      event.preventDefault();
+      enteringRecord = true;
+      const rect = recordEntry.getBoundingClientRect();
+      const launch = document.createElement('div');
+      launch.className = 'record-entry-launch';
+      launch.setAttribute('role', 'button');
+      launch.setAttribute('aria-label', 'Enter The Co-Existence Record');
+      Object.assign(launch.style, {position:'fixed',zIndex:'10000',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden',background:'#000',color:'#fff',pointerEvents:'none',top:`${rect.top}px`,left:`${rect.left}px`,width:`${rect.width}px`,height:`${rect.height}px`,borderRadius:`${rect.height / 2}px`});
+      launch.innerHTML = '<span>The Co-Existence Record</span>';
+      const launchName = launch.querySelector<HTMLElement>('span');
+      if (launchName) Object.assign(launchName.style,{font:'500 clamp(18px,2.2vw,30px)/1 "Helvetica Neue",Arial,sans-serif',letterSpacing:'-.025em',whiteSpace:'nowrap'});
+      document.body.append(launch);
+      void preloadRecord();
+      launch.classList.add('is-expanding');
+      launchName?.animate([{opacity:0,transform:'translateY(12px)',offset:0},{opacity:0,transform:'translateY(12px)',offset:.28},{opacity:1,transform:'translateY(0)',offset:1}],{duration:620,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});
+      const animation = launch.animate([
+        {top:`${rect.top}px`,left:`${rect.left}px`,width:`${rect.width}px`,height:`${rect.height}px`,borderRadius:`${rect.height / 2}px`},
+        {top:'0px',left:'0px',width:'100vw',height:'100dvh',borderRadius:'0px'}
+      ], {duration:760,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});
+      entryHeroAnimation = document.querySelector('.report-hero')?.animate([{opacity:1,transform:'scale(1)'},{opacity:.35,transform:'scale(.985)'}],{duration:520,easing:'ease-out',fill:'forwards'});
+      await animation.finished.catch(() => {});
+      if (!enteringRecord) return;
+      launch.style.pointerEvents = 'auto';
+      launch.style.cursor = 'pointer';
+      launch.tabIndex = 0;
+      launch.focus();
+      await new Promise<void>((resolve) => {
+        launch.addEventListener('click', () => resolve(), {once:true});
+        launch.addEventListener('keydown', (key) => { if (key.key === 'Enter' || key.key === ' ') { key.preventDefault(); resolve(); } });
       });
+      if (!enteringRecord) return;
+      launch.style.pointerEvents = 'none';
+      try { sessionStorage.setItem('cif-record-entry', 'reveal'); } catch {}
+      location.assign(recordEntry.href);
     });
   </script>
 </Base>

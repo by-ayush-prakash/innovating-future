@@ -65,7 +65,7 @@ const gets = [
       <div class="shead"><h3>No subject list. One test.</h3></div>
       <div class="alt">
         {standards.map((s, i) => (
-          <div class={i % 2 === 1 ? "arow arow--f" : "arow"}>
+          <div class={i % 2 === 1 ? "arow arow--f editorial-row" : "arow editorial-row"}>
             <div class="afig">{s.photo
               ? <SiteImage class="rn" src={s.photo} alt={s.alt} loading="lazy" />
               : <Field id={`ms${i}`} w={1000} h={750} />}</div>
@@ -82,10 +82,10 @@ const gets = [
   <section class="band band--dim" id="list">
     <div class="rnw"><Field v="dark-amber" id="ml" w={2400} h={900} /></div>
     <div class="wrap">
-      <div class="bandgrid" style="align-items:start;margin-top:0">
+      <div class="bandgrid mantic-title-layout">
         <div>
           <p class="mono" style="color:rgba(255,255,255,.5)">First title, under contract</p>
-          <h3 style="margin-top:20px;max-width:16ch">The Transcendence of Technology: A Spiritual Return for Humanity</h3>
+          <h3 style="margin-top:20px">The Transcendence of Technology: A Spiritual Return for Humanity</h3>
         </div>
         <div>
           <p style="margin-top:0">

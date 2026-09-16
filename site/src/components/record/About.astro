@@ -1,4 +1,6 @@
 ---
+import HowRecordWorks from "./HowRecordWorks.astro";
+import ContributionForm from "./ContributionForm.astro";
 import type { recordViewModel } from "../../data/record-view-model";
 interface Props {
   model: typeof recordViewModel;
@@ -7,80 +9,16 @@ const { model }: Props = Astro.props;
 ---
 
 <article class="about-view record-page" data-about-view hidden>
-  <header class="about-head record-hero">
-    <h1>About this Record.</h1>
-    <p>
-      The Co-Existence Record is a living, source-linked public record from
-      Co-Existing with AI. It turns long conversations into questions people can
-      explore without losing the original context.
-    </p>
-  </header>
-  <div class="about-grid">
-    <section>
-      <h2>Start with a question.</h2>
-      <p>
-        Each question gathers positions into shared ground, different views, and
-        what remains open. The map shows disagreement without forcing a single
-        conclusion.
-      </p>
-    </section>
-    <section>
-      <h2>Check the source.</h2>
-      <p>
-        Every published position links to the speaker, timestamp, surrounding
-        exchange, and original recording so readers can inspect the record
-        themselves.
-      </p>
-    </section>
-    <section>
-      <h2>Challenge the map.</h2>
-      <p>
-        CIF welcomes corrections, missing evidence, and competing
-        interpretations. Substantive corrections will remain visible in the
-        Record’s change history.
-      </p>
-    </section>
-    <section>
-      <h2>Public by default.</h2>
-      <p>
-        No paywall, required email, or institutional affiliation. If
-        institutions later help fund, host, or extend the work, access will
-        remain public.
-      </p>
-    </section>
+  <div class="about-scroll" tabindex="0" aria-label="About the Record">
+  <div class="about-intro" data-about-content>
+    <h1>About the Record.</h1>
+    <p>The Co-Existence Record is a living, source-linked public record from Co-Existing with AI. It turns long conversations into questions people can explore without losing the original context.</p>
   </div>
-  <section
-    class="record-history"
-    id="change-history"
-    aria-labelledby="change-history-title"
-  >
-    <header>
-      <h2 id="change-history-title">Record updates</h2>
-      <p>New conversations, transcript additions, and corrections.</p>
-    </header>
-    <p class="record-history-empty">No updates logged yet.</p>
-  </section>
-  <footer class="about-footer">
-    <div class="about-footer-copy">
-      <h2>Follow an idea back to its source.</h2>
-      <p>
-        Choose another question, inspect the conversations, or show us what the
-        map is missing.
-      </p>
-    </div>
-    <div class="about-footer-actions">
-      <button type="button" data-about-questions>
-        <span>
-          <b>Explore questions</b>
-        </span>
-        <i aria-hidden="true">→</i>
-      </button>
-      <button type="button" data-open-contribution>
-        <span>
-          <b>Add a missing view</b>
-        </span>
-        <i aria-hidden="true">＋</i>
-      </button>
-    </div>
-  </footer>
+  <HowRecordWorks />
+  <details class="about-contribution" data-about-contribution>
+    <summary class="about-contribute-link"><span>Expand the Record</span><span aria-hidden="true">＋</span></summary>
+    <ContributionForm model={model} />
+  </details>
+  </div>
+  <div class="about-art" role="img" aria-label="Illustrated futuristic city"></div>
 </article>

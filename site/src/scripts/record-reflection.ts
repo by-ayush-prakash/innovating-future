@@ -92,7 +92,7 @@ export function createReflection(
   const body = el("div", "", "reflection-body");
   const guidance = el(
     "p",
-    "Choose what resonates with you, or write a thought below. Your choice helps suggest a connected idea to explore.",
+    "Choose a response to find a connected idea. You can also add your own thoughts.",
     "reflection-guidance",
   );
   const note = el("div", "", "reflection-note");

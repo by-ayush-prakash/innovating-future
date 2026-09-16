@@ -9,6 +9,9 @@ const { displayPersonName, atlasContributors } = model;
 
 {atlasContributors.map((person) => (
   <article class="person-follow-view" data-person-view={person.slug} hidden>
+    <header
+      class={`person-profile-head person-profile-head--${person.sourceCategory}`}
+    >
     <button class="person-back" type="button" data-back-to-people>
       <span aria-hidden="true">
         <svg viewBox="0 0 20 20" width="20" height="20" fill="none">
@@ -21,33 +24,22 @@ const { displayPersonName, atlasContributors } = model;
           />
         </svg>
       </span>{" "}
-      Back to all people
+      Back
     </button>
-    <header
-      class={`person-profile-head person-profile-head--${person.sourceCategory}`}
-    >
-      <span>{person.initials}</span>
+      <span class="person-profile-initials" aria-hidden="true">{person.initials}</span>
       <div>
         <h1>{displayPersonName(person.name)}</h1>
         <p>{person.displayRole}</p>
+        <p class="person-profile-coverage">{person.contributions.length} positions · {person.questionCount} {person.questionCount === 1 ? "question" : "questions"}</p>
       </div>
     </header>
     <section class="person-contributions">
-      <header>
-        <h2>Positions in the Record.</h2>
-        <p>
-          Open any position to inspect the source, transcript, and surrounding
-          context.
-        </p>
-      </header>
       <div>
         {person.contributions.map((item) => (
-          <button
+          <details class="person-position-disclosure">
+          <summary
             class={`person-position person-position--${item.questionId}`}
-            type="button"
             style={`--question-color:${item.questionColor};--question-soft:${item.questionSoftColor}`}
-            data-open-evidence-key={`${item.questionId}:${item.speaker}:${item.timestamp}`}
-            data-open-direct
           >
             <span>
               <b>{item.questionNumber}</b>
@@ -55,7 +47,6 @@ const { displayPersonName, atlasContributors } = model;
             </span>
             <span>
               <strong>{item.claim}</strong>
-              <small>Read the source passage</small>
             </span>
             <span>
               <time>{item.timestamp}</time>
@@ -69,7 +60,14 @@ const { displayPersonName, atlasContributors } = model;
                 </svg>
               </i>
             </span>
-          </button>
+          </summary>
+          <div class="follow-position-context">
+            {item.story?.paragraph && <p>{item.story.paragraph}</p>}
+            <button type="button" class="follow-position-listen" data-compare-source={item.video} data-source-speaker={displayPersonName(person.name)} data-source-time={item.timestamp}>
+              Open conversation at {item.timestamp} <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          </details>
         ))}
       </div>
     </section>

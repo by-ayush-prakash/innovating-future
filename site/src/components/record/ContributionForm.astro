@@ -7,16 +7,7 @@ const { model }: Props = Astro.props;
 const { initialQuestion, questions } = model;
 ---
 
-<article class="contribution-view record-page" data-contribution-view hidden>
-  <header class="contribution-page-head record-hero">
-    <div>
-      <h1>Expand the Record.</h1>
-      <p>
-        Bring forward a source, correction, or perspective the Record is
-        missing.
-      </p>
-    </div>
-  </header>
+<div class="contribution-view about-contribution-form" data-contribution-view>
   <div class="contribution-page-body">
     <nav class="contribution-choices" aria-label="Choose a way to contribute">
       <button
@@ -76,15 +67,36 @@ const { initialQuestion, questions } = model;
             value="General contribution"
             data-suggestion-question
           />
+          <label class="contribution-suggestion">
+            <span>Your suggestion</span>
+            <textarea
+              name="suggestion"
+              rows="3"
+              placeholder="Tell us what should be added or reconsidered."
+              required
+            ></textarea>
+          </label>
+          <label class="contribution-email">
+            <span>
+              Email <small>Optional, if you want a reply</small>
+            </span>
+            <input
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+          </label>
+          <details class="contribution-details">
+            <summary>Question and contribution type <span aria-hidden="true">＋</span></summary>
           <label class="contribution-select-field">
             <span>
               Related question <small>Optional</small>
             </span>
             <span class="contribution-select-control">
-              <select
+              <select style="border:0!important;border-radius:10px!important;background:#eeeee8!important;padding:10px 36px 10px 12px!important;min-height:40px!important;font:400 14px/1.4 Arial!important"
                 name="question-id"
                 data-suggestion-question-select
-                style="appearance:none!important;-webkit-appearance:none!important;border:0!important;border-bottom:1px solid #aeb8b1!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;padding:13px 48px 13px 0!important"
               >
                 <option value="">General contribution</option>
                 {questions.map((question) => (
@@ -111,26 +123,7 @@ const { initialQuestion, questions } = model;
               ))}
             </div>
           </fieldset>
-          <label class="contribution-suggestion">
-            <span>Your suggestion</span>
-            <textarea
-              name="suggestion"
-              rows="6"
-              placeholder="Tell us what should be added or reconsidered."
-              required
-            ></textarea>
-          </label>
-          <label class="contribution-email">
-            <span>
-              Email <small>Optional, if you want a reply</small>
-            </span>
-            <input
-              name="email"
-              type="email"
-              autocomplete="email"
-              placeholder="you@example.com"
-            />
-          </label>
+          </details>
           <p class="contribution-privacy">
             Your suggestion is sent to CIF for review. It is never published
             automatically.
@@ -185,11 +178,10 @@ const { initialQuestion, questions } = model;
           <label class="contribution-select-field">
             <span>Question to follow</span>
             <span class="contribution-select-control">
-              <select
+              <select style="border:0!important;border-radius:10px!important;background:#eeeee8!important;padding:10px 36px 10px 12px!important;min-height:40px!important;font:400 14px/1.4 Arial!important"
                 name="question-id"
                 data-contribution-question-id
                 required
-                style="appearance:none!important;-webkit-appearance:none!important;border:0!important;border-bottom:1px solid #aeb8b1!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;padding:13px 48px 13px 0!important"
               >
                 {questions.map((question) => (
                   <option
@@ -229,4 +221,4 @@ const { initialQuestion, questions } = model;
       </section>
     </div>
   </div>
-</article>
+</div>

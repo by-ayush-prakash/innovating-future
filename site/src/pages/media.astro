@@ -67,7 +67,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
     </div>
   </section>
 
-  <section class="sec sec--t">
+  <section class="sec sec--t sec--b press-archive">
     <div class="wrap">
       <div class="shead"><h3>Everything</h3></div>
       <div class="rows">
@@ -84,4 +84,7 @@ const wall = MEDIA.map((m) => ({ ...m, logo: logoFor(m.slug) }))
       </div>
     </div>
   </section>
+  <style>
+    .press-archive .rrow:last-child { border-bottom:0; }
+  </style>
 </Base>

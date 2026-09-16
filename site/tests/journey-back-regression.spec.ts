@@ -1,0 +1,21 @@
+import {test,expect} from '@playwright/test';
+import {readPerson,reflect,continueReflection} from './record-helpers';
+test('My Journey revisits earlier screens',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await readPerson(page);await reflect(page);await continueReflection(page);
+ const pill=page.locator('.journey-screen-steps:visible');await pill.locator('summary').click();
+ await pill.getByRole('button',{name:'When should we trust an AI answer?',exact:true}).click();
+ await expect(page.locator('.journey-screen-picker:visible')).toBeVisible();
+ await pill.locator('summary').click();
+ await pill.getByRole('button',{name:'Nick Nadeau',exact:true}).click();
+ await expect(page.locator('.record-perspective:visible')).toContainText('Nick Nadeau');
+ await pill.locator('summary').click();
+ await pill.getByRole('button',{name:'Start your journey',exact:true}).click();
+ await expect(page.locator('.explore-welcome')).toBeVisible();
+ await expect(page.locator('.journey-screen-steps:visible')).toHaveCount(0);
+ await page.locator('.welcome-card--learning').click();
+ await expect(page.locator('.journey-screen-picker:visible')).toBeVisible();
+ await expect(page.locator('.journey-screen-steps:visible')).toHaveCount(1);
+ await page.screenshot({path:'/private/tmp/cif-journey-revisit.png'});
+ expect(errors).toEqual([]);
+});
